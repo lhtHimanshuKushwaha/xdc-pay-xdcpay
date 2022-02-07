@@ -118,6 +118,10 @@ function getExchanges ({network, amount, address}) {
     case XDC_CODE:
       return [
         {
+          name: 'Simplex',
+          link: 'https://simplex.xdc.org/',
+        },
+        {
           name: 'Indodax',
           link: 'https://indodax.com/market/XDCIDR',
         },
@@ -132,10 +136,6 @@ function getExchanges ({network, amount, address}) {
         {
           name: 'Gate.io',
           link: 'https://www.gate.io/trade/xdc_usdt',
-        },
-        {
-          name: 'Simplex',
-          link: 'https://simplex.xdc.org/',
         },
       ]
     default:
