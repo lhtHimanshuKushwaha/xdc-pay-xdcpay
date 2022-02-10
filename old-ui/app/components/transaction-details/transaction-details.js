@@ -5,10 +5,11 @@ const React = require('react')
 const CopyButton = require('../../components/copy/copy-button')
 const { toChecksumAddress } = require('../../util')
 const hexToBn = require('../../../../app/scripts/lib/hex-to-bn')
+const EthBalanceComponent = require('../eth-balance-cnf-tx')
 
 
 class TransactionDetails extends React.Component {
-
+  
 
   render() {
 
@@ -23,31 +24,64 @@ class TransactionDetails extends React.Component {
     var selected = props.address || Object.keys(props.accounts)[0]
     var checksumAddress = selected && toChecksumAddress(network, selected)
 
-
     const {
       transactions,
     } = this.props
-    // const currentContactTxn = transactions.filter((txnObj) => txnObj.txReceipt.to === address)
-     // const To = transactions.filter((txnObj) => txnObj.txParams.to === transaction,selected)
-    //  const To = transactions.values((txnObj)  => txnObj.txParams.to)
-
-    const To = transactions[1].txParams.to
     
+    var msgData = this.props.txData
+    var msgParams = msgData.id
+   var fromAdd
+   var toAdd
+   var value
+   var gas 
+    var gasPrice 
+    var txnId
+    const valueBn = hexToBn(value)
+    const gasPriceBn = hexToBn(gasPrice)
+    const gasBn = hexToBn(gas)
+    // const txFeeBn = gasBn.mul(gasPriceBn)
+    // const maxCost = txFeeBn.add(valueBn)
+    console.log(msgParams,'paramsData')
+    {
+      transactions.map((txObj) => (
+        fromAdd = txObj.txParams.from.replace('0x', 'xdc'),
+        toAdd = txObj.txParams.to.replace('0x', 'xdc'),
+        value = txObj.txParams.value,
+        gas = txObj.txParams.gas,
+         txnId = txObj.id,
+        gasPrice = txObj.txParams.gasPrice
 
-    var value = transactions[1].txParams.value
+        ))
+      }   
+    //   var adde
+    //   {
+    //   addressBook.map((obj) => {
+    //     adde = obj.address
+        
+    //     if (fromAdd === adde) {
+    //       fromAdd = obj.name
+    //     } else if (toAdd === adde) {
+    //       toAdd = obj.name
+    //     }
+    //     else {
+    //       fromAdd = fromAdd
+    //     }
+        
+    //   }
+    //   )
+    //   console.log(adde,'add')
+    // }
+
+    //value calculated
     value = parseInt(value, 16)
     value = value / (Math.pow(10, 18));
     
-    var gas = transactions[1].txParams.gas
+    //gas Calculated
      gas = parseInt(gas, 16); 
 
-    var gasPrice = transactions[1].txParams.gasPrice
+    //gasPrice calculated
      gasPrice = parseInt(gasPrice, 18);
-    //  gasPrice= gasPrice / (Math.pow(10, 18));
-   
-    console.log(gas, '//')
-    console.log(gasPrice, '///')
-
+    
 
     return (
       <div className="flex-column flex-grow" style={{
@@ -75,10 +109,10 @@ class TransactionDetails extends React.Component {
         {/* flexbox */}
         <div className='flexbox'>
           <div className='trasaction-details-from-to'>From</div>
-          <div className='trasaction-details-from-to-accounts'>{shorten(checksumAddress)}</div>
+          <div className='trasaction-details-from-to-accounts'>{shorten(fromAdd)}</div>
           <img src="/images/Assets/DownArrow.svg" />
           <div className='trasaction-details-from-to'>To</div>
-          <div className='trasaction-details-from-to-accounts'>{shorten(To)}</div>
+          <div className='trasaction-details-from-to-accounts'>{shorten(toAdd)}</div>
         </div>
 
         {/* all trasaction details  */}
@@ -100,7 +134,10 @@ class TransactionDetails extends React.Component {
 
         <div className='trasaction-details-amount'>
           <div style={{ marginLeft: '16px' }}>Total</div>
-          <div style={{ marginLeft: '200px' }}>101.00 </div>
+          <div style={{ marginLeft: '200px' }}>
+            {/* <EthBalanceComponent 
+              value={maxCost.toString(16)} /> */}
+          </div>
           <h1 style={{ color: '#848484' }}>XDC</h1>
         </div>
 
@@ -142,9 +179,11 @@ function mapStateToProps(state) {
   return {
     metamask: state.metamask,
     warning: state.appState.warning,
+    txId: state.appState.txId, 
     address: state.metamask.selectedAddress,
     network: state.metamask.network,
     transactions: state.metamask.selectedAddressTxList || [],
+    addressBook: state.metamask.addressBook || [],
   }
 }
 

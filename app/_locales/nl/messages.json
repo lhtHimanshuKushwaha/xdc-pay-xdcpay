@@ -287,7 +287,7 @@
     "message": "Gas vergoeding"
   },
   "gasLimit": {
-    "message": "Gaslimiet"
+    "message": "Gaslimiet (Eenheden)"
   },
   "gasLimitCalculation": {
     "message": "We berekenen de voorgestelde gaslimiet op basis van succespercentages van het netwerk."
@@ -655,7 +655,7 @@
     "message": "Stuur tokens naar iedereen met een Ethereum-account"
   },
   "settings": {
-    "message": "instellingen"
+    "message": "Instellingen"
   },
   "shapeshiftBuy": {
     "message": "Koop met Shapeshift"
@@ -691,13 +691,13 @@
     "message": "Staatslogboeken"
   },
   "stateLogsDescription": {
-    "message": "Staatslogboeken bevatten uw openbare accountadressen en verzonden transacties."
+    "message": "Statuslogboeken bevatten uw openbare accountadressen en verzonden transacties."
   },
   "submit": {
     "message": "voorleggen"
   },
   "supportCenter": {
-    "message": "Bezoek ons ​​ondersteuningscentrum"
+    "message": "Ondersteuning's centrum"
   },
   "symbolBetweenZeroTen": {
     "message": "Het symbool moet tussen 0 en 10 tekens lang zijn."
@@ -818,5 +818,131 @@
   },
   "youSign": {
     "message": "U ondertekent"
+  },
+  "accountOptions":{
+    "message": "Account opties"
+  },
+  "yourPrivateSeedPhrase": {
+    "message": "La tua frase seed privata"
+  },
+  "expandedView": {
+    "message": "Uitgebreide weergavea"
+  },
+  "viewOnBlockExplorer":{
+    "message": "Weergeven op Block Explorer"
+  },
+  "tokens":{
+    "message": "Munten"
+  },
+  "generalSettings":{
+    "message": "Algemene instellingen"
+  },
+  "hideTokensWithout":{
+    "message": "Tokens verbergen zonder saldo"
+  },
+  "advanceSettings":{
+    "message": "Geavanceerde instellingen"
+  },
+  "securityandPrivacySettings":{
+    "message": "Beveiligings- en privacyinstellingen"
+  },
+  "autoLockTimer":{
+    "message": "Automatische vergrendelingstimer"
+  },
+  "autoLockTimerDesc":{
+    "message": "Stel de inactieve tijd in minuten in voordat de portemonnee wordt vergrendeld."
+  },
+  "showIncomingTransactions":{
+    "message": "Toon inkomende transacties"
+  },
+  "showIncomingTransactionsDesc":{
+    "message": "Selecteer dit om XDC Observatory te gebruiken om inkomende transacties in de transactielijst te tonen."
+  },
+  "resetAccountDescription": {
+    "message": "Als u uw account opnieuw instelt, wordt uw transactiegeschiedenis gewist. Dit zal de saldi in uw rekeningen niet veranderen en u hoeft uw geheime herstelzin niet opnieuw in te voeren."
+  },
+  "alertMsg" : {
+   "message" : "Deze waarschuwing wordt weergegeven in de pop-up wanneer u op een verbonden web3-site surft, maar het momenteel geselecteerde account niet is verbonden."
+  },
+  "reveal":{
+    "message": "Onthullen"
+  },
+  "contacts":{
+    "message": "Contacten"
+  },
+  "addContact":{
+    "message": "Contactpersoon toevoegen"
+  },
+  "walletAddress":{
+    "message": "Portemonnee-adres"
+  },
+  "contactDetails":{
+    "message": "Contact details"
+  },
+  "userName":{
+    "message": "Gebruikersnaam"
+  },
+  "alertSettings":{
+    "message": "Waarschuwingsinstellingen"
+  },
+  "unconnectedAccountWarning" :{
+   "message" : "Browsen op een website met een niet-verbonden account geselecteerd."
+  },
+  "networkSettings":{
+    "message": "Netwerkinstellingen"
+  },
+  "addNetwork":{
+    "message": "Netwerk toevoegen"
+  },
+  "networkName":{
+    "message": "Netwerknaam"
+  },
+  "chainID":{
+    "message": "Ketting-ID"
+  },
+  "currencySymbol":{
+    "message": "Valutasymbool (optioneel)"
+  },
+  "blockExplorer":{
+    "message": "Blokverkenner (optioneel)"
+  },
+  "Add":{
+    "message": "Toevoegen"
+  },
+  "Update":{
+    "message": "Bijwerken"
+  },
+  "About":{
+    "message": "Over"
+  },
+  "Link":{
+    "message": "Koppeling"
+  },
+  "visitOurWebsite":{
+    "message": "Bezoek onze website"
+  },
+  "contactUs":{
+    "message": "Neem contact met ons op"
+  },
+  "maxTransactionFee":{
+    "message": "Max. transactiekosten"
+  },
+  "Edit":{
+    "message": "Bewerk"
+  },
+  "connectedSites":{
+    "message":"Verbonden sites"
+  },
+  "advancedGasControls": {
+    "message": "Geavanceerde gasregeling"
+  },
+  "advancedGasControlsDesc" : {
+    "message":  "Selecteer dit om de gasprijs en limietcontroles direct op de verzend- en bevestigingsschermen weer te geven."
+  },
+  "infoDesc" : {
+    "message" : "De XDCPay is een extensie voor toegang tot XDC's XDPoS-enabled gedistribueerde applicaties of Dapps in uw browser!"
+  },
+  "getYourSeedWords": {
+    "message": "Krijg uw geheime seed-woorden door uw wachtwoord in te voeren."
   }
 }

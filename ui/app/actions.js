@@ -519,9 +519,10 @@ function transitionBackward () {
   }
 }
 
-function transactionDetails() {
+function transactionDetails(txnId) {
   return {
     type: actions.TRANSACTION_DETAILS,
+    value: txnId
   }
 }
 

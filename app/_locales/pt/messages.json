@@ -287,7 +287,7 @@
     "message": "Taxa de Gas"
   },
   "gasLimit": {
-    "message": "Limite de Gas"
+    "message": "Limite de gás (unidades)"
   },
   "gasLimitCalculation": {
     "message": "Calculamos o limite sugerido do gas com base nas taxas de sucesso da rede."
@@ -697,7 +697,7 @@
     "message": "Submeter"
   },
   "supportCenter": {
-    "message": "Visitar o nosso Centro de Suporte"
+    "message": "Centro de Apoio"
   },
   "symbolBetweenZeroTen": {
     "message": "Símbolo deve conter entre 0 e 10 characters."
@@ -818,5 +818,125 @@
   },
   "youSign": {
     "message": "Está a assinar"
+  },
+  "accountOptions":{
+    "message": "Opções de conta"
+  },
+  "expandedView": {
+    "message": "Vista Expandida"
+  },
+  "viewOnBlockExplorer":{
+    "message": "Ver no Block Explorer"
+  },
+  "tokens":{
+    "message": "Tokens"
+  },
+  "generalSettings":{
+    "message": "Configurações Gerais"
+  },
+  "hideTokensWithout":{
+    "message": "Esconder Tokens sem Balanço"
+  },
+  "advanceSettings":{
+    "message": "Configurações avançadas"
+  },
+  "securityandPrivacySettings":{
+    "message": "Configurações de segurança e privacidade"
+  },
+  "autoLockTimer":{
+    "message": "Temporizador de bloqueio automático"
+  },
+  "autoLockTimerDesc":{
+    "message": "Defina o tempo ocioso em minutos antes que a carteira seja bloqueada."
+  },
+  "showIncomingTransactions":{
+    "message": "Mostrar transações de entrada"
+  },
+  "showIncomingTransactionsDesc":{
+    "message": "Selecione isto para usar o Observatório XDC para mostrar as transações de entrada na lista de transações"
+  },
+  "resetAccountDescription": {
+    "message": "Zresetowanie konta wyczyści historię transakcji. Nie zmieni to sald na twoich kontach ani nie będzie wymagało ponownego wprowadzenia tajnej frazy odzyskiwania."
+  },
+  "alertMsg" : {
+   "message" : "Este alerta é mostrado no pop-up quando você está navegando em um site da web3 conectado, mas a conta atualmente selecionada não está conectada."
+  },
+  "reveal":{
+    "message": "Revelar"
+  },
+  "contacts":{
+    "message": "Contatos"
+  },
+  "addContact":{
+    "message": "Adicionar contato"
+  },
+  "walletAddress":{
+    "message": "Endereço da carteira"
+  },
+  "contactDetails":{
+    "message": "Detalhes do contato"
+  },
+  "userName":{
+    "message": "Nome do usuário"
+  },
+  "alertSettings":{
+    "message": "Ustawienia alertów"
+  },
+  "unconnectedAccountWarning" :{
+   "message" : "Navegar em um site com uma conta não conectada selecionada"
+  },
+  "networkSettings":{
+    "message": "Configurações de rede"
+  },
+  "addNetwork":{
+    "message": "Adicionar rede"
+  },
+  "networkName":{
+    "message": "Nome da rede"
+  },
+  "chainID":{
+    "message": "ID da corrente"
+  },
+  "currencySymbol":{
+    "message": "Símbolo monetário (opcional)"
+  },
+  "blockExplorer":{
+    "message": "Block Explorer (opcional)"
+  },
+  "Add":{
+    "message": "Adicionar"
+  },
+  "Update":{
+    "message": "Atualizar"
+  },
+  "About":{
+    "message": "Cerca de"
+  },
+  "Link":{
+    "message": "Połączyć"
+  },
+  "visitOurWebsite":{
+    "message": "Visite o nosso site"
+  },
+  "contactUs":{
+    "message": "Entre em contato conosco"
+  },
+  "maxTransactionFee":{
+    "message": "Taxa máxima de transação"
+  },
+  "Edit":{
+    "message": "Editar"
+  },
+  "connectedSites":{
+    "message":"Sites Conectados"
+  },
+  "advancedGasControls": {
+    "message": "Controles de gás avançados"
+  },
+  "advancedGasControlsDesc" : {
+    "message":  "Selecione esta opção para mostrar o preço do gás e os controles de limite diretamente nas telas de envio e confirmação."
+  },
+  "infoDesc" : {
+    "message" : "O XDCPay é uma extensão para acessar aplicativos distribuídos habilitados para XDPoS do XDC ou Dapps em seu navegador!"
   }
 }
