@@ -1109,7 +1109,7 @@
     "message": "Submitted"
   },
   "supportCenter": {
-    "message": "Visit our Support Center"
+    "message": "Support Center"
   },
   "symbolBetweenZeroTen": {
     "message": " Symbol must be between 0 and 10 characters."
@@ -1321,9 +1321,6 @@
   "yourPrivateSeedPhrase": {
     "message": "Your private seed phrase"
   },
-  "transactions":{
-    "message": "Transactions"
-  },
   "viewOnBlockExplorer":{
     "message": "View on Block Explorer"
   },
@@ -1334,7 +1331,7 @@
     "message": "General Settings"
   },
   "hideTokensWithout":{
-    "message": "General Settings"
+    "message": "Hide Tokens Without Balance"
   },
   "advanceSettings":{
     "message": "Advance Settings"
