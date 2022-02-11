@@ -526,6 +526,8 @@ const connect = require('react-redux').connect
 const actions = require('../../ui/app/actions')
 const LoadingIndicator = require('./components/loading')
 const Web3 = require('web3')
+import React, { useState } from 'react';
+import PropTypes from 'prop-types'
 const infuraCurrencies = require('./infura-conversion.json').objects.sort(
   (a, b) => {
     return a.quote.name
@@ -548,7 +550,7 @@ function mapStateToProps (state) {
   }
 }
 
-inherits(ConfigScreen, Component)
+// inherits(ConfigScreen, Component)
 
 function ConfigScreen () {
   this.state = {
@@ -561,9 +563,18 @@ ConfigScreen.prototype.render = function () {
   const state = this.props
   const metamaskState = state.metamask
   const warning = state.warning
+ 
 
+  class ConfigScreen extends React.Component {
+    static contextTypes = {
+      t: PropTypes.func,
+    }
+    render() {
+      const {t} = this.context
+      return (
 
-  return h(
+   
+  h(
     '.flex-column.flex-grow',
     {
       style: {
@@ -607,7 +618,7 @@ ConfigScreen.prototype.render = function () {
       [
 
 
-        h('.settings', {onClick: () => state.dispatch(actions.generalSettings())}, ['General Settings',
+        h('.settings', {onClick: () => state.dispatch(actions.generalSettings())}, [`${t('generalSettings')}`,
           h('img', {
             src: '/images/Assets/Arrow.svg',
 
@@ -635,11 +646,11 @@ ConfigScreen.prototype.render = function () {
           }),
         ]),
 
-        // h('.settings', {onClick: () => state.dispatch(actions.alertSettings())}, ['Alert Settings',
-        //   h('img', {
-        //     src: '/images/Assets/Arrow.svg',
-        //   }),
-        // ]),
+        h('.settings', {onClick: () => state.dispatch(actions.alertSettings())}, ['Alert Settings',
+          h('img', {
+            src: '/images/Assets/Arrow.svg',
+          }),
+        ]),
 
         h('.settings', {onClick: () => state.dispatch(actions.networkSettings())}, ['Network Settings',
           h('img', {
@@ -655,5 +666,10 @@ ConfigScreen.prototype.render = function () {
 
       ],
     ])
+    )
+  }
+  
 
+  
+}
 }

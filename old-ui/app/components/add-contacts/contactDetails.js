@@ -60,7 +60,7 @@ class ContactDetails extends React.Component {
             }}
             onClick={() => state.dispatch(actions.viewContact(contactObj))}
           >
-            Edit
+            {`${t('Edit')}`}
           </div>
         </div>
         <div style={{padding:'0 0 29px 0'}}>

@@ -218,7 +218,7 @@ class AccountDropdowns extends Component {
           }}
         >
           <div className="account-options-list">
-            {`${t(accountOptions)}` }
+            {`${t('accountOptions')}` }
             <img
               className="account-options-close-icon"
               src="/images/Assets/Close.svg"
@@ -233,7 +233,7 @@ class AccountDropdowns extends Component {
               className="account-options-icon"
               src="/images/Assets/ExpandedView.svg"
             />
-            {`${t(expandedView)}` }
+            {`${t('expandedView')}` }
           </DropdownMenuItem>
           <DropdownMenuItem
             closeMenu={() => {
@@ -244,7 +244,7 @@ class AccountDropdowns extends Component {
               className="account-options-icon"
               src="/images/Assets/ConnectedSites.svg"
             />
-            Connected Sites
+           {`${t('connectedSites')}` } 
           </DropdownMenuItem>
           <DropdownMenuItem
             closeMenu={() => {
@@ -266,7 +266,7 @@ class AccountDropdowns extends Component {
               className="account-options-icon"
               src="/images/Assets/QRCode.svg"
             />
-            Show QR Code
+             {`${t('showQRCode')}`}
           </DropdownMenuItem>
           <DropdownMenuItem
             closeMenu={() => {
@@ -277,7 +277,7 @@ class AccountDropdowns extends Component {
               className="account-options-icon"
               src="/images/Assets/CopyClipboard.svg"
             />
-            Copy address to clipboard
+            {`${t('copyToClipboard')}`}
           </DropdownMenuItem>
           {ifContractAcc(keyring) ? (
             <DropdownMenuItem closeMenu={() => {
@@ -304,7 +304,7 @@ class AccountDropdowns extends Component {
                 className="account-options-icon"
                 src="/images/Assets/ExportPvtKey.svg"
               />
-              Export Private Key
+            {`${t('exportPrivateKey')}`}
             </DropdownMenuItem>
           ) : null}
         </Dropdown>
