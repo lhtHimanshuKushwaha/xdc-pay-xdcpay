@@ -42,6 +42,10 @@ class AccountDropdowns extends Component {
     enableAccountsSelector: false,
     enableAccountOptions: false,
   }
+  static contextTypes = {
+    t: PropTypes.func,
+  }
+
 
   static propTypes = {
     identities: PropTypes.objectOf(PropTypes.object),
@@ -183,13 +187,14 @@ class AccountDropdowns extends Component {
       </Dropdown>
     )
   }
+  
 
   renderAccountOptions () {
     const {actions, selected, network, keyrings, identities, networkList} = this.props
     const {optionsMenuActive, isProxy} = this.state
 
     const keyring = getCurrentKeyring(selected, network, keyrings, identities)
-
+    const {t} = this.context
     return (
       <div>
 
@@ -213,13 +218,13 @@ class AccountDropdowns extends Component {
           }}
         >
           <div className="account-options-list">
-            Account Options
+            {`${t(accountOptions)}` }
             <img
               className="account-options-close-icon"
               src="/images/Assets/Close.svg"
             />
           </div>
-          {/* <DropdownMenuItem
+          <DropdownMenuItem
             closeMenu={() => {
             }}
             onClick={() => global.platform.openExtensionInBrowser()}
@@ -228,7 +233,7 @@ class AccountDropdowns extends Component {
               className="account-options-icon"
               src="/images/Assets/ExpandedView.svg"
             />
-            Expanded View
+            {`${t(expandedView)}` }
           </DropdownMenuItem>
           <DropdownMenuItem
             closeMenu={() => {
@@ -240,7 +245,7 @@ class AccountDropdowns extends Component {
               src="/images/Assets/ConnectedSites.svg"
             />
             Connected Sites
-          </DropdownMenuItem> */}
+          </DropdownMenuItem>
           <DropdownMenuItem
             closeMenu={() => {
             }}
@@ -250,7 +255,7 @@ class AccountDropdowns extends Component {
               className="account-options-icon"
               src="/images/Assets/ViewOnExplorer.svg"
             />
-            View on block explorer
+           {`${t('viewOnBlockExplorer')}`} 
           </DropdownMenuItem>
           <DropdownMenuItem
             closeMenu={() => {
