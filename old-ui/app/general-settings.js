@@ -3,7 +3,7 @@ const actions = require('../../ui/app/actions')
 const React = require('react')
 import SimpleDropdown from '../../ui/app/components/dropdowns/simple-dropdown'
 import CustomDropDown from '../app/components/common/custom-dropdown'
-import locales from '../../app/_locales/index1.json'
+import locales from '../../app/_locales/index.json'
 import PropTypes from 'prop-types'
 
 const localeOptions = locales.map(locale => {
@@ -73,7 +73,7 @@ class GeneralSettings extends React.Component {
           {currentLanguage(metamaskState, onLanguageSelect,t)}
         </div>
         <div style={{padding: '20px 40px', borderTop: '1px solid #E3E7EB'}}>
-          <div style={{color: '#2149B9', fontSize: '14px', fontFamily: 'Inter-Medium'}}>{`${t('hideTokensWithoutBalance')}`}  
+          <div style={{color: '#2149B9', fontSize: '14px', fontFamily: 'Inter-Medium'}}>{`${t('hideTokensWithout')}`}  
           </div>
           <br/>
           <label className="switch">
