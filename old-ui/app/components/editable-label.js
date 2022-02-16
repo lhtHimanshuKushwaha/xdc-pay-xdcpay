@@ -2,9 +2,15 @@ const Component = require('react').Component
 const h = require('react-hyperscript')
 const inherits = require('util').inherits
 const findDOMNode = require('react-dom').findDOMNode
+const connect = require('react-redux').connect
 
-module.exports = EditableLabel
+module.exports = connect(mapStateToProps)(EditableLabel)
 
+function mapStateToProps(state) {
+  return {
+    warning: state.appState.warning,
+  }
+}
 inherits(EditableLabel, Component)
 function EditableLabel () {
   Component.call(this)
@@ -20,6 +26,7 @@ EditableLabel.prototype.render = function () {
       h('input.sizing-input', {
         defaultValue: props.textValue,
         maxLength: '20',
+        id:'accountName',
         style: {
           width: '146px',
         },
@@ -44,14 +51,14 @@ EditableLabel.prototype.render = function () {
           this.setState({ isEditingLabel: true })
         }
       },
-    }, this.props.children)
+    }, this.props.children) 
   }
 }
 
 EditableLabel.prototype.saveIfEnter = function (event) {
   if (event.key === 'Enter') {
-    this.saveText()
-  }
+      this.saveText()
+     }
 }
 
 EditableLabel.prototype.saveText = function () {
@@ -59,6 +66,8 @@ EditableLabel.prototype.saveText = function () {
   var container = findDOMNode(this)
   var text = container.querySelector('.editable-label input').value
   var truncatedText = text.substring(0, 20)
-  this.props.saveText(truncatedText)
-  this.setState({ isEditingLabel: false, textLabel: truncatedText })
+  if (text.trim().length > 0) {
+    this.props.saveText(truncatedText)
+    this.setState({ isEditingLabel: false, textLabel: truncatedText }) 
+  }
 }

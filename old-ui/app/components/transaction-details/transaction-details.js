@@ -28,8 +28,8 @@ class TransactionDetails extends React.Component {
       transactions,
     } = this.props
     
-    var msgData = this.props.txData
-    var msgParams = msgData.id
+    // var msgData = this.props.txData
+    // var msgParams = msgData.id
    var fromAdd
    var toAdd
    var value
@@ -41,14 +41,17 @@ class TransactionDetails extends React.Component {
     const gasBn = hexToBn(gas)
     // const txFeeBn = gasBn.mul(gasPriceBn)
     // const maxCost = txFeeBn.add(valueBn)
-    console.log(msgParams,'paramsData')
+    // console.log(msgParams,'paramsData')
     {
-      transactions.map((txObj) => (
-        fromAdd = txObj.txParams.from.replace('0x', 'xdc'),
-        toAdd = txObj.txParams.to.replace('0x', 'xdc'),
+      const transactionList = transactions.sort((a, b) => a.time - b.time)
+      transactionList.map((txObj) => (
+        fromAdd = txObj.txParams.from,
+        // fromAdd = fromAdd.replace('0x', 'xdc'),
+        toAdd = txObj.txParams.to,
+        // console.log(toAdd.replace('0x', 'xdc'),'[--]'),
         value = txObj.txParams.value,
         gas = txObj.txParams.gas,
-         txnId = txObj.id,
+        //  txnId = txObj.id,
         gasPrice = txObj.txParams.gasPrice
 
         ))

@@ -21,6 +21,10 @@ export default class AddNetwork extends React.Component {
       explorerLink: viewNetworkObj ? viewNetworkObj.blockExplorer : '',
     }
   }
+  static contextTypes = {
+    t: PropTypes.func,
+  }
+
 
   onBackClick = () => {
     // eslint-disable-next-line react/prop-types

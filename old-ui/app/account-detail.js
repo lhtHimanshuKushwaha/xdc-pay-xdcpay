@@ -401,7 +401,7 @@ AccountDetailScreen.prototype.transactionList = function () {
   } = this.props
 
   return h(TransactionList, {
-    transactions: transactions.sort((a, b) => b.time - a.time),
+    transactions: transactions.sort((a, b) => a.time - b.time),
     network,
     unapprovedMsgs,
     conversionRate,
