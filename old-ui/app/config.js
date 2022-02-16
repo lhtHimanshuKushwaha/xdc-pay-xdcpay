@@ -550,7 +550,7 @@ function mapStateToProps (state) {
   }
 }
 
-// inherits(ConfigScreen, Component)
+inherits(ConfigScreen, Component)
 
 function ConfigScreen () {
   this.state = {
@@ -565,12 +565,12 @@ ConfigScreen.prototype.render = function () {
   const warning = state.warning
  
 
-  class ConfigScreen extends React.Component {
-    static contextTypes = {
-      t: PropTypes.func,
-    }
-    render() {
-      const {t} = this.context
+  // class ConfigScreen extends React.Component {
+  //   static contextTypes = {
+  //     t: PropTypes.func,
+  //   }
+  //   render() {
+  //     const {t} = this.context
       return (
 
    
@@ -618,7 +618,7 @@ ConfigScreen.prototype.render = function () {
       [
 
 
-        h('.settings', {onClick: () => state.dispatch(actions.generalSettings())}, [`${t('generalSettings')}`,
+        h('.settings', {onClick: () => state.dispatch(actions.generalSettings())}, ['General Settings',
           h('img', {
             src: '/images/Assets/Arrow.svg',
 
@@ -671,5 +671,5 @@ ConfigScreen.prototype.render = function () {
   
 
   
-}
-}
+// }
+// }

@@ -55,7 +55,7 @@ class AdvanceSettings extends React.Component{
             <div className="section-title flex-row"
                  style={{ borderBottom: "1px solid #E3E7EB", paddingBottom: "17px" } }>
             <img src="/images/Assets/BackArrow.svg" style={{marginLeft:'12px', cursor:'pointer'}} onClick={() => { state.dispatch(actions.goConfig()) }} />
-            <h2 style={{ marginLeft:'88px',fontFamily:'Inter-bold'}}>{`${t(' advanceSettings')}`}</h2>
+            <h2 style={{ marginLeft:'88px',fontFamily:'Inter-bold'}}>{`${t('advanceSettings')}`}</h2>
             </div>
             <div style={{
                 padding: ' 15px 17px 20px 15px ',
@@ -83,7 +83,7 @@ class AdvanceSettings extends React.Component{
                 borderBottom: '1px solid #E3E7EB',
             }}>
                     <span style={{ fontWeight: "bold", fontSize: "14px", color: "#2149B9" }}>{`${t('resetAccount')}` }</span><br />
-                <p style={{fontSize:'14px',marginBottom:'15px',fontFamily:'Inter-medium'}}>{`${t(' resetAccountDescription')}`}  </p>
+                <p style={{fontSize:'14px',marginBottom:'15px',fontFamily:'Inter-medium'}}>{`${t('resetAccountDescription')}`}  </p>
                     <button style={{ width: "324px", height: "40px", color: "#FF0035", background: "#FFFFFF", border: "2px solid #FF0035", fontWeight: "600", }}
                         onClick={(event) => {
                             event.preventDefault();
@@ -95,15 +95,15 @@ class AdvanceSettings extends React.Component{
                     padding: ' 15px 17px 20px 15px ',
                     borderBottom: '1px solid #E3E7EB',
                 }}>
-                    <span style={{ fontWeight: "bold", fontSize: "14px", color: "#2149B9" }}>{`${t(advancedGasControls)}` }</span><br />
-                <p style={{fontSize:'14px',marginBottom:'15px',fontFamily:'Inter-medium'}}>{`${t(advancedGasControlsDesc)}` }</p>
+                    <span style={{ fontWeight: "bold", fontSize: "14px", color: "#2149B9" }}>{`${t('advancedGasControls')}` }</span><br />
+                <p style={{fontSize:'14px',marginBottom:'15px',fontFamily:'Inter-medium'}}>{`${t('advancedGasControlsDesc')}` }</p>
                     <label className="switch">
                         <input type="checkbox" onChange={this.handleCheckBox} checked={showGasFields }/>
                 <span className="slider round" ></span>
                         
                     </label>
                     <span style={{marginLeft:'8px',}}>{showGasFields?"On":"Off"}</span>
-                        {/* {toggle? <span>ON</span> :<span> OFF</span>} */}
+                        
             </div>    
             
       </div>
