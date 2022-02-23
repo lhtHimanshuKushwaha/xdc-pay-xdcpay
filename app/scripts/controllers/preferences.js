@@ -625,13 +625,8 @@ class PreferencesController {
    * doesn't fulfill requirements
    *
    */
-<<<<<<< HEAD
-  _validateERC20AssetParams(opts) {
-    const { rawAddress, symbol, decimals } = opts
-=======
    _validateERC20AssetParams(opts) {
     const { rawAddress, symbol, decimals,tokens,address} = opts
->>>>>>> 529f5b31f64079e2f3c210d79c36edf12f886de3
     if (!rawAddress || !symbol ) throw new Error(`Cannot suggest token without address, symbol, and decimals`)
     if (!(symbol.length > 0)) throw new Error(`Invalid symbol `)
     const numDecimals = parseInt(decimals, 10)
