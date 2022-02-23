@@ -4,6 +4,7 @@ const actions = require('../../../../ui/app/actions')
 const React = require('react')
 const CopyButton = require('../../components/copy/copy-button')
 const { toChecksumAddress } = require('../../util')
+const vreme = new (require('vreme'))()
 const hexToBn = require('../../../../app/scripts/lib/hex-to-bn')
 const EthBalanceComponent = require('../eth-balance-cnf-tx')
 
@@ -19,6 +20,9 @@ class TransactionDetails extends React.Component {
         b.length,
       )}`
     }
+
+    
+
     var props = this.props
     const { network, conversionRate, currentCurrency, networkList } = props
     var selected = props.address || Object.keys(props.accounts)[0]
@@ -84,7 +88,7 @@ class TransactionDetails extends React.Component {
 
     //gasPrice calculated
      gasPrice = parseInt(gasPrice, 18);
-    
+     var date = formatDate(transactions.time)
 
     return (
       <div className="flex-column flex-grow" style={{
@@ -155,26 +159,29 @@ class TransactionDetails extends React.Component {
               <img style={{ marginRight: '10px' }} src="/images/Assets/TransactionCreated.svg" />
               <div className='transaction-border' ></div>
             </div>
-            <div> Transaction created with a value of 100 XDC at 16:29 on 10/11/2021.</div>
+            <div> Transaction created with a value of {value} XDC at {date}.</div>
           </div>
           <div style={{ display: 'flex' }}>
             <div style={{ display: 'flex', flexDirection: 'column' }} >
               <img style={{ marginRight: '10px' }} src="/images/Assets/TransactionSubmitted.svg" />
               <div className='transaction-border' ></div>
             </div>
-            <div> trasaction submitted with estimated gas fee of 1.00 GWEI at 16.29 on 10/11/2021. </div>
+            <div> trasaction submitted with estimated gas fee of 1.00 GWEI at {date}. </div>
           </div>
 
           <div style={{ display: 'flex' }}>
             <div style={{ display: 'flex', flexDirection: 'column' }} >
               <img style={{ marginRight: '10px' }} src="/images/Assets/TransactionComplete.svg" />
             </div>
-            <div> trasaction confirmed at 16:30 on 10/11/2021. </div>
+            <div> trasaction confirmed at {date}. </div>
           </div>
         </div>
 
       </div>
     )
+    function formatDate (date) {
+      return vreme.format(new Date(date), 'Mar 16 2014, 14:30')
+    }
   }
 }
 
