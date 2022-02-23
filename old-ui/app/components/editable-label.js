@@ -65,9 +65,10 @@ EditableLabel.prototype.saveText = function () {
   // eslint-disable-next-line react/no-find-dom-node
   var container = findDOMNode(this)
   var text = container.querySelector('.editable-label input').value
+  if(text===""){
+  }else{
   var truncatedText = text.substring(0, 20)
-  if (text.trim().length > 0) {
-    this.props.saveText(truncatedText)
-    this.setState({ isEditingLabel: false, textLabel: truncatedText }) 
+  this.props.saveText(truncatedText)
+  this.setState({ isEditingLabel: false, textLabel: truncatedText })
   }
 }
