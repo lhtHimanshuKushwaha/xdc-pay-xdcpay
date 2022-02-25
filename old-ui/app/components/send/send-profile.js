@@ -63,7 +63,7 @@ class SendProfile extends Component {
 						style={{
 							color: '#2A2A2A',
 							fontSize: '14px',
-							marginLeft: '-1px',
+							marginLeft: '-5px',
 						}}
 					>{identity && identity.name}</div>
 					{/* address and getter actions */}
