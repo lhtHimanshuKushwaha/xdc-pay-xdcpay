@@ -190,13 +190,13 @@ function shortenBalance (balance, decimalsToKeep = 1) {
 
   var convertedBalance = parseFloat(balance)
   if (convertedBalance >= 999999 && convertedBalance < 999999999) {
-    truncatedValue = (balance / 1000000).toFixed(decimalsToKeep)
+    truncatedValue = (parseFloat(balance) / 1000000).toFixed(decimalsToKeep)
     return `${truncatedValue}M`
-  } else if (convertedBalance >= 99999 && convertedBalance < 999999) {
-    truncatedValue = (balance / 1000).toFixed(decimalsToKeep)
+  } else if (convertedBalance >= 999 && convertedBalance < 999999) {
+    truncatedValue = (parseFloat(balance) / 1000).toFixed(decimalsToKeep)
     return `${truncatedValue}K`
   } else if (convertedBalance >= 1000000000) {
-    truncatedValue = (balance / 1000000000).toFixed(decimalsToKeep)
+    truncatedValue = (parseFloat(balance) / 1000000000).toFixed(decimalsToKeep)
     return `${truncatedValue}B`
   } else if (convertedBalance === 0) {
     return '0'

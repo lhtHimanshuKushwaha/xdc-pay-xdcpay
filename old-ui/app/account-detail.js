@@ -256,6 +256,7 @@ AccountDetailScreen.prototype.render = function () {
             currentCurrency,
             network,
             networkList,
+            shorten: true,
             style: {
               lineHeight: '7px',
               // marginBottom: '42px',
