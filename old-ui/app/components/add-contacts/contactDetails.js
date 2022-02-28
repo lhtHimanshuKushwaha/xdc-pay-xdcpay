@@ -2,7 +2,7 @@ const React = require('react')
 const connect = require('react-redux').connect
 const actions = require('../../../../ui/app/actions')
 import Identicon from '../../../../ui/app/components/identicon'
-
+import  PropTypes  from 'prop-types'
 const CopyButton = require('../copy/copy-button')
 
 const TransactionList = require('../transaction-list')
@@ -10,8 +10,13 @@ const {valuesFor} = require('../../util')
 
 class ContactDetails extends React.Component {
 
+  static contextTypes = {
+    t: PropTypes.func,
+  }
+
   render () {
     const state = this.props
+    const {t} = this.context
     const contactObj = state.viewContactObj
     const {
       transactions,
@@ -21,7 +26,7 @@ class ContactDetails extends React.Component {
       conversionRate,
     } = this.props
     const transactionAddress = contactObj.address.replace("xdc","0x")
-    const currentContactTxn = transactions.filter((txnObj) => txnObj.txParams.to.trim() === transactionAddress.trim())
+    const currentContactTxn = transactions.filter((txnObj) => txnObj.txParams.to === transactionAddress)
 
     function shorten(b, amountL = 7, /*amountR = 4,*/ stars = 3) {
       return `${b.slice(0, amountL)}${'.'.repeat(stars)}${b.slice(
