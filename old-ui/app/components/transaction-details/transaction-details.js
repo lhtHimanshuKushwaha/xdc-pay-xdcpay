@@ -88,7 +88,7 @@ class TransactionDetails extends React.Component {
 
     //gasPrice calculated
      gasPrice = parseInt(gasPrice, 18);
-     var date = formatDate(transactions.time)
+    //  var date = formatDate(transactions.time)
 
     return (
       <div className="flex-column flex-grow" style={{
@@ -159,29 +159,29 @@ class TransactionDetails extends React.Component {
               <img style={{ marginRight: '10px' }} src="/images/Assets/TransactionCreated.svg" />
               <div className='transaction-border' ></div>
             </div>
-            <div> Transaction created with a value of {value} XDC at {date}.</div>
+            <div> Transaction created with a value of {value} XDC at date.</div>
           </div>
           <div style={{ display: 'flex' }}>
             <div style={{ display: 'flex', flexDirection: 'column' }} >
               <img style={{ marginRight: '10px' }} src="/images/Assets/TransactionSubmitted.svg" />
               <div className='transaction-border' ></div>
             </div>
-            <div> trasaction submitted with estimated gas fee of 1.00 GWEI at {date}. </div>
+            <div> trasaction submitted with estimated gas fee of 1.00 GWEI at date. </div>
           </div>
 
           <div style={{ display: 'flex' }}>
             <div style={{ display: 'flex', flexDirection: 'column' }} >
               <img style={{ marginRight: '10px' }} src="/images/Assets/TransactionComplete.svg" />
             </div>
-            <div> trasaction confirmed at {date}. </div>
+            <div> trasaction confirmed at date. </div>
           </div>
         </div>
 
       </div>
     )
-    function formatDate (date) {
-      return vreme.format(new Date(date), 'Mar 16 2014, 14:30')
-    }
+    // function formatDate (date) {
+    //   return vreme.format(new Date(date), 'Mar 16 2014, 14:30')
+    // }
   }
 }
 
