@@ -24,6 +24,7 @@ class TransactionDetails extends React.Component {
     
 
     var props = this.props
+    const contactList = props.metamask.addressBook
     const { network, conversionRate, currentCurrency, networkList } = props
     var selected = props.address || Object.keys(props.accounts)[0]
     var checksumAddress = selected && toChecksumAddress(network, selected)
@@ -59,7 +60,11 @@ class TransactionDetails extends React.Component {
         gasPrice = txObj.txParams.gasPrice
 
         ))
-      }   
+    }   
+    console.log(contactList.address, ' +-+ ')
+    // if(fromAdd === contactList.address)
+    
+    // const 
     //   var adde
     //   {
     //   addressBook.map((obj) => {
@@ -116,10 +121,10 @@ class TransactionDetails extends React.Component {
         {/* flexbox */}
         <div className='flexbox'>
           <div className='trasaction-details-from-to'>From</div>
-          <div className='trasaction-details-from-to-accounts'>{shorten(fromAdd)}</div>
+          <div className='trasaction-details-from-to-accounts'>{shorten(fromAdd).replace("0x","xdc")}</div>
           <img src="/images/Assets/DownArrow.svg" />
           <div className='trasaction-details-from-to'>To</div>
-          <div className='trasaction-details-from-to-accounts'>{shorten(toAdd)}</div>
+          <div className='trasaction-details-from-to-accounts'>{shorten(toAdd).replace("0x","xdc")}</div>
         </div>
 
         {/* all trasaction details  */}
