@@ -7,6 +7,7 @@ const { toChecksumAddress } = require('../../util')
 const vreme = new (require('vreme'))()
 const hexToBn = require('../../../../app/scripts/lib/hex-to-bn')
 const EthBalanceComponent = require('../eth-balance-cnf-tx')
+const { pick, view } = require('ramda')
 
 
 class TransactionDetails extends React.Component {
@@ -14,21 +15,22 @@ class TransactionDetails extends React.Component {
 
   render() {
 
-    function shorten(b, amountL = 7, /*amountR = 4,*/ stars = 3) {
-      return `${b.slice(0, amountL)}${'.'.repeat(stars)}${b.slice(
-        b.length - 4,
-        b.length,
-      )}`
-    }
+    // function shorten(b, amountL = 7, /*amountR = 4,*/ stars = 3) {
+    //   return `${b.slice(0, amountL)}${'.'.repeat(stars)}${b.slice(
+    //     b.length - 4,
+    //     b.length,
+    //   )}`
+    // }
 
     
 
     var props = this.props
     const contactList = props.metamask.addressBook
+    const viewTrans = props.viewTransaction
     const { network, conversionRate, currentCurrency, networkList } = props
     var selected = props.address || Object.keys(props.accounts)[0]
     var checksumAddress = selected && toChecksumAddress(network, selected)
-
+ console.log(viewTrans, ' ++-- ')
     const {
       transactions,
     } = this.props
@@ -49,19 +51,30 @@ class TransactionDetails extends React.Component {
     // console.log(msgParams,'paramsData')
     {
       const transactionList = transactions.sort((a, b) => a.time - b.time)
-      transactionList.map((txObj) => (
-        fromAdd = txObj.txParams.from,
-        // fromAdd = fromAdd.replace('0x', 'xdc'),
-        toAdd = txObj.txParams.to,
-        // console.log(toAdd.replace('0x', 'xdc'),'[--]'),
-        value = txObj.txParams.value,
-        gas = txObj.txParams.gas,
-        //  txnId = txObj.id,
-        gasPrice = txObj.txParams.gasPrice
+     
+      const pickData = transactionList.map(({ id }) => id)
 
-        ))
-    }   
-    console.log(contactList.address, ' +-+ ')
+      console.log(pickData, '--')
+      
+      // if (viewTrans === pickData) {
+        transactionList.filter((txObj) => { viewTrans === pickData
+          fromAdd = txObj.txParams.from,
+            // fromAdd = fromAdd.replace('0x', 'xdc'),
+            toAdd = txObj.txParams.to,
+            console.log(txObj.txParams.to, '****')
+          // console.log(toAdd.replace('0x', 'xdc'),'[--]'),
+          value = txObj.txParams.value,
+            gas = txObj.txParams.gas,
+            //  txnId = txObj.id,
+            gasPrice = txObj.txParams.gasPrice
+        }
+        )
+    
+        
+    
+      // }
+      }   
+    // console.log(contactList.address, ' +-+ ')
     // if(fromAdd === contactList.address)
     
     // const 
@@ -92,7 +105,8 @@ class TransactionDetails extends React.Component {
      gas = parseInt(gas, 16); 
 
     //gasPrice calculated
-     gasPrice = parseInt(gasPrice, 18);
+    gasPrice = parseInt(gasPrice, 16);
+    gasPrice = gasPrice / (Math.pow(10, 9));
     //  var date = formatDate(transactions.time)
 
     return (
@@ -109,7 +123,7 @@ class TransactionDetails extends React.Component {
             <div>
               <div style={{ fontFamily: 'Inter-Medium', marginLeft: '30px', fontSize: '14px', color: '#1F1F1F' }}>Sent</div>
 
-              <div className='trasaction-details-from-to' style={{ display: 'flex' }}> {shorten(checksumAddress)}
+              <div className='trasaction-details-from-to' style={{ display: 'flex' }}> {(checksumAddress)}
                 <CopyButton value={checksumAddress} isWhite={true} />
               </div>
             </div>
@@ -121,10 +135,10 @@ class TransactionDetails extends React.Component {
         {/* flexbox */}
         <div className='flexbox'>
           <div className='trasaction-details-from-to'>From</div>
-          <div className='trasaction-details-from-to-accounts'>{shorten(fromAdd).replace("0x","xdc")}</div>
+          <div className='trasaction-details-from-to-accounts'>{(fromAdd)}</div>
           <img src="/images/Assets/DownArrow.svg" />
           <div className='trasaction-details-from-to'>To</div>
-          <div className='trasaction-details-from-to-accounts'>{shorten(toAdd).replace("0x","xdc")}</div>
+          <div className='trasaction-details-from-to-accounts'>{(toAdd)}</div>
         </div>
 
         {/* all trasaction details  */}
@@ -199,6 +213,7 @@ function mapStateToProps(state) {
     network: state.metamask.network,
     transactions: state.metamask.selectedAddressTxList || [],
     addressBook: state.metamask.addressBook || [],
+    viewTransaction: state.appState.currentViewTransactionObj,
   }
 }
 

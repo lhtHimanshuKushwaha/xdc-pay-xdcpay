@@ -67,7 +67,6 @@ TransactionList.prototype.render = function () {
                 this.props.viewPendingTx(txId)
               },
               showTransctionDetails: (txId) => {
-                console.log('checkkk',txId)
                 this.props.viewTxDetails(txId)
               },
              
