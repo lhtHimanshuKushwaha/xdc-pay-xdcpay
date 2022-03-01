@@ -194,7 +194,7 @@ class AccountDropdowns extends Component {
     const {optionsMenuActive, isProxy} = this.state
 
     const keyring = getCurrentKeyring(selected, network, keyrings, identities)
-    const {t} = this.context
+    const { t } = this.context
     return (
       <div>
 
@@ -227,7 +227,12 @@ class AccountDropdowns extends Component {
           <DropdownMenuItem
             closeMenu={() => {
             }}
-            onClick={() => global.platform.openExtensionInBrowser()}
+            onClick={() => {
+              global.platform.openExtensionInBrowser()
+              this.handleCheckBox()
+            }
+            } 
+              
           >
             <img
               className="account-options-icon"
@@ -325,6 +330,11 @@ class AccountDropdowns extends Component {
       network,
     )
     global.platform.openWindow({url})
+  }
+  
+  handleCheckBox = () => {
+    const expandUi = this.props.metamask.expandUi
+    this.props.dispatch(actions.expandedUi(!expandUi))
   }
 
   showQRCode = () => {

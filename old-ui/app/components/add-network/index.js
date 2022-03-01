@@ -100,7 +100,7 @@ export default class AddNetwork extends React.Component {
   }
 
   render () {
-    const t = this.context
+    const { t } = this.context
     // eslint-disable-next-line react/prop-types
     const {warning, viewNetworkObj} = this.props
     return (
