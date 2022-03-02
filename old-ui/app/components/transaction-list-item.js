@@ -277,7 +277,7 @@ function recipientField (txParams, transaction, isTx, isMsg, network) {
 }
 
 function formatDate (date) {
-  return vreme.format(new Date(date), 'Mar 16 2014, 14:30')
+  return vreme.format(new Date(date), 'Mar 16 2014, 14:30 PM')     
 }
 
 function renderErrorOrWarning (transaction, network) {
