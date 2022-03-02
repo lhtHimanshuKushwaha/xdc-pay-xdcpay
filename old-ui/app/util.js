@@ -27,6 +27,7 @@ for (var currency in valueTable) {
 module.exports = {
   valuesFor,
   addressSummary,
+  nameSummary,
   accountSummary,
   isAllOneCase,
   isValidAddress,
@@ -71,6 +72,9 @@ function addressSummary (network, address, firstSegLength = 7, lastSegLength = 4
     checked = ethUtil.stripHexPrefix(checked)
   }
   return checked ? checked.slice(0, firstSegLength) + '...' + checked.slice(checked.length - lastSegLength) : ' '
+}
+function nameSummary (name, firstSegLength = 15) {
+  return name.length>firstSegLength ? name.slice(0, firstSegLength) + '...'  : name
 }
 
 function accountSummary (acc, firstSegLength = 6, lastSegLength = 4) {
@@ -198,6 +202,9 @@ function shortenBalance (balance, decimalsToKeep = 1) {
   } else if (convertedBalance >= 1000000000) {
     truncatedValue = (parseFloat(balance) / 1000000000).toFixed(decimalsToKeep)
     return `${truncatedValue}B`
+  }else if (convertedBalance >= 1000000000000) {
+    truncatedValue = (parseFloat(balance) / 1000000000).toFixed(decimalsToKeep)
+    return `${truncatedValue}T`
   } else if (convertedBalance === 0) {
     return '0'
   } else if (convertedBalance < 0.001) {
