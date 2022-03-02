@@ -547,6 +547,7 @@ function mapStateToProps (state) {
   return {
     metamask: state.metamask,
     warning: state.appState.warning,
+    expandUi: state.metamask.expandUi,
   }
 }
 
@@ -562,6 +563,7 @@ function ConfigScreen () {
 ConfigScreen.prototype.render = function () {
   const state = this.props
   const metamaskState = state.metamask
+  const {expandUi} = state
   const warning = state.warning
  
 
@@ -615,8 +617,8 @@ ConfigScreen.prototype.render = function () {
           'Settings',
         ),
       ]),
+      expandUi ? [] :
       [
-
 
         h('.settings', {onClick: () => state.dispatch(actions.generalSettings())}, ['General Settings',
           h('img', {
@@ -663,7 +665,7 @@ ConfigScreen.prototype.render = function () {
             src: '/images/Assets/Arrow.svg',
           }),
         ]),
-
+  
       ],
     ])
     )

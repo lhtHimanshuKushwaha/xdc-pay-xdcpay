@@ -202,9 +202,12 @@ class AccountDropdowns extends Component {
           style={{
             position: 'absolute',
             minWidth: '180px',
-            left: '0',
-            bottom: '18px',
+            right: '10px',
+            top: '137px',
             width: '317px',
+            // "@media (max-width: 1880px)":{
+            //   top: '26px',
+            // },
           }}
           isOpen={optionsMenuActive}
           onClickOutside={(event) => {
@@ -229,7 +232,7 @@ class AccountDropdowns extends Component {
             }}
             onClick={() => {
               global.platform.openExtensionInBrowser()
-              this.handleCheckBox()
+              .then(() => this.handleCheckBox())
             }
             } 
               
