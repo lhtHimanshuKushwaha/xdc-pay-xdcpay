@@ -84,7 +84,7 @@ AddSuggestedTokenScreen.prototype.render = function () {
             h(Copyable, {
               value: toChecksumAddress(network, address),
             }, [
-              h('span#token-address', {
+              h('p#token-address', {
                 style: {
                   width: '100%',
                   border: '2px solid #c7cdd8',
