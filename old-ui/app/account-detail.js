@@ -179,6 +179,7 @@ AccountDetailScreen.prototype.render = function () {
                   justifyContent: 'center',
                   // alignItems: 'baseline',
                   marginTop: '3px',
+                  margin: '3px 0 0px 26px',
                 },
               }, [
 
@@ -188,7 +189,7 @@ AccountDetailScreen.prototype.render = function () {
                   style: {
                     width: '8em',
                     display: 'inline-flex',
-                    margin: ' 0px 0px 15px 16px',
+                    margin: ' 0px 0px 15px 66px',
                   },
                 }, [
                   h('span', {

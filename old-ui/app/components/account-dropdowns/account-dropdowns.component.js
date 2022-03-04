@@ -202,8 +202,8 @@ class AccountDropdowns extends Component {
           style={{
             position: 'absolute',
             minWidth: '180px',
-            right: '10px',
-            top: '137px',
+            left: '0',
+            bottom: '18px',
             width: '317px',
             // "@media (max-width: 1880px)":{
             //   top: '26px',
