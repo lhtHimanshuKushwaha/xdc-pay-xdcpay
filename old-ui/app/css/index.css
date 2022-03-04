@@ -41,12 +41,25 @@ html {
   background-image: url(/images/Assets/options.svg);
   width: 45px;
   height: 24px;
+  margin: -15px 0 0 105px;
+  /* position: absolute;
+  top: 67px;
+  right: 10px; */
+  background-repeat: no-repeat;
+  background-position: center;
+}
+@media only screen and (max-width: 600px) {
+ .address-dropdown{
+  background-image: url(/images/Assets/options.svg);
+  width: 45px;
+  height: 24px;
   margin: -15px 0 0 55px;
   /* position: absolute;
   top: 67px;
   right: 10px; */
   background-repeat: no-repeat;
   background-position: center;
+ }
 }
 
 .account-detail-section::-webkit-scrollbar {
