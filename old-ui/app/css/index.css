@@ -41,7 +41,7 @@ html {
   background-image: url(/images/Assets/options.svg);
   width: 45px;
   height: 24px;
-  margin: -15px 0 0 105px;
+  margin: -15px -790px 0 815px;
   /* position: absolute;
   top: 67px;
   right: 10px; */
@@ -53,7 +53,7 @@ html {
   background-image: url(/images/Assets/options.svg);
   width: 45px;
   height: 24px;
-  margin: -15px 0 0 55px;
+  margin: -15px 0px 0 42px;
   /* position: absolute;
   top: 67px;
   right: 10px; */
@@ -587,6 +587,26 @@ p.buy-option {
   padding-top: 15px;
   padding-left: 120px;
 }
+
+.dropp {
+  position: 'absolute';
+  right: '25px';
+  top: '95px';
+  min-width: '180px';
+
+  width: '317px';
+}
+@media only screen and (max-width: 600px) {
+.dropp {
+  position: 'absolute';
+  left: '0';
+  bottom: '-543px';
+  min-width: '180px';
+
+  width: '317px';
+}
+}
+
 .my-accounts-close-icon {
   margin-left: 95px;
   cursor: pointer;
@@ -1403,6 +1423,7 @@ div.message-container > div:first-child {
   width: 19px;
   height: 22px;
 }
+
 
 .menu-droppo-container::-webkit-scrollbar {
   width: 0px;
