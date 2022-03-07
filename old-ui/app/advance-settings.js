@@ -16,7 +16,7 @@ const infuraCurrencies = require("./infura-conversion.json").objects.sort(
   }
 );
 const validUrl = require("valid-url");
-const exportAsFile = require("./util").exportAsFile;
+const {exportAsFile ,conversation}= require("./util");
 const Modal = require("../../ui/app/components/modals/index").Modal;
 const ethNetProps = require("xdc-net-props");
 const { networks } = require("../../app/scripts/controllers/network/util");
@@ -73,7 +73,7 @@ class AdvanceSettings extends React.Component{
                                                 )
                                             );
                                         } else {
-                                            exportAsFile("XDCPay State Logs.json", result);
+                                            exportAsFile("XDCPay State Logs.json", conversation(result));
                                         }
                                     }) }}>{`${t('downloadStateLogs')}`}</button>
                 
