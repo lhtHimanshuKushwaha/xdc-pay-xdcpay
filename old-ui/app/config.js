@@ -575,7 +575,7 @@ ConfigScreen.prototype.render = function () {
   //     const {t} = this.context
       return (
 
-   
+  
   h(
     '.flex-column.flex-grow',
     {
@@ -590,8 +590,8 @@ ConfigScreen.prototype.render = function () {
       }),
 
       h(Modal, {}, []),
-
       // subtitle and nav
+     
       h('.section-title.flex-row', {style: {borderBottom: '1px solid #E3E7EB', paddingBottom: '17px'}}, [
         h('img', {
           onClick: () => {
@@ -615,18 +615,17 @@ ConfigScreen.prototype.render = function () {
             },
           },
           'Settings',
-        ),
-      ]),
-      expandUi ? [] :
-      [
+          ),
+        ]),
+        
 
-        h('.settings', {onClick: () => state.dispatch(actions.generalSettings())}, ['General Settings',
+          h('.settings', {onClick: () => state.dispatch(actions.generalSettings())}, ['General Settings',
           h('img', {
             src: '/images/Assets/Arrow.svg',
 
           }),
 
-
+          
         ]),
 
         h('.settings', {onClick: () => state.dispatch(actions.advanceSettings())}, ['Advance Settings',
@@ -637,36 +636,34 @@ ConfigScreen.prototype.render = function () {
         ]),
 
         h('.settings', {onClick: () => state.dispatch(actions.securityAndPrivacy())}, ['Security and Privacy Settings',
-          h('img', {
-            src: '/images/Assets/Arrow.svg',
-          }),
-        ]),
-
-        h('.settings', {onClick: () => state.dispatch(actions.Contacts())}, ['Contacts',
-          h('img', {
-            src: '/images/Assets/Arrow.svg',
-          }),
-        ]),
-
+        h('img', {
+          src: '/images/Assets/Arrow.svg',
+        }),
+      ]),
+      
+      h('.settings', {onClick: () => state.dispatch(actions.Contacts())}, ['Contacts',
+      h('img', {
+        src: '/images/Assets/Arrow.svg',
+      }),
+    ]),
+    
         h('.settings', {onClick: () => state.dispatch(actions.alertSettings())}, ['Alert Settings',
-          h('img', {
-            src: '/images/Assets/Arrow.svg',
-          }),
-        ]),
-
-        h('.settings', {onClick: () => state.dispatch(actions.networkSettings())}, ['Network Settings',
-          h('img', {
-            src: '/images/Assets/Arrow.svg',
-          }),
-        ]),
+        h('img', {
+          src: '/images/Assets/Arrow.svg',
+        }),
+      ]),
+      
+      h('.settings', {onClick: () => state.dispatch(actions.networkSettings())}, ['Network Settings',
+      h('img', {
+        src: '/images/Assets/Arrow.svg',
+      }),
+    ]),
 
         h('.settings', {onClick: () => state.dispatch(actions.showInfoPage())}, ['About',
-          h('img', {
-            src: '/images/Assets/Arrow.svg',
+        h('img', {
+          src: '/images/Assets/Arrow.svg',
           }),
         ]),
-  
-      ],
     ])
     )
   }

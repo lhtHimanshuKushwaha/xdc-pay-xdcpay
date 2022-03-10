@@ -54,6 +54,7 @@ class AccountDropdowns extends Component {
     actions: PropTypes.objectOf(PropTypes.func),
     network: PropTypes.string,
     style: PropTypes.object,
+    className: PropTypes.string,
     enableAccountOptions: PropTypes.bool,
     enableAccountsSelector: PropTypes.bool,
   }
@@ -145,14 +146,15 @@ class AccountDropdowns extends Component {
     return (
       <Dropdown
         useCssTransition={true} // Hardcoded because account selector is temporarily in app-header
-        style={{
-          position: 'absolute',
-          left: '0',
-          bottom: '-543px',
-          minWidth: '180px',
-
-          width: '317px',
-        }}
+        // style={{
+        //   position: 'absolute',
+        //   left: '0',
+        //   bottom: '-543px',
+        //   minWidth: '180px',
+        //   marginLeft: '19px',
+        //   width: '317px',
+        // }}
+        className={"myAccountExpanded"}
         innerStyle={
           {
             // padding: '8px 25px',
@@ -198,17 +200,15 @@ class AccountDropdowns extends Component {
     return (
       <div>
 
-        <Dropdown
-          style={{
-            position: 'absolute',
-            minWidth: '180px',
-            left: '0',
-            bottom: '18px',
-            width: '317px',
-            // "@media (max-width: 1880px)":{
-            //   top: '26px',
-            // },
-          }}
+        <Dropdown 
+          // style={{
+          //   minWidth: '180px',
+          //   width: '317px',
+          //   position: 'absolute',
+          //   left: '0',
+          //   bottom: '18px',
+          //    }}
+          className={"dropp"}
           isOpen={optionsMenuActive}
           onClickOutside={(event) => {
             const {classList} = event.target
