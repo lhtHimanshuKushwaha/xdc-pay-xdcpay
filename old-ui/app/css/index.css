@@ -53,7 +53,7 @@ html {
   background-image: url(/images/Assets/options.svg);
   width: 45px;
   height: 24px;
-  margin: -15px 0px 0 42px;
+  margin: -15px 0px 0 54px;
   /* position: absolute;
   top: 67px;
   right: 10px; */
@@ -61,6 +61,8 @@ html {
   background-position: center;
  }
 }
+
+
 
 .account-detail-section::-webkit-scrollbar {
   width: 0;
@@ -589,23 +591,61 @@ p.buy-option {
 }
 
 .dropp {
-  position: 'absolute';
-  right: '25px';
-  top: '95px';
-  min-width: '180px';
-
-  width: '317px';
+  /* position: absolute;
+  right: 25px;
+  top: 95px; */
+  margin-top: 27px;
+  margin-left: -281px;
+ 
 }
 @media only screen and (max-width: 600px) {
 .dropp {
-  position: 'absolute';
-  left: '0';
-  bottom: '-543px';
-  min-width: '180px';
+  /* position: absolute;
+  left: 0;
+  bottom: 180px; */
+  top: 229px;
+ right: 22px;
 
-  width: '317px';
 }
 }
+.myAccountExpanded {
+  top: 37px;
+ right: 39px;
+ 
+}
+@media only screen and (max-width: 600px) {
+.myAccountExpanded {
+ top: 263px;
+ right: 23px;
+}
+}
+
+.walletOptionsExpanded {
+  top: 37px;
+ right: 10px;
+ 
+}
+@media only screen and (max-width: 600px) {
+.walletOptionsExpanded {
+ top: 393px;
+ right: 23px;
+}
+}
+
+.selectNetworkExpanded {
+  top: 38px;
+ left: 4px;
+ width: 317px;
+}
+
+@media only screen and (max-width: 600px) {
+.selectNetworkExpanded {
+  top: 202px;
+ left: 18px;
+ width: 317px;
+}
+}
+
 
 .my-accounts-close-icon {
   margin-left: 95px;
@@ -876,8 +916,20 @@ input.large-input {
   overflow-x: hidden;
   /*overflow-y: auto;*/
   overflow-y: -moz-scrollbars-none;
-  max-height: 585px;
+  /* max-height: 585px; */
   flex-direction: inherit;
+}
+@media only screen and (max-width: 600px){
+
+  .account-detail-section {
+    display: flex;
+    flex-wrap: wrap;
+    overflow-x: hidden;
+    /*overflow-y: auto;*/
+    overflow-y: -moz-scrollbars-none;
+    max-height: 585px;
+    flex-direction: inherit;
+  }
 }
 
 .grow-tenx {
@@ -1424,6 +1476,14 @@ div.message-container > div:first-child {
   height: 22px;
 }
 
+/* .menu-droppo-container 
+  {
+    position: absolute;
+    left: 0;
+    bottom: 180px ;
+  
+  } */
+  
 
 .menu-droppo-container::-webkit-scrollbar {
   width: 0px;

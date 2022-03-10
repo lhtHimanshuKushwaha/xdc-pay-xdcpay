@@ -179,7 +179,7 @@ AccountDetailScreen.prototype.render = function () {
                   justifyContent: 'center',
                   // alignItems: 'baseline',
                   marginTop: '3px',
-                  margin: '3px 0 0px 26px',
+                  margin: '3px 0 0px 31px',
                 },
               }, [
 
