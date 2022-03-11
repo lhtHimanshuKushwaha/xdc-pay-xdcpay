@@ -137,9 +137,9 @@ class AccountImportSubview extends Component {
       case importTypes.PRIVATE_KEY:
         description = "";
         break;
-      // case importTypes.JSON_FILE:
-      //   description = "";
-      //   break;
+      case importTypes.JSON_FILE:
+        description = "";
+        break;
       // case importTypes.PRIVATE_KEY.DEFAULT:
       //   description = `Contract type will automatically retrieve its ABI, if it was verified in <a href='https://blockscout.com' target='_blank'>Blockscout</a>`;
       //   break;
@@ -165,8 +165,8 @@ class AccountImportSubview extends Component {
     switch (current) {
       case importTypes.PRIVATE_KEY:
         return <PrivateKeyImportView type={importTypes.PRIVATE_KEY}/>;
-      // case importTypes.JSON_FILE:
-      //   return <JsonImportView />;
+      case importTypes.JSON_FILE:
+        return <JsonImportView />;
       // case importTypes.CONTRACT.DEFAULT:
       //   return <ContractImportView type={importTypes.CONTRACT.DEFAULT} />;
       // case importTypes.CONTRACT.PROXY:
