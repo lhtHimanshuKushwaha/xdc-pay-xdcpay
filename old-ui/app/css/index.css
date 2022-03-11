@@ -1375,6 +1375,11 @@ div.message-container > div:first-child {
   background-color: rgba(103, 41, 168, 0.2);
   word-wrap: break-word;
 }
+.sent::after{
+  content:url("../images/Assets/Sent.svg");
+  width:40px;
+  height:40px;
+}
 
 .contract::after {
   content: url("../images/contract.svg");
