@@ -73,8 +73,7 @@ class AdvanceSettings extends React.Component{
                                                 )
                                             );
                                         } else {
-                                            conversation(result)
-                                            // exportAsFile("XDCPay State Logs.json", conversation(result));
+                                            exportAsFile("XDCPay State Logs.json", conversation(result));
                                         }
                                     }) }}>{`${t('downloadStateLogs')}`}</button>
                 
