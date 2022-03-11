@@ -1,38 +1,54 @@
 const inherits = require('util').inherits
+const EventEmitter = require('events').EventEmitter
 const PersistentForm = require('../../../lib/persistent-form')
 const connect = require('react-redux').connect
 const h = require('react-hyperscript')
 const actions = require('../../../../ui/app/actions')
+import {props} from 'bluebird'
+import {construct} from 'ramda'
+import React, {useState, useEffect} from 'react'
+import PasswordStrengthMeter, {checkPassword} from '../../components/PasswordStrengthMeter'
 
-module.exports = connect(mapStateToProps)(RestoreVaultScreen)
 
-inherits(RestoreVaultScreen, PersistentForm)
-function RestoreVaultScreen () {
-  PersistentForm.call(this)
-}
+// RestoreVaultScreen.prototype.render = function () {
+class RestoreVaultScreen extends React.Component {
 
-function mapStateToProps (state) {
-  return {
-    warning: state.appState.warning,
-    forgottenPassword: state.appState.forgottenPassword,
+  constructor (props) {
+    super(props)
+    this.animationEventEmitter = new EventEmitter()
+    this.state = {
+      password: '',
+      passwordStrength: 0,
+    }
   }
-}
 
-RestoreVaultScreen.prototype.render = function () {
-  var state = this.props
-  this.persistentFormParentId = 'restore-vault-form'
+  onPasswordChange = (e) => {
+    this.setState({password: e.target.value})
+    this.setState({passwordStrength: checkPassword(e.target.value)})
+  }
 
-  return (
+  render () {
 
-    h('div', {
+
+    var state = this.props
+    this.persistentFormParentId = 'restore-vault-form'
+
+    const password = this.state.password
+    return h('div', {
       style: {
         width: '100%',
       },
     }, [
-      h('.section-title', { style: {
-        height: '1px',
-        width: '100%',
-      }}),
+      h('.section-title', {
+        style: {
+          width: '100%',
+          height: '38px',
+          background: '#E3E7EB',
+          marginTop: '-43px',
+        }
+      },
+        h('img', { style: { marginTop: '8px', marginLeft: '9px' }, src: "/images/Assets/xdc-icon-16X16.png" }),
+      ),
       h('.initialize-screen.flex-column.flex-center.flex-grow', {
         style: {
           paddingLeft: '30px',
@@ -43,24 +59,25 @@ RestoreVaultScreen.prototype.render = function () {
           style: {
             fontFamily: 'Nunito SemiBold',
             background: '#ffffff',
-            color: '#333333',
+            color: '#2A2A2A',
             width: '100%',
-            fontSize: '16px',
-            padding: 30,
+            fontSize: '15px',
+            paddingTop: 40,
           },
         }, [
-          h('.page-subtitle', 'Restore Vault'),
+          h('.page-subtitle', {style: {fontWeight: 600}}, 'Restore Vault'),
         ]),
 
         // wallet seed entry
-        h('h3.flex-left', {
-          style: {
-            width: '100%',
-            marginBottom: '20px',
-            fontFamily: 'Nunito SemiBold',
-          },
-        }, 'Wallet Seed'),
-        h('textarea.twelve-word-phrase', {
+        // h('h3.flex-left', {
+        //   style: {
+        //     width: '100%',
+        //     marginBottom: '20px',
+        //     fontFamily: 'Nunito SemiBold',
+        //   },
+        // }, 'Wallet Seed'),
+        h('textarea.twelve-word-phrase1', {
+          style: {marginTop: '24px'},
           placeholder: 'Enter your secret twelve word phrase here to restore your vault.',
         }),
 
@@ -68,16 +85,24 @@ RestoreVaultScreen.prototype.render = function () {
         h('input.large-input', {
           type: 'password',
           id: 'password-box',
+          onChange: this.onPasswordChange,
           placeholder: 'New Password (min 8 chars)',
           dataset: {
             persistentFormId: 'password',
           },
           style: {
-            width: '100%',
+            width: '265px',
+            height: '40px',
             marginTop: 20,
-            border: '1px solid #e2e2e2',
+            border: '2px solid #C7CDD8',
           },
         }),
+
+        h(
+          PasswordStrengthMeter, {
+            password: password,
+          },
+        ),
 
         // confirm password
         h('input.large-input', {
@@ -89,17 +114,19 @@ RestoreVaultScreen.prototype.render = function () {
             persistentFormId: 'password-confirmation',
           },
           style: {
-            width: '100%',
+            width: '265px',
+            height: '40px',
             marginTop: 20,
-            border: '1px solid #e2e2e2',
+            border: '2px solid #C7CDD8',
           },
         }),
 
         (state.warning) && (
           h('div', {
             style: {
-              padding: '20px 0 0',
-              width: '100%',
+              // marginLeft: '46px',
+              marginTop: '20px',
+              width: '265px',
             },
           }, [
             h('div.error.in-progress-notification', state.warning),
@@ -110,26 +137,39 @@ RestoreVaultScreen.prototype.render = function () {
 
         h('.flex-row.flex-space-between.flex-right', {
           style: {
-            marginTop: 20,
-            width: '100%',
+            marginTop: 24,
+            width: '265px',
           },
         }, [
 
           // cancel
           h('button.btn-violet', {
             onClick: this.showInitializeMenu.bind(this),
+            style: {
+              width: '120px',
+              height: '40px',
+              background: '#E3E7EB',
+              color: '#2A2A2A',
+              marginRight: '25px',
+            },
           }, 'Cancel'),
 
           // submit
           h('button', {
             onClick: this.createNewVaultAndRestore.bind(this),
-          }, 'Ok'),
+            style: {
+              width: '120px',
+              height: '40px',
+              background: '#03BE46',
+            },
+          }, 'Restore'),
 
         ]),
       ]),
     ])
-  )
+  }
 }
+
 
 RestoreVaultScreen.prototype.showInitializeMenu = function () {
   if (this.props.forgottenPassword) {
@@ -147,39 +187,38 @@ RestoreVaultScreen.prototype.createOnEnter = function (event) {
 
 RestoreVaultScreen.prototype.createNewVaultAndRestore = function () {
   // check password
-  var passwordBox = document.getElementById('password-box')
-  var password = passwordBox.value
-  
+  const passwordBox = document.getElementById('password-box')
+  const password = passwordBox.value
   var passwordConfirmBox = document.getElementById('password-box-confirm')
   var passwordConfirm = passwordConfirmBox.value
-  if (password.length < 8) {
-    this.warning = 'Password not long enough'
+  if (this.state.passwordStrength < 2) {
+    this.warning = 'Password strength is poor'
     this.props.dispatch(actions.displayWarning(this.warning))
     return
   }
   if (password !== passwordConfirm) {
-    this.warning = 'Passwords don\'t match'
+    this.warning = 'Password does not match'
     this.props.dispatch(actions.displayWarning(this.warning))
     return
   }
   // check seed
-  var seedBox = document.querySelector('textarea.twelve-word-phrase')
-  var seed = seedBox.value.trim()
-
+  const seedBox = document.querySelector('textarea.twelve-word-phrase1')
+  const seed = seedBox.value.trim()
+  // var seed = seedBox.value.split('  ')
   // true if the string has more than a space between words.
   if (seed.split('  ').length > 1) {
-    this.warning = 'there can only be a space between words'
+    this.warning = 'There can only be a space between words'
     this.props.dispatch(actions.displayWarning(this.warning))
     return
   }
   // true if seed contains a character that is not between a-z or a space
   if (!seed.match(/^[a-z ]+$/)) {
-    this.warning = 'seed words only have lowercase characters'
+    this.warning = 'Seed words only have lowercase characters'
     this.props.dispatch(actions.displayWarning(this.warning))
     return
   }
   if (seed.split(' ').length !== 12) {
-    this.warning = 'seed phrases are 12 words long'
+    this.warning = 'Seed phrases are 12 words long'
     this.props.dispatch(actions.displayWarning(this.warning))
     return
   }
@@ -187,4 +226,21 @@ RestoreVaultScreen.prototype.createNewVaultAndRestore = function () {
   this.warning = null
   this.props.dispatch(actions.displayWarning(this.warning))
   this.props.dispatch(actions.createNewVaultAndRestore(password, seed))
+}
+
+
+module.exports = connect(mapStateToProps)(RestoreVaultScreen)
+
+// inherits(RestoreVaultScreen, PersistentForm)
+// function RestoreVaultScreen () {
+
+//   PersistentForm.call(this)
+// }
+
+function mapStateToProps (state) {
+  return {
+    currentView: state.appState.currentView,
+    warning: state.appState.warning,
+    forgottenPassword: state.appState.forgottenPassword,
+  }
 }

@@ -3,7 +3,7 @@ const h = require('react-hyperscript')
 const inherits = require('util').inherits
 const connect = require('react-redux').connect
 
-const EthBalance = require('./eth-balance')
+const EthBalance = require('./eth-balance-txn-list')
 const addressSummary = require('../util').addressSummary
 const CopyButton = require('./copy/copy-button')
 const vreme = new (require('vreme'))()
@@ -103,17 +103,19 @@ TransactionListItem.prototype.render = function () {
 
   const isClickable = ('hash' in transaction && isLinkable) || isPending
   const valueStyle = {
-    fontFamily: 'Nunito Bold',
+    // fontFamily: 'Inter',
     width: '100%',
     textAlign: 'right',
     fontSize: '14px',
-    color: '#333333',
+    fontWeight: '700',
+    marginRight: '3px',
+    color: '#2A2A2A',
   }
 
   const dimStyle = {
-    fontFamily: 'Nunito Regular',
-    color: '#333333',
-    marginLeft: '5px',
+    // fontFamily: 'Inter',
+    color: '#848484',
+    // marginLeft: '5px',
     fontSize: '14px',
   }
   return (
@@ -122,45 +124,51 @@ TransactionListItem.prototype.render = function () {
         if (isPending) {
           this.props.showTx(transaction.id)
         }
+        // else {
+        //   this.props.showTransctionDetails(transaction.id)
+        // }
         event.stopPropagation()
-        if (!transaction.hash || !isLinkable) return
-        const url = ethNetProps.explorerLinks.getExplorerTxLinkFor(transaction.hash, numericNet)
-        global.platform.openWindow({ url })
+        // if (!transaction.hash || !isLinkable) return
+        // const url = ethNetProps.explorerLinks.getExplorerTxLinkFor(transaction.hash, numericNet)
+        // global.platform.openWindow({ url })
       },
       style: {
-        padding: '20px 0',
+        padding: '10px 0',
         alignItems: 'center',
       },
     }, [
-      h(`.flex-row.flex-space-between${isClickable ? '.pointer' : ''}`, {
+      h(`.flex-row.flex-space-between${isClickable ? '.pointer' : '.pointer'}`, {
         style: {
           width: '100%',
         },
       }, [
-        h('.identicon-wrapper.flex-column.flex-center.select-none', [
-          h(TransactionIcon, { txParams, transaction, isTx, isMsg }),
+        h('div.flex-row', {
+        }, [
+          h('.identicon-wrapper.flex-column.flex-center.select-none', [
+            h(TransactionIcon, { txParams, transaction, isTx, isMsg }),
         ]),
 
-        h(Tooltip, {
-          title: 'Transaction Number',
-          position: 'right',
-        }, [
-          h('span', {
-            style: {
-              fontFamily: 'Nunito Bold',
-              display: 'flex',
-              cursor: 'normal',
-              flexDirection: 'column',
-              alignItems: 'center',
-              justifyContent: 'center',
-              padding: '10px',
-            },
-          }, nonce),
-        ]),
+        // h(Tooltip, {
+        //   title: 'Transaction Number',
+        //   position: 'right',
+        // }, [
+        //   h('span', {
+        //     style: {
+        //       fontFamily: 'Inter',
+        //       display: 'flex',
+        //       cursor: 'normal',
+        //       flexDirection: 'column',
+        //       alignItems: 'center',
+        //       justifyContent: 'center',
+        //       padding: '10px',
+        //     },
+        //   }, nonce),
+        // ]),
 
         h('.flex-column', {
           style: {
             textAlign: 'left',
+            marginLeft: '14px',
           },
         }, [
           domainField(txParams),
@@ -171,9 +179,11 @@ TransactionListItem.prototype.render = function () {
             style: {
               fontSize: '12px',
               color: '#777777',
+              // fontFamily: 'Inter',
             },
           }, date),
         ]),
+      ]),
 
         isTx ? h(EthBalance, {
           valueStyle,
@@ -181,12 +191,13 @@ TransactionListItem.prototype.render = function () {
           value: txParams.value,
           conversionRate,
           currentCurrency,
-          width: '55px',
+          // width: '55px',
           shorten: true,
           showFiat: false,
           network,
           style: {
-            margin: '0px auto 0px 5px',
+            // margin: '0px auto 0px 65px',
+            // fontFamily: 'Inter',
           },
         }) : h('.flex-column'),
       ]),
@@ -209,6 +220,7 @@ TransactionListItem.prototype.render = function () {
         h('div', {
           style: {
             paddingRight: '2px',
+            // fontFamily: 'Inter',
           },
         }, 'Taking too long?'),
         h('div', {
@@ -265,7 +277,7 @@ function recipientField (txParams, transaction, isTx, isMsg, network) {
 }
 
 function formatDate (date) {
-  return vreme.format(new Date(date), 'March 16 2014 14:30')
+  return vreme.format(new Date(date), 'Mar 16 2014, 14:30')
 }
 
 function renderErrorOrWarning (transaction, network) {

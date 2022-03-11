@@ -4,7 +4,7 @@ const Component = require('react').Component
 const connect = require('react-redux').connect
 const h = require('react-hyperscript')
 const actions = require('../../../../../ui/app/actions')
-
+const log = require('loglevel')
 module.exports = connect(mapStateToProps)(RevealSeedConfirmation)
 
 inherits(RevealSeedConfirmation, Component)
@@ -20,7 +20,7 @@ function mapStateToProps (state) {
 
 RevealSeedConfirmation.prototype.render = function () {
   const props = this.props
-
+  const warning = props.warning
   return (
 
     h('.initialize-screen.flex-column.flex-center.flex-grow', {
@@ -34,7 +34,7 @@ RevealSeedConfirmation.prototype.render = function () {
           width: '100%',
           fontSize: '16px',
           padding: 6,
-          fontFamily: 'Nunito  Semibold',
+          fontFamily: 'Nunito  bold',
         },
       }, [
         h('.page-subtitle', 'Reveal Seed Words'),
@@ -44,12 +44,12 @@ RevealSeedConfirmation.prototype.render = function () {
         style: {
           display: 'flex',
           flexDirection: 'column',
-          padding: '30px',
+          padding: '30px 46px',
           justifyContent: 'center',
         },
       }, [
 
-        h('.error', 'Do not recover your seed words in a public place! These words can be used to steal all your accounts.'),
+        h('.error1', 'Do not recover your seed words in a public place! These words can be used to steal all your accounts.'),
 
         // confirmation
         h('input.large-input', {
@@ -59,16 +59,25 @@ RevealSeedConfirmation.prototype.render = function () {
           onKeyPress: this.checkConfirmation.bind(this),
           style: {
             marginTop: '20px',
+            border: '2px solid #C7CDD8',
+            height: '40px',
           },
         }),
 
-        (props.warning) && (
-          h('span.error', {
-            style: {
-              margin: '20px 0',
-            },
-          }, props.warning.split('-'))
-        ),
+        h('.error-login', {
+          style: {
+            display: warning ? 'block' : 'none',
+            marginTop: '20px',
+          }, 
+        }, 'Incorrect Password',warning),
+
+        // (props.warning) && (
+        //   h('span.error', {
+        //     style: {
+        //       margin: '20px 0',
+        //     },
+        //   }, props.warning.split('-'))
+        // ),
 
         props.inProgress && (
           h('span.in-progress-notification', 'Generating Seed...')
@@ -76,20 +85,38 @@ RevealSeedConfirmation.prototype.render = function () {
 
         h('.flex-row.flex-start.flex-right', {
           style: {
-            marginTop: 20,
+            marginTop: 30,
             width: '100%',
           },
         }, [
           // cancel
           h('button.btn-violet', {
+            style:{
+              display: 'flex',
+                    position: 'absolute',
+                    left: '46px',
+                    height: '40px',
+                    width: '119px',
+                    paddingLeft: '37px',
+                    paddingTop: '12px',
+                    background: '#FF0035',
+            },
             onClick: this.goHome.bind(this),
           }, 'Cancel'),
 
           // submit
           h('button', {
-            style: { marginLeft: '10px' },
+            style:{
+              display: 'flex',
+                    position: 'absolute',
+                    right: '46px',
+                    height: '40px',
+                    width: '119px',
+                    paddingLeft: '51px',
+                    paddingTop: '12px',
+            },
             onClick: this.revealSeedWords.bind(this),
-          }, 'Ok'),
+          }, 'OK'),
 
         ]),
       ]),
@@ -116,5 +143,10 @@ RevealSeedConfirmation.prototype.checkConfirmation = function (event) {
 
 RevealSeedConfirmation.prototype.revealSeedWords = function () {
   var password = document.getElementById('password-box').value
-  this.props.dispatch(actions.requestRevealSeed(password))
+  console.log(password, '12345')
+  try {
+    this.props.dispatch(actions.requestRevealSeed1(password))
+  }catch (e) {
+    log.error(e)
+  }
 }

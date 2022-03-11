@@ -3,6 +3,7 @@ const ethNetProps = require('xdc-net-props')
 const {
   XDC_CODE,
   XDC_TESTNET_CODE,
+  XDC_DEVNET_CODE,
 } = require('../../app/scripts/controllers/network/enums')
 
 var valueTable = {
@@ -58,16 +59,18 @@ module.exports = {
 function valuesFor (obj) {
   if (!obj) return []
   return Object.keys(obj)
-    .map(function (key) { return obj[key] })
+    .map(function (key) {
+      return obj[key]
+    })
 }
 
-function addressSummary (network, address, firstSegLength = 10, lastSegLength = 4, includeHex = true) {
+function addressSummary (network, address, firstSegLength = 7, lastSegLength = 4, includeHex = true) {
   if (!address) return ''
   let checked = toChecksumAddress(network, address)
   if (!includeHex) {
     checked = ethUtil.stripHexPrefix(checked)
   }
-  return checked ? checked.slice(0, firstSegLength) + '...' + checked.slice(checked.length - lastSegLength) : '...'
+  return checked ? checked.slice(0, firstSegLength) + '...' + checked.slice(checked.length - lastSegLength) : ' '
 }
 
 function accountSummary (acc, firstSegLength = 6, lastSegLength = 4) {
@@ -122,14 +125,19 @@ function parseBalance (balance) {
 
   beforeDecimal = weiString.length > 18 ? weiString.slice(0, weiString.length - 18) : '0'
   afterDecimal = ('000000000000000000' + wei).slice(-18).replace(trailingZeros, '')
-  if (afterDecimal === '') { afterDecimal = '0' }
+  if (afterDecimal === '') {
+    afterDecimal = '0'
+  }
   return [beforeDecimal, afterDecimal]
 }
 
 // Takes wei hex, returns an object with three properties.
 // Its "formatted" property is what we generally use to render values.
-function formatBalance (balance, decimalsToKeep, needsParse = true, network, isToken, tokenSymbol) {
-  const coinName = ethNetProps.props.getNetworkCoinName(network)
+function formatBalance (balance, decimalsToKeep, needsParse = true, network, isToken, tokenSymbol, networkList) {
+  let coinName = ethNetProps.props.getNetworkCoinName(network)
+  if (networkList && networkList.find(netObj => netObj.chainId === network)) {
+    coinName = networkList.find(netObj => netObj.chainId === network).currencySymbol || coinName
+  }
   const assetName = isToken ? tokenSymbol : coinName
   var parsed = needsParse ? parseBalance(balance) : balance.split('.')
   var beforeDecimal = parsed[0]
@@ -139,7 +147,9 @@ function formatBalance (balance, decimalsToKeep, needsParse = true, network, isT
     if (beforeDecimal === '0') {
       if (afterDecimal !== '0') {
         var sigFigs = afterDecimal.match(/^0*(.{2})/) // default: grabs 2 most significant digits
-        if (sigFigs) { afterDecimal = sigFigs[0] }
+        if (sigFigs) {
+          afterDecimal = sigFigs[0]
+        }
         formatted = '0.' + afterDecimal + ` ${assetName}`
       }
     } else {
@@ -164,25 +174,30 @@ function generateBalanceObject (formattedBalance, decimalsToKeep = 1) {
     // eslint-disable-next-line eqeqeq
     if (afterDecimal == 0) {
       balance = '0'
-    } else {
-      balance = '<1.0e-5'
     }
+    // else {
+    //   balance = '<1.0e-5'
+    // }
   } else if (beforeDecimal !== '0') {
     balance = `${beforeDecimal}.${afterDecimal.slice(0, decimalsToKeep)}`
   }
 
-  return { balance, label, shortBalance }
+  return {balance, label, shortBalance}
 }
 
 function shortenBalance (balance, decimalsToKeep = 1) {
   var truncatedValue
+
   var convertedBalance = parseFloat(balance)
-  if (convertedBalance > 1000000) {
+  if (convertedBalance >= 999999 && convertedBalance < 999999999) {
     truncatedValue = (balance / 1000000).toFixed(decimalsToKeep)
-    return `${truncatedValue}m`
-  } else if (convertedBalance > 1000) {
+    return `${truncatedValue}M`
+  } else if (convertedBalance >= 99999 && convertedBalance < 999999) {
     truncatedValue = (balance / 1000).toFixed(decimalsToKeep)
-    return `${truncatedValue}k`
+    return `${truncatedValue}K`
+  } else if (convertedBalance >= 1000000000) {
+    truncatedValue = (balance / 1000000000).toFixed(decimalsToKeep)
+    return `${truncatedValue}B`
   } else if (convertedBalance === 0) {
     return '0'
   } else if (convertedBalance < 0.001) {
@@ -209,7 +224,8 @@ function dataSize (data) {
 function normalizeToWei (amount, currency) {
   try {
     return amount.mul(bnTable.wei).div(bnTable[currency])
-  } catch (e) {}
+  } catch (e) {
+  }
   return amount
 }
 
@@ -231,6 +247,7 @@ function normalizeEthStringToWei (str) {
 }
 
 var multiple = new ethUtil.BN('10000', 10)
+
 function normalizeNumberToWei (n, currency) {
   var enlarged = n * 10000
   var amount = new ethUtil.BN(String(enlarged), 10)
@@ -246,7 +263,7 @@ function readableDate (ms) {
   var minutes = '0' + date.getMinutes()
   var seconds = '0' + date.getSeconds()
 
-  var dateStr = `${month}/${day}/${year}`
+  var dateStr = `${day}/${month}/${year}`
   var time = `${hours}:${minutes.substr(-2)}:${seconds.substr(-2)}`
   return `${dateStr} ${time}`
 }
@@ -278,25 +295,25 @@ function exportAsFile (filename, data) {
  * @param {number} len The length of significant decimals
  *
  * returns {number} The length of truncated significant decimals
-**/
+ **/
 function countSignificantDecimals (val, len) {
-    if (Math.floor(val) === val) {
-      return 0
+  if (Math.floor(val) === val) {
+    return 0
+  }
+  const decimals = val.toString().split('.')[1]
+  const decimalsArr = decimals.split('')
+  let decimalsLen = decimalsArr.slice(0).reduce((res, val, ind, arr) => {
+    if (Number(val) === 0) {
+      res += 1
+    } else {
+      arr.splice(1) // break reduce function
     }
-    const decimals = val.toString().split('.')[1]
-    const decimalsArr = decimals.split('')
-    let decimalsLen = decimalsArr.slice(0).reduce((res, val, ind, arr) => {
-      if (Number(val) === 0) {
-        res += 1
-      } else {
-        arr.splice(1) // break reduce function
-      }
-      return res
-    }, 0)
-    decimalsLen += len
-    const valWithSignificantDecimals = `${Math.floor(val)}.${decimalsArr.slice(0, decimalsLen).join('')}`
-    decimalsLen = parseFloat(valWithSignificantDecimals).toString().split('.')[1].length
-    return decimalsLen || 0
+    return res
+  }, 0)
+  decimalsLen += len
+  const valWithSignificantDecimals = `${Math.floor(val)}.${decimalsArr.slice(0, decimalsLen).join('')}`
+  decimalsLen = parseFloat(valWithSignificantDecimals).toString().split('.')[1].length
+  return decimalsLen || 0
 }
 
 /**
@@ -307,7 +324,7 @@ function countSignificantDecimals (val, len) {
  * @param {array} identities The array of identities
  *
  * returns {object} keyring object corresponding to unlocked address
-**/
+ **/
 function getCurrentKeyring (address, network, keyrings, identities) {
   const identity = identities[address]
   const simpleAddress = identity && identity.address.substring(2).toLowerCase()
@@ -329,13 +346,15 @@ function getCurrentKeyring (address, network, keyrings, identities) {
  * @param {object} keyring
  *
  * returns {boolean} true, if keyring is importec and false, if it is not
-**/
+ **/
 function ifLooseAcc (keyring) {
   try { // Sometimes keyrings aren't loaded yet:
     const type = keyring.type
     const isLoose = type !== 'HD Key Tree'
     return isLoose
-  } catch (e) { return }
+  } catch (e) {
+    return
+  }
 }
 
 
@@ -345,13 +364,15 @@ function ifLooseAcc (keyring) {
  * @param {object} keyring
  *
  * returns {boolean} true, if keyring is contract and false, if it is not
-**/
+ **/
 function ifContractAcc (keyring) {
   try { // Sometimes keyrings aren't loaded yet:
     const type = keyring.type
     const isContract = type === 'Simple Address'
     return isContract
-  } catch (e) { return }
+  } catch (e) {
+    return
+  }
 }
 
 /**
@@ -360,7 +381,7 @@ function ifContractAcc (keyring) {
  * @param {object} keyring
  *
  * returns {boolean} true, if keyring is of hardware type and false, if it is not
-**/
+ **/
 function ifHardwareAcc (keyring) {
   if (keyring && keyring.type.search('Hardware') !== -1) {
     return true
@@ -384,7 +405,7 @@ function getAllKeyRingsAccounts (keyrings, network) {
 function ifXDC (network) {
   if (!network) return false
   const numericNet = isNaN(network) ? network : parseInt(network)
-  return numericNet === XDC_CODE || numericNet === XDC_TESTNET_CODE
+  return numericNet === XDC_CODE || numericNet === XDC_TESTNET_CODE || numericNet === XDC_DEVNET_CODE
 }
 
 function toChecksumAddressXDC (address, chainId = null) {
@@ -395,9 +416,9 @@ function toChecksumAddressXDC (address, chainId = null) {
   let output = 'xdc'
 
   for (let i = 0; i < stripAddress.length; i++) {
-   output += parseInt(keccakHash[i], 16) >= 8 ?
-              stripAddress[i].toUpperCase() :
-              stripAddress[i]
+    output += parseInt(keccakHash[i], 16) >= 8 ?
+      stripAddress[i].toUpperCase() :
+      stripAddress[i]
   }
   return output.toLowerCase()
 }

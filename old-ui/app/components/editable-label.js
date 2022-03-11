@@ -15,7 +15,8 @@ EditableLabel.prototype.render = function () {
   const state = this.state
 
   if (state && state.isEditingLabel) {
-    return h('div.editable-label', [
+    return h('div.editable-label',{style:{margin:'9px 0 20px 78px '},
+  }, [
       h('input.sizing-input', {
         defaultValue: props.textValue,
         maxLength: '20',
@@ -27,6 +28,9 @@ EditableLabel.prototype.render = function () {
         },
       }),
       h('button.editable-button', {
+        style: {
+          background: '#2149B9',
+        },
         onClick: () => this.saveText(),
       }, 'Save'),
     ])
@@ -54,7 +58,10 @@ EditableLabel.prototype.saveText = function () {
   // eslint-disable-next-line react/no-find-dom-node
   var container = findDOMNode(this)
   var text = container.querySelector('.editable-label input').value
+  if(text===""){
+  }else{
   var truncatedText = text.substring(0, 20)
   this.props.saveText(truncatedText)
   this.setState({ isEditingLabel: false, textLabel: truncatedText })
+  }
 }

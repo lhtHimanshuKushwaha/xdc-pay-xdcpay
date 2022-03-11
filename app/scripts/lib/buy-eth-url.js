@@ -16,7 +16,9 @@ const {
   KOVAN_CODE,
   GOERLI_TESTNET_CODE,
   XDC_CODE,
-  XDC_TESTNET_CODE} = require('../controllers/network/enums')
+  XDC_TESTNET_CODE,
+  XDC_DEVNET_CODE,
+} = require('../controllers/network/enums')
 
 /**
  * Gives the caller a url at which the user can acquire coin, depending on the network they are in
@@ -30,7 +32,7 @@ const {
  * network does not match any of the specified cases, or if no network is given, returns undefined.
  *
  */
-function getBuyEthUrl ({ network, amount, address, ind }) {
+function getBuyEthUrl ({network, amount, address, ind}) {
   let url
   switch (Number(network)) {
     case MAINNET_CODE:
@@ -45,6 +47,7 @@ function getBuyEthUrl ({ network, amount, address, ind }) {
     case KOVAN_CODE:
     case POA_SOKOL_CODE:
     case XDC_TESTNET_CODE:
+    case XDC_DEVNET_CODE:
     case GOERLI_TESTNET_CODE:
       url = getFaucets(network)[ind]
       break
@@ -116,17 +119,22 @@ function getExchanges ({network, amount, address}) {
     case XDC_CODE:
       return [
         {
-          name: 'AlphaEx',
-          link: 'https://www.alphaex.net/',
+          name: 'Simplex',
+          link: 'https://simplex.bringtotheblock.net/',
         },
-        {
-          name: 'Indodax',
-          link: 'https://indodax.com/market/XDCEIDR',
-        },
-        {
-          name: 'Mercatox',
-          link: 'https://mercatox.com/exchange/XDCE/BTC',
-        },
+        // {
+        //   name: 'Indodax',
+        //   link: 'https://indodax.com/market/XDCIDR',
+        // },
+        // {
+        //   name: 'Kucoin',
+        //   link: ' https://trade.kucoin.com/trade/XDC-USDT',
+        // },
+        // {
+        //   name: 'Gate.io',
+        //   link: 'https://www.gate.io/trade/xdc_usdt',
+        // },
+
       ]
     default:
       return []

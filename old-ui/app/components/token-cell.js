@@ -24,19 +24,21 @@ function TokenCell () {
 }
 
 TokenCell.prototype.render = function () {
-  const { address, symbol, string, network, userAddress, isLastTokenCell, menuToTop, ind } = this.props
+  const { address, symbol, string, network, userAddress, isLastTokenCell, menuToTop, ind,
+  } = this.props
   const { optionsMenuActive } = this.state
 
   const tokenBalanceRaw = Number.parseFloat(string)
   const tokenBalance = tokenBalanceRaw.toFixed(countSignificantDecimals(tokenBalanceRaw, 2))
 
+  
   return (
     h(`li#token-cell_${ind}.token-cell`, {
       style: {
         cursor: Number(network) === MAINNET_CODE ? 'pointer' : 'default',
-        borderBottom: isLastTokenCell ? 'none' : '1px solid #e2e2e2',
-        padding: '20px 0',
-        margin: '0 30px',
+        borderBottom: isLastTokenCell ? '1px solid #E3E7EB' : '1px solid #E3E7EB',
+        padding: '10px 0',
+        margin: '0 8px 0 18px',
       },
       onClick: this.view.bind(this, address, userAddress, network),
     }, [
@@ -49,8 +51,12 @@ TokenCell.prototype.render = function () {
 
       h('h3', {
         style: {
-          fontFamily: 'Nunito Bold',
+          // fontFamily: 'Inter',
           fontSize: '14px',
+          fontWeight: '700',
+          height: '17px',
+          width: '50%',
+
         },
       }, `${tokenBalance || 0} ${symbol}`),
 
@@ -58,7 +64,7 @@ TokenCell.prototype.render = function () {
 
       h(`div#${tokenCellDropDownPrefix}${ind}.address-dropdown.token-dropdown`,
         {
-          style: { cursor: 'pointer' },
+          style: { cursor: 'pointer', marginTop: '1px', },
           onClick: (event) => {
             event.stopPropagation()
             this.setState({
@@ -74,8 +80,8 @@ TokenCell.prototype.render = function () {
         onClick: this.send.bind(this, address),
       }, 'SEND'),
       */
-
     ])
+    
   )
 }
 
@@ -87,11 +93,13 @@ TokenCell.prototype.renderTokenOptions = function (menuToTop, ind) {
     Dropdown,
     {
       style: {
-        position: 'relative',
-        marginLeft: menuToTop ? '-273px' : '-263px',
+        position: 'absolute',
+        // marginLeft: menuToTop ? '-273px' : '-263px',
         minWidth: '180px',
-        marginTop: menuToTop ? '-214px' : '30px',
-        width: '280px',
+        // marginTop: menuToTop ? '-214px' : '30px',
+        width: '317px',
+        bottom: '18px',
+        left: '0'
       },
       isOpen: optionsMenuActive,
       onClickOutside: (event) => {
@@ -104,6 +112,14 @@ TokenCell.prototype.renderTokenOptions = function (menuToTop, ind) {
       },
     },
     [
+      h('div',
+        {className: 'token-options-list'},
+        [`Token Options`,
+        h('img',
+          {className: 'token-options-close-icon', src: "/images/Assets/Close.svg"}
+        ),]
+      ),
+    
       h(
         DropdownMenuItem,
         {
@@ -112,7 +128,11 @@ TokenCell.prototype.renderTokenOptions = function (menuToTop, ind) {
             showSendTokenPage(address)
           },
         },
-        `Send`,
+        [
+          h('img',
+            {className: 'token-options-icon', src: "/images/Assets/Send.svg"},
+          ),
+        `Send`,]
       ),
       h(
         DropdownMenuItem,
@@ -120,22 +140,27 @@ TokenCell.prototype.renderTokenOptions = function (menuToTop, ind) {
           closeMenu: () => {},
           onClick: () => {
             const { network } = this.props
-            const url = ethNetProps.explorerLinks.getExplorerTokenLinkFor(address, userAddress, network)
+            const url = ethNetProps.explorerLinks.getExplorerTokenLinkFor(address.replace("0x", "xdc"),userAddress, network,symbol)
             global.platform.openWindow({ url })
           },
-        },
-        `View token on block explorer`,
+        },[
+          h('img',
+          {className: 'token-options-icon', src: "/images/Assets/ViewOnExplorer.svg"},
+          ),
+        network==50?`View token on observer`:'View token on block explorer',]
       ),
       h(
         DropdownMenuItem,
         {
           closeMenu: () => {},
           onClick: () => {
-            const checkSumAddress = address && toChecksumAddress(network, address)
-            copyToClipboard(checkSumAddress)
+            copyToClipboard(address.replace("0x", "xdc"))
           },
-        },
-        'Copy address to clipboard',
+        },[
+          h('img',
+            {className: 'token-options-icon', src: "/images/Assets/CopyClipboard.svg"},
+          ),
+        'Copy address to clipboard',]
       ),
       h(
         DropdownMenuItem,
@@ -144,8 +169,11 @@ TokenCell.prototype.renderTokenOptions = function (menuToTop, ind) {
           onClick: () => {
             this.props.removeToken({ address, symbol, string, network, userAddress })
           },
-        },
-        'Remove',
+        },[
+          h('img',
+            {className: 'token-options-icon', src: "/images/Assets/Remove.svg"},
+          ),
+        'Remove',]
       ),
     ]
   )
@@ -159,7 +187,8 @@ TokenCell.prototype.send = function (address, event) {
 }
 
 TokenCell.prototype.view = function (address, userAddress, network, event) {
-  const url = ethNetProps.explorerLinks.getExplorerTokenLinkFor(address, userAddress, network)
+  const {symbol} = this.props
+  const url = ethNetProps.explorerLinks.getExplorerTokenLinkFor(address.replace('0x', 'xdc'), userAddress, network,symbol)
   if (url) {
     navigateTo(url)
   }
@@ -177,6 +206,7 @@ const mapDispatchToProps = dispatch => {
   return {
     showSendTokenPage: (tokenAddress) => dispatch(actions.showSendTokenPage(tokenAddress)),
   }
+
 }
 
 module.exports = connect(null, mapDispatchToProps)(TokenCell)
