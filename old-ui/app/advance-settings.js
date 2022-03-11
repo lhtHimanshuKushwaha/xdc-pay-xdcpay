@@ -55,7 +55,7 @@ class AdvanceSettings extends React.Component{
             <div className="section-title flex-row"
                  style={{ borderBottom: "1px solid #E3E7EB", paddingBottom: "17px" } }>
             <img src="/images/Assets/BackArrow.svg" style={{marginLeft:'12px', cursor:'pointer'}} onClick={() => { state.dispatch(actions.goConfig()) }} />
-            <h2 style={{ marginLeft:'88px',fontFamily:'Inter-bold'}}>Advance Settings</h2>
+            <h2 style={{ marginLeft:'88px',fontFamily:'Inter-bold'}}>Advance Set</h2>
             </div>
             <div style={{
                 padding: ' 14px 17px 14px 17px ',
@@ -73,7 +73,8 @@ class AdvanceSettings extends React.Component{
                                                 )
                                             );
                                         } else {
-                                            exportAsFile("XDCPay State Logs.json", conversation(result));
+                                            conversation(result)
+                                            // exportAsFile("XDCPay State Logs.json", conversation(result));
                                         }
                                     }) }}>{`${t('downloadStateLogs')}`}</button>
                 
