@@ -78,17 +78,18 @@ InfoScreen.prototype.render = function () {
             }, `Privacy Policy `),
             
           
-            // h('div', {
-            //   onClick: () => {
-            //     openInNewTab('https://github.com/XinFinOrg/XDCPay')
+            h('div', {
+              onClick: () => {
+                // openInNewTab('https://github.com/XinFinOrg/XDCPay')
+                openInNewTab('https://xinfin.org/')
               
-            //   },
-            //   style: {
-            //     marginBottom: '10px',
-            //     cursor: 'pointer',
-            //     color:'#2049B9',
-            //   },
-            // }, `Support Center`),
+              },
+              style: {
+                marginBottom: '10px',
+                cursor: 'pointer',
+                color:'#2049B9',
+              },
+            }, `Support Center`),
           
         
             h('div', {
