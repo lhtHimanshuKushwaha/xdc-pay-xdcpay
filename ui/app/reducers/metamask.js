@@ -1,9 +1,16 @@
 const extend = require('xtend')
 const actions = require('../actions')
 const MetamascaraPlatform = require('../../../app/scripts/platforms/window')
-const { getEnvironmentType } = require('../../../app/scripts/lib/util')
-const { ENVIRONMENT_TYPE_POPUP } = require('../../../app/scripts/lib/enums')
-const { OLD_UI_NETWORK_TYPE } = require('../../../app/scripts/controllers/network/enums')
+const {getEnvironmentType} = require('../../../app/scripts/lib/util')
+const {ENVIRONMENT_TYPE_POPUP} = require('../../../app/scripts/lib/enums')
+const {
+  OLD_UI_NETWORK_TYPE,
+  permanentNetworks,
+} = require('../../../app/scripts/controllers/network/enums')
+const {
+  contactDetails,
+} = require('../../../app/scripts/controllers/network/contactList')
+const {RECOVERY_IN_PROGRESS} = require('../actions')
 
 module.exports = reduceMetamask
 
@@ -11,53 +18,61 @@ function reduceMetamask (state, action) {
   let newState
 
   // clone + defaults
-  var metamaskState = extend({
-    isInitialized: false,
-    isUnlocked: false,
-    isAccountMenuOpen: false,
-    isMascara: window.platform instanceof MetamascaraPlatform,
-    isPopup: getEnvironmentType(window.location.href) === ENVIRONMENT_TYPE_POPUP,
-    rpcTarget: 'https://rawtestrpc.metamask.io/',
-    identities: {},
-    unapprovedTxs: {},
-    noActiveNotices: true,
-    nextUnreadNotice: undefined,
-    frequentRpcList: [],
-    addressBook: [],
-    selectedTokenAddress: null,
-    contractExchangeRates: {},
-    tokenExchangeRates: {},
-    tokens: [],
-    pendingTokens: {},
-    send: {
-      gasLimit: null,
-      gasPrice: null,
-      gasTotal: null,
-      tokenBalance: null,
-      from: '',
-      to: '',
-      amount: '0x0',
-      memo: '',
-      errors: {},
-      maxModeOn: false,
-      editingTransactionId: null,
-      forceGasMin: null,
-      toNickname: '',
+  var metamaskState = extend(
+    {
+      isInitialized: false,
+      isUnlocked: false,
+      isAccountMenuOpen: false,
+      isMascara: window.platform instanceof MetamascaraPlatform,
+      isPopup:
+        getEnvironmentType(window.location.href) === ENVIRONMENT_TYPE_POPUP,
+      rpcTarget: 'https://rawtestrpc.metamask.io/',
+      identities: {},
+      unapprovedTxs: {},
+      noActiveNotices: true,
+      nextUnreadNotice: undefined,
+      frequentRpcList: [],
+      addressBook: [],
+      selectedTokenAddress: null,
+      contractExchangeRates: {},
+      tokenExchangeRates: {},
+      tokens: [],
+      pendingTokens: {},
+      send: {
+        gasLimit: null,
+        gasPrice: null,
+        gasTotal: null,
+        tokenBalance: null,
+        from: '',
+        to: '',
+        amount: '0x0',
+        memo: '',
+        errors: {},
+        maxModeOn: false,
+        editingTransactionId: null,
+        forceGasMin: null,
+        toNickname: '',
+      },
+      coinOptions: {},
+      useBlockie: false,
+      featureFlags: {},
+      networkEndpointType: OLD_UI_NETWORK_TYPE,
+      isRevealingSeedWords: false,
+      welcomeScreenSeen: false,
+      currentLocale: '',
+      preferences: {
+        useETHAsPrimaryCurrency: true,
+      },
+      showGasFields: true,
+      showTokens: true,
+      isValidName: false,
+      isValidAddress: false,
+      networkList: permanentNetworks,
+      currentViewNetwork: null,
     },
-    coinOptions: {},
-    useBlockie: false,
-    featureFlags: {},
-    networkEndpointType: OLD_UI_NETWORK_TYPE,
-    isRevealingSeedWords: false,
-    welcomeScreenSeen: false,
-    currentLocale: '',
-    preferences: {
-      useETHAsPrimaryCurrency: true,
-    },
-  }, state.metamask)
-
+    state.metamask,
+  )
   switch (action.type) {
-
     case actions.SHOW_ACCOUNTS_PAGE:
       newState = extend(metamaskState, {
         isRevealingSeedWords: false,
@@ -76,7 +91,7 @@ function reduceMetamask (state, action) {
         noActiveNotices: true,
       })
 
-    case actions.UPDATE_METAMASK_STATE:
+    case actions.UPDATE_XDC_STATE:
       return extend(metamaskState, action.value)
 
     case actions.UNLOCK_METAMASK:
@@ -86,9 +101,33 @@ function reduceMetamask (state, action) {
         selectedAddress: action.value,
       })
 
+    case actions.UPDATE_GASFIELDS:
+      return extend(metamaskState, {
+        showGasFields: action.value,
+      })
+    case actions.UPDATE_VALIDATION_NAME:
+      return extend(metamaskState, {
+        isValidName: action.value,
+      })
+    case actions.UPDATE_VALIDATION_ADDRESS:
+      return extend(metamaskState, {
+        isValidAddress: action.value,
+      })
+
+    case actions.UPDATE_TOKENSLIST:
+      return extend(metamaskState, {
+        showTokens: action.value,
+      })
     case actions.LOCK_METAMASK:
       return extend(metamaskState, {
         isUnlocked: false,
+      })
+
+    case actions.ADD_NEW_CONTACT:
+      const contactList = metamaskState.contactList
+      contactList.push(action.value)
+      return extend(metamaskState, {
+        contactList: contactList,
       })
 
     case actions.SET_RPC_LIST:
@@ -137,8 +176,13 @@ function reduceMetamask (state, action) {
         },
       })
 
-
     case actions.SHOW_NEW_VAULT_SEED:
+      return extend(metamaskState, {
+        isRevealingSeedWords: true,
+        seedWords: action.value,
+      })
+
+    case actions.SHOW_NEW_VAULT_SEED1:
       return extend(metamaskState, {
         isRevealingSeedWords: true,
         seedWords: action.value,
@@ -171,9 +215,9 @@ function reduceMetamask (state, action) {
       const account = action.value.account
       const name = action.value.label
       const id = {}
-      id[account] = extend(metamaskState.identities[account], { name })
+      id[account] = extend(metamaskState.identities[account], {name})
       const identities = extend(metamaskState.identities, id)
-      return extend(metamaskState, { identities })
+      return extend(metamaskState, {identities})
 
     case actions.SET_CURRENT_FIAT:
       return extend(metamaskState, {
@@ -300,9 +344,9 @@ function reduceMetamask (state, action) {
       })
 
     case actions.UPDATE_TRANSACTION_PARAMS:
-      const { id: txId, value } = action
-      let { selectedAddressTxList } = metamaskState
-      selectedAddressTxList = selectedAddressTxList.map(tx => {
+      const {id: txId, value} = action
+      let {selectedAddressTxList} = metamaskState
+      selectedAddressTxList = selectedAddressTxList.map((tx) => {
         if (tx.id === txId) {
           tx.txParams = value
         }
@@ -314,7 +358,9 @@ function reduceMetamask (state, action) {
       })
 
     case actions.PAIR_UPDATE:
-      const { value: { marketinfo: pairMarketInfo } } = action
+      const {
+        value: {marketinfo: pairMarketInfo},
+      } = action
       return extend(metamaskState, {
         tokenExchangeRates: {
           ...metamaskState.tokenExchangeRates,
@@ -323,7 +369,9 @@ function reduceMetamask (state, action) {
       })
 
     case actions.SHAPESHIFT_SUBVIEW:
-      const { value: { marketinfo: ssMarketInfo, coinOptions } } = action
+      const {
+        value: {marketinfo: ssMarketInfo, coinOptions},
+      } = action
       return extend(metamaskState, {
         tokenExchangeRates: {
           ...metamaskState.tokenExchangeRates,
@@ -333,9 +381,9 @@ function reduceMetamask (state, action) {
       })
 
     case actions.SET_USE_BLOCKIE:
-          return extend(metamaskState, {
-            useBlockie: action.value,
-          })
+      return extend(metamaskState, {
+        useBlockie: action.value,
+      })
 
     case actions.UPDATE_FEATURE_FLAGS:
       return extend(metamaskState, {
@@ -359,7 +407,7 @@ function reduceMetamask (state, action) {
 
     case actions.SET_PENDING_TOKENS:
       return extend(metamaskState, {
-        pendingTokens: { ...action.payload },
+        pendingTokens: {...action.payload},
       })
 
     case actions.CLEAR_PENDING_TOKENS: {
@@ -370,12 +418,11 @@ function reduceMetamask (state, action) {
 
     case actions.UPDATE_PREFERENCES: {
       return extend(metamaskState, {
-        preferences: { ...action.payload },
+        preferences: {...action.payload},
       })
     }
 
     default:
       return metamaskState
-
   }
 }

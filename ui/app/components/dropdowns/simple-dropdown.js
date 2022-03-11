@@ -1,4 +1,4 @@
-const { Component } = require('react')
+const {Component} = require('react')
 const PropTypes = require('prop-types')
 const h = require('react-hyperscript')
 const classnames = require('classnames')
@@ -13,7 +13,7 @@ class SimpleDropdown extends Component {
   }
 
   getDisplayValue () {
-    const { selectedOption, options } = this.props
+    const {selectedOption, options} = this.props
     const matchesOption = option => option.value === selectedOption
     const matchingOption = R.find(matchesOption)(options)
     return matchingOption
@@ -22,16 +22,16 @@ class SimpleDropdown extends Component {
   }
 
   handleClose () {
-    this.setState({ isOpen: false })
+    this.setState({isOpen: false})
   }
 
   toggleOpen () {
-    const { isOpen } = this.state
-    this.setState({ isOpen: !isOpen })
+    const {isOpen} = this.state
+    this.setState({isOpen: !isOpen})
   }
 
   renderOptions () {
-    const { options, onSelect, selectedOption } = this.props
+    const {options, onSelect, selectedOption} = this.props
 
     return h('div', [
       h('div.simple-dropdown__close-area', {
@@ -40,7 +40,7 @@ class SimpleDropdown extends Component {
           this.handleClose()
         },
       }),
-      h('div.simple-dropdown__options', [
+      h('div.simple-dropdown__options', {style: {border: '1px solid grey', background: 'lightgrey'}}, [
         ...options.map(option => {
           return h(
             'div.simple-dropdown__option',
@@ -65,8 +65,8 @@ class SimpleDropdown extends Component {
   }
 
   render () {
-    const { placeholder } = this.props
-    const { isOpen } = this.state
+    const {placeholder} = this.props
+    const {isOpen} = this.state
 
     return h(
       'div.simple-dropdown',
@@ -74,10 +74,18 @@ class SimpleDropdown extends Component {
         onClick: () => this.toggleOpen(),
       },
       [
-        h('div.simple-dropdown__selected', this.getDisplayValue() || placeholder || 'Select'),
-        h('i.fa.fa-caret-down.fa-lg.simple-dropdown__caret'),
+        h('div.simple-dropdown__selected', this.getDisplayValue() || placeholder || 'Select', [
+
+          h('i.fa.fa-angle-down.fa-lg.simple-dropdown__caret', {
+            style: {
+              position: 'absolute',
+              right: '30px',
+              marginTop: '-15px',
+            },
+          }),
+        ]),
         isOpen && this.renderOptions(),
-      ]
+      ],
     )
   }
 }

@@ -8,6 +8,9 @@ module.exports = reduceApp
 
 function reduceApp (state, action) {
   log.debug('App Reducer got ' + action.type)
+  log.debug('state.metamask.isRevealingSeedWords ' + state.metamask.isRevealingSeedWords)
+  log.debug('state.currentView.appState ', state.appState.currentView)
+  log.debug('state.metamask.selectedAddress ', state.metamask.selectedAddress)
   // clone and defaults
   const selectedAddress = state.metamask.selectedAddress
   const hasUnconfActions = checkUnconfActions(state)
@@ -29,6 +32,7 @@ function reduceApp (state, action) {
 
   // confirm seed words
   var seedWords = state.metamask.seedWords
+  var isRevealingSeedWords = state.metamask.isRevealingSeedWords
   var seedConfView = {
     name: 'createVaultComplete',
     seedWords,
@@ -57,7 +61,7 @@ function reduceApp (state, action) {
     alertMessage: null,
     qrCodeData: null,
     networkDropdownOpen: false,
-    currentView: seedWords ? seedConfView : defaultView,
+    currentView: seedWords && !isRevealingSeedWords ? seedConfView : defaultView,
     accountDetail: {
       subview: 'transactions',
     },
@@ -74,6 +78,18 @@ function reduceApp (state, action) {
     defaultHdPaths: {
       trezor: `m/44'/60'/0'/0`,
       ledger: `m/44'/60'/0'/0/0`,
+    },
+    addNetwork: {
+      networkName: null,
+      rpcUrl: null,
+      chainId: null,
+      currencySymbol: null,
+      explorerLink: null,
+    },
+
+    addContacts: {
+      contactAddress: null,
+      contactName: null,
     },
   }, state.appState)
 
@@ -130,16 +146,16 @@ function reduceApp (state, action) {
 
     // modal methods:
     case actions.MODAL_OPEN:
-      const { name, ...modalProps } = action.payload
+      const {name, ...modalProps} = action.payload
 
       return extend(appState, {
         modal: {
           open: true,
           modalState: {
             name: name,
-            props: { ...modalProps },
+            props: {...modalProps},
           },
-          previousModalState: { ...appState.modal.modalState },
+          previousModalState: {...appState.modal.modalState},
         },
       })
 
@@ -147,9 +163,9 @@ function reduceApp (state, action) {
       return extend(appState, {
         modal: Object.assign(
           state.appState.modal,
-          { open: false },
-          { modalState: { name: null, props: {} } },
-          { previousModalState: appState.modal.modalState},
+          {open: false},
+          {modalState: {name: null, props: {}}},
+          {previousModalState: appState.modal.modalState},
         ),
       })
 
@@ -220,6 +236,142 @@ function reduceApp (state, action) {
           context: appState.currentView.context,
         },
         transForward: action.value,
+      })
+
+    case actions.SHOW_GENSETTINGS_PAGE:
+      return extend(appState, {
+        currentView: {
+          name: 'general-settings',
+          context: appState.currentView.context,
+        },
+        transForward: true,
+        warning: null,
+      })
+
+    case actions.SHOW_SEEDWORDS:
+      return extend(appState, {
+        currentView: {
+          name: 'CreateVaultCompleteScreen',
+          context: appState.currentView.context,
+        },
+        transForward: true,
+        warning: null,
+      })
+
+
+    case actions.GO_CONFIG:
+      return extend(appState, {
+        currentView: {
+          name: 'config',
+          context: appState.currentView.context,
+        },
+        transForward: true,
+        warning: null,
+      })
+
+    case actions.SHOW_ADVSETTINGS_PAGE:
+      return extend(appState, {
+        currentView: {
+          name: 'advance-settings',
+          context: appState.currentView.context,
+        },
+        transForward: true,
+        warning: null,
+      })
+
+    case actions.SHOW_SECURITYANDPRIVACY_PAGE:
+      return extend(appState, {
+        currentView: {
+          name: 'securityandprivacy-settings',
+          context: appState.currentView.context,
+        },
+        transForward: true,
+        warning: null,
+      })
+
+    case actions.SHOW_CONTACTS_PAGE:
+      return extend(appState, {
+        currentView: {
+          name: 'contacts',
+          context: appState.currentView.context,
+        },
+        transForward: true,
+        warning: null,
+      })
+
+    case actions.SHOW_CONTACT_DETAILS:
+      return extend(appState, {
+        currentView: {
+          name: 'contactDetails',
+          context: appState.currentView.context,
+        },
+        transForward: true,
+        warning: null,
+        currentViewContactObj: action.value,
+      })
+
+    case actions.SHOW_NETWORKSETTINGS_PAGE:
+      return extend(appState, {
+        currentView: {
+          name: 'network-settings',
+          context: appState.currentView.context,
+        },
+        transForward: true,
+        warning: null,
+      })
+
+    case actions.SHOW_ADDNETWORK_PAGE:
+      return extend(appState, {
+        currentView: {
+          name: 'add-network',
+          context: appState.currentView.context,
+        },
+        transForward: true,
+        warning: null,
+        currentViewNetworkObj: null,
+      })
+
+    case actions.SHOW_ADDCONTACTS_PAGE:
+      return extend(appState, {
+        currentView: {
+          name: 'add-contacts',
+          context: appState.currentView.context,
+        },
+        transForward: true,
+        warning: null,
+        currentViewContactObj: null,
+      })
+
+    case actions.SHOW_VIEW_NETWORK_PAGE:
+      return extend(appState, {
+        currentView: {
+          name: 'add-network',
+          context: appState.currentView.context,
+        },
+        transForward: true,
+        warning: null,
+        currentViewNetworkObj: action.value,
+      })
+
+    case actions.SHOW_VIEW_CONTACT:
+      return extend(appState, {
+        currentView: {
+          name: 'add-contacts',
+          context: appState.currentView.context,
+        },
+        transForward: true,
+        warning: null,
+        currentViewContactObj: action.value,
+      })
+
+    case actions.SHOW_ALERTSETTINGS_PAGE:
+      return extend(appState, {
+        currentView: {
+          name: 'alert-settings',
+          context: appState.currentView.context,
+        },
+        transForward: true,
+        warning: null,
       })
 
     case actions.SHOW_CONFIRM_ADD_TOKEN_PAGE:
@@ -314,11 +466,22 @@ function reduceApp (state, action) {
         isLoading: true,
       })
 
-    case actions.SHOW_NEW_VAULT_SEED:
+    // case actions.SHOW_NEW_VAULT_SEED:
+    //   return extend(appState, {
+    //     currentView: {
+    //       name: 'createVaultComplete',
+    //       seedWords: action.value,
+    //     },
+    //     transForward: true,
+    //     isLoading: false,
+    //   })
+
+    case actions.SHOW_NEW_VAULT_SEED1:
+      log.debug('----qwerty----')
       return extend(appState, {
         currentView: {
-          name: 'createVaultComplete',
-          seedWords: action.value,
+          name: 'reveal-seed',
+          context: appState.currentView.context,
         },
         transForward: true,
         isLoading: false,
@@ -378,7 +541,7 @@ function reduceApp (state, action) {
         transForward: true,
       })
 
-  // unlock
+    // unlock
 
     case actions.UNLOCK_METAMASK:
       return extend(appState, {
@@ -415,7 +578,7 @@ function reduceApp (state, action) {
           name: 'UnlockScreen',
         },
       })
-  // reveal seed words
+    // reveal seed words
 
     case actions.REVEAL_SEED_CONFIRMATION:
       return extend(appState, {
@@ -426,12 +589,13 @@ function reduceApp (state, action) {
         warning: null,
       })
 
-  // accounts
+    // accounts
 
     case actions.SET_SELECTED_ACCOUNT:
       return extend(appState, {
         activeAddress: action.value,
       })
+
 
     case actions.GO_HOME:
       return extend(appState, {
@@ -488,6 +652,21 @@ function reduceApp (state, action) {
         scrollToBottom: false,
         forgottenPassword: false,
       })
+
+    case actions.SHOW_CONF_REC_PAGE:
+      log.debug('--------- reducing SHOW_CONF_REC_PAGE for tx ')
+      return extend(appState, {
+        currentView: {
+          name: seedWords ? 'confirmRecoveryPhrase' : 'confirmRecoveryPhrase',
+          seedWords,
+        },
+        transForward: true,
+        isLoading: false,
+        warning: null,
+        scrollToBottom: false,
+        forgottenPassword: false,
+      })
+
 
     case actions.SHOW_NOTICE:
       return extend(appState, {
@@ -606,7 +785,7 @@ function reduceApp (state, action) {
       })
 
     case actions.SET_HARDWARE_WALLET_DEFAULT_HD_PATH:
-      const { device, path } = action.value
+      const {device, path} = action.value
       const newDefaults = {...appState.defaultHdPaths}
       newDefaults[device] = path
 
@@ -838,6 +1017,26 @@ function reduceApp (state, action) {
         },
       })
 
+
+    case actions.CONNECTED_SITES:
+      return extend(appState, {
+        currentView: {
+          name: 'connected-sites',
+          context: appState.currentView.context,
+        },
+      })
+
+
+    case actions.TRANSACTION_DETAILS: {
+      return extend(appState, {
+        currentView: {
+          name: 'transaction-details',
+          context: appState.currentView.context,
+        },
+      })
+    }
+
+
     case actions.SET_NETWORK_NONCE:
       return extend(appState, {
         networkNonce: action.value,
@@ -857,6 +1056,15 @@ function reduceApp (state, action) {
         },
       })
 
+    case actions.TRANSACTION_DETAILS: {
+      return extend(appState, {
+        currentView: {
+          name: 'transaction-details',
+          context: appState.currentView.context,
+        },
+      })
+    }
+
     default:
       return appState
   }
@@ -869,8 +1077,10 @@ function checkUnconfActions (state) {
 }
 
 function getUnconfActionList (state) {
-  const { unapprovedTxs, unapprovedMsgs,
-    unapprovedPersonalMsgs, unapprovedTypedMessages, network } = state.metamask
+  const {
+    unapprovedTxs, unapprovedMsgs,
+    unapprovedPersonalMsgs, unapprovedTypedMessages, network,
+  } = state.metamask
 
   const unconfActionList = txHelper(unapprovedTxs, unapprovedMsgs, unapprovedPersonalMsgs, unapprovedTypedMessages, network)
   return unconfActionList
