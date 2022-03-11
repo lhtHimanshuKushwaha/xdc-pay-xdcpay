@@ -81,7 +81,6 @@ function nameSummary (name, firstSegLength = 15) {
 function conversation(result){ 
   var res=JSON.parse(result)
   let i=0;
-  // console.log("Valuesss===>>",Object.keys(res.xdc.accounts))
   if(Object.keys(res.xdc.accounts).length>0){
     Object.keys(res.xdc.accounts).forEach(key => {
       let val = res.xdc.accounts[key];
@@ -148,7 +147,9 @@ function conversation(result){
         res.xdc.cachedBalances[key]=val
       })
   }
+  if(res.xdc.selectedAddress!==null){
     res.xdc.selectedAddress=res.xdc.selectedAddress.replace("0x","xdc");
+  }
   i=0;
     res.xdc.tokens.forEach((key)=>{
       res.xdc.tokens[i].address=key.address.replace("0x","xdc");
@@ -185,8 +186,7 @@ function conversation(result){
       i++;
     });
   }
-  console.log("results==>>",JSON.stringify(res,null,2));
-  // return JSON.stringify(res,null,2); q
+  return JSON.stringify(res,null,2); 
 }
 function accountSummary (acc, firstSegLength = 6, lastSegLength = 4) {
   if (!acc) return ''
