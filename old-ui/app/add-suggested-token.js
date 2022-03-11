@@ -80,11 +80,12 @@ AddSuggestedTokenScreen.prototype.render = function () {
 
           h('div', {
             style: {display: 'flex', margin: '8px 0 17px 0'},
-          }, [
-            h(Copyable, {
-              value: toChecksumAddress(network, address),
-            }, [
-              h('p#token-address', {
+          }, 
+            // h(Copyable, {
+            //   value: toChecksumAddress(network, address),
+            // },
+              [
+              h('span#token-address', {
                 style: {
                   width: '100%',
                   border: '2px solid #c7cdd8',
@@ -93,7 +94,7 @@ AddSuggestedTokenScreen.prototype.render = function () {
                 },
               }, addressSummary(network, address, 24, 4, false)),
             ]),
-          ]),
+          
 
           h('div', [
             h('span', {
