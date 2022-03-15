@@ -48,7 +48,7 @@ class NetworksMenu extends Component {
         //   marginLeft: '19px',
         // }}
         className={"selectNetworkExpanded"}
-        innerStyle={{padding: 0}}
+        innerStyle={{padding: 0,maxHeight: isOpen ? '322px' : '0px',overflow:'scroll'}}
       >
         <div className="select-network-list">
           Select Network
