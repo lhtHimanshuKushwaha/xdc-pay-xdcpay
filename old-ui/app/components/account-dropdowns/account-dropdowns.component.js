@@ -42,6 +42,10 @@ class AccountDropdowns extends Component {
     enableAccountsSelector: false,
     enableAccountOptions: false,
   }
+  static contextTypes = {
+    t: PropTypes.func,
+  }
+
 
   static propTypes = {
     identities: PropTypes.objectOf(PropTypes.object),
@@ -50,6 +54,7 @@ class AccountDropdowns extends Component {
     actions: PropTypes.objectOf(PropTypes.func),
     network: PropTypes.string,
     style: PropTypes.object,
+    className: PropTypes.string,
     enableAccountOptions: PropTypes.bool,
     enableAccountsSelector: PropTypes.bool,
   }
@@ -141,14 +146,15 @@ class AccountDropdowns extends Component {
     return (
       <Dropdown
         useCssTransition={true} // Hardcoded because account selector is temporarily in app-header
-        style={{
-          position: 'absolute',
-          left: '0',
-          bottom: '-543px',
-          minWidth: '180px',
-
-          width: '317px',
-        }}
+        // style={{
+        //   position: 'absolute',
+        //   left: '0',
+        //   bottom: '-543px',
+        //   minWidth: '180px',
+        //   marginLeft: '19px',
+        //   width: '317px',
+        // }}
+        className={"myAccountExpanded"}
         innerStyle={
           {
             // padding: '8px 25px',
@@ -183,24 +189,26 @@ class AccountDropdowns extends Component {
       </Dropdown>
     )
   }
+  
 
   renderAccountOptions () {
     const {actions, selected, network, keyrings, identities, networkList} = this.props
     const {optionsMenuActive, isProxy} = this.state
 
     const keyring = getCurrentKeyring(selected, network, keyrings, identities)
-
+    const { t } = this.context
     return (
       <div>
 
-        <Dropdown
-          style={{
-            position: 'absolute',
-            minWidth: '180px',
-            left: '0',
-            bottom: '18px',
-            width: '317px',
-          }}
+        <Dropdown 
+          // style={{
+          //   minWidth: '180px',
+          //   width: '317px',
+          //   position: 'absolute',
+          //   left: '0',
+          //   bottom: '18px',
+          //    }}
+          className={"dropp"}
           isOpen={optionsMenuActive}
           onClickOutside={(event) => {
             const {classList} = event.target
@@ -213,22 +221,27 @@ class AccountDropdowns extends Component {
           }}
         >
           <div className="account-options-list">
-            Account Options
+            {`${t('accountOptions')}` }
             <img
               className="account-options-close-icon"
               src="/images/Assets/Close.svg"
             />
           </div>
-          {/* <DropdownMenuItem
+          <DropdownMenuItem
             closeMenu={() => {
             }}
-            onClick={() => global.platform.openExtensionInBrowser()}
+            onClick={() => {
+              global.platform.openExtensionInBrowser()
+              .then(() => this.handleCheckBox())
+            }
+            } 
+              
           >
             <img
               className="account-options-icon"
               src="/images/Assets/ExpandedView.svg"
             />
-            Expanded View
+            {`${t('expandedView')}` }
           </DropdownMenuItem>
           <DropdownMenuItem
             closeMenu={() => {
@@ -239,8 +252,8 @@ class AccountDropdowns extends Component {
               className="account-options-icon"
               src="/images/Assets/ConnectedSites.svg"
             />
-            Connected Sites
-          </DropdownMenuItem> */}
+           {`${t('connectedSites')}` } 
+          </DropdownMenuItem>
           <DropdownMenuItem
             closeMenu={() => {
             }}
@@ -261,7 +274,7 @@ class AccountDropdowns extends Component {
               className="account-options-icon"
               src="/images/Assets/QRCode.svg"
             />
-            Show QR Code
+             {`${t('showQRCode')}`}
           </DropdownMenuItem>
           <DropdownMenuItem
             closeMenu={() => {
@@ -272,7 +285,7 @@ class AccountDropdowns extends Component {
               className="account-options-icon"
               src="/images/Assets/CopyClipboard.svg"
             />
-            Copy address to clipboard
+            {`${t('copyToClipboard')}`}
           </DropdownMenuItem>
           {ifContractAcc(keyring) ? (
             <DropdownMenuItem closeMenu={() => {
@@ -299,7 +312,7 @@ class AccountDropdowns extends Component {
                 className="account-options-icon"
                 src="/images/Assets/ExportPvtKey.svg"
               />
-              Export Private Key
+            {`${t('exportPrivateKey')}`}
             </DropdownMenuItem>
           ) : null}
         </Dropdown>
@@ -320,6 +333,11 @@ class AccountDropdowns extends Component {
       network,
     )
     global.platform.openWindow({url})
+  }
+  
+  handleCheckBox = () => {
+    const expandUi = this.props.metamask.expandUi
+    this.props.dispatch(actions.expandedUi(!expandUi))
   }
 
   showQRCode = () => {

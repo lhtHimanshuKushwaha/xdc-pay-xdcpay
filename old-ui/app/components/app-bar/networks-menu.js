@@ -40,12 +40,14 @@ class NetworksMenu extends Component {
           }
         }}
         zIndex={11}
-        style={{
-          position: 'absolute',
-          bottom: '18px',
-          width: '317px',
-          maxHeight: isOpen ? '524px' : '0px',
-        }}
+        // style={{
+        //   position: 'absolute',
+        //   bottom: '18px',
+        //   width: '317px',
+        //   maxHeight: isOpen ? '524px' : '0px',
+        //   marginLeft: '19px',
+        // }}
+        className={"selectNetworkExpanded"}
         innerStyle={{padding: 0}}
       >
         <div className="select-network-list">

@@ -2,7 +2,7 @@ const React = require('react')
 const connect = require('react-redux').connect
 const actions = require('../../../../ui/app/actions')
 import Identicon from '../../../../ui/app/components/identicon'
-
+import  PropTypes  from 'prop-types'
 const CopyButton = require('../copy/copy-button')
 
 const TransactionList = require('../transaction-list')
@@ -10,8 +10,13 @@ const {valuesFor} = require('../../util')
 
 class ContactDetails extends React.Component {
 
+  static contextTypes = {
+    t: PropTypes.func,
+  }
+
   render () {
     const state = this.props
+    const {t} = this.context
     const contactObj = state.viewContactObj
     const {
       transactions,
@@ -60,7 +65,7 @@ class ContactDetails extends React.Component {
             }}
             onClick={() => state.dispatch(actions.viewContact(contactObj))}
           >
-            Edit
+            {`${t('Edit')}`}
           </div>
         </div>
         <div style={{padding:'0 0 29px 0'}}>
