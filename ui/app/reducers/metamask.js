@@ -69,6 +69,7 @@ function reduceMetamask (state, action) {
       isValidAddress: false,
       networkList: permanentNetworks,
       currentViewNetwork: null,
+      expandUi: false,
     },
     state.metamask,
   )
@@ -118,6 +119,10 @@ function reduceMetamask (state, action) {
       return extend(metamaskState, {
         showTokens: action.value,
       })
+      case actions.UPDATE_EXPANDEDUI:
+        return extend(metamaskState, {
+          expandUi: action.value,
+        })
     case actions.LOCK_METAMASK:
       return extend(metamaskState, {
         isUnlocked: false,

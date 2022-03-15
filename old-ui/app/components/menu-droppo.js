@@ -25,12 +25,13 @@ MenuDroppoComponent.prototype.render = function () {
   }
   style.zIndex = zIndex
   style.overflow = 'hidden'
-
+   const className = this.props.className
   return (
     h('.menu-droppo-container',
      {
       ref: 'menuDroppoContainer',
-      style,
+       style,
+      className,
     }, [
       useCssTransition
         ? h(ReactCSSTransitionGroup, {
