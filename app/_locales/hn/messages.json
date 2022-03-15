@@ -296,7 +296,7 @@
     "message": "गैस शुल्क"
   },
   "gasLimit": {
-    "message": "गैस सीमा"
+    "message": "गैस सीमा (इकाइयाँ)"
   },
   "gasLimitCalculation": {
     "message": "हम नेटवर्क की सफलता दर के आधार पर सुझाई गई गैस सीमा की गणना करते हैं।"
@@ -589,6 +589,9 @@
   "resetAccount": {
     "message": "खाता रीसेट करें"
   },
+  "resetAccountDescription": {
+    "message": "अपना खाता रीसेट करने से आपका लेन-देन इतिहास साफ़ हो जाएगा। यह आपके खातों में शेष राशि को नहीं बदलेगा या आपको अपने गुप्त पुनर्प्राप्ति वाक्यांश को फिर से दर्ज करने की आवश्यकता नहीं होगी।"
+  },
   "restoreFromSeed": {
     "message": "बीज वाक्यांश से पुनर्स्थापित करें"
   },
@@ -700,13 +703,13 @@
     "message": "स्थिति संदेश"
   },
   "stateLogsDescription": {
-    "message": "स्थिति संदेश में आपका सार्वजनिक खाता, पतों और भेजे गए लेनदेन, होते हैं।"
+    "message": "राज्य लॉग में आपके सार्वजनिक खाते के पते और भेजे गए लेनदेन होते हैं।"
   },
   "submit": {
     "message": "सबमिट करें"
   },
   "supportCenter": {
-    "message": "हमारे सहायता केंद्र पर जाएं"
+    "message": "समर्थन केंद्र"
   },
   "symbolBetweenZeroTen": {
     "message": "प्रतीक 0 और 10 अक्षरों के बीच होना चाहिए"
@@ -827,5 +830,125 @@
   },
   "youSign": {
     "message": "आप हस्ताक्षर कर रहे हैं"
+  },
+  "accountOptions": {
+    "message": "खाता विकल्प"
+  },
+  "expandedView": {
+    "message": "विस्तारित दृश्य"
+  },
+  "yourPrivateSeedPhrase": {
+    "message": "Your private seed phrase"
+  },
+  "viewOnBlockExplorer":{
+    "message": "ब्लॉक एक्सप्लोरर पर देखें"
+  },
+  "tokens":{
+    "message": "टोकन"
+  },
+  "hideTokensWithout":{
+    "message": "शेष राशि के बिना टोकन छुपाएं"
+  },
+  "advanceSettings":{
+    "message": "एडवांस सेटिंग"
+  },
+  "securityandPrivacySettings":{
+    "message": "सुरक्षा और गोपनीयता सेटिंग्स"
+  },
+  "autoLockTimer":{
+    "message": "ऑटो-लॉक टाइमर"
+  },
+  "autoLockTimerDesc":{
+    "message": "वॉलेट लॉक होने से कुछ मिनट पहले निष्क्रिय समय निर्धारित करें।"
+  },
+  "showIncomingTransactions":{
+    "message": "आने वाले लेनदेन दिखाएं"
+  },
+  "showIncomingTransactionsDesc":{
+    "message": "लेन-देन सूची में आने वाले लेनदेन को दिखाने के लिए XDC वेधशाला का उपयोग करने के लिए इसे चुनें"
+  },
+  "alertMsg" : {
+   "message" : "यह अलर्ट पॉपअप में तब दिखाया जाता है जब आप किसी कनेक्टेड वेब3 साइट को ब्राउज़ कर रहे होते हैं, लेकिन वर्तमान में चयनित खाता कनेक्ट नहीं होता है।"
+  },
+  "reveal":{
+    "message": "प्रकट करना"
+  },
+  "contacts":{
+    "message": "संपर्क"
+  },
+  "addContact":{
+    "message": "संपर्क जोड़ें"
+  },
+  "walletAddress":{
+    "message": "वॉलेट का पता"
+  },
+  "contactDetails":{
+    "message": "सम्पर्क करने का विवरण"
+  },
+  "userName":{
+    "message": "उपयोगकर्ता नाम"
+  },
+  "alertSettings":{
+    "message": "अलर्ट सेटिंग्स"
+  },
+  "unconnectedAccountWarning" :{
+   "message" : "Browsing a website with an unconnected account selected."
+  },
+  "networkSettings":{
+    "message": "नेटवर्क सेटिंग"
+  },
+  "addNetwork":{
+    "message": "नेटवर्क जोड़ें"
+  },
+  "networkName":{
+    "message": "नेटवर्क का नाम"
+  },
+  "chainID":{
+    "message": "चेन आईडी"
+  },
+  "currencySymbol":{
+    "message": "मुद्रा प्रतीक (वैकल्पिक)"
+  },
+  "blockExplorer":{
+    "message": "ब्लॉक एक्सप्लोरर (वैकल्पिक)"
+  },
+  "Add":{
+    "message": "जोड़ें"
+  },
+  "Update":{
+    "message": "अद्यतन"
+  },
+  "About":{
+    "message": "के बारे में"
+  },
+  "Link":{
+    "message": "संपर्क"
+  },
+  "visitOurWebsite":{
+    "message": "हमारी वेबसाइट पर पधारें"
+  },
+  "contactUs":{
+    "message": "संपर्क करें"
+  },
+  "maxTransactionFee":{
+    "message": "अधिकतम लेनदेन शुल्क"
+  },
+  "Edit":{
+    "message": "संपादित करें"
+  },
+  "connectedSites":{
+    "message":"कनेक्टेड साइट्स"
+  },
+  "advancedGasControls": {
+    "message": "उन्नत गैस नियंत्रण"
+  },
+  "advancedGasControlsDesc" : {
+    "message":  "सीधे भेजें और पुष्टि स्क्रीन पर गैस की कीमत और सीमा नियंत्रण दिखाने के लिए इसे चुनें।"
+  },
+  "infoDesc" : {
+    "message" : "XDCPay आपके ब्राउज़र में XDC के XDPoS सक्षम वितरित एप्लिकेशन या Dapps तक पहुँचने के लिए एक एक्सटेंशन है!"
+  },
+  "getYourSeedWords": {
+    "message": "अपना पासवर्ड दर्ज करके अपने गुप्त बीज शब्द प्राप्त करें।"
   }
 }

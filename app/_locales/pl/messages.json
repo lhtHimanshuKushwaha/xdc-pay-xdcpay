@@ -380,7 +380,7 @@
     "message": "Opłata za gaz"
   },
   "gasLimit": {
-    "message": "Limit gazu"
+    "message": "Limit gazu (jednostki)"
   },
   "gasLimitCalculation": {
     "message": "Obliczamy sugerowany limit gazu na podstawie danych z transakcji w sieci."
@@ -1209,5 +1209,128 @@
   },
   "yourPrivateSeedPhrase": {
     "message": "Twoja prywatna fraza seed"
+  },
+  "accountOptions":{
+    "message": "Opcje konta"
+  },
+  "expandedView": {
+    "message": "Rozszerzony widok"
+  },
+  "viewOnBlockExplorer":{
+    "message": "Zobacz w Eksploratorze bloków"
+  },
+  "tokens":{
+    "message": "Tokeny"
+  },
+  "generalSettings":{
+    "message": "Ustawienia główne"
+  },
+  "hideTokensWithout":{
+    "message": "Ukryj tokeny bez salda"
+  },
+  "advanceSettings":{
+    "message": "Zaawansowane ustawienia"
+  },
+  "securityandPrivacySettings":{
+    "message": "Ustawienia bezpieczeństwa i prywatności"
+  },
+  "autoLockTimer":{
+    "message": "Zegar automatycznej blokady"
+  },
+  "autoLockTimerDesc":{
+    "message": "Ustaw czas bezczynności w minutach, zanim portfel zostanie zablokowany."
+  },
+  "showIncomingTransactions":{
+    "message": "Pokaż transakcje przychodzące"
+  },
+  "showIncomingTransactionsDesc":{
+    "message": "Wybierz tę opcję, aby używać XDC Observatory do wyświetlania transakcji przychodzących na liście transakcji"
+  },
+  "resetAccountDescription": {
+    "message": "Zresetowanie konta wyczyści historię transakcji. Nie zmieni to sald na twoich kontach ani nie będzie wymagało ponownego wprowadzenia tajnej frazy odzyskiwania."
+  },
+  "alertMsg" : {
+   "message" : "Ten alert jest wyświetlany w wyskakującym okienku, gdy przeglądasz połączoną witrynę web3, ale aktualnie wybrane konto nie jest połączone."
+  },
+  "reveal":{
+    "message": "Ujawnić"
+  },
+  "contacts":{
+    "message": "Łączność"
+  },
+  "addContact":{
+    "message": "Dodaj kontakt"
+  },
+  "walletAddress":{
+    "message": "Adres portfela"
+  },
+  "contactDetails":{
+    "message": "Szczegóły kontaktu"
+  },
+  "userName":{
+    "message": "Nazwa Użytkownika"
+  },
+  "alertSettings":{
+    "message": "Ustawienia alertów"
+  },
+  "unconnectedAccountWarning" :{
+   "message" : "Przeglądanie strony internetowej z wybranym niepowiązanym kontem"
+  },
+  "networkSettings":{
+    "message": "Ustawienia sieci"
+  },
+  "addNetwork":{
+    "message": "Dodaj sieć"
+  },
+  "networkName":{
+    "message": "Nazwa sieci"
+  },
+  "chainID":{
+    "message": "Identyfikator łańcucha"
+  },
+  "currencySymbol":{
+    "message": "Symbol waluty (opcjonalnie)"
+  },
+  "blockExplorer":{
+    "message": "Eksplorator bloków (opcjonalnie)"
+  },
+  "Add":{
+    "message": "Dodać"
+  },
+  "Update":{
+    "message": "Aktualizacja"
+  },
+  "About":{
+    "message": "O"
+  },
+  "Link":{
+    "message": "Połączyć"
+  },
+  "visitOurWebsite":{
+    "message": "Odwiedz nasza strone internetowa"
+  },
+  "contactUs":{
+    "message": "Skontaktuj się z nami"
+  },
+  "maxTransactionFee":{
+    "message": "Maksymalna opłata transakcyjna"
+  },
+  "Edit":{
+    "message": "Edytować"
+  },
+  "connectedSites":{
+    "message":"Połączone witryny"
+  },
+  "advancedGasControls": {
+    "message": "Zaawansowane sterowanie gazem"
+  },
+  "advancedGasControlsDesc" : {
+    "message":  "Wybierz tę opcję, aby wyświetlić ceny gazu i kontrole limitów bezpośrednio na ekranach wysyłania i potwierdzania."
+  },
+  "infoDesc" : {
+    "message" : "XDCPay to rozszerzenie umożliwiające dostęp do rozproszonych aplikacji XDC z obsługą XDPoS lub „Dapps” w przeglądarce!"
+  },
+  "getYourSeedWords": {
+    "message": "Zdobądź swoje tajne słowa początkowe, wpisując hasło."
   }
 }
