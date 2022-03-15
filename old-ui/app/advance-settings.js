@@ -16,7 +16,7 @@ const infuraCurrencies = require("./infura-conversion.json").objects.sort(
   }
 );
 const validUrl = require("valid-url");
-const exportAsFile = require("./util").exportAsFile;
+const {exportAsFile ,conversation}= require("./util");
 const Modal = require("../../ui/app/components/modals/index").Modal;
 const ethNetProps = require("xdc-net-props");
 const { networks } = require("../../app/scripts/controllers/network/util");
@@ -58,7 +58,7 @@ class AdvanceSettings extends React.Component{
             <h2 style={{ marginLeft:'88px',fontFamily:'Inter-bold'}}>{`${t('advanceSettings')}`}</h2>
             </div>
             <div style={{
-                padding: ' 15px 17px 20px 15px ',
+                padding: ' 14px 17px 14px 17px ',
                 borderBottom: '1px solid #E3E7EB',
             }}>
                 <span style={{ fontWeight: "bold", fontSize: "14px", color: "#2149B9" }}>{`${t('stateLogs')}`}</span><br />
@@ -73,13 +73,13 @@ class AdvanceSettings extends React.Component{
                                                 )
                                             );
                                         } else {
-                                            exportAsFile("XDCPay State Logs.json", result);
+                                            exportAsFile("XDCPay State Logs.json", conversation(result));
                                         }
                                     }) }}>{`${t('downloadStateLogs')}`}</button>
                 
                 </div>
                 <div style={{
-                padding: ' 15px 17px 20px 15px ',
+                padding: ' 14px 17px 14px 17px ',
                 borderBottom: '1px solid #E3E7EB',
             }}>
                     <span style={{ fontWeight: "bold", fontSize: "14px", color: "#2149B9" }}>{`${t('resetAccount')}` }</span><br />
@@ -92,8 +92,8 @@ class AdvanceSettings extends React.Component{
                 </div>
                       
                <div style={{
-                    padding: ' 15px 17px 20px 15px ',
-                    borderBottom: '1px solid #E3E7EB',
+                    padding: ' 14px 17px 14px 17px',
+                    // borderBottom: '1px solid #E3E7EB',
                 }}>
                     <span style={{ fontWeight: "bold", fontSize: "14px", color: "#2149B9" }}>{`${t('advancedGasControls')}` }</span><br />
                 <p style={{fontSize:'14px',marginBottom:'15px',fontFamily:'Inter-medium'}}>{`${t('advancedGasControlsDesc')}` }</p>

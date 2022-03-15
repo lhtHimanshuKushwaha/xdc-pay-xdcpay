@@ -135,6 +135,7 @@ SendTransactionScreen.prototype.render = function () {
         h('input.large-input', {
           name: 'txData',
           placeholder: '',
+          maxLength:35,
           style: {
             width: '265px',
             resize: 'none',
@@ -220,7 +221,6 @@ SendTransactionScreen.prototype.onSubmit = function () {
   const value = normalizeEthStringToWei(input)
   const txData = document.querySelector('input[name="txData"]').value
   const balance = this.props.balance
-
   if (value.gt(balance)) {
     message = 'Insufficient funds.'
     return this.props.dispatch(actions.displayWarning(message))
@@ -236,15 +236,15 @@ SendTransactionScreen.prototype.onSubmit = function () {
     return this.props.dispatch(actions.displayWarning(message))
   }
 
-  if ((!isValidAddress(recipient, this.props.network) && !txData) || (!recipient && !txData)) {
+  if ((!isValidAddress(recipient, this.props.network && !txData) ) || (!recipient && !txData)) {
     message = 'Recipient address is invalid.'
     return this.props.dispatch(actions.displayWarning(message))
   }
 
-  if (!isHex(ethUtil.stripHexPrefix(txData)) && txData) {
-    message = 'Transaction data must be hex string.'
-    return this.props.dispatch(actions.displayWarning(message))
-  }
+  // if (!isHex(ethUtil.stripHexPrefix(txData)) && txData) {
+  //   message = 'Transaction data must be hex string.'
+  //   return this.props.dispatch(actions.displayWarning(message))
+  // }
 
   this.props.dispatch(actions.hideWarning())
 
