@@ -48,19 +48,22 @@ class NetworksMenu extends Component {
         //   marginLeft: '19px',
         // }}
         className={"selectNetworkExpanded"}
-        innerStyle={{padding: 0,maxHeight: isOpen ? '322px' : '0px',overflow:'scroll'}}
+        innerStyle={{padding: 0,}}
       >
         <div className="select-network-list">
           Select Network
           <img className="select-network-close-icon" src="/images/Assets/Close.svg"
                onClick={() => this.props.updateNetworksMenuOpenState(!isOpen)}/>
         </div>
+        <div style={{height: isOpen ? '271px' : '0px',overflow:'scroll'}}>
         {networksView}
+
         <DropdownMenuItem
           closeMenu={() => this.props.updateNetworksMenuOpenState(!isOpen)}
           onClick={() => this.props.showAddNetworkPage()}
           className={'app-bar-networks-dropdown-custom-rpc'}
-        >Custom RPC</DropdownMenuItem>
+          >Custom RPC</DropdownMenuItem>
+          </div>
       </Dropdown>
     )
   }
