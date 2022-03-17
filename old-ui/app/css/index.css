@@ -62,7 +62,38 @@ html {
  }
 }
 
-.expandedUI{
+.infoWidth{
+  max-width: none;
+}
+
+@media only screen and (max-width: 600px){
+.infoWidth{
+  max-width: 400px;
+}  
+}
+
+.infoDesc{
+ color: #848484;
+ 
+  height: 45px;
+   text-align: left; 
+   font-size: 12px; 
+   margin: 36px 0px;
+    line-height: 14px;
+}
+
+@media only screen and (max-width: 600px){
+  .infoDesc{
+    color: #848484;
+    width: 300px; 
+    height: 45px;
+    text-align: left; 
+    font-size: 12px; 
+    margin: 36px 0px;
+    line-height: 14px;
+  }
+}
+  .expandedUI{
  width: 60%;
  margin: auto;
 }
@@ -1619,7 +1650,7 @@ textarea[disabled] {
 }
 @media only screen and (max-width: 600px){
   .arrowImage{
-    background-image: '/images/Assets/Arrow.svg';
+    background-image: url("/images/Assets/Arrow.svg");
 
   }
 }
