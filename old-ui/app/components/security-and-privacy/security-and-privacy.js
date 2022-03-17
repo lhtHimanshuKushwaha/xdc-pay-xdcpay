@@ -95,7 +95,7 @@ class SecurityAndPrivacySettings extends React.Component {
             Reveal Seed Words
           </button>
         </div>
-         <div
+         {/* <div
           style={{
             padding: " 15px 17px 20px 15px ",
             borderBottom: "1px solid #E3E7EB",
@@ -123,7 +123,7 @@ class SecurityAndPrivacySettings extends React.Component {
             selectedOption={TimePeriod}
             // onSelect={}
           />
-        </div> 
+        </div>  */}
         {/* <div
           style={{
             padding: " 15px 17px 20px 15px ",
