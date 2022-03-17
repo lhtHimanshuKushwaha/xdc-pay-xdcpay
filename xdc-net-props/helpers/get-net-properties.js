@@ -64,7 +64,7 @@ function getNetworkCoinName(network) {
     case CLASSIC_CODE:
       return "ETC";
     default:
-      return "ETH";
+      return "XDC";
   }
 }
 
