@@ -1,12 +1,15 @@
 const connect = require('react-redux').connect
 const actions = require('../../ui/app/actions')
 const React = require('react')
-
+import PropTypes from 'prop-types'
 class NetworkSettings extends React.Component {
 
   onDeleteRPCNetwork = (networkObj) => {
     const state = this.props
     state.dispatch(actions.delRpcTarget(networkObj))
+  }
+  static contextTypes = {
+    t: PropTypes.func,
   }
 
   render () {
@@ -14,6 +17,7 @@ class NetworkSettings extends React.Component {
     const networkList = state.metamask.networkList
     const frequentRPCList = state.metamask.frequentRpcList
     const netList = [...networkList, ...frequentRPCList]
+    const {t} = this.context
     return (
       <div className="flex-column flex-grow" style={{
         maxHeight: '585px',
@@ -23,7 +27,7 @@ class NetworkSettings extends React.Component {
           <img src="/images/Assets/BackArrow.svg" style={{marginLeft: '12px', cursor: 'pointer'}} onClick={() => {
             state.dispatch(actions.goConfig())
           }}/>
-          <h2 style={{marginLeft: '80px', fontFamily: 'Inter-bold'}}>Network Settings</h2>
+          <h2 style={{marginLeft: '80px', fontFamily: 'Inter-bold'}}>{`${t('networkSettings')}`}</h2>
           <img src="/images/Assets/Add.svg" style={{cursor: 'pointer', position: 'absolute', right: '21px'}}
                onClick={() => {
                  state.dispatch(actions.showAddNetworkPage())

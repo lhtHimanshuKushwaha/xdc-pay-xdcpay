@@ -64,7 +64,7 @@ const AddContactComponent = (props) => {
         <br/>
         <div
           style={{
-            marginBottom: '24px',
+            marginBottom: '45px',
             border: '1px solid #e2e2e2',
             borderRadius: '4px',
           }}
@@ -80,7 +80,7 @@ const AddContactComponent = (props) => {
             />
         </div>
         {warningMsg && <div className="error">{warningMsg}</div>}
-        <div style={{display: 'flex', justifyContent: 'space-between', marginTop:'44px'}}>
+        <div style={{display: 'flex', justifyContent: 'space-between'}}>
           <div
             className="button"
             // onClick={onBackClick}

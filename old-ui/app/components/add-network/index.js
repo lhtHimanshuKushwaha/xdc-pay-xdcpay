@@ -21,6 +21,10 @@ export default class AddNetwork extends React.Component {
       explorerLink: viewNetworkObj ? viewNetworkObj.blockExplorer : '',
     }
   }
+  static contextTypes = {
+    t: PropTypes.func,
+  }
+
 
   onBackClick = () => {
     // eslint-disable-next-line react/prop-types
@@ -65,6 +69,7 @@ export default class AddNetwork extends React.Component {
             if (isRPCAlreadyExists && !isToUpdate) {
               return this.props.dispatch(actions.displayWarning('RPC Network already exists'))
             }
+            
           }
           this.props.dispatch(actions.setRpcTarget(rpcNetworkObj))
           !isToUpdate && this.props.dispatch(actions.addNetwork(rpcNetworkObj))
@@ -95,7 +100,7 @@ export default class AddNetwork extends React.Component {
   }
 
   render () {
-    const t = this.context
+    const { t } = this.context
     // eslint-disable-next-line react/prop-types
     const {warning, viewNetworkObj} = this.props
     return (

@@ -15,7 +15,7 @@
     "message": "Nome Account"
   },
   "accountOptions": {
-    "message": "Account Options"
+    "message": "Opzioni dell'account"
   },
   "accountSelectionRequired": {
     "message": "Devi selezionare un account!"
@@ -413,7 +413,7 @@
     "message": "Costo Gas"
   },
   "gasLimit": {
-    "message": "Gas Limite"
+    "message": "Limite gas (unità)"
   },
   "gasLimitCalculation": {
     "message": "Calcoliamo il gas limite suggerito in base al successo delle transazioni in rete."
@@ -846,7 +846,7 @@
     "message": "Resetta Account"
   },
   "resetAccountDescription": {
-    "message": "Resettare il tuo account cancellerà lo storico delle transazioni."
+    "message": "Il ripristino del tuo account cancellerà la cronologia delle transazioni. Questo non cambierà i saldi nei tuoi account né ti richiederà di inserire nuovamente la tua frase segreta di recupero."
   },
   "restoreFromSeed": {
     "message": "Ripristina da una frase seed"
@@ -1055,7 +1055,7 @@
     "message": "Log di Stato"
   },
   "stateLogsDescription": {
-    "message": "I log di stato contengono i tuoi indirizzi pubblici e le transazioni effettuate."
+    "message": "I registri di stato contengono gli indirizzi dei tuoi account pubblici e le transazioni inviate."
   },
   "stateLogError": {
     "message": "Errore nel recupero dei log di stato."
@@ -1085,7 +1085,7 @@
     "message": "Inviata"
   },
   "supportCenter": {
-    "message": "Visita il nostro Centro di Supporto"
+    "message": "Centro di Supporto"
   },
   "symbolBetweenZeroTen": {
     "message": "Il simbolo deve essere lungo tra 0 e 10 caratteri."
@@ -1293,5 +1293,122 @@
   },
   "yourPrivateSeedPhrase": {
     "message": "La tua frase seed privata"
+  },
+  "expandedView": {
+    "message": "Vista espansa"
+  },
+  "viewOnBlockExplorer":{
+    "message": "Visualizza su Block Explorer"
+  },
+  "tokens":{
+    "message": "gettoni"
+  },
+  "generalSettings":{
+    "message": "impostazioni generali"
+  },
+  "hideTokensWithout":{
+    "message": "Nascondi token senza saldo"
+  },
+  "advanceSettings":{
+    "message": "Impostazioni avanzate"
+  },
+  "securityandPrivacySettings":{
+    "message": "Impostazioni di sicurezza e privacy"
+  },
+  "autoLockTimer":{
+    "message": "Timer blocco automatico"
+  },
+  "autoLockTimerDesc":{
+    "message": "Imposta il tempo di inattività in minuti prima che il portafoglio venga bloccato."
+  },
+  "showIncomingTransactions":{
+    "message": "Mostra transazioni in entrata"
+  },
+  "showIncomingTransactionsDesc":{
+    "message": "Seleziona questa opzione per utilizzare l'Osservatorio XDC per mostrare le transazioni in entrata nell'elenco delle transazioni."
+  },
+  "alertMsg" : {
+   "message" : "Questo avviso viene mostrato nel popup durante la navigazione in un sito Web 3 connesso, ma l'account attualmente selezionato non è connesso."
+  },
+  "reveal":{
+    "message": "Svelare"
+  },
+  "contacts":{
+    "message": "Contatti"
+  },
+  "addContact":{
+    "message": "Aggiungi contatto"
+  },
+  "walletAddress":{
+    "message": "Indirizzo portafoglio"
+  },
+  "contactDetails":{
+    "message": "Dettagli del contatto"
+  },
+  "userName":{
+    "message": "Nome utente"
+  },
+  "alertSettings":{
+    "message": "Impostazioni avvisi"
+  },
+  "unconnectedAccountWarning" :{
+   "message" : "Navigazione in un sito Web con un account non connesso selezionato."
+  },
+  "networkSettings":{
+    "message": "Impostazioni di rete"
+  },
+  "addNetwork":{
+    "message": "Aggiungi rete"
+  },
+  "networkName":{
+    "message": "Nome della rete"
+  },
+  "chainID":{
+    "message": "ID catena"
+  },
+  "currencySymbol":{
+    "message": "Simbolo di valuta (opzionale)"
+  },
+  "blockExplorer":{
+    "message": "Esplora blocchi (opzionale)"
+  },
+  "Add":{
+    "message": "Aggiungere"
+  },
+  "Update":{
+    "message": "Aggiornare"
+  },
+  "About":{
+    "message": "Di"
+  },
+  "Link":{
+    "message": "Collegamento"
+  },
+  "visitOurWebsite":{
+    "message": "Visita il nostro sito web"
+  },
+  "contactUs":{
+    "message": "Contattaci"
+  },
+  "maxTransactionFee":{
+    "message": "Commissione di transazione massima"
+  },
+  "Edit":{
+    "message": "Modificare"
+  },
+  "connectedSites":{
+    "message":"Siti collegati"
+  },
+  "advancedGasControls": {
+    "message": "Controlli avanzati del gas"
+  },
+  "advancedGasControlsDesc" : {
+    "message":  "Seleziona questa opzione per visualizzare il prezzo del gas e i controlli sui limiti direttamente nelle schermate di invio e conferma."
+  },
+  "infoDesc" : {
+    "message" : "XDCPay è un'estensione per accedere alle applicazioni distribuite abilitate XDPoS di XDC o Dapps nel tuo browser!"
+  },
+  "getYourSeedWords": {
+    "message": "Ottieni le tue parole chiave segrete inserendo la tua password."
   }
 }
