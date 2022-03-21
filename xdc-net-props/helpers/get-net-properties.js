@@ -52,7 +52,7 @@ function getNetworkCoinName(network) {
     case SOKOL_CODE:
     case POA_CORE_CODE:
       return "POA";
-    case XDC_CODE:
+    case XDC_CODE:return "XDC";
     case XDC_TESTNET_CODE:
       return "XDC";
     case XDC_DEVNET_CODE:
@@ -64,7 +64,7 @@ function getNetworkCoinName(network) {
     case CLASSIC_CODE:
       return "ETC";
     default:
-      return "XDC";
+      return "ETH";
   }
 }
 
