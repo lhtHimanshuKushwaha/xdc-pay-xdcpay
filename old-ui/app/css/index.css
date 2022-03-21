@@ -38,7 +38,7 @@ html {
 }
 
 .address-dropdown {
-  background-image: url(/images/Assets/options.svg);
+  background-image: url(/images/Assets/Options.svg);
   width: 45px;
   height: 24px;
   margin: -15px -790px 0 815px;
@@ -49,20 +49,18 @@ html {
   background-position: center;
 }
 @media only screen and (max-width: 600px) {
- .address-dropdown{
-  background-image: url(/images/Assets/options.svg);
-  width: 45px;
-  height: 24px;
-  margin: -15px 0px 0 54px;
-  /* position: absolute;
+  .address-dropdown {
+    background-image: url(/images/Assets/Options.svg);
+    width: 45px;
+    height: 24px;
+    margin: -15px 0px 0 54px;
+    /* position: absolute;
   top: 67px;
   right: 10px; */
-  background-repeat: no-repeat;
-  background-position: center;
- }
+    background-repeat: no-repeat;
+    background-position: center;
+  }
 }
-
-
 
 .account-detail-section::-webkit-scrollbar {
   width: 0;
@@ -317,7 +315,7 @@ input.textarea.recipient-address {
   text-rendering: geometricPrecision;
   padding-left: 5px;
   font-family: Inter-Medium;
-  color: #2A2A2A;
+  color: #2a2a2a;
 }
 
 .check {
@@ -596,56 +594,51 @@ p.buy-option {
   top: 95px; */
   margin-top: 27px;
   margin-left: -281px;
- 
 }
 @media only screen and (max-width: 600px) {
-.dropp {
-  /* position: absolute;
+  .dropp {
+    /* position: absolute;
   left: 0;
   bottom: 180px; */
-  top: 229px;
- right: 22px;
-
-}
+    top: 229px;
+    right: 22px;
+  }
 }
 .myAccountExpanded {
   top: 37px;
- right: 39px;
- 
+  right: 39px;
 }
 @media only screen and (max-width: 600px) {
-.myAccountExpanded {
- top: 263px;
- right: 23px;
-}
+  .myAccountExpanded {
+    top: 263px;
+    right: 23px;
+  }
 }
 
 .walletOptionsExpanded {
   top: 37px;
- right: 10px;
- 
+  right: 10px;
 }
 @media only screen and (max-width: 600px) {
-.walletOptionsExpanded {
- top: 393px;
- right: 23px;
-}
+  .walletOptionsExpanded {
+    top: 393px;
+    right: 23px;
+  }
 }
 
 .selectNetworkExpanded {
   top: 38px;
- left: 4px;
- width: 317px;
+  left: 4px;
+  width: 317px;
 }
 
 @media only screen and (max-width: 600px) {
-.selectNetworkExpanded {
-  top: 202px;
- left: 18px;
- width: 317px;
+  .selectNetworkExpanded {
+    top: 202px;
+    left: 18px;
+    width: 317px;
+  }
 }
-}
-
 
 .my-accounts-close-icon {
   margin-left: 95px;
@@ -863,9 +856,8 @@ input.large-input {
 
 /* .identity-panel .identity-data {
   /* margin: 8px 8px 8px 18px; */
-/* } */ */
-
-.identity-panel i {
+/* } */
+*/ .identity-panel i {
   margin-left: 6px;
   color: #ffffff;
 }
@@ -919,8 +911,7 @@ input.large-input {
   /* max-height: 585px; */
   flex-direction: inherit;
 }
-@media only screen and (max-width: 600px){
-
+@media only screen and (max-width: 600px) {
   .account-detail-section {
     display: flex;
     flex-wrap: wrap;
@@ -938,9 +929,7 @@ input.large-input {
 
 /* .name-label {
   /* margin-left: 18px; */
- */
-
-.unapproved-tx-icon {
+*/ .unapproved-tx-icon {
   height: 16px;
   width: 16px;
   background: rgb(47, 174, 244);
@@ -1463,10 +1452,10 @@ div.message-container > div:first-child {
   background-color: rgba(103, 41, 168, 0.2);
   word-wrap: break-word;
 }
-.sent::after{
-  content:url("../images/Assets/Sent.svg");
-  width:40px;
-  height:40px;
+.sent::after {
+  content: url("../images/Assets/Sent.svg");
+  width: 40px;
+  height: 40px;
 }
 
 .contract::after {
@@ -1488,7 +1477,6 @@ div.message-container > div:first-child {
     bottom: 180px ;
   
   } */
-  
 
 .menu-droppo-container::-webkit-scrollbar {
   width: 0px;
@@ -1558,14 +1546,14 @@ textarea[disabled] {
 .word {
   margin-top: 42px;
   font-size: 12px;
-  color:#2A2A2A;
-  font-family: 'Inter-Medium';
+  color: #2a2a2a;
+  font-family: "Inter-Medium";
 }
 
 .settings {
   display: flex;
   justify-content: space-between;
-  font-family: 'Inter-Medium';
+  font-family: "Inter-Medium";
   align-items: center;
   min-height: 20px;
   padding: 13px 18px;
@@ -1644,29 +1632,21 @@ input:checked + .slider:before {
   border-radius: 50%;
 }
 
-.input-Box{
+.input-Box {
   margin-bottom: 24px;
-   border:1px solid #e2e2e2;
-   border-radius: 4px;
+  border: 1px solid #e2e2e2;
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar {
-
   width: 20px;
-
 }
-
 
 ::-webkit-scrollbar-track {
-
   background-color: transparent;
-
 }
 
-
-
 ::-webkit-scrollbar-thumb {
-
   background-color: #d6dee1;
 
   border-radius: 20px;
@@ -1674,23 +1654,21 @@ input:checked + .slider:before {
   border: 6px solid transparent;
 
   background-clip: content-box;
-
 }
 
 /* Trasaction-details-screen-css */
 .details {
   margin-left: 17px;
-    color: #2149B9;
-    font-size: 14px;
+  color: #2149b9;
+  font-size: 14px;
 }
 
 .flexbox {
-  background-color: #FAFAFA;
+  background-color: #fafafa;
   padding: 8px 12px;
   margin: 10px 15px;
   display: block;
 }
-
 
 .trasaction-details-from-to {
   font-family: inter-medium;
@@ -1701,40 +1679,39 @@ input:checked + .slider:before {
 .trasaction-details-from-to-accounts {
   font-family: inter-regular;
   font-size: 14px;
-  color: #2A2A2A;
+  color: #2a2a2a;
 }
 
 .trasaction-details-amount {
   padding-bottom: 17px;
-  border-bottom: 1px solid #E3E7EB;
+  border-bottom: 1px solid #e3e7eb;
   display: flex;
- justify-content: space-between;
- width: 100%;
-max-width: 331px;
-margin-top: 18px;
-font-size: 14px;
-font-family: inter-medium;
-
+  justify-content: space-between;
+  width: 100%;
+  max-width: 331px;
+  margin-top: 18px;
+  font-size: 14px;
+  font-family: inter-medium;
 }
 
-.transaction-log-heading{
+.transaction-log-heading {
   margin-left: 17px;
-    margin-top: 25px;
-    color: #2149B9;
-    opacity: 1;
-    font-size: 14px;
-    width: 91%;
-    padding-bottom: 11px;
-    border-bottom: 1px solid #E3E7EB;
+  margin-top: 25px;
+  color: #2149b9;
+  opacity: 1;
+  font-size: 14px;
+  width: 91%;
+  padding-bottom: 11px;
+  border-bottom: 1px solid #e3e7eb;
 }
 
-.transaction-log-main{
+.transaction-log-main {
   font-size: 12px;
   padding: 6px 6px 50px 6px;
 }
 
 .transaction-border {
-  border-left: 2px solid #2049B9;
+  border-left: 2px solid #2049b9;
   height: 30px;
   margin-left: 11px;
 }
