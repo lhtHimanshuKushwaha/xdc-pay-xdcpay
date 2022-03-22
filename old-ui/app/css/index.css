@@ -38,12 +38,24 @@ html {
 }
 
 .address-dropdown {
-  background-image: url(/images/Assets/options.svg);
+  background-image: url(/images/Assets/Options.svg);
   width: 45px;
   height: 24px;
   margin-top: -15px;
   background-repeat: no-repeat;
   background-position: center;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge add Firefox */
+.scrollbar-hidden {
+  -ms-overflow-style: none;
+  scrollbar-width: none; /* Firefox */
+  overflow: -moz-scrollbars-none;
 }
 
 .account-detail-section::-webkit-scrollbar {
@@ -503,7 +515,7 @@ p.buy-option {
 }
 
 .clipboard.white::before {
-  content: url("/images/Assets/copy.svg");
+  content: url("/images/Assets/Copy.svg");
 }
 
 .sandwich-expando {
