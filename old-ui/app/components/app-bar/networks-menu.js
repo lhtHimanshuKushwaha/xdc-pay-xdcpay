@@ -55,7 +55,7 @@ class NetworksMenu extends Component {
           <img className="select-network-close-icon" src="/images/Assets/Close.svg"
                onClick={() => this.props.updateNetworksMenuOpenState(!isOpen)}/>
         </div>
-        <div style={{height: isOpen ? '271px' : '0px',overflow:'scroll'}}>
+        <div style={{maxHeight: isOpen ? '271px' : '0px',overflow:'scroll'}}>
         {networksView}
 
         <DropdownMenuItem
