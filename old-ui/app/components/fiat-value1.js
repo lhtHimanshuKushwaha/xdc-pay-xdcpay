@@ -49,6 +49,9 @@ class FiatValue extends Component {
     } else if (isDai) {
       conversionRate = 1
     }
+    else  {
+      conversionRate = 1
+    }
     const renderedCurrency = currentCurrency || ''
 
     const value = formatBalance(props.value, 6, undefined, props.network)

@@ -129,6 +129,7 @@ margin: none;
   display: flex;
   background: #ffffff;
   width: 100%;
+  overflow-y: auto;
   justify-content: center;
 }
 
@@ -669,7 +670,7 @@ p.buy-option {
 }
 @media only screen and (max-width: 600px) {
 .myAccountExpanded {
- top: 263px;
+ top: 345px;
  right: 23px;
 }
 }
@@ -694,7 +695,7 @@ p.buy-option {
 
 @media only screen and (max-width: 600px) {
 .selectNetworkExpanded {
-  top: 259px;
+  top: 306px;
  left: 18px;
  width: 317px;
 }
