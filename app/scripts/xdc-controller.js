@@ -989,7 +989,7 @@ module.exports = class XdcController extends EventEmitter {
    */
   async importAccountWithStrategy (strategy, args) {
     let keyring
-    if (strategy === importTypes.PRIVATE_KEY || strategy === importTypes.PRIVATE_KEY) {
+    if (strategy === importTypes.PRIVATE_KEY || strategy === importTypes.JSON_FILE) {
       const privateKey = await accountImporter.importAccount(strategy, args)
       keyring = await this.keyringController.addNewKeyring('Simple Key Pair', [privateKey])
     } else {

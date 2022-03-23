@@ -56,7 +56,7 @@ class SecurityAndPrivacySettings extends React.Component {
             }}
           />
           <h2 style={{ marginLeft: "39px", fontFamily: "Inter-bold" }}>
-            Security and Privacy Settings
+          {`${t('securityandPrivacySettings')}`}
           </h2>
         </div>
         <div
@@ -67,7 +67,7 @@ class SecurityAndPrivacySettings extends React.Component {
         >
           <span
             style={{ fontWeight: "bold", fontSize: "14px", color: "#2149B9" }}
-          >{`${t("revealSeedWords")}`}</span>
+          >{`${t('revealSeedWords')}`}</span>
           <br />
           <p
             style={{
@@ -76,7 +76,7 @@ class SecurityAndPrivacySettings extends React.Component {
               fontFamily: "Inter-medium",
             }}
           >
-            Get your secret seed words by entering your password.
+             {`${t('getYourSeedWords')}`}
           </p>
           <button
             style={{
@@ -95,7 +95,7 @@ class SecurityAndPrivacySettings extends React.Component {
             Reveal Seed Words
           </button>
         </div>
-        {/* <div
+         {/* <div
           style={{
             padding: " 15px 17px 20px 15px ",
             borderBottom: "1px solid #E3E7EB",
@@ -104,7 +104,7 @@ class SecurityAndPrivacySettings extends React.Component {
           <span
             style={{ fontWeight: "bold", fontSize: "14px", color: "#2149B9" }}
           >
-            Auto-Lock Timer
+           {`${t('autoLockTimer')}`} 
           </span>
           <br />
           <p
@@ -114,7 +114,7 @@ class SecurityAndPrivacySettings extends React.Component {
               fontFamily: "Inter-medium",
             }}
           >
-            Set the idle time in minutes before the wallet will be locked.
+           {`${t('autoLockTimerDesc')}`} 
           </p>
 
           <CustomDropdown
@@ -123,7 +123,7 @@ class SecurityAndPrivacySettings extends React.Component {
             selectedOption={TimePeriod}
             // onSelect={}
           />
-        </div> */}
+        </div>  */}
         {/* <div
           style={{
             padding: " 15px 17px 20px 15px ",
@@ -132,7 +132,7 @@ class SecurityAndPrivacySettings extends React.Component {
           <span
             style={{ fontWeight: "bold", fontSize: "14px", color: "#2149B9" }}
           >
-            Show Incoming Transactions
+           {`${t(' showIncomingTransactions')}`}  
           </span>
           <br />
           <p
@@ -142,8 +142,7 @@ class SecurityAndPrivacySettings extends React.Component {
               fontFamily: "Inter-medium",
             }}
           >
-            Select this to use Etherscan to show incoming transactions in the
-            transactions list
+             {`${t(' showIncomingTransactionsDesc')}`}  
           </p>
           <label className="switch">
             <input

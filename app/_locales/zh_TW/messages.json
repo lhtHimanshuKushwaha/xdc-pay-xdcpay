@@ -308,7 +308,7 @@
     "message": "Gas 費用"
   },
   "gasLimit": {
-    "message": "Gas 上限"
+    "message": "氣體限制（單位）"
   },
   "gasLimitCalculation": {
     "message": "我們根據網路成功率算出建議的 Gas 上限。"
@@ -769,7 +769,7 @@
     "message": "狀態紀錄"
   },
   "stateLogsDescription": {
-    "message": "狀態紀錄包含你的公開帳戶地址和已傳送的交易資訊."
+    "message": "狀態日誌包含您的公共帳戶地址和發送的交易。."
   },
   "stateLogError": {
     "message": "在取得狀態紀錄時發生錯誤."
@@ -781,7 +781,7 @@
     "message": "已送出"
   },
   "supportCenter": {
-    "message": "造訪我們的協助中心"
+    "message": "支持中心"
   },
   "symbolBetweenZeroTen": {
     "message": "代號必須介於 0 到 10 字元間."
@@ -905,5 +905,128 @@
   },
   "youSign": {
     "message": "正在簽署"
+  },  
+  "accountOptions":{
+    "message": "賬戶選項"
+  },
+  "expandedView": {
+    "message": "擴展視圖"
+  },
+  "viewOnBlockExplorer":{
+    "message": "在塊資源管理器上查看"
+  },
+  "tokens":{
+    "message": "代幣"
+  },
+  "generalSettings":{
+    "message": "常規設置"
+  },
+  "hideTokensWithout":{
+    "message": "隐藏没有余额的代币"
+  },
+  "advanceSettings":{
+    "message": "高級設置"
+  },
+  "securityandPrivacySettings":{
+    "message": "安全和隱私設置"
+  },
+  "autoLockTimer":{
+    "message": "自動鎖定定時器"
+  },
+  "autoLockTimerDesc":{
+    "message": "設置錢包鎖定前的空閒時間（以分鐘為單位）。"
+  },
+  "showIncomingTransactions":{
+    "message": "顯示傳入交易"
+  },
+  "showIncomingTransactionsDesc":{
+    "message": "選擇此項以使用 XDC Observatory 在交易列表中顯示傳入交易"
+  },
+  "resetAccountDescription": {
+    "message": "重置您的帳戶將清除您的交易記錄。這不會改變您賬戶中的餘額，也不會要求您重新輸入您的秘密恢復短語。"
+  },
+  "alertMsg" : {
+   "message" : "當您瀏覽已連接的 web3 站點但當前選擇的帳戶未連接時，此警報會顯示在彈出窗口中。"
+  },
+  "reveal":{
+    "message": "揭示"
+  },
+  "contacts":{
+    "message": "聯繫人"
+  },
+  "addContact":{
+    "message": "增加聯繫人"
+  },
+  "walletAddress":{
+    "message": "錢包地址"
+  },
+  "contactDetails":{
+    "message": "聯繫方式"
+  },
+  "userName":{
+    "message": "用戶名"
+  },
+  "alertSettings":{
+    "message": "警報設置"
+  },
+  "unconnectedAccountWarning" :{
+   "message" : "瀏覽選擇未連接帳戶的網站"
+  },
+  "networkSettings":{
+    "message": "網絡設置"
+  },
+  "addNetwork":{
+    "message": "添加網絡"
+  },
+  "networkName":{
+    "message": "網絡名字"
+  },
+  "chainID":{
+    "message": "鏈號"
+  },
+  "currencySymbol":{
+    "message": "貨幣符號（可選）"
+  },
+  "blockExplorer":{
+    "message": "塊瀏覽器（可選）"
+  },
+  "Add":{
+    "message": "添加"
+  },
+  "Update":{
+    "message": "更新"
+  },
+  "About":{
+    "message": "關於"
+  },
+  "Link":{
+    "message": "關聯"
+  },
+  "visitOurWebsite":{
+    "message": "訪問我們的網站"
+  },
+  "contactUs":{
+    "message": "聯繫我們"
+  },
+  "maxTransactionFee":{
+    "message": "最高交易費用"
+  },
+  "Edit":{
+    "message": "編輯"
+  },
+  "connectedSites":{
+    "message":"連接的站點"
+  },
+  "advancedGasControls": {
+    "message": "先進的氣體控制"
+  },
+  "advancedGasControlsDesc" : {
+    "message":  "選擇此選項可直接在發送和確認屏幕上顯示汽油價格和限制控件。"
+  },
+  "infoDesc" : {
+    "message" : "XDCPay 是一個擴展，用於在瀏覽器中訪問 XDC 啟用 XDPoS 的分佈式應用程序或“Dapps”！"
+  },
+  "getYourSeedWords": {
+    "message": "通過輸入您的密碼獲取您的秘密種子詞。"
   }
 }

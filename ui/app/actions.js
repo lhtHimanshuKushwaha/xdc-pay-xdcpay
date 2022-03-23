@@ -142,11 +142,13 @@ var actions = {
   LOCK_METAMASK: 'LOCK_METAMASK',
   UPDATE_GASFIELDS: 'UPDATE_GASFIELDS',
   UPDATE_TOKENSLIST: 'UPDATE_TOKENSLIST',
+  UPDATE_EXPANDEDUI: 'UPDATE_EXPANDEDUI',
   UPDATE_VALIDATION_NAME: 'UPDATE_VALIDATION_NAME',
   UPDATE_VALIDATION_ADDRESS: 'UPDATE_VALIDATION_ADDRESS',
   isValidName: isValidName,
   isValidAddress: isValidAddress,
   showTokens: showTokens,
+  expandedUi:expandedUi,
   showGasFields: showGasFields,
   tryUnlockMetamask: tryUnlockMetamask,
   lockMetamask: lockMetamask,
@@ -1885,6 +1887,13 @@ function showTokens (newState) {
   }
 }
 
+function expandedUi(newState) {
+  return {
+    type: actions.UPDATE_EXPANDEDUI,
+    value: newState,
+  }
+}
+
 function isValidName (newState) {
   return {
     type: actions.UPDATE_VALIDATION_NAME,
@@ -2540,11 +2549,11 @@ function hideModal (payload) {
   }
 }
 
-function transactionDetails () {
-  return {
-    type: actions.TRANSACTION_DETAILS,
-  }
-}
+// function transactionDetails () {
+//   return {
+//     type: actions.TRANSACTION_DETAILS,
+//   }
+// }
 
 function showSidebar ({transitionName, type}) {
   return {

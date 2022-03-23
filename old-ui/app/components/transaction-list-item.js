@@ -124,9 +124,9 @@ TransactionListItem.prototype.render = function () {
         if (isPending) {
           this.props.showTx(transaction.id)
         }
-        // else {
-        //   this.props.showTransctionDetails(transaction.id)
-        // }
+        else {
+          this.props.showTransctionDetails(transaction.id)
+        }
         event.stopPropagation()
         // if (!transaction.hash || !isLinkable) return
         // const url = ethNetProps.explorerLinks.getExplorerTxLinkFor(transaction.hash, numericNet)
@@ -277,7 +277,7 @@ function recipientField (txParams, transaction, isTx, isMsg, network) {
 }
 
 function formatDate (date) {
-  return vreme.format(new Date(date), 'Mar 16 2014, 14:30')
+  return vreme.format(new Date(date), 'Mar 16 2014, 02:30 PM')     
 }
 
 function renderErrorOrWarning (transaction, network) {
