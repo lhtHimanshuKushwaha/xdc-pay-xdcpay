@@ -23,8 +23,9 @@ class SendProfile extends Component {
 			<div
 				className="account-data-subsection flex-column flex-grow"
 				style={{
-					marginLeft: '46px',
-					marginTop: '37px',
+					// marginLeft: '46px',
+					// marginTop: '37px',
+					margin: '37px auto 0 auto '
 				}}
 			>
 				{/* header - identicon + nav */}

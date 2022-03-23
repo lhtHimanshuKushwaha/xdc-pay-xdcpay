@@ -24,10 +24,10 @@ InfoScreen.prototype.render = function () {
     if (newWindow) newWindow.opener = null
   }
   return (
-    h('.flex-column.flex-grow', {
-      style: {
-        maxWidth: '400px',
-      },
+    h('.flex-column.flex-grow.infoWidth', {
+      // style: {
+      //   maxWidth: '400px',
+      // },
     }, [
       
       // subtitle and nav
@@ -61,7 +61,7 @@ InfoScreen.prototype.render = function () {
           h('.info', [
             h('div', { style: { fontSize: '12px', fontWeight: '600', }, }, 'XDCPay Version'),
             h('div', { style: { color: '#848484', fontSize: '12', }, }, `${version}`),
-            h('div', { style: { color: '#848484', width: '300px', height: '45px', textAlign: 'left', fontSize: '12', margin: '36px 0', lineHeight: '14px', }, }, 'The XDCPay is an extension for accessing XDC’s XDPoS enabled distributed applications, or “Dapps” in your browser!'),
+            h('.infoDesc','The XDCPay is an extension for accessing XDC’s XDPoS enabled distributed applications, or “Dapps” in your browser!'),
           ]),
           h('div', {style:{fontSize:'12',}},[
             h('div', { style: {fontWeight:'600', }, },'Link: '),
