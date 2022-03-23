@@ -62,6 +62,18 @@ html {
   }
 }
 
+/* Hide scrollbar for Chrome, Safari and Opera */
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge add Firefox */
+.scrollbar-hidden {
+  -ms-overflow-style: none;
+  scrollbar-width: none; /* Firefox */
+  overflow: -moz-scrollbars-none;
+}
+
 .account-detail-section::-webkit-scrollbar {
   width: 0;
 }
@@ -519,7 +531,7 @@ p.buy-option {
 }
 
 .clipboard.white::before {
-  content: url("/images/Assets/copy.svg");
+  content: url("/images/Assets/Copy.svg");
 }
 
 .sandwich-expando {

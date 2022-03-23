@@ -569,8 +569,7 @@ PendingTx.prototype.render = function () {
               right: '46px',
               height: '40px',
               width: '119px',
-              paddingLeft: '36px',
-              paddingTop: '2px',
+              justifyContent:"center"
             },
               type: 'submit',
               value: 'Submit',
