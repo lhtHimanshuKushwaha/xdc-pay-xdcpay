@@ -622,12 +622,10 @@ ConfigScreen.prototype.render = function () {
         
         
         h('.settings', {onClick: () => state.dispatch(actions.generalSettings())}, ['General Settings',
-          h('.arrowImage', 
-            // src: '/images/Assets/Arrow.svg',
-
-          ),
-          
-          
+          h('img', {
+            src: '/images/Assets/Arrow.svg',
+          }
+          ),         
         ]),
         
         h('.settings', {onClick: () => state.dispatch(actions.advanceSettings())}, ['Advance Settings',

@@ -91,7 +91,7 @@ SendTransactionScreen.prototype.render = function () {
       ]),
 
       // 'amount'
-      h('div',{style:{
+      h('section.flex-column.flex-center',{style:{
         fontSize: '12px',
         fontFamily: 'Inter-Semibold',
         lineHeight: '25px',
@@ -102,7 +102,7 @@ SendTransactionScreen.prototype.render = function () {
         width: '265px',
         margin: '-5px 0 0 46px',
       }},
-      [
+        [h('section.flex-column.flex-center',
         h('input.large-input', {
           name: 'amount',
           placeholder: '0.00',
@@ -113,12 +113,13 @@ SendTransactionScreen.prototype.render = function () {
             persistentFormId: 'tx-amount',
           },
         }),
+        )
       ]),
 
       //
       // Optional Fields
       //
-      h('div', {
+      h('section.flex-column.flex-center', {
         style: {
           fontSize: '12px',
           fontFamily: 'Inter-Semibold',
