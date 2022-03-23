@@ -179,7 +179,7 @@ class AccountDropdowns extends Component {
           ></img>
         </div>
         <div style={{
-          maxHeight: accountSelectorActive ? '271px' : '0px',
+          maxHeight: accountSelectorActive ? '187px' : '0px',
           height: '100%',
           overflowY: 'auto',
 
