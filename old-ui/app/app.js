@@ -146,7 +146,7 @@ App.prototype.render = function () {
   const confirmMsgTx = (props.currentView.name === 'confTx' && Object.keys(props.unapprovedTxs).length === 0)
 
   return (
-    h('.flex-column.full-height', {
+    h('.flex-column.full-height.expandedUI', {
       style: {
         // Windows was showing a vertical scroll bar:
         overflow: 'hidden',
