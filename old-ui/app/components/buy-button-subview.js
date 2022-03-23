@@ -20,7 +20,7 @@ const { toChecksumAddress } = require('../util')
 class BuyButtonSubview extends Component {
   render() {
     return (
-      <div style={{ width: "100%", maxHeight:'574px',overflowX:'scroll' }}>
+      <div  className="scrollbar-hidden" style={{ width: "100%", maxHeight:'574px',overflowX:'scroll' }}>
         {this.headerSubview()}
         {this.primarySubview()}
       </div>
@@ -42,7 +42,7 @@ class BuyButtonSubview extends Component {
         <div>
           <Loading isLoading={isLoading} />
         </div>
-        <div
+         <div
           className="flex-row section-title"
           style={{
             alignItems: "center",
@@ -73,7 +73,7 @@ class BuyButtonSubview extends Component {
           >{`Buy `}</h2>
         </div>
         {/* account panel*/}
-        <div>
+         <div>
           <AccountPanel
             {...{
               showFullAddress: true,
@@ -88,10 +88,10 @@ class BuyButtonSubview extends Component {
               // network,
             }}
           />
-        </div>
+        </div> 
         {/* header bar (back button, label)*/}
 
-        <div>
+         <div>
           <h3
             className="flex-center select-service"
             style={{
@@ -101,7 +101,7 @@ class BuyButtonSubview extends Component {
           >
             Select Service
           </h3>
-        </div>
+        </div> 
       </div>
     );
   }
@@ -119,7 +119,7 @@ class BuyButtonSubview extends Component {
 
       default:
         return (
-          <div className="flex-column" style={{ margin: "0px 20px " }}>
+          <div  className="flex-column"  style={{ margin: "0px 20px " }}>
             {this._getBuyOptionsView(network)}
           </div>
         );

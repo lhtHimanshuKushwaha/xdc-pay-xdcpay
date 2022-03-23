@@ -17,6 +17,7 @@
   },
   "icons": {
     "16": "images/Assets/XDC-Icon-16X16.png",
+    "48": "images/Assets/XDC-Icon-48X48.svg",
     "128": "images/Assets/XDC-Icon-128X128.png"
   },
   "applications": {

@@ -618,22 +618,22 @@ ConfigScreen.prototype.render = function () {
           ),
         ]),
         
-
-          h('.settings', {onClick: () => state.dispatch(actions.generalSettings())}, ['General Settings',
+      h('.settingsExpanded', [
+        
+        
+        h('.settings', {onClick: () => state.dispatch(actions.generalSettings())}, ['General Settings',
           h('img', {
             src: '/images/Assets/Arrow.svg',
-
-          }),
-
-          
+          }
+          ),         
         ]),
-
+        
         h('.settings', {onClick: () => state.dispatch(actions.advanceSettings())}, ['Advance Settings',
-          h('img', {
-            src: '/images/Assets/Arrow.svg',
-
-          }),
-        ]),
+        h('img', {
+          src: '/images/Assets/Arrow.svg',
+          
+        }),
+      ]),
 
         h('.settings', {onClick: () => state.dispatch(actions.securityAndPrivacy())}, ['Security and Privacy Settings',
         h('img', {
@@ -658,17 +658,19 @@ ConfigScreen.prototype.render = function () {
         src: '/images/Assets/Arrow.svg',
       }),
     ]),
-
-        h('.settings', {onClick: () => state.dispatch(actions.showInfoPage())}, ['About',
-        h('img', {
-          src: '/images/Assets/Arrow.svg',
+    
+    h('.settings', {onClick: () => state.dispatch(actions.showInfoPage())}, ['About',
+    h('img', {
+      src: '/images/Assets/Arrow.svg',
           }),
         ]),
+      ])
+    
     ])
     )
   }
   
-
+  
   
 // }
 // }

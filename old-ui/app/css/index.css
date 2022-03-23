@@ -41,7 +41,7 @@ html {
   background-image: url(/images/Assets/Options.svg);
   width: 45px;
   height: 24px;
-  margin: -15px -790px 0 815px;
+  margin: -18px -379px 0 431px;
   /* position: absolute;
   top: 67px;
   right: 10px; */
@@ -61,6 +61,50 @@ html {
     background-position: center;
   }
 }
+
+.infoWidth{
+  max-width: none;
+}
+
+@media only screen and (max-width: 600px){
+.infoWidth{
+  max-width: 400px;
+}  
+}
+
+.infoDesc{
+ color: #848484;
+ 
+  height: 45px;
+   text-align: left; 
+   font-size: 12px; 
+   margin: 36px 0px;
+    line-height: 14px;
+}
+
+@media only screen and (max-width: 600px){
+  .infoDesc{
+    color: #848484;
+    width: 300px; 
+    height: 45px;
+    text-align: left; 
+    font-size: 12px; 
+    margin: 36px 0px;
+    line-height: 14px;
+  }
+}
+  .expandedUI{
+ width: 60%;
+ margin: auto;
+}
+
+@media only screen and (max-width: 600px) {
+.expandedUI{
+width: 100%;
+margin: none;
+}
+}
+
 
 .account-detail-section::-webkit-scrollbar {
   width: 0;
@@ -85,6 +129,7 @@ html {
   display: flex;
   background: #ffffff;
   width: 100%;
+  overflow-y: auto;
   justify-content: center;
 }
 
@@ -118,7 +163,19 @@ textarea:focus {
   display: flex;
   flex-direction: column;
   background: #ffffff;
+  /* width: 60%;
+  margin: auto; */
 }
+
+/* @media only screen and (max-width: 600px){
+  #app-content  {
+    overflow-x: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background: #ffffff;
+  }
+} */
 
 button,
 input[type="submit"] {
@@ -519,7 +576,7 @@ p.buy-option {
 }
 
 .clipboard.white::before {
-  content: url("/images/Assets/copy.svg");
+  content: url("/images/Assets/Copy.svg");
 }
 
 .sandwich-expando {
@@ -606,18 +663,20 @@ p.buy-option {
 }
 .myAccountExpanded {
   top: 37px;
-  right: 39px;
+ right: 418px;
+ 
 }
 @media only screen and (max-width: 600px) {
-  .myAccountExpanded {
-    top: 263px;
-    right: 23px;
-  }
+.myAccountExpanded {
+ top: 345px;
+ right: 23px;
+}
 }
 
 .walletOptionsExpanded {
   top: 37px;
-  right: 10px;
+ right: 384px ;
+ 
 }
 @media only screen and (max-width: 600px) {
   .walletOptionsExpanded {
@@ -628,16 +687,16 @@ p.buy-option {
 
 .selectNetworkExpanded {
   top: 38px;
-  left: 4px;
-  width: 317px;
+ left: 380px;
+ width: 317px;
 }
 
 @media only screen and (max-width: 600px) {
-  .selectNetworkExpanded {
-    top: 202px;
-    left: 18px;
-    width: 317px;
-  }
+.selectNetworkExpanded {
+  top: 323px;
+ left: 18px;
+ width: 317px;
+}
 }
 
 .my-accounts-close-icon {
@@ -1557,12 +1616,52 @@ textarea[disabled] {
   align-items: center;
   min-height: 20px;
   padding: 13px 18px;
-  border-bottom: 1px solid #e3e7eb;
+  /* border-bottom: 1px solid #e3e7eb; */
   font-size: 14px;
   color: #2a2a2a;
   cursor: pointer;
 }
 
+@media only screen and (max-width: 600px){
+.settings {
+  display: flex;
+  justify-content: space-between;
+  font-family: 'Inter-Medium';
+  align-items: center;
+  min-height: 20px;
+  padding: 13px 18px;
+  border-bottom: 1px solid #e3e7eb;
+  font-size: 14px;
+  color: #2a2a2a;
+  cursor: pointer;
+}
+}
+
+.arrowImage{
+  background-image: none;
+/* background-image:'/images/Assets/Arrow.svg' ; */
+}
+@media only screen and (max-width: 600px){
+  .arrowImage{
+    background-image: url("/images/Assets/Arrow.svg");
+
+  }
+}
+
+.settingsExpanded{
+display: flex;
+flex-direction: column;
+ width: 20%; 
+border-right:1px solid #E3E7EB ; 
+}
+
+@media only screen and (max-width: 600px){
+  .settingsExpanded{
+display: flex;
+flex-direction: column;
+width: 100%;
+  }
+}
 .switch {
   position: relative;
   display: inline-block;
