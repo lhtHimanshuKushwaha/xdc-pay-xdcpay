@@ -384,8 +384,8 @@ PendingTx.prototype.render = function () {
           h('.table-box', {
             style: {
               overflowY: 'scroll',
-              height:  isError ? '175px' :'329px',
-              width: 'fit-content',
+              height:  isError ? '194px' :'329px',
+              width: 'auto',
               margin: isError ? '0 0 19px 0' : 0,
             },
           }, [
@@ -416,6 +416,9 @@ PendingTx.prototype.render = function () {
             h('.cell.row', [
               h('.cell.label', { style: { marginTop: '20px' }, }, 'Gas Limit (Units)'),
               h('.cell.value', {
+                style: {
+                  width:'265px'
+                }
               }, [
                 h(BNInput, {
                   id: 'gas_limit',
@@ -443,6 +446,9 @@ PendingTx.prototype.render = function () {
             h('.cell.row', [
               h('.cell.label', { style: { marginTop: '20px' }, }, 'Gas Price (GWEI)'),
               h('.cell.value', {
+                style: {
+                width:'265px'
+              }
               }, [
                 h(BNInput, {
                   id: 'gas_price',
@@ -486,6 +492,7 @@ PendingTx.prototype.render = function () {
                 style: {
                   display: 'flex',
                   alignItems: 'center',
+                  width:'265px'
                 },
               }, [
                 h(EthBalance, {
