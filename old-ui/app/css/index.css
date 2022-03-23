@@ -576,7 +576,7 @@ p.buy-option {
 }
 
 .clipboard.white::before {
-  content: url("/images/Assets/copy.svg");
+  content: url("/images/Assets/Copy.svg");
 }
 
 .sandwich-expando {
