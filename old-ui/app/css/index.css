@@ -1715,3 +1715,16 @@ input:checked + .slider:before {
   height: 30px;
   margin-left: 11px;
 }
+
+/* Chrome, Safari, Edge, Opera */
+/*to hide up and down arrow in amount field in send.js file*/
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
