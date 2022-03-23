@@ -48,6 +48,8 @@ class FiatValue extends Component {
       conversionRate = this.state.conversionRate
     } else if (isDai) {
       conversionRate = 1
+    }else{
+      conversionRate = 1
     }
     else  {
       conversionRate = 1
