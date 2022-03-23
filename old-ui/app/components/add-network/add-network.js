@@ -6,7 +6,6 @@ const AddNetworkComponent = (props) => {
   const {networkName, rpcUrl, chainId, currencySymbol, explorerLink} = state
 
   const isPermanentNetwork = viewNetworkObj && viewNetworkObj.isPermanent
-
   return (
     <div className="flex-column flex-grow" style={{maxHeight: '585px', overflowY: 'auto'}}>
       <div className="section-title flex-row" style={{borderBottom: '1px solid #E3E7EB', paddingBottom: '17px'}}>
@@ -14,12 +13,12 @@ const AddNetworkComponent = (props) => {
         <h2 style={{marginLeft: '88px', fontFamily: 'Inter-bold'}}>{`${viewNetworkObj ? 'View' : 'Add'} Network`}</h2>
       </div>
       <div style={{margin: '18px 50px'}}>
-        <label className="word" style={{fontFamily: 'Inter-Medium'}}>Network Name</label>
+        <label className="word" style={{fontFamily: 'Inter-Medium'}}>{`${t('networkName')}`}</label>
         <br/>
         <div style={{marginBottom: '24px', border: '1px solid #C7CDD8', borderRadius: '4px', width: '265px'}}>
           <input disabled={isPermanentNetwork} className="input large-input" type="text" name="networkName"
                  value={networkName}
-                 onChange={onStateChange} style={{border: 'none', color: '#2A2A2A', width: '260px'}}/>
+                 onChange={onStateChange} maxLength={24} style={{border: 'none', color: '#2A2A2A', width: '260px'}}/>
         </div>
         <label className="word" style={{fontFamily: 'Inter-Medium'}}>New RPC URL</label>
         <br/>
@@ -33,21 +32,21 @@ const AddNetworkComponent = (props) => {
                  value={rpcUrl}
                  onChange={onStateChange} style={{border: 'none', color: '#2A2A2A', width: '260px'}}/>
         </div>
-        <label className="word" style={{fontFamily: 'Inter-Medium'}}>Chain ID</label>
+        <label className="word" style={{fontFamily: 'Inter-Medium'}}>{`${t('chainID')}`}</label>
         <br/>
         <div style={{marginBottom: '24px', border: '1px solid #C7CDD8', borderRadius: '4px', width: '265px'}}>
           <input disabled={isPermanentNetwork} className="input large-input" type="number"
                  style={{border: 'none', color: '#2A2A2A', width: '260px'}}
                  name="chainId" onChange={onStateChange} value={chainId}/>
         </div>
-        <label className="word" style={{fontFamily: 'Inter-Medium'}}>Currency Symbol (Optional)</label>
+        <label className="word" style={{fontFamily: 'Inter-Medium'}}>{`${t('currencySymbol')}`} </label>
         <br/>
         <div style={{marginBottom: '24px', border: '1px solid #C7CDD8', borderRadius: '4px', width: '265px'}}>
           <input disabled={isPermanentNetwork} className="input large-input" type="text"
                  style={{border: 'none', color: '#2A2A2A', width: '260px'}}
                  name="currencySymbol" onChange={onStateChange} value={currencySymbol}/>
         </div>
-        <label className="word" style={{fontFamily: 'Inter-Medium'}}>Block Explorer (Optional)</label>
+        <label className="word" style={{fontFamily: 'Inter-Medium'}}>{`${t('blockExplorer')}`} </label>
         <br/>
         <div style={{marginBottom: '14px', border: '1px solid #C7CDD8', borderRadius: '4px', width: '265px'}}>
           <input disabled={isPermanentNetwork} className="input large-input" type="text"

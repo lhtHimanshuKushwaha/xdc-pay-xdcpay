@@ -52,7 +52,7 @@ function AccountDetailScreen () {
 
 AccountDetailScreen.prototype.render = function () {
   var props = this.props
-  const {network, conversionRate, currentCurrency, networkList} = props
+  const { network, conversionRate, currentCurrency, networkList } = props
   var selected = props.address || Object.keys(props.accounts)[0]
   var checksumAddress = selected && toChecksumAddress(network, selected)
   var identity = props.identities[selected]
@@ -64,7 +64,7 @@ AccountDetailScreen.prototype.render = function () {
 
   const currentKeyring = getCurrentKeyring(props.address, network, props.keyrings, props.identities)
 
-  function shorten (b, amountL = 7, /*amountR = 4,*/ stars = 3) {
+  function shorten(b, amountL = 7, /*amountR = 4,*/ stars = 3) {
 
     return `${b.slice(0, amountL)}${'.'.repeat(stars)}${b.slice(
       b.length - 4,
@@ -175,9 +175,11 @@ AccountDetailScreen.prototype.render = function () {
               h('.flex-row', {
                 style: {
                   width: '100%',
-                  justifyContent: 'space-between',
+                  display: 'flex',
+                  justifyContent: 'center',
                   // alignItems: 'baseline',
                   marginTop: '3px',
+                  margin: '3px 0 0px 31px',
                 },
               }, [
 
@@ -187,7 +189,7 @@ AccountDetailScreen.prototype.render = function () {
                   style: {
                     width: '8em',
                     display: 'inline-flex',
-                    margin: ' 0 0 15px 112px',
+                    margin: ' 0px 0px 15px 60px',
                   },
                 }, [
                   h('span', {
@@ -201,7 +203,7 @@ AccountDetailScreen.prototype.render = function () {
                       fontFamily: 'Inter-Regular',
                       textRendering: 'geometricPrecision',
                       color: '#848484',
-                      marginLeft: '18px',
+                      // marginLeft: '18px',
                     },
                   }, shorten(checksumAddress)),
                   h(CopyButton, {
@@ -256,6 +258,7 @@ AccountDetailScreen.prototype.render = function () {
             currentCurrency,
             network,
             networkList,
+            shorten: true,
             style: {
               lineHeight: '7px',
               // marginBottom: '42px',
@@ -263,17 +266,22 @@ AccountDetailScreen.prototype.render = function () {
           }),
         ]),
 
-        h('.flex-grow'),
+        h('.flex-grow'),[
 
 
-        !ifContractAcc(currentKeyring) ? h('button',
+        !ifContractAcc(currentKeyring) ? h('div', {
+          style: {
+            display: 'flex',
+            justifyContent: 'center',
+            margin: '0 100px 20px 0'
+          }}, [ h('button',
 
 
           {
             onClick: () => props.dispatch(actions.buyEthView(selected)),
 
             style: {
-              margin: '0 10px 20px 100px',
+              // margin: '0 10px 20px 100px',
               width: '74px',
               height: '29px',
               background: '#2149B9',
@@ -290,41 +298,50 @@ AccountDetailScreen.prototype.render = function () {
 
               }, src: '/images/Assets/downarrow-2.svg',
             },
-          ), 'Buy']) : null,
+          ), 'Buy']), ])  : null,
 
 
-        // h('img',
-        //   {src: "/images/Assets/downarrow-2.svg" },
-        // ),
+      // h('img',
+      //   {src: "/images/Assets/downarrow-2.svg" },
+      // ),
 
-
-        h('button', {
-          onClick: () => {
-            if (ifContractAcc(currentKeyring)) {
-              return props.dispatch(actions.showSendContractPage({}))
-            } else {
-              return props.dispatch(actions.showSendPage())
-            }
-          },
+        h('div',{
           style: {
-
-            width: '74px',
-            height: '29px',
-            background: '#2149B9',
-            borderRadius: '4px',
-            opacity: '1',
-
-
-          },
-        }, [h('img',
-          {
-            style: {
-              marginRight: '8px',
-
-            }, src: '/images/Assets/downarrow-2-1.svg',
-          },
+            display: 'flex',
+            justifyContent: 'center',
+            margin:'-49px 0px 20px 65px'
+          }}, [
+          
+        
+       
+          h('button', {
+            onClick: () => {
+          if (ifContractAcc(currentKeyring)) {
+            return props.dispatch(actions.showSendContractPage({}))
+          } else {
+            return props.dispatch(actions.showSendPage())
+          }
+        },
+        style: {
+          
+          width: '74px',
+          height: '29px',
+          background: '#2149B9',
+          borderRadius: '4px',
+          opacity: '1',
+          
+          
+        },
+      }, [h('img',
+        {
+          style: {
+            marginRight: '8px',
+            
+          }, src: '/images/Assets/downarrow-2-1.svg',
+        },
         ), ifContractAcc(currentKeyring) ? 'Execute methods' : 'Send']),
-
+        ])
+      ]
         // ]),
       ]),
 
@@ -411,6 +428,7 @@ AccountDetailScreen.prototype.transactionList = function () {
       this.props.dispatch(actions.viewPendingTx(txId))
     },
     viewTxDetails: (txId) => {
+      console.log(txId,'pop')
       this.props.dispatch(actions.transactionDetails(txId))
     },
   })
