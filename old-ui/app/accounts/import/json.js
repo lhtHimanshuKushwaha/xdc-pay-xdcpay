@@ -19,7 +19,7 @@ class JsonImportSubview extends Component {
     const { error } = this.props
 
     return (
-      h('div', {
+      h('div.cover', {
         style: {
           display: 'flex',
           flexDirection: 'column',
