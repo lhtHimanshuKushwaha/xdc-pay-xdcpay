@@ -266,14 +266,20 @@ AccountDetailScreen.prototype.render = function () {
           }),
         ]),
 
-        h('.flex-grow'),[
+        h('.flex-grow', {
+          style: {
+            display: 'flex',
+            flexFlow: 'row',
+            justifyContent: 'center',
+            marginBottom: '20px',
+        }},[
 
 
         !ifContractAcc(currentKeyring) ? h('div', {
           style: {
             display: 'flex',
             justifyContent: 'center',
-            margin: '0 100px 20px 0'
+            margin: '0 10px 0 0'
           }}, [ h('button',
 
 
@@ -309,7 +315,7 @@ AccountDetailScreen.prototype.render = function () {
           style: {
             display: 'flex',
             justifyContent: 'center',
-            margin:'-49px 0px 20px 65px'
+            
           }}, [
           
         
@@ -341,7 +347,8 @@ AccountDetailScreen.prototype.render = function () {
         },
         ), ifContractAcc(currentKeyring) ? 'Execute methods' : 'Send']),
         ])
-      ]
+        ]
+        ),
         // ]),
       ]),
 
