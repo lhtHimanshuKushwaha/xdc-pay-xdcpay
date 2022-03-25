@@ -132,7 +132,7 @@ html {
   display: flex;
   background: #ffffff;
   width: 100%;
-  overflow-y: auto;
+  /* overflow-y: auto; */
   justify-content: center;
 }
 
