@@ -107,7 +107,7 @@ InfoScreen.prototype.render = function () {
       
             h('div', {
               onClick: () => {
-                openInNewTab('https://xinfin.org/contactus')
+                openInNewTab('https://www.xdc.org/contact-us')
               
               },
               style: {
