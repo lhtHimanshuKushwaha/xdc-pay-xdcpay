@@ -62,49 +62,48 @@ html {
   }
 }
 
-.infoWidth{
+.infoWidth {
   max-width: none;
 }
 
-@media only screen and (max-width: 600px){
-.infoWidth{
-  max-width: 400px;
-}  
+@media only screen and (max-width: 600px) {
+  .infoWidth {
+    max-width: 400px;
+  }
 }
 
-.infoDesc{
- color: #848484;
- 
+.infoDesc {
+  color: #848484;
+
   height: 45px;
-   text-align: left; 
-   font-size: 12px; 
-   margin: 36px 0px;
-    line-height: 14px;
+  text-align: left;
+  font-size: 12px;
+  margin: 36px 0px;
+  line-height: 14px;
 }
 
-@media only screen and (max-width: 600px){
-  .infoDesc{
+@media only screen and (max-width: 600px) {
+  .infoDesc {
     color: #848484;
-    width: 300px; 
+    width: 300px;
     height: 45px;
-    text-align: left; 
-    font-size: 12px; 
+    text-align: left;
+    font-size: 12px;
     margin: 36px 0px;
     line-height: 14px;
   }
 }
-  .expandedUI{
- width: 60%;
- margin: auto;
+.expandedUI {
+  width: 60%;
+  margin: auto;
 }
 
 @media only screen and (max-width: 600px) {
-.expandedUI{
-width: 100%;
-margin: none;
+  .expandedUI {
+    width: 100%;
+    margin: none;
+  }
 }
-}
-
 
 .account-detail-section::-webkit-scrollbar {
   width: 0;
@@ -118,6 +117,10 @@ margin: none;
 .account-detail-section::-webkit-scrollbar-thumb {
   background-color: darkgrey;
   outline: 1px solid slategrey;
+}
+.account-detail-section input::-ms-reveal,
+.account-detail-section input::-ms-clear {
+  display: none;
 }
 
 .app-root {
@@ -663,20 +666,18 @@ p.buy-option {
 }
 .myAccountExpanded {
   top: 37px;
- right: 418px;
- 
+  right: 418px;
 }
 @media only screen and (max-width: 600px) {
-.myAccountExpanded {
- top: 345px;
- right: 23px;
-}
+  .myAccountExpanded {
+    top: 345px;
+    right: 23px;
+  }
 }
 
 .walletOptionsExpanded {
   top: 37px;
- right: 384px ;
- 
+  right: 384px;
 }
 @media only screen and (max-width: 600px) {
   .walletOptionsExpanded {
@@ -687,16 +688,16 @@ p.buy-option {
 
 .selectNetworkExpanded {
   top: 38px;
- left: 380px;
- width: 317px;
+  left: 380px;
+  width: 317px;
 }
 
 @media only screen and (max-width: 600px) {
-.selectNetworkExpanded {
-  top: 323px;
- left: 18px;
- width: 317px;
-}
+  .selectNetworkExpanded {
+    top: 323px;
+    left: 18px;
+    width: 317px;
+  }
 }
 
 .my-accounts-close-icon {
@@ -796,6 +797,11 @@ p.buy-option {
   margin-bottom: 24px;
   padding: 8px;*/
 }
+/*export page reveal passsword turn off*/
+.sizing-input input::-ms-reveal,
+.sizing-input input::-ms-clear {
+  display: none;
+}
 
 .sizing-input {
   font-size: 14px;
@@ -804,6 +810,7 @@ p.buy-option {
   border-radius: 3px;
   border: 1px solid #e2e2e2;
 }
+
 .editable-label {
   display: flex;
   margin-bottom: 10px;
@@ -830,6 +837,11 @@ p.buy-option {
 .unlock-screen input:-ms-input-placeholder {
   text-align: left;
   font-size: 14px;
+}
+/*Login page reveal passsword turn off*/
+.unlock-screen input::-ms-reveal,
+.unlock-screen input::-ms-clear {
+  display: none;
 }
 
 input.large-input,
@@ -1622,44 +1634,43 @@ textarea[disabled] {
   cursor: pointer;
 }
 
-@media only screen and (max-width: 600px){
-.settings {
-  display: flex;
-  justify-content: space-between;
-  font-family: 'Inter-Medium';
-  align-items: center;
-  min-height: 20px;
-  padding: 13px 18px;
-  border-bottom: 1px solid #e3e7eb;
-  font-size: 14px;
-  color: #2a2a2a;
-  cursor: pointer;
-}
-}
-
-.arrowImage{
-  background-image: none;
-/* background-image:'/images/Assets/Arrow.svg' ; */
-}
-@media only screen and (max-width: 600px){
-  .arrowImage{
-    background-image: url("/images/Assets/Arrow.svg");
-
+@media only screen and (max-width: 600px) {
+  .settings {
+    display: flex;
+    justify-content: space-between;
+    font-family: "Inter-Medium";
+    align-items: center;
+    min-height: 20px;
+    padding: 13px 18px;
+    border-bottom: 1px solid #e3e7eb;
+    font-size: 14px;
+    color: #2a2a2a;
+    cursor: pointer;
   }
 }
 
-.settingsExpanded{
-display: flex;
-flex-direction: column;
- width: 20%; 
-border-right:1px solid #E3E7EB ; 
+.arrowImage {
+  background-image: none;
+  /* background-image:'/images/Assets/Arrow.svg' ; */
+}
+@media only screen and (max-width: 600px) {
+  .arrowImage {
+    background-image: url("/images/Assets/Arrow.svg");
+  }
 }
 
-@media only screen and (max-width: 600px){
-  .settingsExpanded{
-display: flex;
-flex-direction: column;
-width: 100%;
+.settingsExpanded {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  border-right: 1px solid #e3e7eb;
+}
+
+@media only screen and (max-width: 600px) {
+  .settingsExpanded {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
   }
 }
 .switch {
@@ -1813,4 +1824,9 @@ input:checked + .slider:before {
   border-left: 2px solid #2049b9;
   height: 30px;
   margin-left: 11px;
+}
+/*import account and reveal page reveal passsword turn off IE*/
+.cover input::-ms-reveal,
+.cover input::-ms-clear {
+  display: none;
 }
