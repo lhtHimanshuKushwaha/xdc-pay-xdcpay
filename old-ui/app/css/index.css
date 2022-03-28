@@ -1077,13 +1077,13 @@ input.large-input {
   border: 2px solid #c7cdd8;
   border-radius: 4px;
 }
-
+/* removing of inc. dec.button from field*/
 .send-screen input::-webkit-outer-spin-button,
 .send-screen input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-
+/* removing of inc. dec.button from field*/
 .send-screen input[type="number"] {
   -moz-appearance: textfield;
 }
@@ -1839,4 +1839,15 @@ input:checked + .slider:before {
 .cover input::-ms-reveal,
 .cover input::-ms-clear {
   display: none;
+}
+
+/* removing of inc. dec.button from field*/
+.arrowrm input::-webkit-outer-spin-button,
+.arrowrm input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* removing of inc. dec.button from field*/
+.arrowrm input[type="number"] {
+  -moz-appearance: textfield;
 }
