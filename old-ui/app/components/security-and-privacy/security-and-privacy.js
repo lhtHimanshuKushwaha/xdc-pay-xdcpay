@@ -92,7 +92,7 @@ class SecurityAndPrivacySettings extends React.Component {
               state.dispatch(actions.revealSeedConfirmation());
             }}
           >
-            Reveal Seed Words
+            Reveal Secret Seed Words
           </button>
         </div>
          {/* <div
