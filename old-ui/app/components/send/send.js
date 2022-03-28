@@ -109,9 +109,9 @@ SendTransactionScreen.prototype.render = function () {
           type: 'number',
           style: {
           },
-          dataset: {
-            persistentFormId: 'tx-amount',
-          },
+          // dataset: {
+          //   persistentFormId: 'tx-amount',
+          // },
         }),
       ]),
 
