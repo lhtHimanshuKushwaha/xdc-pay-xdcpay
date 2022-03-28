@@ -1077,6 +1077,16 @@ input.large-input {
   border: 2px solid #c7cdd8;
   border-radius: 4px;
 }
+/* removing of inc. dec.button from field*/
+.send-screen input::-webkit-outer-spin-button,
+.send-screen input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* removing of inc. dec.button from field*/
+.send-screen input[type="number"] {
+  -moz-appearance: textfield;
+}
 
 .send-eth-container {
   display: flex;
