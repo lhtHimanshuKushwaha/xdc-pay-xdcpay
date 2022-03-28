@@ -757,8 +757,8 @@ p.buy-option {
 }
 
 .selected-network {
-  width: 17px;
-  height: 17px;
+  width: 16.79px;
+  height: 16.79px;
   background-image: url(../images/Assets/Check-Blue.svg);
   position: absolute;
   object-fit: cover;
