@@ -99,7 +99,7 @@ TokenCell.prototype.renderTokenOptions = function (menuToTop, ind) {
         // marginTop: menuToTop ? '-214px' : '30px',
         width: '317px',
         bottom: '18px',
-        left: '0'
+        left: '20px'
       },
       isOpen: optionsMenuActive,
       onClickOutside: (event) => {
