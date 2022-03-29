@@ -40,7 +40,7 @@ class NetworkSettings extends React.Component {
             borderBottom: '1px solid #E3E7EB',
             fontFamily: 'inter-medium',
             fontSize: '14px',
-          }} key={networkObj.chainId}>  <svg height="16px" width="26px" position="absolute" left="17px">
+          }} key={networkObj.chainId}>  <svg style={{ height: "16px", width: "26px", }}>
               <circle style={{ cx: '10' ,cy:"10", r:"6" , fill:networkObj.colorCode ? networkObj.colorCode : '#E58A0F' }} key={networkObj.isPermanent}/>
        </svg>  {networkObj.name}
             <img src={networkObj.isPermanent ? '/images/Assets/Lock.svg' : '/images/Assets/Delete.svg'}
