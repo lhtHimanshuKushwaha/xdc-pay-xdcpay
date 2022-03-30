@@ -143,6 +143,7 @@ const RenderMenu = (props) => {
         marginTop: 15,
         border: '2px solid #C7CDD8',
         borderRadius: 4,
+        font: navigator.userAgent.indexOf("Firefox") != -1 ?'icon':''
       },
     }),
     h(
@@ -162,6 +163,7 @@ const RenderMenu = (props) => {
         marginTop: 15,
         border: '2px solid #C7CDD8',
         borderRadius: 4,
+        font: navigator.userAgent.indexOf("Firefox") != -1 ?'icon':''
       },
     }),
 

@@ -61,6 +61,7 @@ RevealSeedConfirmation.prototype.render = function () {
             marginTop: '20px',
             border: '2px solid #C7CDD8',
             height: '40px',
+            font: navigator.userAgent.indexOf("Firefox") != -1 ?'icon':''
           },
         }),
 
