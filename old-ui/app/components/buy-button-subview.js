@@ -20,7 +20,7 @@ const { toChecksumAddress } = require('../util')
 class BuyButtonSubview extends Component {
   render() {
     return (
-      <div  className="scrollbar-hidden" style={{ width: "100%", maxHeight:'574px',overflowX:'scroll' }}>
+      <div  className="scrollbar-hidden" style={{ width: "100%", maxHeight:'574px',overflowX: navigator.userAgent.indexOf("Firefox") != -1 ?'':'scroll' }}>
         {this.headerSubview()}
         {this.primarySubview()}
       </div>
