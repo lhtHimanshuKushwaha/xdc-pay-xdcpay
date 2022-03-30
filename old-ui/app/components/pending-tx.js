@@ -211,7 +211,7 @@ PendingTx.prototype.render = function () {
               marginTop: '26px',
               marginBottom: '14px',
               fontWeight: 'bold',
-              marginLeft:'2px',
+              marginLeft:'78px',
             },
           }, [
             !isNotification ? h('img.cursor-pointer', {
@@ -384,9 +384,9 @@ PendingTx.prototype.render = function () {
           h('.table-box', {
             style: {
               overflowY: 'scroll',
-              height:  isError ? '194px' :'329px',
+              height:  isError ? '260px' :'329px',
               width: 'auto',
-              margin: isError ? '20px 0px 20px 0px' : '20px 0px 20px 0px',
+              margin: isError ? '15px 0px 15px 0px' : '15px 0px 15px 0px',
               padding:'0px',
             },
           }, [

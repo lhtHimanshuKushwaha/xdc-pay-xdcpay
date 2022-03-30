@@ -269,6 +269,16 @@ function reduceApp (state, action) {
         transForward: true,
         warning: null,
       })
+    
+      case actions.ExpandedSettings:
+        return extend(appState, {
+          currentView: {
+            name: 'expandedSettings',
+            context: appState.currentView.context,
+          },
+          transForward: true,
+          warning: null,
+        })
 
     case actions.SHOW_ADVSETTINGS_PAGE:
       return extend(appState, {
