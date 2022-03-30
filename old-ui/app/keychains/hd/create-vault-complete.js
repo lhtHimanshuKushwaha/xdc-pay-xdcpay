@@ -206,6 +206,8 @@ CreateVaultCompleteScreen.prototype.render = function () {
         h('img', {
         style:{
           marginRight: '12px',
+          width:'20px',
+          height:'21px',
         },
          src: "/images/Assets/Download.svg"}),
          h('div',{style: {
