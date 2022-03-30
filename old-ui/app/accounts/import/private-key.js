@@ -46,6 +46,7 @@ PrivateKeyImportView.prototype.render = function () {
           width: '100%',
           // marginTop: 12,
           border: '2px solid #C7CDD8',
+          font: navigator.userAgent.indexOf("Firefox") != -1 ?'icon':''
         },
       }),
 
