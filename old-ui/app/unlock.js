@@ -51,6 +51,7 @@ UnlockScreen.prototype.render = function () {
               width: '265px',
               height: '40px',
               border: '2px solid #C7CDD8',
+              font: navigator.userAgent.indexOf("Firefox") != -1 ?'icon':''
             },
             onKeyPress: this.onKeyPress.bind(this),
           }),  
