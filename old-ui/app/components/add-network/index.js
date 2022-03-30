@@ -66,8 +66,12 @@ export default class AddNetwork extends React.Component {
           return this.props.dispatch(actions.displayWarning('Invalid chainId'))
         } else {
           if (frequentRpcList && frequentRpcList.length) {
-            const isRPCAlreadyExists = frequentRpcList.find(netObj => netObj.rpcURL === rpcUrl)
+             const isRPCAlreadyExists = frequentRpcList.find(netObj => netObj.rpcURL === rpcUrl)
+             const isXDCNetworkExists = networkList.find(netObj => netObj.rpcURL === rpcUrl)
             if (isRPCAlreadyExists && !isToUpdate) {
+              return this.props.dispatch(actions.displayWarning('RPC Network already exists'))
+            }
+            if (isXDCNetworkExists && !isToUpdate) {
               return this.props.dispatch(actions.displayWarning('RPC Network already exists'))
             }
           }
