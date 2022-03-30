@@ -12,18 +12,18 @@ const AddNetworkComponent = (props) => {
         <img src="/images/Assets/BackArrow.svg" style={{marginLeft: '12px', cursor: 'pointer'}} onClick={onBackClick}/>
         <h2 style={{marginLeft: '88px', fontFamily: 'Inter-bold'}}>{`${viewNetworkObj ? 'View' : 'Add'} Network`}</h2>
       </div>
-      <div style={{margin: '18px 50px'}}>
-        <label className="word" style={{fontFamily: 'Inter-Medium'}}>{`${t('networkName')}`}</label>
-        <br/>
-        <div style={{marginBottom: '24px', border: '1px solid #C7CDD8', borderRadius: '4px', width: '265px'}}>
+      <div style={{margin: '20px 50px'}}>
+        <div className="word" style={{fontFamily: 'Inter-Medium',marginTop:"0px",marginBottom:"-5px"}}>{`${t('networkName')}`}</div>
+        
+        <div style={{marginBottom: '28px', border: '1px solid #C7CDD8', borderRadius: '4px', width: '265px'}}>
           <input disabled={isPermanentNetwork} className="input large-input" type="text" name="networkName"
                  value={networkName}
                  onChange={onStateChange} maxLength={24} style={{border: 'none', color: '#2A2A2A', width: '260px'}}/>
         </div>
-        <label className="word" style={{fontFamily: 'Inter-Medium'}}>New RPC URL</label>
-        <br/>
+        <div className="word" style={{fontFamily: 'Inter-Medium',marginTop:"0px",marginBottom:"-5px"}}>New RPC URL</div>
+        
         <div style={{
-          marginBottom: warningMsg ? '12px' : '24px',
+          marginBottom: "28px",
           border: '1px solid #C7CDD8',
           borderRadius: '4px',
           width: '265px',
@@ -32,28 +32,30 @@ const AddNetworkComponent = (props) => {
                  value={rpcUrl}
                  onChange={onStateChange} style={{border: 'none', color: '#2A2A2A', width: '260px'}}/>
         </div>
-        <label className="word" style={{fontFamily: 'Inter-Medium'}}>{`${t('chainID')}`}</label>
-        <br/>
-        <div style={{marginBottom: '24px', border: '1px solid #C7CDD8', borderRadius: '4px', width: '265px'}}>
+        <div className="word" style={{fontFamily: 'Inter-Medium',marginTop:"0px",marginBottom:"-5px"}}>{`${t('chainID')}`}</div>
+        
+        <div style={{marginBottom: '28px', border: '1px solid #C7CDD8', borderRadius: '4px', width: '265px'}}>
           <input disabled={isPermanentNetwork} className="input large-input" type="number"
                  style={{border: 'none', color: '#2A2A2A', width: '260px'}}
                  name="chainId" onChange={onStateChange} value={chainId}/>
         </div>
-        <label className="word" style={{fontFamily: 'Inter-Medium'}}>{`${t('currencySymbol')}`} </label>
-        <br/>
-        <div style={{marginBottom: '24px', border: '1px solid #C7CDD8', borderRadius: '4px', width: '265px'}}>
+        <div className="word" style={{fontFamily: 'Inter-Medium',marginTop:"0px",marginBottom:"-5px"}}>{`${t('currencySymbol')}`} </div>
+        
+        <div style={{marginBottom: '28px', border: '1px solid #C7CDD8', borderRadius: '4px', width: '265px'}}>
           <input disabled={isPermanentNetwork} className="input large-input" type="text"
                  style={{border: 'none', color: '#2A2A2A', width: '260px'}}
                  name="currencySymbol" onChange={onStateChange} value={currencySymbol}/>
         </div>
-        <label className="word" style={{fontFamily: 'Inter-Medium'}}>{`${t('blockExplorer')}`} </label>
-        <br/>
-        <div style={{marginBottom: '14px', border: '1px solid #C7CDD8', borderRadius: '4px', width: '265px'}}>
+        <div className="word" style={{fontFamily: 'Inter-Medium',marginTop:"0px",marginBottom:"-5px"}}>{`${t('blockExplorer')}`} </div>
+        
+        <div style={{marginBottom: '2px', border: '1px solid #C7CDD8', borderRadius: '4px', width: '265px'}}>
           <input disabled={isPermanentNetwork} className="input large-input" type="text"
                  style={{border: 'none', color: '#2A2A2A', width: '260px'}}
                  name="explorerLink" onChange={onStateChange} value={explorerLink}/>
         </div>
-        {warningMsg && <div className="error" style={{ margin: '-7px 0 7px 0 ',width:'265px' }}>{warningMsg}</div>}
+        <div style={{height:'45px',marginBottom:'2px'}}>
+          {warningMsg && <div className="error" style={{width:'265px' ,marginBottom:'0px'}}>{warningMsg}</div>}
+        </div>
         {isPermanentNetwork ? '' :
           <div style={{display: 'flex', justifyContent: 'space-between'}}>
             <div className="button" onClick={onBackClick}
