@@ -227,7 +227,7 @@ class AccountDropdowns extends Component {
               src="/images/Assets/Close.svg"
             />
           </div>
-          <DropdownMenuItem
+          {/* <DropdownMenuItem
             closeMenu={() => {
             }}
             onClick={() => {
@@ -253,7 +253,7 @@ class AccountDropdowns extends Component {
               src="/images/Assets/ConnectedSites.svg"
             />
            {`${t('connectedSites')}` } 
-          </DropdownMenuItem>
+          </DropdownMenuItem> */}
           <DropdownMenuItem
             closeMenu={() => {
             }}
