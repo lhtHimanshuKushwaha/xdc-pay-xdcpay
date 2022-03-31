@@ -27,6 +27,7 @@ const NoticeScreen = require('./components/notice')
 const generateLostAccountsNotice = require('../lib/lost-accounts-notice')
 // other views
 const ConfigScreen = require('./config')
+const ExpandedSettings = require('./expandViewSettings')
 const AddTokenScreen = require('./components/add-token')
 const ConfirmAddTokenScreen = require('./components/confirm-add-token')
 const RemoveTokenScreen = require('./remove-token')

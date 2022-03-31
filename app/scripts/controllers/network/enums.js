@@ -53,7 +53,7 @@ const DROPDOWN_XDC_TESTNET_DISPLAY_NAME = 'XDC Apothem Testnet'
 const DROPDOWN_XDC_DEVNET_DISPLAY_NAME = 'XDC Devnet'
 
 /* RPC Endpoints */
-// const XDC_RPC_ENDPOINT = 'https://rpc.xinfin.network'
+const XDC_RPC_FALLBACK_ENDPOINT = 'https://rpc.xinfin.network'
 // const XDC_TESTNET_RPC_ENDPOINT = 'https://rpc.apothem.network'
 const XDC_RPC_ENDPOINT = 'https://xdcpayrpc.blocksscan.io/'
 const XDC_TESTNET_RPC_ENDPOINT = 'https://apothemxdcpayrpc.blocksscan.io/'
@@ -75,6 +75,7 @@ const permanentNetworks = [
   {
     name: XDC_DISPLAY_NAME,
     rpcURL: XDC_RPC_ENDPOINT,
+    fallbackRpc: XDC_RPC_FALLBACK_ENDPOINT,
     chainId: XDC_CODE,
     currencySymbol: 'XDC',
     blockExplorer: XDC_BLOCK_EXPLORER_URL,
@@ -168,4 +169,5 @@ module.exports = {
   XDC_RPC_ENDPOINT,
   XDC_TESTNET_RPC_ENDPOINT,
   XDC_DEVNET_RPC_ENDPOINT,
+  XDC_RPC_FALLBACK_ENDPOINT,
 }
