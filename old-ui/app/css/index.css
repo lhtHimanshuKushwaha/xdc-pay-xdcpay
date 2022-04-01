@@ -62,49 +62,48 @@ html {
   }
 }
 
-.infoWidth{
+.infoWidth {
   max-width: none;
 }
 
-@media only screen and (max-width: 600px){
-.infoWidth{
-  max-width: 400px;
-}  
+@media only screen and (max-width: 600px) {
+  .infoWidth {
+    max-width: 400px;
+  }
 }
 
-.infoDesc{
- color: #848484;
- 
+.infoDesc {
+  color: #848484;
+
   height: 45px;
-   text-align: left; 
-   font-size: 12px; 
-   margin: 36px 0px;
-    line-height: 14px;
+  text-align: left;
+  font-size: 12px;
+  margin: 36px 0px;
+  line-height: 14px;
 }
 
-@media only screen and (max-width: 600px){
-  .infoDesc{
+@media only screen and (max-width: 600px) {
+  .infoDesc {
     color: #848484;
-    width: 300px; 
+    width: 300px;
     height: 45px;
-    text-align: left; 
-    font-size: 12px; 
+    text-align: left;
+    font-size: 12px;
     margin: 36px 0px;
     line-height: 14px;
   }
 }
-  .expandedUI{
- width: 60%;
- margin: auto;
+.expandedUI {
+  width: 60%;
+  margin: auto;
 }
 
 @media only screen and (max-width: 600px) {
-.expandedUI{
-width: 100%;
-margin: none;
+  .expandedUI {
+    width: 100%;
+    margin: none;
+  }
 }
-}
-
 
 .account-detail-section::-webkit-scrollbar {
   width: 0;
@@ -119,6 +118,10 @@ margin: none;
   background-color: darkgrey;
   outline: 1px solid slategrey;
 }
+.account-detail-section input::-ms-reveal,
+.account-detail-section input::-ms-clear {
+  display: none;
+}
 
 .app-root {
   overflow: hidden;
@@ -129,7 +132,7 @@ margin: none;
   display: flex;
   background: #ffffff;
   width: 100%;
-  overflow-y: auto;
+  /* overflow-y: auto; */
   justify-content: center;
 }
 
@@ -657,26 +660,24 @@ p.buy-option {
     /* position: absolute;
   left: 0;
   bottom: 180px; */
-    top: 229px;
+    top: 317px;
     right: 22px;
   }
 }
 .myAccountExpanded {
   top: 37px;
- right: 418px;
- 
+  right: 418px;
 }
 @media only screen and (max-width: 600px) {
-.myAccountExpanded {
- top: 345px;
- right: 23px;
-}
+  .myAccountExpanded {
+    top: 345px;
+    right: 23px;
+  }
 }
 
 .walletOptionsExpanded {
   top: 37px;
- right: 384px ;
- 
+  right: 384px;
 }
 @media only screen and (max-width: 600px) {
   .walletOptionsExpanded {
@@ -687,16 +688,16 @@ p.buy-option {
 
 .selectNetworkExpanded {
   top: 38px;
- left: 380px;
- width: 317px;
+  left: 380px;
+  width: 317px;
 }
 
 @media only screen and (max-width: 600px) {
-.selectNetworkExpanded {
-  top: 323px;
- left: 18px;
- width: 317px;
-}
+  .selectNetworkExpanded {
+    top: 323px;
+    left: 18px;
+    width: 317px;
+  }
 }
 
 .my-accounts-close-icon {
@@ -756,8 +757,8 @@ p.buy-option {
 }
 
 .selected-network {
-  width: 17px;
-  height: 17px;
+  width: 16.79px;
+  height: 16.79px;
   background-image: url(../images/Assets/Check-Blue.svg);
   position: absolute;
   object-fit: cover;
@@ -796,6 +797,11 @@ p.buy-option {
   margin-bottom: 24px;
   padding: 8px;*/
 }
+/*export page reveal passsword turn off*/
+.sizing-input input::-ms-reveal,
+.sizing-input input::-ms-clear {
+  display: none;
+}
 
 .sizing-input {
   font-size: 14px;
@@ -804,6 +810,7 @@ p.buy-option {
   border-radius: 3px;
   border: 1px solid #e2e2e2;
 }
+
 .editable-label {
   display: flex;
   margin-bottom: 10px;
@@ -830,6 +837,11 @@ p.buy-option {
 .unlock-screen input:-ms-input-placeholder {
   text-align: left;
   font-size: 14px;
+}
+/*Login page reveal passsword turn off*/
+.unlock-screen input::-ms-reveal,
+.unlock-screen input::-ms-clear {
+  display: none;
 }
 
 input.large-input,
@@ -1064,6 +1076,16 @@ input.large-input {
   font-size: 14px;
   border: 2px solid #c7cdd8;
   border-radius: 4px;
+}
+/* removing of inc. dec.button from field*/
+.send-screen input::-webkit-outer-spin-button,
+.send-screen input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* removing of inc. dec.button from field*/
+.send-screen input[type="number"] {
+  -moz-appearance: textfield;
 }
 
 .send-eth-container {
@@ -1622,44 +1644,43 @@ textarea[disabled] {
   cursor: pointer;
 }
 
-@media only screen and (max-width: 600px){
-.settings {
-  display: flex;
-  justify-content: space-between;
-  font-family: 'Inter-Medium';
-  align-items: center;
-  min-height: 20px;
-  padding: 13px 18px;
-  border-bottom: 1px solid #e3e7eb;
-  font-size: 14px;
-  color: #2a2a2a;
-  cursor: pointer;
-}
-}
-
-.arrowImage{
-  background-image: none;
-/* background-image:'/images/Assets/Arrow.svg' ; */
-}
-@media only screen and (max-width: 600px){
-  .arrowImage{
-    background-image: url("/images/Assets/Arrow.svg");
-
+@media only screen and (max-width: 600px) {
+  .settings {
+    display: flex;
+    justify-content: space-between;
+    font-family: "Inter-Medium";
+    align-items: center;
+    min-height: 20px;
+    padding: 13px 18px;
+    border-bottom: 1px solid #e3e7eb;
+    font-size: 14px;
+    color: #2a2a2a;
+    cursor: pointer;
   }
 }
 
-.settingsExpanded{
-display: flex;
-flex-direction: column;
- width: 20%; 
-border-right:1px solid #E3E7EB ; 
+.arrowImage {
+  background-image: none;
+  /* background-image:'/images/Assets/Arrow.svg' ; */
+}
+@media only screen and (max-width: 600px) {
+  .arrowImage {
+    background-image: url("/images/Assets/Arrow.svg");
+  }
 }
 
-@media only screen and (max-width: 600px){
-  .settingsExpanded{
-display: flex;
-flex-direction: column;
-width: 100%;
+.settingsExpanded {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  border-right: 1px solid #e3e7eb;
+}
+
+@media only screen and (max-width: 600px) {
+  .settingsExpanded {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
   }
 }
 .switch {
@@ -1814,16 +1835,42 @@ input:checked + .slider:before {
   height: 30px;
   margin-left: 11px;
 }
-
-/* Chrome, Safari, Edge, Opera */
-/*to hide up and down arrow in amount field in send.js file*/
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+/*import account and reveal page reveal passsword turn off IE*/
+.cover input::-ms-reveal,
+.cover input::-ms-clear {
+  display: none;
 }
 
-/* Firefox */
-input[type=number] {
-  -moz-appearance: textfield;
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+-webkit-appearance: none;
+margin: 0;
+}
+
+/*Sidebar Csss */
+
+.sidebar {
+  display:contents,
+}
+
+.sidebar a {
+  /* padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #818181; */
+  display: block;
+}
+
+.sidebar a:hover {
+  color: #f1f1f1;
+}
+
+.main {
+  margin-left: 160px; /* Same as the width of the sidenav */
+  padding: 0px 10px;
+}
+
+@media screen and (max-height: 600px) {
+  .sidebar {display: none;}
+  .sidebar a {font-size: 18px;}
 }

@@ -211,7 +211,7 @@ PendingTx.prototype.render = function () {
               marginTop: '26px',
               marginBottom: '14px',
               fontWeight: 'bold',
-              marginLeft:'2px',
+              marginLeft:'78px',
             },
           }, [
             !isNotification ? h('img.cursor-pointer', {
@@ -301,7 +301,7 @@ PendingTx.prototype.render = function () {
           h('.flex-row.flex-center', {
             style: {
               maxWidth: '100%',
-              padding: showRejectAll ? '0 0 8px 0' : '0 0 8px 0',
+              padding: showRejectAll ? '0' : '0',
               background: '#FFFFFF',
               position: 'relative',
             },
@@ -384,9 +384,10 @@ PendingTx.prototype.render = function () {
           h('.table-box', {
             style: {
               overflowY: 'scroll',
-              height:  isError ? '175px' :'329px',
-              width: 'fit-content',
-              margin: isError ? '0 0 19px 0' : 0,
+              height: dangerousGasLimit  ? (dangerousGasLimit && insufficientBalance) ? (insufficientBalance)? '220px':'288px': '260px' :(insufficientBalance)?'286px':'329px',
+              width: 'auto',
+              margin: '20px 0px 10px 0px' ,
+              padding:'0px',
             },
           }, [
 
@@ -416,6 +417,9 @@ PendingTx.prototype.render = function () {
             h('.cell.row', [
               h('.cell.label', { style: { marginTop: '20px' }, }, 'Gas Limit (Units)'),
               h('.cell.value', {
+                style: {
+                  width:'265px'
+                }
               }, [
                 h(BNInput, {
                   id: 'gas_limit',
@@ -443,6 +447,9 @@ PendingTx.prototype.render = function () {
             h('.cell.row', [
               h('.cell.label', { style: { marginTop: '20px' }, }, 'Gas Price (GWEI)'),
               h('.cell.value', {
+                style: {
+                width:'265px'
+              }
               }, [
                 h(BNInput, {
                   id: 'gas_price',
@@ -481,11 +488,12 @@ PendingTx.prototype.render = function () {
                 fontFamily: 'Inter-Regular',
               },
             }, [
-              h('.cell.label', 'Max Total'),
+              h('.cell.label',{ style: { marginTop: '20px' }, }, 'Max Total'),
               h('.cell.value', {
                 style: {
                   display: 'flex',
                   alignItems: 'center',
+                  width:'265px'
                 },
               }, [
                 h(EthBalance, {
@@ -672,7 +680,7 @@ PendingTx.prototype.miniAccountPanelForRecipient = function (isToken, tokensTran
                 background: '#F8F8F8',
                 border: '2px solid #C7CDD8',
                 borderRadius: '4px',
-                padding: '7px 10px',
+                padding: '8px 0px 0px 8px',
               },
             }, addressSummary(props.network, to, 10, 4, false)),
           // ]),

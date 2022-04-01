@@ -34,6 +34,8 @@ var actions = {
   goHome: goHome,
   goConfig: goConfig,
   GO_CONFIG: 'GO_CONFIG',
+  expandedSettings: expandedSettings,
+  ExpandedSettings: 'ExpandedSettings',
 
   // modal state
   MODAL_OPEN: 'UI_MODAL_OPEN',
@@ -443,6 +445,12 @@ function goHome () {
 function goConfig () {
   return {
     type: actions.GO_CONFIG,
+  }
+}
+
+function expandedSettings() {
+  return {
+    type: actions.ExpandedSettings,
   }
 }
 

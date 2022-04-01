@@ -24,7 +24,7 @@ class CustomDropDown extends React.Component {
           <img src="/images/Assets/DownArrow.svg"/>
         </div>
         {this.state.isOptionsVisible && options &&
-          <div className="custom-dropdown-options" style={{ overflowY: 'scroll',padding: ' 0 0 10px 0' }}>
+          <div className="custom-dropdown-options" style={{ overflowY: 'scroll'}}>
           {options.map((data, index) => {
             return (
               <span className="custom-dropdown-option" key={data.key}

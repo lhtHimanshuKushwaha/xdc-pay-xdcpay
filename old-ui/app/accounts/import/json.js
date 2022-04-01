@@ -19,7 +19,7 @@ class JsonImportSubview extends Component {
     const { error } = this.props
 
     return (
-      h('div', {
+      h('div.cover', {
         style: {
           display: 'flex',
           flexDirection: 'column',
@@ -50,6 +50,7 @@ class JsonImportSubview extends Component {
             width: '100%',
             marginTop: '25px',
             border: '2px solid #C7CDD8',
+            font: navigator.userAgent.indexOf("Firefox") != -1 ?'icon':''
           },
         }),
 

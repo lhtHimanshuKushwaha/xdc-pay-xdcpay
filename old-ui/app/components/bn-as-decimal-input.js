@@ -37,7 +37,7 @@ BnAsDecimalInput.prototype.render = function () {
 
   return (
     h('.flex-column', [
-      h('.flex-row', {
+      h('.flex-row .arrowrm', {
         style: {
           alignItems: 'flex-end',
           lineHeight: '13px',

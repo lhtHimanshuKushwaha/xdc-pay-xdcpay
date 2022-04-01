@@ -38,6 +38,7 @@ export default class AddNetwork extends React.Component {
   validateRPC = async (isToUpdate) => {
     this.props.dispatch(actions.displayWarning(''))
     const {frequentRpcList} = this.props
+    const networkList=this.props.metamask.networkList;
     const {rpcNetworkId, networkName, rpcUrl, chainId, currencySymbol, explorerLink} = this.state
     const networkId = rpcNetworkId || 'rpc_network_' + new Date().getTime()
     const rpcNetworkObj = {
@@ -65,11 +66,14 @@ export default class AddNetwork extends React.Component {
           return this.props.dispatch(actions.displayWarning('Invalid chainId'))
         } else {
           if (frequentRpcList && frequentRpcList.length) {
-            const isRPCAlreadyExists = frequentRpcList.find(netObj => netObj.rpcURL === rpcUrl)
+             const isRPCAlreadyExists = frequentRpcList.find(netObj => netObj.rpcURL === rpcUrl)
+             const isXDCNetworkExists = networkList.find(netObj => netObj.rpcURL === rpcUrl)
             if (isRPCAlreadyExists && !isToUpdate) {
               return this.props.dispatch(actions.displayWarning('RPC Network already exists'))
             }
-            
+            if (isXDCNetworkExists && !isToUpdate) {
+              return this.props.dispatch(actions.displayWarning('RPC Network already exists'))
+            }
           }
           this.props.dispatch(actions.setRpcTarget(rpcNetworkObj))
           !isToUpdate && this.props.dispatch(actions.addNetwork(rpcNetworkObj))
