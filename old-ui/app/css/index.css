@@ -660,7 +660,7 @@ p.buy-option {
     /* position: absolute;
   left: 0;
   bottom: 180px; */
-    top: 229px;
+    top: 317px;
     right: 22px;
   }
 }
@@ -1850,22 +1850,14 @@ margin: 0;
 /*Sidebar Csss */
 
 .sidebar {
-  height: 100%;
-  width: 240px;
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  background-color: #ffffff;
-  overflow-x: hidden;
-  border-right: 2px solid #bbbbbb;
-  padding-top: 16px;
+  display:contents,
 }
 
 .sidebar a {
-  padding: 6px 8px 6px 16px;
+  /* padding: 6px 8px 6px 16px;
   text-decoration: none;
   font-size: 20px;
-  color: #818181;
+  color: #818181; */
   display: block;
 }
 
@@ -1878,7 +1870,7 @@ margin: 0;
   padding: 0px 10px;
 }
 
-@media screen and (max-height: 450px) {
-  .sidebar {padding-top: 15px;}
+@media screen and (max-height: 600px) {
+  .sidebar {display: none;}
   .sidebar a {font-size: 18px;}
 }
