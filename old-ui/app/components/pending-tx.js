@@ -211,7 +211,7 @@ PendingTx.prototype.render = function () {
               marginTop: '26px',
               marginBottom: '14px',
               fontWeight: 'bold',
-              marginLeft:'78px',
+              marginLeft: !isNotification ? '': '78px',
             },
           }, [
             !isNotification ? h('img.cursor-pointer', {

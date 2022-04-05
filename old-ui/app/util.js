@@ -304,17 +304,17 @@ function shortenBalance (balance, decimalsToKeep = 1) {
   var truncatedValue
 
   var convertedBalance = parseFloat(balance)
-  if (convertedBalance >= 999999 && convertedBalance < 999999999) {
+  if (convertedBalance >= 1000000 && convertedBalance < 999999999) {
     truncatedValue = (parseFloat(balance) / 1000000).toFixed(decimalsToKeep)
     return `${truncatedValue}M`
-  } else if (convertedBalance >= 999 && convertedBalance < 999999) {
+  } else if (convertedBalance >= 10000 && convertedBalance < 999999) {
     truncatedValue = (parseFloat(balance) / 1000).toFixed(decimalsToKeep)
     return `${truncatedValue}K`
-  } else if (convertedBalance >= 1000000000) {
+  } else if (convertedBalance >= 1000000000  && convertedBalance < 9999999999) {
     truncatedValue = (parseFloat(balance) / 1000000000).toFixed(decimalsToKeep)
     return `${truncatedValue}B`
-  }else if (convertedBalance >= 1000000000000) {
-    truncatedValue = (parseFloat(balance) / 1000000000).toFixed(decimalsToKeep)
+  }else if (convertedBalance >= 1000000000000  && convertedBalance < 9999999999999) {
+    truncatedValue = (parseFloat(balance) / 1000000000000).toFixed(decimalsToKeep)
     return `${truncatedValue}T`
   } else if (convertedBalance === 0) {
     return '0'
