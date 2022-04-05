@@ -36,6 +36,8 @@ const {
   XDC_RPC_ENDPOINT,
   XDC_TESTNET_RPC_ENDPOINT,
   XDC_DEVNET_RPC_ENDPOINT,
+  XDC_CODE,
+  XDC_RPC_FALLBACK_ENDPOINT,
 } = require('./enums')
 const INFURA_PROVIDER_TYPES = [ROPSTEN, RINKEBY, KOVAN, MAINNET]
 
@@ -106,7 +108,11 @@ module.exports = class NetworkController extends EventEmitter {
     }
     const ethQuery = new EthQuery(this._provider)
     ethQuery.sendAsync({ method: 'net_version' }, (err, network) => {
-      if (err) return this.setNetworkState('loading')
+      if (err && type === XDC ) {
+        network = XDC_CODE.toString()
+        this._configureStandardProvider({rpcUrl : XDC_RPC_FALLBACK_ENDPOINT})
+       }
+      else if(err) return this.setNetworkState('loading')
       const targetHost = parse(rpcTarget, true).host
       const classicHost = parse(ethNetProps.RPCEndpoints(CLASSIC_CODE)[0], true).host
       if (type === CLASSIC || targetHost === classicHost) {
