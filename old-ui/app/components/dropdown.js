@@ -17,7 +17,7 @@ class Dropdown extends Component {
     isOpen: PropTypes.bool.isRequired,
     onClick: PropTypes.func.isRequired,
     children: PropTypes.node,
-    style: PropTypes.object.isRequired,
+    style: PropTypes.object,
     className: PropTypes.string,
     onClickOutside: PropTypes.func,
     innerStyle: PropTypes.object,

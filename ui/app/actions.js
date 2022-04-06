@@ -476,7 +476,7 @@ function tryUnlockMetamask (password) {
         return forceUpdateMetamaskState(dispatch)
       })
       .catch((err) => {
-        log.error(err)
+        // log.error(err)
         return Promise.reject(err)
       })
       .then(() => {
