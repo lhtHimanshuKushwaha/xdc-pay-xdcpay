@@ -91,10 +91,10 @@ class NetworksMenu extends Component {
     }
 
     return _networks
-      .map((networkObj) => {
+      .map((networkObj,index) => {
         return (
           <DropdownMenuItem
-            key={networkObj.providerName}
+            key={index}
             closeMenu={() => this.props.updateNetworksMenuOpenState(!isOpen)}
             onClick={() => onNetworkClicked(networkObj)}
             style={{

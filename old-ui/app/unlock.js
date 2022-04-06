@@ -103,7 +103,7 @@ UnlockScreen.prototype.onSubmit = async function (event) {
   try {
     await this.props.dispatch(actions.tryUnlockMetamask(password))
   } catch (e) {
-    log.error(e)
+    // log.error(e)
   }
 }
 
