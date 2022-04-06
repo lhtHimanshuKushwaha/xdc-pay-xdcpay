@@ -686,6 +686,15 @@ p.buy-option {
   }
 }
 
+.image-display{display: none;}
+
+@media only screen and (max-width: 600px) {
+  .image-display {
+    display: contents;
+    cursor: pointer ;
+  }
+}
+
 .selectNetworkExpanded {
   top: 38px;
   left: 380px;

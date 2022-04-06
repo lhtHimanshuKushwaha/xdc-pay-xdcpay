@@ -20,7 +20,6 @@ class NetworksMenu extends Component {
   render () {
     const props = this.props
     const {networkList, frequentRpcList} = props
-    const rpcList = props.frequentRpcList
     const isOpen = props.isNetworkMenuOpen
     const networksView = this._renderNetworksView([...networkList, ...frequentRpcList])
 
