@@ -60,12 +60,12 @@ class GeneralSettings extends React.Component {
     return (
       <div className="flex-column flex-grow">
         {/* <LoadingIndicator/> */}
-        <div className="section-title flex-row" style={{paddingBottom: '17px'}}>
+        <div className="section-title flex-row" style={{paddingBottom: '17px',display:'flex', justifyContent: 'center',}}>
           <img src="/images/Assets/BackArrow.svg" className='image-display' style={{ marginLeft: '34px', }} onClick={() => {
           
             state.dispatch(actions.goConfig())
           }}/>
-          <h2 style={{ display:'flex', justifyContent: 'center', fontFamily: 'Inter-Bold' }}>General Settings</h2>
+          <h2 style={{  fontFamily: 'Inter-Bold' }}>General Settings</h2>
         </div>
         <div style={{borderTop: '1px solid #E3E7EB', padding: '20px 40px'}}>
           {currentConversionInformation(metamaskState, state,t)}
