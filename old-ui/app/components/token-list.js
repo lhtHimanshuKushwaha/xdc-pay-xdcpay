@@ -154,14 +154,18 @@ TokenList.prototype.render = function () {
 
   })
 
-  return h('.full-flex-height', [
+  return h('.full-flex-height',{
+      style: {
+        maxHeight:'230px',
+        overflowY:'auto'
+      },
+    }, [
     this.renderTokenStatusBar(),
 
     h('ol.full-flex-height.flex-column', {
       style: {
         display: 'flex',
         flexDirection: 'column',
-        padding: '0 0 27px 0'
       },
     }, [
       h('style', `

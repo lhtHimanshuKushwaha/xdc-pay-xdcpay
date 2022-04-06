@@ -989,7 +989,7 @@ input.large-input {
     overflow-x: hidden;
     /*overflow-y: auto;*/
     overflow-y: -moz-scrollbars-none;
-    max-height: 585px;
+    /* max-height: 585px; */
     flex-direction: inherit;
   }
 }
@@ -1841,16 +1841,16 @@ input:checked + .slider:before {
   display: none;
 }
 
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
--webkit-appearance: none;
-margin: 0;
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 /*Sidebar Csss */
 
 .sidebar {
-  display:contents,
+  display: contents;
 }
 
 .sidebar a {
@@ -1871,6 +1871,10 @@ margin: 0;
 }
 
 @media screen and (max-height: 600px) {
-  .sidebar {display: none;}
-  .sidebar a {font-size: 18px;}
+  .sidebar {
+    display: none;
+  }
+  .sidebar a {
+    font-size: 18px;
+  }
 }
