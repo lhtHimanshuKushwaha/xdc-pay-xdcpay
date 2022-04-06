@@ -75,7 +75,7 @@ class InitializeMenuScreen extends React.Component {
 
 const RenderMenu = (props) => {
   const {state, password, onPasswordChange, createVaultOnEnter, createNewVaultAndKeychain, showRestoreVault} = props
-  return h('.initialize-screen.flex-column.flex-center.flex-grow', [
+  return h('.initialize-screen.flex-column.flex-center.flex-grow.cover', [
     h('.logo'),
     h(
       'div',
