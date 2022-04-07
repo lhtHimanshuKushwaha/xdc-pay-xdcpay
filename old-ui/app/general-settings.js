@@ -60,12 +60,11 @@ class GeneralSettings extends React.Component {
     return (
       <div className="flex-column flex-grow">
         {/* <LoadingIndicator/> */}
-        <div className="section-title flex-row" style={{paddingBottom: '17px',display:'flex', justifyContent: 'center',}}>
-          <img src="/images/Assets/BackArrow.svg" className='image-display' style={{ marginLeft: '34px', }} onClick={() => {
-          
+        <div className="section-title flex-row" style={{paddingBottom: '17px'}}>
+          <img src="/images/Assets/BackArrow.svg" style={{marginLeft: '34px', cursor: 'pointer'}} onClick={() => {
             state.dispatch(actions.goConfig())
           }}/>
-          <h2 style={{  fontFamily: 'Inter-Bold' }}>General Settings</h2>
+          <h2 style={{ marginLeft: '88px', fontFamily: 'Inter-Bold' }}>General Settings</h2>
         </div>
         <div style={{borderTop: '1px solid #E3E7EB', padding: '20px 40px'}}>
           {currentConversionInformation(metamaskState, state,t)}
@@ -143,7 +142,10 @@ function currentLanguage (metamaskState, onLanguageSelect,t) {
             {currentLocaleName}
           </span>*/}
         </div>
-        <div className="settings-page__content-item">
+        <div className="settings-page__content-item" style={{
+          height: '40px',
+          width: '324',
+        }}>
           <div className="settings-page__content-item-col">
             <CustomDropDown
               placeholder={currentLocaleName}
