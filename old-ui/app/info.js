@@ -31,8 +31,10 @@ InfoScreen.prototype.render = function () {
     }, [
       
       // subtitle and nav
-      h('.section-title.flex-row.flex-center', [
-        h('img.cursor-pointer', {
+      h('.section-title.flex-row.flex-center', {
+        style: { display: 'flex', justifyContent: 'center', }
+      },[
+        h('.image-display', {
           src: "/images/Assets/BackArrow.svg",
           onClick: (event) => {
             state.dispatch(actions.goHome())
