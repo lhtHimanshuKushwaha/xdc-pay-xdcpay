@@ -8,8 +8,8 @@ const AddNetworkComponent = (props) => {
   const isPermanentNetwork = viewNetworkObj && viewNetworkObj.isPermanent
   return (
     <div className="flex-column flex-grow" style={{maxHeight: '585px', overflowY: 'auto'}}>
-      <div className="section-title flex-row" style={{borderBottom: '1px solid #E3E7EB', paddingBottom: '17px'}}>
-        <img src="/images/Assets/BackArrow.svg" style={{marginLeft: '12px', cursor: 'pointer'}} onClick={onBackClick}/>
+      <div className="section-title flex-row" style={{borderBottom: '1px solid #E3E7EB', paddingBottom: '17px',display:'flex', justifyContent: 'center',}}>
+        <img src="/images/Assets/BackArrow.svg" className='image-display' style={{marginLeft: '12px', cursor: 'pointer'}} onClick={onBackClick}/>
         <h2 style={{marginLeft: '88px', fontFamily: 'Inter-bold'}}>{`${viewNetworkObj ? 'View' : 'Add'} Network`}</h2>
       </div>
       <div style={{margin: '20px 50px'}}>
