@@ -91,6 +91,7 @@ function reduceApp (state, action) {
       contactAddress: null,
       contactName: null,
     },
+    screenKey: 'generalSettings',
 
   }, state.appState)
 
