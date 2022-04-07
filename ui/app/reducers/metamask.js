@@ -69,7 +69,7 @@ function reduceMetamask (state, action) {
       isValidAddress: false,
       networkList: permanentNetworks,
       currentViewNetwork: null,
-      expandUi: false,
+      screenKey: 'generalSettings',
     },
     state.metamask,
   )
