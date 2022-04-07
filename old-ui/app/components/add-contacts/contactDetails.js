@@ -49,7 +49,6 @@ class ContactDetails extends React.Component {
           }}
         >
           <img src="/images/Assets/BackArrow.svg"
-            className='image-display'
                style={{marginLeft: '17px', cursor: 'pointer'}}
                onClick={() => state.dispatch(actions.Contacts())}
           />

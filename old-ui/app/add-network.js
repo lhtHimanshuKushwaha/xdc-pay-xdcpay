@@ -22,8 +22,8 @@ export default class AddNetwork extends React.Component {
     const enteredRpcUrl = this.state.rpcUrl
     return (
       <div className="flex-column flex-grow" style={{maxHeight: '585px', overflowY: 'auto'}}>
-        <div className="section-title flex-row" style={{borderBottom: '1px solid #E3E7EB', paddingBottom: '17px',display:'flex', justifyContent: 'center',}}>
-          <img src="/images/Assets/BackArrow.svg" className='image-display' style={{marginLeft: '12px', cursor: 'pointer'}} onClick={() => {
+        <div className="section-title flex-row" style={{borderBottom: '1px solid #E3E7EB', paddingBottom: '17px'}}>
+          <img src="/images/Assets/BackArrow.svg" style={{marginLeft: '12px', cursor: 'pointer'}} onClick={() => {
             state.dispatch(actions.networkSettings())
           }}/>
           <h2 style={{marginLeft: '88px', fontFamily: 'Inter-bold'}}>Add Network</h2>
