@@ -155,10 +155,10 @@ TokenList.prototype.render = function () {
   })
 
   return h('.full-flex-height',{
-      style: {
-        maxHeight:'230px',
-        overflowY:'auto'
-      },
+      // style: {
+      //   maxHeight:'230px',
+      //   overflowY:'auto'
+      // },
     }, [
     this.renderTokenStatusBar(),
 
