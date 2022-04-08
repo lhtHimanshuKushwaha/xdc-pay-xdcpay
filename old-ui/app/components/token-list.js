@@ -166,6 +166,7 @@ TokenList.prototype.render = function () {
       style: {
         display: 'flex',
         flexDirection: 'column',
+        paddingBottom: '27px',
       },
     }, [
       h('style', `
