@@ -384,7 +384,7 @@ PendingTx.prototype.render = function () {
           h('.table-box', {
             style: {
               overflowY: 'scroll',
-              height: dangerousGasLimit  ? (dangerousGasLimit && insufficientBalance) ? (insufficientBalance)? '220px':'288px': '260px' :(insufficientBalance)?'286px':'329px',
+              height: !!('to' in this.props.txData.txParams) ? (dangerousGasLimit ? (dangerousGasLimit && insufficientBalance) ? (insufficientBalance)? '220px':'288px': '260px' :(insufficientBalance)?'286px':'329px'):(!isNotification)?(insufficientBalance)?'289px':'320px':'320px',
               width: 'auto',
               margin: '20px 0px 10px 0px' ,
               padding:'0px',
@@ -640,7 +640,7 @@ PendingTx.prototype.render = function () {
 }
 
 PendingTx.prototype.miniAccountPanelForRecipient = function (isToken, tokensTransferTo) {
-  const props = this.props
+  const props = this.props 
   const txData = props.txData
   const txParams = txData.txParams || {}
   const isContractDeploy = !('to' in txParams)
