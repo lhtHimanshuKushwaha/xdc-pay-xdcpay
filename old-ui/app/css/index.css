@@ -690,7 +690,7 @@ p.buy-option {
 
 @media only screen and (max-width: 600px) {
   .image-display {
-    display: contents;
+    display: block;
     cursor: pointer ;
   }
 }
@@ -1679,19 +1679,22 @@ textarea[disabled] {
 }
 
 .settingsExpanded {
-  display: flex;
-  flex-direction: column;
-  width: 20%;
-  border-right: 1px solid #e3e7eb;
-}
-
+  display: block;
+ }
+ 
+ .settingsCollapsed{
+   display: none;
+ }
 @media only screen and (max-width: 600px) {
   .settingsExpanded {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
+   display: none;
+  }
+  .settingsCollapsed{
+    display: block;
   }
 }
+
+
 .switch {
   position: relative;
   display: inline-block;
