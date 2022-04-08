@@ -32,7 +32,7 @@ class AlertSettings extends React.Component{
         <div className="flex-column flex-grow" style={{maxHeight: "585px",
         overflowY: "auto",}}>
             <div className="section-title flex-row"
-                 style={{ borderBottom: "1px solid #E3E7EB", paddingBottom: "17px",display:'flex', justifyContent: 'center', } }>
+                 style={{ borderBottom: "1px solid #E3E7EB", paddingBottom: "17px" } }>
             <img src="/images/Assets/BackArrow.svg" className='image-display' style={{marginLeft:'12px', cursor:'pointer'}} onClick={() => { state.dispatch(actions.goConfig()) }} />
             <h2 style={{ marginLeft:'88px', fontFamily:'inter-bold'}}>{`${t('alertSettings')}`}</h2>
             </div>

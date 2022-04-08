@@ -26,8 +26,7 @@ const AddContactComponent = (props) => {
           justifyContent: "space-between",
           borderBottom: "1px solid #E3E7EB",
           paddingBottom: "17px",
-          display: "flex",
-          justifyContent: "center",
+          display:'flex', justifyContent:'center'
         }}
       >
         <img

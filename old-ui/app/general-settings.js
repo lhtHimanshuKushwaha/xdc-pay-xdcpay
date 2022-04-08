@@ -60,20 +60,21 @@ class GeneralSettings extends React.Component {
     return (
       <div className="flex-column flex-grow">
         {/* <LoadingIndicator/> */}
-        <div className="section-title flex-row" style={{paddingBottom: '17px',display:'flex', justifyContent: 'center',}}>
-          <img src="/images/Assets/BackArrow.svg" className='image-display' style={{ marginLeft: '34px', }} onClick={() => {
+        <div className="section-title flex-row" style={{paddingBottom: '17px',display:'flex', justifyContent:'center'}}>
+          <img src="/images/Assets/BackArrow.svg" className='image-display' style={{ margin:'0px 84px 0px -88px'}}
+            onClick={() => {
           
             state.dispatch(actions.goConfig())
           }}/>
           <h2 style={{  fontFamily: 'Inter-Bold' }}>General Settings</h2>
         </div>
-        <div style={{borderTop: '1px solid #E3E7EB', padding: '20px 40px'}}>
+        <div style={{borderTop: '1px solid #E3E7EB', padding: '20px 20px'}}>
           {currentConversionInformation(metamaskState, state,t)}
         </div>
-        <div style={{borderTop: '1px solid #E3E7EB', padding: '20px 40px'}}>
+        <div style={{borderTop: '1px solid #E3E7EB', padding: '20px 20px'}}>
           {currentLanguage(metamaskState, onLanguageSelect,t)}
         </div>
-        <div style={{padding: '20px 40px', borderTop: '1px solid #E3E7EB'}}>
+        <div style={{padding: '20px 20px', borderTop: '1px solid #E3E7EB'}}>
           <div style={{color: '#2149B9', fontSize: '14px', fontFamily: 'Inter-Medium'}}>Hide Tokens Without Balance  
           </div>
           <br/>
