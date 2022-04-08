@@ -1,4 +1,4 @@
-// // /*Latest Settings UI **/
+//  /*Latest Settings UI **/
 
 // const inherits = require('util').inherits
 // const Component = require('react').Component
@@ -125,11 +125,11 @@
 //       }),
 //     ]),
 
-//         h('.settings', {onClick: () => state.dispatch(actions.alertSettings())}, ['Alert Settings',
-//         h('img', {
-//           src: '/images/Assets/Arrow.svg',
-//         }),
-//       ]),
+//       //   h('.settings', {onClick: () => state.dispatch(actions.alertSettings())}, ['Alert Settings',
+//       //   h('img', {
+//       //     src: '/images/Assets/Arrow.svg',
+//       //   }),
+//       // ]),
 
 //       h('.settings', {onClick: () => state.dispatch(actions.networkSettings())}, ['Network Settings',
 //       h('img', {
@@ -170,21 +170,7 @@ class ConfigScreen extends React.Component {
 
   render () {
     const state = this.props
-    // const metamaskState = state.metamask
-    // const {expandUi} = state
-    // const warning = state.warning
-
-    // const screenKey = state.screenKey;
-
-    // const url = state.dispatch(actions.generalSettings())
-    // class ConfigScreen extends React.Component {
-    //   static contextTypes = {
-    //     t: PropTypes.func,
-    //   }
-    //   render() {
-    //     const {t} = this.context
-    console.log(this.state.selectedComponent, 'start')
-    return (
+     return (
       <div
         className="sidebar"
         style={{
