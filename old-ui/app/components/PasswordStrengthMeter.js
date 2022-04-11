@@ -47,14 +47,14 @@ class PasswordStrengthMeter extends Component {
         <label
           className="password-strength-meter-label"
         >
-          {password && password.trim().length !== 0 && (
+          
             <div style={{
               display: 'flex', justifyContent: 'space-between',
             }}>
-              <div style={{fontSize: '10px', color: '#9FA9BA'}}>Password strength</div>
-              <div style={{fontSize: '10px', color: '#2A2A2A'}}> {this.createPasswordLabel(testedResult)}</div>
+              <div style={{fontSize: '10px', color: '#9FA9BA'}}>Password strength</div>{password && password.trim().length !== 0 && (
+              <div style={{fontSize: '10px', color: '#2A2A2A'}}> {this.createPasswordLabel(testedResult)}</div>)}
             </div>
-          )}
+          
         </label>
       </div>
     )
