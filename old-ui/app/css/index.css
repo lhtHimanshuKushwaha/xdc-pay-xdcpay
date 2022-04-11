@@ -660,10 +660,19 @@ p.buy-option {
     /* position: absolute;
   left: 0;
   bottom: 180px; */
-    top: 317px;
+    top: 272px;
     right: 22px;
   }
 }
+
+/* .expandedViewOption{
+  display: none;
+}
+@media only screen and (max-width: 600px) {
+  .expandedViewOption{
+    display:flex;
+  }
+} */
 .myAccountExpanded {
   top: 37px;
   right: 418px;
