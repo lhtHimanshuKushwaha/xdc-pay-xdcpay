@@ -46,11 +46,13 @@ class SecurityAndPrivacySettings extends React.Component {
       >
         <div
           className="section-title flex-row"
-          style={{ borderBottom: "1px solid #E3E7EB", paddingBottom: "17px" }}
+          style={{ borderBottom: "1px solid #E3E7EB", paddingBottom: "17px", display: 'flex',justifyContent: 'center',
+      }}
         >
           <img
+            className="image-display"
             src="/images/Assets/BackArrow.svg"
-            style={{ marginLeft: "12px", cursor: "pointer" }}
+            style={{ marginLeft: "-30px", cursor: "pointer" }}
             onClick={() => {
               state.dispatch(actions.goConfig());
             }}

@@ -660,10 +660,19 @@ p.buy-option {
     /* position: absolute;
   left: 0;
   bottom: 180px; */
-    top: 317px;
+    top: 272px;
     right: 22px;
   }
 }
+
+/* .expandedViewOption{
+  display: none;
+}
+@media only screen and (max-width: 600px) {
+  .expandedViewOption{
+    display:flex;
+  }
+} */
 .myAccountExpanded {
   top: 37px;
   right: 418px;
@@ -690,7 +699,7 @@ p.buy-option {
 
 @media only screen and (max-width: 600px) {
   .image-display {
-    display: contents;
+    display: block;
     cursor: pointer ;
   }
 }
@@ -1679,19 +1688,22 @@ textarea[disabled] {
 }
 
 .settingsExpanded {
-  display: flex;
-  flex-direction: column;
-  width: 20%;
-  border-right: 1px solid #e3e7eb;
-}
-
+  display: block;
+ }
+ 
+ .settingsCollapsed{
+   display: none;
+ }
 @media only screen and (max-width: 600px) {
   .settingsExpanded {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
+   display: none;
+  }
+  .settingsCollapsed{
+    display: block;
   }
 }
+
+
 .switch {
   position: relative;
   display: inline-block;
@@ -1850,16 +1862,16 @@ input:checked + .slider:before {
   display: none;
 }
 
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
--webkit-appearance: none;
-margin: 0;
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 /*Sidebar Csss */
 
 .sidebar {
-  display:contents,
+  display: contents;
 }
 
 .sidebar a {
@@ -1880,6 +1892,10 @@ margin: 0;
 }
 
 @media screen and (max-height: 600px) {
-  .sidebar {display: none;}
-  .sidebar a {font-size: 18px;}
+  .sidebar {
+    display: none;
+  }
+  .sidebar a {
+    font-size: 18px;
+  }
 }
