@@ -64,6 +64,7 @@ EnsInput.prototype.render = function () {
         name: props.name,
         placeholder: props.placeholder,
         list: 'addresses',
+        autoComplete:'off',
         onChange: onInputChange.bind(this),
       }),
       // The address book functionality.
