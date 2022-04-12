@@ -38,6 +38,7 @@ const {
   XDC_TESTNET_FALLBACK_ENDPOINT,
   XDC_DEVNET_RPC_ENDPOINT,
   XDC_CODE,
+  XDC_TESTNET_CODE,
   XDC_RPC_FALLBACK_ENDPOINT,
 } = require('./enums')
 const INFURA_PROVIDER_TYPES = [ROPSTEN, RINKEBY, KOVAN, MAINNET]
@@ -114,7 +115,7 @@ module.exports = class NetworkController extends EventEmitter {
         this._configureStandardProvider({rpcUrl : XDC_RPC_FALLBACK_ENDPOINT})
       }
       else if (err && type === XDC_TESTNET) {
-        network = XDC_TESTNET.toString()
+        network = XDC_TESTNET_CODE.toString()
         this._configureStandardProvider({rpcUrl : XDC_TESTNET_FALLBACK_ENDPOINT})
       }
       else if(err) return this.setNetworkState('loading')
