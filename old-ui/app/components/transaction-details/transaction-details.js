@@ -15,12 +15,12 @@ class TransactionDetails extends React.Component {
 
   render() {
 
-    // function shorten(b, amountL = 7, /*amountR = 4,*/ stars = 3) {
-    //   return `${b.slice(0, amountL)}${'.'.repeat(stars)}${b.slice(
-    //     b.length - 4,
-    //     b.length,
-    //   )}`
-    // }
+    function shorten(b, amountL = 7, /*amountR = 4,*/ stars = 3) {
+      return `${b.slice(0, amountL)}${'.'.repeat(stars)}${b.slice(
+        b.length - 4,
+        b.length,
+      )}`
+    }
 
     
 
@@ -123,7 +123,7 @@ class TransactionDetails extends React.Component {
             <div>
               <div style={{ fontFamily: 'Inter-Medium', marginLeft: '30px', fontSize: '14px', color: '#1F1F1F' }}>Sent</div>
 
-              <div className='trasaction-details-from-to' style={{ display: 'flex' }}> {(checksumAddress)}
+              <div className='trasaction-details-from-to' style={{ display: 'flex' }}> {shorten(checksumAddress)}
                 <CopyButton value={checksumAddress} isWhite={true} />
               </div>
             </div>
@@ -135,10 +135,10 @@ class TransactionDetails extends React.Component {
         {/* flexbox */}
         <div className='flexbox'>
           <div className='trasaction-details-from-to'>From</div>
-          <div className='trasaction-details-from-to-accounts'>{(fromAdd)}</div>
+          <div className='trasaction-details-from-to-accounts'>{shorten(fromAdd)}</div>
           <img src="/images/Assets/DownArrow.svg" />
           <div className='trasaction-details-from-to'>To</div>
-          <div className='trasaction-details-from-to-accounts'>{(toAdd)}</div>
+          <div className='trasaction-details-from-to-accounts'>{shorten(toAdd)}</div>
         </div>
 
         {/* all trasaction details  */}
