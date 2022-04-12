@@ -91,16 +91,15 @@ SendTransactionScreen.prototype.render = function () {
       ]),
 
       // 'amount'
-      h('div',{style:{
+      h('div.sendExpandedUI',{style:{
         fontSize: '12px',
         fontFamily: 'Inter-Semibold',
         lineHeight: '25px',
-        marginLeft: '46px',
         marginTop: '15px',
       }},'Amount'),
-      h('section.flex-column.flex-center', {style:{
+      h('section.flex-column.flex-center.sendExpandedUI', {style:{
         width: '265px',
-        margin: '-5px 0 0 46px',
+        marginTop: '-5px',
       }},
       [
         h('input.large-input', {
@@ -118,12 +117,11 @@ SendTransactionScreen.prototype.render = function () {
       //
       // Optional Fields
       //
-      h('div', {
+      h('div.sendExpandedUI', {
         style: {
           fontSize: '12px',
           fontFamily: 'Inter-Semibold',
           lineHeight: '25px',
-          marginLeft: '46px',
           marginTop: '30px',
         },
       }, [
@@ -158,11 +156,11 @@ SendTransactionScreen.prototype.render = function () {
 
 
       // Send button
-      h('button', { style: {
+      h('button.sendExpandedUI', { style: {
         width: '265px',
         height: '40px',
         marginTop: '25px',
-        marginLeft: '46px',
+        
       },
         onClick: this.onSubmit.bind(this),
       }, 'Next'),
