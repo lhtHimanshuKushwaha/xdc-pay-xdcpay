@@ -96,12 +96,24 @@ html {
 .expandedUI {
   width: 60%;
   margin: auto;
+  box-shadow: rgb(0 0 0 / 15%) 0px 0px 11px;
 }
 
 @media only screen and (max-width: 600px) {
   .expandedUI {
     width: 100%;
     margin: none;
+    box-shadow: none;
+  }
+}
+
+.sendExpandedUI {
+margin-left: 445px;
+}
+
+@media only screen and (max-width: 600px) {
+  .sendExpandedUI {
+    margin-left: 46px;
   }
 }
 
@@ -1086,7 +1098,7 @@ input.large-input {
 } */
 
 .send-screen section {
-  margin: 10px 30px;
+  margin-top: 20px;
 }
 
 .send-screen input {
