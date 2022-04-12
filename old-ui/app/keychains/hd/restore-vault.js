@@ -47,7 +47,7 @@ class RestoreVaultScreen extends React.Component {
           marginTop: '-43px',
         }
       },
-        h('img', { style: { marginTop: '8px', marginLeft: '9px' }, src: "/images/Assets/xdc-icon-16X16.png" }),
+        h('img', { style: { marginTop: '8px', marginLeft: '9px' }, src: "/images/Assets/XDC-Icon-16X16.png" }),
       ),
       h('.initialize-screen.flex-column.flex-center.flex-grow.cover', {
         style: {
