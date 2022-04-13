@@ -131,7 +131,6 @@ SendTransactionScreen.prototype.render = function () {
           //   persistentFormId: 'tx-amount',
           // },
         }),
-<<<<<<< HEAD
       ]),
 
       //
@@ -143,23 +142,6 @@ SendTransactionScreen.prototype.render = function () {
           fontFamily: 'Inter-Semibold',
           lineHeight: '25px',
           marginTop: '30px',
-=======
-      ]
-    ),
-
-    //
-    // Optional Fields
-    //
-    h(
-      "div",
-      {
-        style: {
-          fontSize: "12px",
-          fontFamily: "Inter-Semibold",
-          lineHeight: "25px",
-          marginLeft: "46px",
-          marginTop: "30px",
->>>>>>> 00714cc32db65461112c6ad4aeeb7c6e43a095f8
         },
       },
       ["Transaction Note (optional)"]
