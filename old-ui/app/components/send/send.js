@@ -171,7 +171,6 @@ SendTransactionScreen.prototype.render = function () {
       }),
     ]),
 
-<<<<<<< HEAD
       // Send button
       h('button.sendExpandedUI', { style: {
         width: '265px',
@@ -179,18 +178,6 @@ SendTransactionScreen.prototype.render = function () {
         marginTop: '25px',
         
       },
-=======
-    // Send button
-    h(
-      "button",
-      {
-        style: {
-          width: "265px",
-          height: "40px",
-          marginTop: "25px",
-          marginLeft: "46px",
-        },
->>>>>>> 00714cc32db65461112c6ad4aeeb7c6e43a095f8
         onClick: this.onSubmit.bind(this),
       },
       "Next"
