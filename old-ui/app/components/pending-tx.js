@@ -472,10 +472,9 @@ PendingTx.prototype.render = function () {
                   width: "auto",
                   margin: "20px 0px 10px 0px",
                   padding: "0px",
-                  padding: "0px",
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
+                  // display: "flex",
+                  // flexDirection: "column",
+                  // alignItems: "center",
                 },
               },
               [
