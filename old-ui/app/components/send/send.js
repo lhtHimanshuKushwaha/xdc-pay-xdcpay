@@ -81,46 +81,28 @@ SendTransactionScreen.prototype.render = function () {
       }),
     ]),
 
-      
-      //
-      // Send Header
-      //
-
-      h(SendHeader, {
-        title: 'Send',
-      }),
-
-      //
-      // Sender Profile
-      //
-
-      h(SendProfile),
-
-
-      
-      // 'to' field
-      h('section.flex-row.flex-center', [
-        h(EnsInput, {
-          name: 'address',
-          placeholder: 'Wallet Address',
-          onChange: this.recipientDidChange.bind(this),
-          network,
-          identities,
-          addressBook,
-        }),
-      ]),
-
-      // 'amount'
-      h('div.sendExpandedUI',{style:{
-        fontSize: '12px',
-        fontFamily: 'Inter-Semibold',
-        lineHeight: '25px',
-        marginTop: '15px',
-      }},'Amount'),
-      h('section.flex-column.flex-center.sendExpandedUI', {style:{
-        width: '265px',
-        marginTop: '-5px',
-      }},
+    // 'amount'
+    h(
+      "div",
+      {
+        style: {
+          fontSize: "12px",
+          fontFamily: "Inter-Semibold",
+          lineHeight: "25px",
+          marginLeft: "46px",
+          marginTop: "15px",
+        },
+      },
+      "Amount"
+    ),
+    h(
+      "section.flex-column.flex-center",
+      {
+        style: {
+          width: "265px",
+          margin: "-5px 0 0 46px",
+        },
+      },
       [
         h("input.large-input", {
           name: "amount",
@@ -131,17 +113,21 @@ SendTransactionScreen.prototype.render = function () {
           //   persistentFormId: 'tx-amount',
           // },
         }),
-      ]),
+      ]
+    ),
 
-      //
-      // Optional Fields
-      //
-      h('div.sendExpandedUI', {
+    //
+    // Optional Fields
+    //
+    h(
+      "div",
+      {
         style: {
-          fontSize: '12px',
-          fontFamily: 'Inter-Semibold',
-          lineHeight: '25px',
-          marginTop: '30px',
+          fontSize: "12px",
+          fontFamily: "Inter-Semibold",
+          lineHeight: "25px",
+          marginLeft: "46px",
+          marginTop: "30px",
         },
       },
       ["Transaction Note (optional)"]
@@ -171,13 +157,16 @@ SendTransactionScreen.prototype.render = function () {
       }),
     ]),
 
-      // Send button
-      h('button.sendExpandedUI', { style: {
-        width: '265px',
-        height: '40px',
-        marginTop: '25px',
-        
-      },
+    // Send button
+    h(
+      "button",
+      {
+        style: {
+          width: "265px",
+          height: "40px",
+          marginTop: "25px",
+          marginLeft: "46px",
+        },
         onClick: this.onSubmit.bind(this),
       },
       "Next"
