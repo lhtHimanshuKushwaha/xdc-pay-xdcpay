@@ -6,6 +6,7 @@ const actions = require("../../../ui/app/actions");
 const ethUtil = require("ethereumjs-util");
 const connect = require("react-redux").connect;
 const CopyButton = require("./copy/copy-button");
+const ethers = require("ethers");
 
 module.exports = connect(mapStateToProps)(ExportAccountView);
 
@@ -163,18 +164,12 @@ ExportAccountView.prototype.render = function () {
   if (accountExported) {
     const plainKey = ethUtil.stripHexPrefix(accountDetail.privateKey);
     let parsedata, stringifydata;
-    if (
-      document.getElementById("exportAccount").value !== null &&
-      this.props.warning == null
-    ) {
       const input = document.getElementById("exportAccount").value;
-      var ethers = require("ethers");
       var wallet = new ethers.Wallet(accountDetail.privateKey);
       wallet.encrypt(input).then(function (json) {
         parsedata = JSON.parse(json);
         stringifydata = JSON.stringify(parsedata, null, 2);
       });
-    }
 
     return h(
       "div.privateKey",
