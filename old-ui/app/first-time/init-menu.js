@@ -80,7 +80,7 @@ class InitializeMenuScreen extends React.Component {
 
 const RenderMenu = (props) => {
   const {state, password, onPasswordChange, createVaultOnEnter, createNewVaultAndKeychain, showRestoreVault,warningUpdate} = props
-  return h('.initialize-screen.flex-column.flex-center.flex-grow.cover', [
+  return h('.initialize-screen.flex-column.flex-center.flex-grow', [
     h('.logo'),
     h(
       'div',
@@ -141,14 +141,13 @@ const RenderMenu = (props) => {
       type: 'password',
       id: 'password-box',
       placeholder: 'New Password (min 8 chars)',
-      onChange: (onPasswordChange,warningUpdate),
+      onChange: ((e)=>(onPasswordChange(e),warningUpdate(e))),
       style: {
         width: 265,
         height: 40,
         marginTop: 15,
         border: '2px solid #C7CDD8',
         borderRadius: 4,
-        font: navigator.userAgent.indexOf("Firefox") != -1 ?'icon':''
       },
     }),
     h(
@@ -162,14 +161,13 @@ const RenderMenu = (props) => {
       id: 'password-box-confirm',
       placeholder: 'Confirm Password',
       onKeyPress: createVaultOnEnter,
-      onChange: warningUpdate,
+      onChange: ((e)=>(warningUpdate(e))),
       style: {
         width: 265,
         height: 40,
         marginTop: 15,
         border: '2px solid #C7CDD8',
         borderRadius: 4,
-        font: navigator.userAgent.indexOf("Firefox") != -1 ?'icon':''
       },
     }),
 
