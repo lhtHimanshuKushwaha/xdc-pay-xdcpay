@@ -41,10 +41,9 @@ html {
   background-image: url(/images/Assets/Options.svg);
   width: 45px;
   height: 24px;
-  margin: -18px -379px 0 431px;
-  /* position: absolute;
-  top: 67px;
-  right: 10px; */
+  position: absolute;
+  top: 62px;
+  right: 23px;
   background-repeat: no-repeat;
   background-position: center;
 }
@@ -53,10 +52,9 @@ html {
     background-image: url(/images/Assets/Options.svg);
     width: 45px;
     height: 24px;
-    margin: -15px 0px 0 54px;
-    /* position: absolute;
-  top: 67px;
-  right: 10px; */
+    position: absolute;
+    top: 62px;
+    right: 0px;
     background-repeat: no-repeat;
     background-position: center;
   }
@@ -96,12 +94,26 @@ html {
 .expandedUI {
   width: 60%;
   margin: auto;
+  box-shadow: rgb(0 0 0 / 15%) 0px 0px 11px;
+  position: relative;
 }
 
 @media only screen and (max-width: 600px) {
   .expandedUI {
     width: 100%;
     margin: none;
+    box-shadow: none;
+    position: absolute;
+  }
+}
+
+.sendExpandedUI {
+margin-left: 445px;
+}
+
+@media only screen and (max-width: 600px) {
+  .sendExpandedUI {
+    margin-left: 46px;
   }
 }
 
@@ -704,6 +716,42 @@ p.buy-option {
   }
 }
 
+.addContactTitle{
+  display:flex; 
+  justify-content: center;
+}
+
+@media only screen and (max-width: 600px) {
+  .addContactTitle {
+    display:flex; 
+    justify-content: space-between;
+  }
+}
+
+.addNetworkTitle{
+  display:flex; 
+  justify-content: center;
+}
+
+@media only screen and (max-width: 600px) {
+  .addNetworkTitle {
+    display:flex;
+    justify-content: flex-start; 
+    
+  }
+}
+.addNetworkExpand{
+  display: grid;
+        justify-content: center;
+}
+
+@media only screen and (max-width: 600px) {
+  .addNetworkExpand {
+    display: block;
+    justify-content: flex-start;
+  }
+}
+
 .selectNetworkExpanded {
   top: 38px;
   left: 380px;
@@ -792,6 +840,15 @@ p.buy-option {
   content: url("../images/close.svg");
   width: 12px;
   height: 12px;
+}
+
+.titleAdd{
+  padding:0 35px 17px 532px ;
+}
+@media only screen and ( max-width: 600px ){
+  .titleAdd{
+    padding:0 0 0 0;
+  }
 }
 
 /* .section-title .fa-arrow-left { */
@@ -1086,7 +1143,7 @@ input.large-input {
 } */
 
 .send-screen section {
-  margin: 10px 30px;
+  margin-top: 20px;
 }
 
 .send-screen input {

@@ -147,11 +147,20 @@ App.prototype.render = function () {
   const confirmMsgTx = (props.currentView.name === 'confTx' && Object.keys(props.unapprovedTxs).length === 0)
 
   return (
-    h('.flex-column.full-height.expandedUI', {
-      style: {
+    h('div', { style: { height: '100%' } }, [
+      h('div', {
+        style: {
+          height: '118px',
+          position: 'absolute',
+          width: '100%',
+          backgroundColor: '#E3E7EB'
+        }
+      }),
+      h('.flex-column.full-height.expandedUI', {
+        style: {
         // Windows was showing a vertical scroll bar:
         overflow: 'hidden',
-        position: 'relative',
+        // position: 'relative',
         alignItems: 'center',
         background: (props.isUnlocked || props.currentView.name === 'restoreVault' || props.currentView.name === 'config') ? 'white' : '#ffffff',
       },
@@ -170,6 +179,7 @@ App.prototype.render = function () {
       }, [
         this.renderPrimary(),
       ]),
+    ]),
     ])
   )
 }
