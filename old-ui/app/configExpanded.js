@@ -4,8 +4,8 @@ import React from 'react'
 import GeneralSettings from '../../old-ui/app/general-settings'
 import AdvanceSettings from '../../old-ui/app/advance-settings'
 import SecurityAndPrivacySettings from './components/security-and-privacy/security-and-privacy'
-import AddContact from './components/add-contacts'
-import AddNetwork from './components/add-network'
+import Contacts from './Contacts'
+import NetworkSettings from './network-settings'
 import InfoScreen from './info'
 
 
@@ -87,14 +87,14 @@ export default class ConfigScreenExpanded extends React.Component {
             <div
               className="settings"
               id={'addContact'}
-              onClick={() => this.setState({selectedComponent: 'addContact'})}
+              onClick={() => this.setState({selectedComponent: 'Contacts'})}
             >
               <h2>Contacts</h2>
             </div>
             <div
               className="settings"
               id={'addNetwork'}
-              onClick={() => this.setState({selectedComponent: 'addNetwork'})}
+              onClick={() => this.setState({selectedComponent: 'NetworkSettings'})}
             >
               <h2>Network Settings</h2>
             </div>
@@ -120,8 +120,8 @@ export default class ConfigScreenExpanded extends React.Component {
           {this.state.selectedComponent === 'generalSettings' && <GeneralSettings/>}
           {this.state.selectedComponent === 'advanceSettings' && <AdvanceSettings/>}
           {this.state.selectedComponent === 'securityAndPrivacySettings' && <SecurityAndPrivacySettings/>}
-          {this.state.selectedComponent === 'addContact' && <AddContact/>}
-          {this.state.selectedComponent === 'addNetwork' && <AddNetwork/>}
+          {this.state.selectedComponent === 'Contacts' && <Contacts/>}
+          {this.state.selectedComponent === 'NetworkSettings' && <NetworkSettings/>}
           {this.state.selectedComponent === 'infoScreen' && <InfoScreen/>}
         </div>
       </div>
