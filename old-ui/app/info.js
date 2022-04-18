@@ -24,15 +24,15 @@ InfoScreen.prototype.render = function () {
     if (newWindow) newWindow.opener = null
   }
   return (
-    h('.flex-column.flex-grow', {
-      style: {
-        maxWidth: '400px',
-      },
+    h('.flex-column.flex-grow.infoWidth', {
+      // style: {
+      //   maxWidth: '400px',
+      // },
     }, [
       
       // subtitle and nav
-      h('.section-title.flex-row.flex-center', [
-        h('img.cursor-pointer', {
+     h('.section-title.flex-row.flex-center', [
+        h('img.cursor-pointer.image-display', {
           src: "/images/Assets/BackArrow.svg",
           onClick: (event) => {
             state.dispatch(actions.goHome())
@@ -61,7 +61,7 @@ InfoScreen.prototype.render = function () {
           h('.info', [
             h('div', { style: { fontSize: '12px', fontWeight: '600', }, }, 'XDCPay Version'),
             h('div', { style: { color: '#848484', fontSize: '12', }, }, `${version}`),
-            h('div', { style: { color: '#848484', width: '300px', height: '45px', textAlign: 'left', fontSize: '12', margin: '36px 0', lineHeight: '14px', }, }, 'The XDCPay is an extension for accessing XDC’s XDPoS enabled distributed applications, or “Dapps” in your browser!'),
+            h('.infoDesc','The XDCPay is an extension for accessing XDC’s XDPoS enabled distributed applications, or “Dapps” in your browser!'),
           ]),
           h('div', {style:{fontSize:'12',}},[
             h('div', { style: {fontWeight:'600', }, },'Link: '),
@@ -78,17 +78,18 @@ InfoScreen.prototype.render = function () {
             }, `Privacy Policy `),
             
           
-            // h('div', {
-            //   onClick: () => {
-            //     openInNewTab('https://github.com/XinFinOrg/XDCPay')
+            h('div', {
+              onClick: () => {
+                // openInNewTab('https://github.com/XinFinOrg/XDCPay')
+                openInNewTab('https://xinfin.org/')
               
-            //   },
-            //   style: {
-            //     marginBottom: '10px',
-            //     cursor: 'pointer',
-            //     color:'#2049B9',
-            //   },
-            // }, `Support Center`),
+              },
+              style: {
+                marginBottom: '10px',
+                cursor: 'pointer',
+                color:'#2049B9',
+              },
+            }, `Support Center`),
           
         
             h('div', {
@@ -106,7 +107,7 @@ InfoScreen.prototype.render = function () {
       
             h('div', {
               onClick: () => {
-                openInNewTab('https://xinfin.org/contactus')
+                openInNewTab('https://www.xdc.org/contact-us')
               
               },
               style: {

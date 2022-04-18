@@ -30,7 +30,6 @@ EthBalanceComponent.prototype.render = function () {
         height: '32px',
         width: '265px',
         padding: '10px',
-        marginBottom:'8px'
     },
     }, [
       h('div', {
@@ -50,7 +49,7 @@ EthBalanceComponent.prototype.renderBalance = function (value) {
   if (value === '...') return value
   var balanceObj = generateBalanceObject(value, shorten ? 1 : 3)
   var balance
-  var splitBalance = value.split(' ')
+  var splitBalance = value.split('')
   var ethNumber = splitBalance[0]
   var ethSuffix = splitBalance[1]
   const showFiat = 'showFiat' in props ? props.showFiat : true

@@ -35,14 +35,15 @@ class MainMenu extends Component {
             this.props.openMainMenu()
           }
         }}
-        style={{
-          position: 'absolute',
-          bottom: '18px',
-          width: '317px',
-          maxHeight: isOpen ? '186px' : '0px',
-          overflow: 'hidden',
-          marginLeft: '19px',
-        }}
+        // style={{
+        //   position: 'absolute',
+        //   bottom: '18px',
+        //   width: '317px',
+        //   maxHeight: isOpen ? '186px' : '0px',
+        //   overflow: 'hidden',
+        //   marginLeft: '19px',
+        // }}
+        className={"walletOptionsExpanded"}
       >
         <div className='wallet-options-list'>
           Wallet Options

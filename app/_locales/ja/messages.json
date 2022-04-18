@@ -260,7 +260,7 @@
     "message": "ガス料金"
   },
   "gasLimit": {
-    "message": "ガスリミット"
+    "message": "ガス制限（単位）"
   },
   "gasLimitCalculation": {
     "message": "ネットワークの成功率を基にして、ガスリミットを提案しています。"
@@ -762,5 +762,128 @@
   },
   "youSign": {
     "message": "署名しています。"
+  },
+  "yourPrivateSeedPhrase": {
+    "message": "パスワードを入力して、秘密のシードワードを取得します。"
+  },
+  "expandedView": {
+    "message": "拡大表示"
+  },
+  "viewOnBlockExplorer":{
+    "message": "ブロックエクスプローラーで表示"
+  },
+  "tokens":{
+    "message": "トークン"
+  },
+  "generalSettings":{
+    "message": "一般設定"
+  },
+  "hideTokensWithout":{
+    "message": "バランスの取れていないトークンを非表示にする"
+  },
+  "advanceSettings":{
+    "message": "高度な設定"
+  },
+  "securityandPrivacySettings":{
+    "message": "セキュリティとプライバシーの設定"
+  },
+  "autoLockTimer":{
+    "message": "オートロックタイマー"
+  },
+  "autoLockTimerDesc":{
+    "message": "ウォレットがロックされるまでのアイドル時間を分単位で設定します。"
+  },
+  "showIncomingTransactions":{
+    "message": "着信トランザクションを表示する"
+  },
+  "showIncomingTransactionsDesc":{
+    "message": "XDC Observatoryを使用して、トランザクションリストに着信トランザクションを表示するには、これを選択します"
+  },
+  "alertMsg" : {
+   "message" : "このアラートは、接続されているWeb3サイトを閲覧しているが、現在選択されているアカウントが接続されていない場合にポップアップに表示されます。"
+  },
+  "reveal":{
+    "message": "明らかな"
+  },
+  "contacts":{
+    "message": "連絡先"
+  },
+  "addContact":{
+    "message": "連絡先を追加"
+  },
+  "walletAddress":{
+    "message": "ウォレットアドレス"
+  },
+  "contactDetails":{
+    "message": "連絡先の詳細"
+  },
+  "userName":{
+    "message": "Nome utente"
+  },
+  "accountOptions": {
+    "message": "アカウントオプション"
+  },
+  "alertSettings":{
+    "message": "ユーザー名"
+  },
+  "unconnectedAccountWarning" :{
+   "message" : "接続されていないアカウントが選択されているWebサイトを閲覧する"
+  },
+  "networkSettings":{
+    "message": "ネットワーク設定"
+  },
+  "addNetwork":{
+    "message": "ネットワークを追加"
+  },
+  "networkName":{
+    "message": "ネットワーク名"
+  },
+  "chainID":{
+    "message": "チェーンID"
+  },
+  "currencySymbol":{
+    "message": "通貨記号（オプション）"
+  },
+  "blockExplorer":{
+    "message": "ブロックエクスプローラー（オプション）"
+  },
+  "Add":{
+    "message": "追加"
+  },
+  "Update":{
+    "message": "アップデート"
+  },
+  "About":{
+    "message": "約"
+  },
+  "Link":{
+    "message": "リンク"
+  },
+  "visitOurWebsite":{
+    "message": "当社のウェブサイトを訪問"
+  },
+  "contactUs":{
+    "message": "お問い合わせ"
+  },
+  "maxTransactionFee":{
+    "message": "最大取引手数料"
+  },
+  "Edit":{
+    "message": "編集"
+  },
+  "connectedSites":{
+    "message":"接続されたサイト"
+  },
+  "advancedGasControls": {
+    "message": "高度なガス制御"
+  },
+  "advancedGasControlsDesc" : {
+    "message":  "これを選択すると、送信画面と確認画面にガス価格と制限コントロールが直接表示されます。"
+  },
+  "infoDesc" : {
+    "message" : "XDCPayは、XDCのXDPoS対応の分散型アプリケーションまたはブラウザの「Dapps」にアクセスするための拡張機能です。"
+  },
+  "getYourSeedWords": {
+    "message": "パスワードを入力して、秘密のシードワードを取得します。"
   }
 }
