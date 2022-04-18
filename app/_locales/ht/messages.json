@@ -380,7 +380,7 @@
         "message": "Frè gaz"
     },
     "gasLimit": {
-        "message": "Limit gaz"
+        "message": "Limit gaz (Inite)"
     },
     "gasLimitCalculation": {
         "message": "Nou kalkile gaz limit sijere a ki baze sou pousantaj siksè rezo a."
@@ -766,11 +766,12 @@
     "reset": {
         "message": "Repwograme"
     },
+    
     "resetAccount": {
         "message": "Repwograme Kont"
     },
     "resetAccountDescription": {
-        "message": "Repwograme kont a netwaye tranzaksyon ou yo."
+        "message": "Reyajiste kont ou a pral efase istwa tranzaksyon ou a. Sa p ap chanje balans ki nan kont ou yo oswa mande pou ou re-antre fraz Rekiperasyon sekrè ou a."
     },
     "restoreFromSeed": {
         "message": "Restore kont?"
@@ -1031,7 +1032,7 @@
         "message": "State Logs"
     },
     "stateLogsDescription": {
-        "message": "State logs gen adrès kont piblik ou yo epi tranzaksyon ou te voye yo."
+        "message": "Jounal leta yo genyen adrès kont piblik ou yo ak tranzaksyon ki voye yo."
     },
     "stateLogError": {
         "message": "Erè nan retwouve State Logs yo."
@@ -1043,7 +1044,7 @@
         "message": "Te Soumèt"
     },
     "supportCenter": {
-        "message": "Vizite Sant Sipò Nou"
+        "message": "Sant sipò"
     },
     "symbolBetweenZeroTen": {
         "message": "Senbòl yo dwe ant 0 ak 10 karaktè."
@@ -1089,7 +1090,7 @@
         "message": "Total"
     },
     "transactions": {
-        "message": "tranzaksyon yo"
+        "message": "tranzaksyon"
     },
     "transactionConfirmed": {
         "message": "Tranzaksyon ou te konfime pou $2."
@@ -1233,5 +1234,122 @@
     },
     "yourPrivateSeedPhrase": {
         "message": "Seed fraz prive ou a"
-    }
+    },
+    "expandedView": {
+        "message": "View elaji"
+      },
+      "viewOnBlockExplorer":{
+        "message": "Gade sou Block Explorer"
+      },
+      "tokens":{
+        "message": "Tokens"
+      },
+      "generalSettings":{
+        "message": "Anviwònman Jeneral "
+      },
+      "hideTokensWithout":{
+        "message": "Kache marqueur san balans"
+      },
+      "advanceSettings":{
+        "message": "Anviwònman Avanse"
+      },
+      "securityandPrivacySettings":{
+        "message": "Anviwònman Sekirite ak Konfidansyalite"
+      },
+      "autoLockTimer":{
+        "message": "Revèy Auto-Lock"
+      },
+      "autoLockTimerDesc":{
+        "message": "Mete tan an san fè anyen konsa nan minit anvan bous la ap fèmen."
+      },
+      "showIncomingTransactions":{
+        "message": "Montre tranzaksyon k ap fèk ap rantre yo"
+      },
+      "showIncomingTransactionsDesc":{
+        "message": "Chwazi sa a pou itilize XDC Observatory pou montre tranzaksyon k ap fèk ap rantre yo nan lis tranzaksyon yo"
+      },
+      "alertMsg" : {
+       "message" : "This alert is shown in the popup when you are browsing a connected web3 site, but the currently selected account is not connected."
+      },
+      "reveal":{
+        "message": "Revele"
+      },
+      "contacts":{
+        "message": "Kontak"
+      },
+      "addContact":{
+        "message": "Ajoute kontak"
+      },
+      "walletAddress":{
+        "message": "Adrès bous"
+      },
+      "contactDetails":{
+        "message": "Detay kontak"
+      },
+      "userName":{
+        "message": "Non itilizatè"
+      },
+      "alertSettings":{
+        "message": "Anviwònman Alèt"
+      },
+      "unconnectedAccountWarning" :{
+       "message" : "Navige yon sit entènèt ak yon kont ki pa konekte."
+      },
+      "networkSettings":{
+        "message": "Anviwònman rezo"
+      },
+      "addNetwork":{
+        "message": "Ajoute rezo"
+      },
+      "networkName":{
+        "message": "Non rezo a"
+      },
+      "chainID":{
+        "message": "ID chèn"
+      },
+      "currencySymbol":{
+        "message": "Senbòl Lajan (Si ou vle)"
+      },
+      "blockExplorer":{
+        "message": "Block Explorer (Si ou vle)"
+      },
+      "Add":{
+        "message": "Ajoute"
+      },
+      "Update":{
+        "message": "Mizajou"
+      },
+      "About":{
+        "message": "Konsènan"
+      },
+      "Link":{
+        "message": "Link"
+      },
+      "visitOurWebsite":{
+        "message": "Vizite sit entènèt nou an"
+      },
+      "contactUs":{
+        "message": "Kontakte nou"
+      },
+      "maxTransactionFee":{
+        "message": "Max Frè Tranzaksyon"
+      },
+      "Edit":{
+        "message": "Edit"
+      },
+      "connectedSites":{
+        "message":"Sit Konekte"
+      },
+      "advancedGasControls": {
+        "message": "Kontwòl gaz avanse"
+      },
+      "advancedGasControlsDesc" : {
+        "message":  "Chwazi sa a pou montre pri gaz ak kontwòl limit dirèkteman sou ekran voye ak konfime."
+      },
+      "infoDesc" : {
+        "message" : "XDCPay a se yon ekstansyon pou jwenn aksè nan aplikasyon distribiye XDPoS ki pèmèt XDC oswa Dapps nan navigatè ou a!"
+      },
+      "getYourSeedWords": {
+        "message": "Jwenn mo semans sekrè ou lè w antre modpas ou."
+      }
 }

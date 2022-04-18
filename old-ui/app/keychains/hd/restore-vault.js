@@ -26,6 +26,11 @@ class RestoreVaultScreen extends React.Component {
     this.setState({password: e.target.value})
     this.setState({passwordStrength: checkPassword(e.target.value)})
   }
+  
+  warningUpdate=()=>{
+    this.warning=null
+    this.props.dispatch(actions.displayWarning(this.warning))
+  }
 
   render () {
 
@@ -47,9 +52,9 @@ class RestoreVaultScreen extends React.Component {
           marginTop: '-43px',
         }
       },
-        h('img', { style: { marginTop: '8px', marginLeft: '9px' }, src: "/images/Assets/xdc-icon-16X16.png" }),
+        h('img', { style: { marginTop: '8px', marginLeft: '9px' }, src: "/images/Assets/XDC-Icon-16X16.png" }),
       ),
-      h('.initialize-screen.flex-column.flex-center.flex-grow', {
+      h('.initialize-screen.flex-column.flex-center.flex-grow.cover', {
         style: {
           paddingLeft: '30px',
           paddingRight: '30px',
@@ -85,7 +90,7 @@ class RestoreVaultScreen extends React.Component {
         h('input.large-input', {
           type: 'password',
           id: 'password-box',
-          onChange: this.onPasswordChange,
+          onChange: (this.onPasswordChange,this.warningUpdate),
           placeholder: 'New Password (min 8 chars)',
           dataset: {
             persistentFormId: 'password',
@@ -95,6 +100,7 @@ class RestoreVaultScreen extends React.Component {
             height: '40px',
             marginTop: 20,
             border: '2px solid #C7CDD8',
+            font: navigator.userAgent.indexOf("Firefox") != -1 ?'icon':''
           },
         }),
 
@@ -113,11 +119,13 @@ class RestoreVaultScreen extends React.Component {
           dataset: {
             persistentFormId: 'password-confirmation',
           },
+          onChange: this.warningUpdate,
           style: {
             width: '265px',
             height: '40px',
             marginTop: 20,
             border: '2px solid #C7CDD8',
+            font: navigator.userAgent.indexOf("Firefox") != -1 ?'icon':''
           },
         }),
 
