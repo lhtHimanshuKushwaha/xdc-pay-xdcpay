@@ -21,12 +21,10 @@ const AddContactComponent = (props) => {
       style={{ maxHeight: "585px", overflowY: "auto" }}
     >
       <div
-        className="section-title flex-row"
+        className="section-title flex-row addContactTitle"
         style={{
-          justifyContent: "space-between",
           borderBottom: "1px solid #E3E7EB",
           paddingBottom: "17px",
-          display:'flex', 
         }}
       >
         <img
