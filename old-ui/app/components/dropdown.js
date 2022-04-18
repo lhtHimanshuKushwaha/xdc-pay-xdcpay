@@ -17,7 +17,8 @@ class Dropdown extends Component {
     isOpen: PropTypes.bool.isRequired,
     onClick: PropTypes.func.isRequired,
     children: PropTypes.node,
-    style: PropTypes.object.isRequired,
+    style: PropTypes.object,
+    className: PropTypes.string,
     onClickOutside: PropTypes.func,
     innerStyle: PropTypes.object,
     useCssTransition: PropTypes.bool,
@@ -29,6 +30,7 @@ class Dropdown extends Component {
       isOpen,
       onClickOutside,
       style,
+      className,
       innerStyle,
       children,
       useCssTransition,
@@ -36,7 +38,7 @@ class Dropdown extends Component {
     } = this.props
 
     const innerStyleDefaults = extend({
-      padding: '0',
+      padding: '0px 12px 0 0',
       background: 'transparent',
       // filter: 'contrast(0.6)',
       boxShadow: 'rgba(0, 0, 0, 0.15) 0px 2px 2px 2px',
@@ -50,11 +52,11 @@ class Dropdown extends Component {
       boxShadow: 'rgb(0 0 0 / 50%) 0px 0px 30px',
       overflowY: 'auto',
       transition: 'max-height 300ms ease-in-out',
-      marginLeft: '19px',
+      // marginLeft: '19px',
     }, style)
 
     return (
-      <div className="container">
+      <div className="container1">
         
 
       <MenuDroppo
@@ -63,7 +65,8 @@ class Dropdown extends Component {
         zIndex={11}
         constOverflow={constOverflow}
         onClickOutside={onClickOutside}
-        style={styleDefaults}
+          style={styleDefaults}
+          className={className}
         innerStyle={innerStyleDefaults}
         >
         <style>

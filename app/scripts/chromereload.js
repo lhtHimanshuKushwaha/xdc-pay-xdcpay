@@ -368,7 +368,7 @@ window.LiveReloadOptions = { host: 'localhost' };
           })(this),
           error: (function (_this) {
             return function (e) {
-              if (e instanceof ProtocolError) {
+              if (e) {
                 if (typeof console !== 'undefined' && console !== null) {
                   return console.log('' + e.message + '.')
                 }

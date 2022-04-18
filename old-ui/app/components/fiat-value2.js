@@ -14,6 +14,8 @@ class FiatValue extends Component {
       conversionRate = 0
     } else if (isDai) {
       conversionRate = 1
+    }else{
+      conversionRate = 1
     }
     const renderedCurrency = currentCurrency || ''
 

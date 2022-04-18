@@ -45,11 +45,13 @@ TransactionIcon.prototype.render = function () {
   }
 
   if (txParams.to) {
-    return h(Identicon, {
+    // return h('i.sent'
+     return h(Identicon, {
       diameter: 40,
       
       address: txParams.to || transaction.hash,
-    })
+    }
+    )
   } else {
     return h('i.contract-small', {
       style: {
