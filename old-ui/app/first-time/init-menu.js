@@ -28,10 +28,6 @@ class InitializeMenuScreen extends React.Component {
   showRestoreVault = () => {
     this.props.dispatch(actions.showRestoreVault())
   }
-  warningUpdate=()=>{
-    this.warning=null
-    this.props.dispatch(actions.displayWarning(this.warning))
-  }
 
   onPasswordChange = (e) => {
     this.setState({password: e.target.value})
@@ -72,14 +68,13 @@ class InitializeMenuScreen extends React.Component {
                   createVaultOnEnter={this.createVaultOnEnter}
                   showRestoreVault={this.showRestoreVault}
                   createNewVaultAndKeychain={this.createNewVaultAndKeychain}
-                  onPasswordChange={this.onPasswordChange}
-                  warningUpdate={this.warningUpdate}/>
+                  onPasswordChange={this.onPasswordChange}/>
     )
   }
 }
 
 const RenderMenu = (props) => {
-  const {state, password, onPasswordChange, createVaultOnEnter, createNewVaultAndKeychain, showRestoreVault,warningUpdate} = props
+  const {state, password, onPasswordChange, createVaultOnEnter, createNewVaultAndKeychain, showRestoreVault} = props
   return h('.initialize-screen.flex-column.flex-center.flex-grow.cover', [
     h('.logo'),
     h(
@@ -141,7 +136,7 @@ const RenderMenu = (props) => {
       type: 'password',
       id: 'password-box',
       placeholder: 'New Password (min 8 chars)',
-      onChange: (onPasswordChange,warningUpdate),
+      onChange: onPasswordChange,
       style: {
         width: 265,
         height: 40,
@@ -162,7 +157,6 @@ const RenderMenu = (props) => {
       id: 'password-box-confirm',
       placeholder: 'Confirm Password',
       onKeyPress: createVaultOnEnter,
-      onChange: warningUpdate,
       style: {
         width: 265,
         height: 40,
