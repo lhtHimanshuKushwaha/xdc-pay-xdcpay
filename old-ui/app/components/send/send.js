@@ -256,7 +256,7 @@ SendTransactionScreen.prototype.onSubmit = function () {
 
   if (txData.length > 0)
    {
-    message = "Give gas limit greater than or equals to 35000 to send transaction note. ";
+    message = "Keep your gas fees 35,000 or above to transact successfully. ";
     return this.props.dispatch(actions.displayWarning(message));
   }
 
