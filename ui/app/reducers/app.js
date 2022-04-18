@@ -91,6 +91,8 @@ function reduceApp (state, action) {
       contactAddress: null,
       contactName: null,
     },
+    screenKey: 'generalSettings',
+
   }, state.appState)
 
   let curPendingTxIndex = appState.currentView.pendingTxIndex || 0
@@ -268,6 +270,16 @@ function reduceApp (state, action) {
         transForward: true,
         warning: null,
       })
+    
+      case actions.ExpandedSettings:
+        return extend(appState, {
+          currentView: {
+            name: 'expandedSettings',
+            context: appState.currentView.context,
+          },
+          transForward: true,
+          warning: null,
+        })
 
     case actions.SHOW_ADVSETTINGS_PAGE:
       return extend(appState, {
@@ -1033,6 +1045,7 @@ function reduceApp (state, action) {
           name: 'transaction-details',
           context: appState.currentView.context,
         },
+        currentViewTransactionObj: action.value,
       })
     }
 
@@ -1056,14 +1069,14 @@ function reduceApp (state, action) {
         },
       })
 
-    case actions.TRANSACTION_DETAILS: {
-      return extend(appState, {
-        currentView: {
-          name: 'transaction-details',
-          context: appState.currentView.context,
-        },
-      })
-    }
+    // case actions.TRANSACTION_DETAILS: {
+    //   return extend(appState, {
+    //     currentView: {
+    //       name: 'transaction-details',
+    //       context: appState.currentView.context,
+    //     },
+    //   })
+    // }
 
     default:
       return appState

@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux'
 import Identicon from '../identicon'
-import { addressSummary } from '../../util'
+import { addressSummary , nameSummary} from '../../util'
 import EthBalance from '../eth-balance-send'
 import TokenBalance from '../token-balance-send'
 import { getMetaMaskAccounts } from '../../../../ui/app/selectors'
@@ -23,8 +23,9 @@ class SendProfile extends Component {
 			<div
 				className="account-data-subsection flex-column flex-grow"
 				style={{
-					marginLeft: '46px',
-					marginTop: '37px',
+					// marginLeft: '46px',
+					// marginTop: '37px',
+					margin: '37px auto 0 auto '
 				}}
 			>
 				{/* header - identicon + nav */}
@@ -54,7 +55,7 @@ class SendProfile extends Component {
 					borderRadius: '4px',
 					width:'265px',
 					height: '32px',
-					paddingLeft: '8px',
+					paddingLeft: '9px',
 					paddingTop: '4px',
 				}}>
 				<div className="flex-row" style={{ alignItems: 'flex-start' }} >
@@ -63,9 +64,9 @@ class SendProfile extends Component {
 						style={{
 							color: '#2A2A2A',
 							fontSize: '14px',
-							marginLeft: '-1px',
+							// marginLeft: '-1px',
 						}}
-					>{identity && identity.name}</div>
+					>{identity && nameSummary(identity.name)}</div>
 					{/* address and getter actions */}
 					<div
 						className="flex-row flex-center"
@@ -87,6 +88,7 @@ class SendProfile extends Component {
 					{isToken ? <TokenBalance token={token} /> : <EthBalance {...{
 							value: account && account.balance,
 							conversionRate,
+							shorten: true,
 							currentCurrency,
 							network,
 						}} />}

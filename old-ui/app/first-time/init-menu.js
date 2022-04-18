@@ -28,6 +28,10 @@ class InitializeMenuScreen extends React.Component {
   showRestoreVault = () => {
     this.props.dispatch(actions.showRestoreVault())
   }
+  warningUpdate=()=>{
+    this.warning=null
+    this.props.dispatch(actions.displayWarning(this.warning))
+  }
 
   onPasswordChange = (e) => {
     this.setState({password: e.target.value})
@@ -68,14 +72,15 @@ class InitializeMenuScreen extends React.Component {
                   createVaultOnEnter={this.createVaultOnEnter}
                   showRestoreVault={this.showRestoreVault}
                   createNewVaultAndKeychain={this.createNewVaultAndKeychain}
-                  onPasswordChange={this.onPasswordChange}/>
+                  onPasswordChange={this.onPasswordChange}
+                  warningUpdate={this.warningUpdate}/>
     )
   }
 }
 
 const RenderMenu = (props) => {
-  const {state, password, onPasswordChange, createVaultOnEnter, createNewVaultAndKeychain, showRestoreVault} = props
-  return h('.initialize-screen.flex-column.flex-center.flex-grow', [
+  const {state, password, onPasswordChange, createVaultOnEnter, createNewVaultAndKeychain, showRestoreVault,warningUpdate} = props
+  return h('.initialize-screen.flex-column.flex-center.flex-grow.cover', [
     h('.logo'),
     h(
       'div',
@@ -136,13 +141,14 @@ const RenderMenu = (props) => {
       type: 'password',
       id: 'password-box',
       placeholder: 'New Password (min 8 chars)',
-      onChange: onPasswordChange,
+      onChange: (onPasswordChange,warningUpdate),
       style: {
         width: 265,
         height: 40,
         marginTop: 15,
         border: '2px solid #C7CDD8',
         borderRadius: 4,
+        font: navigator.userAgent.indexOf("Firefox") != -1 ?'icon':''
       },
     }),
     h(
@@ -156,12 +162,14 @@ const RenderMenu = (props) => {
       id: 'password-box-confirm',
       placeholder: 'Confirm Password',
       onKeyPress: createVaultOnEnter,
+      onChange: warningUpdate,
       style: {
         width: 265,
         height: 40,
         marginTop: 15,
         border: '2px solid #C7CDD8',
         borderRadius: 4,
+        font: navigator.userAgent.indexOf("Firefox") != -1 ?'icon':''
       },
     }),
 

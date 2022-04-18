@@ -53,11 +53,11 @@ const DROPDOWN_XDC_TESTNET_DISPLAY_NAME = "XDC Apothem Testnet";
 const DROPDOWN_XDC_DEVNET_DISPLAY_NAME = "XDC Devnet";
 
 /* RPC Endpoints */
-// const XDC_RPC_ENDPOINT = 'https://rpc.xinfin.network'
-// const XDC_TESTNET_RPC_ENDPOINT = 'https://rpc.apothem.network'
-const XDC_RPC_ENDPOINT = "https://xdcpayrpc.blocksscan.io/";
-const XDC_TESTNET_RPC_ENDPOINT = "https://apothemxdcpayrpc.blocksscan.io/";
-const XDC_DEVNET_RPC_ENDPOINT = "https://devnetrpc.apothem.network";
+const XDC_RPC_FALLBACK_ENDPOINT = 'https://rpc.xinfin.network'
+const XDC_TESTNET_FALLBACK_ENDPOINT = 'https://rpc.apothem.network'
+const XDC_RPC_ENDPOINT = 'https://xdcpayrpc.blocksscan.io/'
+const XDC_TESTNET_RPC_ENDPOINT = 'https://apothemxdcpayrpc.blocksscan.io/'
+const XDC_DEVNET_RPC_ENDPOINT = 'https://devnetrpc.apothem.network'
 
 /* Block Explorer URLs */
 const XDC_BLOCK_EXPLORER_URL = "https://observer.xdc.org";
@@ -74,6 +74,7 @@ const permanentNetworks = [
   {
     name: XDC_DISPLAY_NAME,
     rpcURL: XDC_RPC_ENDPOINT,
+    fallbackRpc: XDC_RPC_FALLBACK_ENDPOINT,
     chainId: XDC_CODE,
     currencySymbol: "XDC",
     blockExplorer: XDC_BLOCK_EXPLORER_URL,
@@ -91,16 +92,16 @@ const permanentNetworks = [
     isPermanent: true,
     colorCode: "#2049B9",
   },
-  {
-    name: XDC_DEVNET_DISPLAY_NAME,
-    rpcURL: XDC_DEVNET_RPC_ENDPOINT,
-    chainId: XDC_DEVNET_CODE,
-    currencySymbol: "XDC",
-    blockExplorer: XDC_DEVNET_BLOCK_EXPLORER_URL,
-    providerType: XDC_DEVNET,
-    isPermanent: true,
-    colorCode: "#2049B9",
-  },
+  // {
+  //   name: XDC_DEVNET_DISPLAY_NAME,
+  //   rpcURL: XDC_DEVNET_RPC_ENDPOINT,
+  //   chainId: XDC_DEVNET_CODE,
+  //   currencySymbol: 'XDC',
+  //   blockExplorer: XDC_DEVNET_BLOCK_EXPLORER_URL,
+  //   providerType: XDC_DEVNET,
+  //   isPermanent: true,
+  //   colorCode: '#2049B9',
+  // },
   {
     name: "Localhost 8545",
     rpcURL: "https://localhost:8545",
@@ -167,5 +168,7 @@ module.exports = {
   permanentNetworks,
   XDC_RPC_ENDPOINT,
   XDC_TESTNET_RPC_ENDPOINT,
+  XDC_TESTNET_FALLBACK_ENDPOINT,
   XDC_DEVNET_RPC_ENDPOINT,
-};
+  XDC_RPC_FALLBACK_ENDPOINT,
+}
