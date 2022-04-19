@@ -55,7 +55,7 @@ EnsInput.prototype.render = function () {
         fontSize: '12px',
         fontFamily: 'Inter-Semibold',
         lineHeight: '15px',
-        marginTop: '31px',
+        marginTop: '25px',
     },
     }, [ 'Recipient Address',
       h('input.large-input', { style: {
