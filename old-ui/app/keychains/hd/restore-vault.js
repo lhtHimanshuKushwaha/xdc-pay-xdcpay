@@ -26,12 +26,11 @@ class RestoreVaultScreen extends React.Component {
     this.setState({password: e.target.value})
     this.setState({passwordStrength: checkPassword(e.target.value)})
   }
-  
+
   warningUpdate=()=>{
     this.warning=null
     this.props.dispatch(actions.displayWarning(this.warning))
   }
-
   render () {
 
 
@@ -90,7 +89,7 @@ class RestoreVaultScreen extends React.Component {
         h('input.large-input', {
           type: 'password',
           id: 'password-box',
-          onChange: (this.onPasswordChange,this.warningUpdate),
+          onChange: ((e)=>(this.onPasswordChange(e),this.warningUpdate(e))),
           placeholder: 'New Password (min 8 chars)',
           dataset: {
             persistentFormId: 'password',
@@ -114,12 +113,12 @@ class RestoreVaultScreen extends React.Component {
         h('input.large-input', {
           type: 'password',
           id: 'password-box-confirm',
+          onChange: ((e)=>(this.warningUpdate(e))),
           placeholder: 'Confirm Password',
           onKeyPress: this.createOnEnter.bind(this),
           dataset: {
             persistentFormId: 'password-confirmation',
           },
-          onChange: this.warningUpdate,
           style: {
             width: '265px',
             height: '40px',
