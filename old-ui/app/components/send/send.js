@@ -47,7 +47,6 @@ function SendTransactionScreen() {
 
 SendTransactionScreen.prototype.render = function () {
   this.persistentFormParentId = "send-tx-form";
-  const message="Give gas limit greater than or equals to 35000 to send transaction note. ";
   const props = this.props;
   const { network, identities, addressBook, error } = props;
 
