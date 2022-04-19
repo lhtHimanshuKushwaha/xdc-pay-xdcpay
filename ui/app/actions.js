@@ -34,6 +34,8 @@ var actions = {
   goHome: goHome,
   goConfig: goConfig,
   GO_CONFIG: 'GO_CONFIG',
+  expandedSettings: expandedSettings,
+  ExpandedSettings: 'ExpandedSettings',
 
   // modal state
   MODAL_OPEN: 'UI_MODAL_OPEN',
@@ -142,11 +144,13 @@ var actions = {
   LOCK_METAMASK: 'LOCK_METAMASK',
   UPDATE_GASFIELDS: 'UPDATE_GASFIELDS',
   UPDATE_TOKENSLIST: 'UPDATE_TOKENSLIST',
+  UPDATE_EXPANDEDUI: 'UPDATE_EXPANDEDUI',
   UPDATE_VALIDATION_NAME: 'UPDATE_VALIDATION_NAME',
   UPDATE_VALIDATION_ADDRESS: 'UPDATE_VALIDATION_ADDRESS',
   isValidName: isValidName,
   isValidAddress: isValidAddress,
   showTokens: showTokens,
+  expandedUi:expandedUi,
   showGasFields: showGasFields,
   tryUnlockMetamask: tryUnlockMetamask,
   lockMetamask: lockMetamask,
@@ -444,6 +448,12 @@ function goConfig () {
   }
 }
 
+function expandedSettings() {
+  return {
+    type: actions.ExpandedSettings,
+  }
+}
+
 // async actions
 
 function tryUnlockMetamask (password) {
@@ -466,7 +476,7 @@ function tryUnlockMetamask (password) {
         return forceUpdateMetamaskState(dispatch)
       })
       .catch((err) => {
-        log.error(err)
+        // log.error(err)
         return Promise.reject(err)
       })
       .then(() => {
@@ -1885,6 +1895,13 @@ function showTokens (newState) {
   }
 }
 
+function expandedUi(newState) {
+  return {
+    type: actions.UPDATE_EXPANDEDUI,
+    value: newState,
+  }
+}
+
 function isValidName (newState) {
   return {
     type: actions.UPDATE_VALIDATION_NAME,
@@ -2540,11 +2557,11 @@ function hideModal (payload) {
   }
 }
 
-function transactionDetails () {
-  return {
-    type: actions.TRANSACTION_DETAILS,
-  }
-}
+// function transactionDetails () {
+//   return {
+//     type: actions.TRANSACTION_DETAILS,
+//   }
+// }
 
 function showSidebar ({transitionName, type}) {
   return {

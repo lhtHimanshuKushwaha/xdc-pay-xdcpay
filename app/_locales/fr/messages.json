@@ -1152,7 +1152,7 @@
     "message": "Transaction mise à jour avec un prix de gaz de $1 sur $2."
   },
   "transactions": {
-    "message": "transactions"
+    "message": "Transactions"
   },
   "transactionError": {
     "message": "Erreur de Transaction. Une Exception a été rencontrée dans l'exécution du code du contrat."
@@ -1287,5 +1287,122 @@
   },
   "yourPrivateSeedPhrase": {
     "message": "Votre phrase Seed privée"
+  },
+  "expandedView": {
+    "message": "Vue élargie"
+  },
+  "accountOptions": {
+    "message": "Options de compte"
+  },
+  "viewOnBlockExplorer":{
+    "message": "Afficher sur l'explorateur de blocs"
+  },
+  "tokens":{
+    "message": "Jetons"
+  },
+  "generalSettings":{
+    "message": "réglages généraux "
+  },
+  "hideTokensWithout":{
+    "message": "Masquer les jetons sans solde"
+  },
+  "advanceSettings":{
+    "message": "Réglages avancés"
+  },
+  "securityandPrivacySettings":{
+    "message": "Security and Privacy Settings"
+  },
+  "autoLockTimer":{
+    "message": "Minuterie de verrouillage automatique"
+  },
+  "autoLockTimerDesc":{
+    "message": "Définissez le temps d'inactivité en minutes avant que le portefeuille ne soit verrouillé."
+  },
+  "showIncomingTransactions":{
+    "message": "Afficher les transactions entrantes"
+  },
+  "showIncomingTransactionsDesc":{
+    "message": "Sélectionnez cette option pour utiliser XDC Observatory afin d'afficher les transactions entrantes dans la liste des transactions."
+  },
+  "alertMsg" : {
+   "message" : "This alert is shown in the popup when you are browsing a connected web3 site, but the currently selected account is not connected."
+  },
+  "reveal":{
+    "message": "Révéler"
+  },
+  "contacts":{
+    "message": "Contacts"
+  },
+  "addContact":{
+    "message": "Ajouter le contact"
+  },
+  "walletAddress":{
+    "message": "Adresse du portefeuille"
+  },
+  "contactDetails":{
+    "message": "Détails du contact"
+  },
+  "userName":{
+    "message": "Nom d'utilisateur"
+  },
+  "alertSettings":{
+    "message": "Paramètres d'alerte"
+  },
+  "unconnectedAccountWarning" :{
+   "message" : "Cette alerte s'affiche dans la fenêtre contextuelle lorsque vous naviguez sur un site web3 connecté, mais que le compte actuellement sélectionné n'est pas connecté."
+  },
+  "networkSettings":{
+    "message": "Paramètres réseau"
+  },
+  "addNetwork":{
+    "message": "Ajouter un réseau"
+  },
+  "networkName":{
+    "message": "Nom de réseau"
+  },
+  "chainID":{
+    "message": "Identifiant de la chaîne"
+  },
+  "currencySymbol":{
+    "message": "Symbole monétaire (facultatif)"
+  },
+  "blockExplorer":{
+    "message": "Explorateur de blocs (facultatif)"
+  },
+  "Add":{
+    "message": "Ajouter"
+  },
+  "Update":{
+    "message": "Mettre à jour"
+  },
+  "About":{
+    "message": "Sur"
+  },
+  "Link":{
+    "message": "Lien"
+  },
+  "visitOurWebsite":{
+    "message": "Visitez notre site Internet"
+  },
+  "contactUs":{
+    "message": "Nous contacter"
+  },
+  "maxTransactionFee":{
+    "message": "Frais de transaction maximum"
+  },
+  "Edit":{
+    "message": "Éditer"
+  },
+  "connectedSites":{
+    "message":"Sites connectés"
+  },
+  "advancedGasControls": {
+    "message": "Contrôles de gaz avancés"
+  },
+  "advancedGasControlsDesc" : {
+    "message":  "Sélectionnez cette option pour afficher le prix du gaz et les contrôles de limite directement sur les écrans d'envoi et de confirmation."
+  },
+  "infoDesc" : {
+    "message" : "XDCPay est une extension permettant d'accéder aux applications distribuées XDPoS ou « Dapps » de XDC dans votre navigateur !"
   }
 }

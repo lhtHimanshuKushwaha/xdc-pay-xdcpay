@@ -302,7 +302,7 @@
     "message": "Комиссия за газ"
   },
   "gasLimit": {
-    "message": "Лимит газа"
+    "message": "Лимит газа (единицы)"
   },
   "gasLimitCalculation": {
     "message": "Мы расчитываем предлагаемый лимит газа на основании успешных ставок в сети."
@@ -763,7 +763,7 @@
     "message": "Журнал состояния"
   },
   "stateLogsDescription": {
-    "message": "Журнал состояния содержит ваши публичные адреса счетов и совершенные транзакции."
+    "message": "Журналы состояния содержат адреса ваших публичных аккаунтов и отправленные транзакции."
   },
   "stateLogError": {
     "message": "Ошибка при получении журнала состояния."
@@ -775,7 +775,7 @@
     "message": "Отправлена"
   },
   "supportCenter": {
-    "message": "Перейти в наш Центр поддержки"
+    "message": "Центр поддержки"
   },
   "symbolBetweenZeroTen": {
     "message": "Символ должен быть от 0 до 10 символов."
@@ -899,5 +899,131 @@
   },
   "youSign": {
     "message": "Вы подписываете"
+  },
+  "yourPrivateSeedPhrase": {
+    "message": "Twoja prywatna fraza seed"
+  },
+  "accountOptions":{
+    "message": "Настройки аккаунта"
+  },
+  "expandedView": {
+    "message": "Расширенный вид"
+  },
+  "viewOnBlockExplorer":{
+    "message": "Просмотр в обозревателе блоков"
+  },
+  "tokens":{
+    "message": "Жетоны"
+  },
+  "generalSettings":{
+    "message": "общие настройки"
+  },
+  "hideTokensWithout":{
+    "message": "Скрыть жетоны без остатка"
+  },
+  "advanceSettings":{
+    "message": "Расширенные настройки"
+  },
+  "securityandPrivacySettings":{
+    "message": "Настройки безопасности и конфиденциальности"
+  },
+  "autoLockTimer":{
+    "message": "Таймер автоблокировки"
+  },
+  "autoLockTimerDesc":{
+    "message": "Установите время простоя в минутах, прежде чем кошелек будет заблокирован."
+  },
+  "showIncomingTransactions":{
+    "message": "Показать входящие транзакции"
+  },
+  "showIncomingTransactionsDesc":{
+    "message": "Выберите это, чтобы использовать XDC Observatory для отображения входящих транзакций в списке транзакций."
+  },
+  "resetAccountDescription": {
+    "message": "Сброс вашей учетной записи очистит историю транзакций. Это не повлияет на баланс ваших учетных записей и не потребует повторного ввода секретной фразы восстановления."
+  },
+  "alertMsg" : {
+   "message" : "Это предупреждение отображается во всплывающем окне, когда вы просматриваете подключенный веб-сайт 3, но текущая выбранная учетная запись не подключена."
+  },
+  "reveal":{
+    "message": "Раскрыть"
+  },
+  "contacts":{
+    "message": "Контакты"
+  },
+  "addContact":{
+    "message": "Добавить контакт"
+  },
+  "walletAddress":{
+    "message": "Адрес кошелька"
+  },
+  "contactDetails":{
+    "message": "Контактная информация"
+  },
+  "userName":{
+    "message": "Имя пользователя"
+  },
+  "alertSettings":{
+    "message": "Настройки уведомлений"
+  },
+  "unconnectedAccountWarning" :{
+   "message" : "Просмотр веб-сайта с выбранной неподключенной учетной записью"
+  },
+  "networkSettings":{
+    "message": "Настройки сети"
+  },
+  "addNetwork":{
+    "message": "Добавить сеть"
+  },
+  "networkName":{
+    "message": "Имя сети"
+  },
+  "chainID":{
+    "message": "Идентификатор цепочки"
+  },
+  "currencySymbol":{
+    "message": "SСимвол валюты (необязательно)"
+  },
+  "blockExplorer":{
+    "message": "Обозреватель блоков (необязательно)"
+  },
+  "Add":{
+    "message": "Добавлять"
+  },
+  "Update":{
+    "message": "Обновлять"
+  },
+  "About":{
+    "message": "O"
+  },
+  "Link":{
+    "message": "Ссылка на сайт"
+  },
+  "visitOurWebsite":{
+    "message": "Посетите наш сайт"
+  },
+  "contactUs":{
+    "message": "Связаться с нами"
+  },
+  "maxTransactionFee":{
+    "message": "Максимальная комиссия за транзакцию"
+  },
+  "Edit":{
+    "message": "Редактировать"
+  },
+  "connectedSites":{
+    "message":"Подключенные сайты"
+  },
+  "advancedGasControls": {
+    "message": "Расширенный контроль газа"
+  },
+  "advancedGasControlsDesc" : {
+    "message":  "Выберите этот параметр, чтобы отображать элементы управления ценой и лимитами непосредственно на экранах отправки и подтверждения."
+  },
+  "infoDesc" : {
+    "message" : "XDCPay - это расширение для доступа к распределенным приложениям XDC с поддержкой XDPoS или «Dapps» в вашем браузере!"
+  },
+  "getYourSeedWords": {
+    "message": "Получите ваши секретные начальные слова, введя свой пароль."
   }
 }

@@ -410,7 +410,7 @@
     "message": "가스 수수료"
   },
   "gasLimit": {
-    "message": "가스 한도"
+    "message": "가스 한도(단위)"
   },
   "gasLimitCalculation": {
     "message": "네트워크 성공률을 기반으로 적합한 가스 한도를 계산합니다."
@@ -1046,7 +1046,7 @@
     "message": "상태 로그"
   },
   "stateLogsDescription": {
-    "message": "상태 로그에는 공개 계정 주소와 송신 트랜잭션 정보가 들어있습니다."
+    "message": "상태 로그에는 공개 계정 주소와 전송된 트랜잭션이 포함됩니다."
   },
   "stateLogError": {
     "message": "상태 로그 받기 실패."
@@ -1076,7 +1076,7 @@
     "message": "제출됨"
   },
   "supportCenter": {
-    "message": "지원 센터에 방문하기"
+    "message": "지원 센터"
   },
   "symbolBetweenZeroTen": {
     "message": "심볼은 0에서 10개 사이의 문자여야 합니다."
@@ -1257,5 +1257,122 @@
   },
   "youNeedToAllowCameraAccess": {
     "message": "이 기능을 사용하려면 카메라 접근을 허용해야 합니다."
+  },
+  "expandedView": {
+    "message": "확장 보기"
+  },
+  "viewOnBlockExplorer":{
+    "message": "블록 탐색기에서 보기"
+  },
+  "tokens":{
+    "message": "토큰"
+  },
+  "generalSettings":{
+    "message": "일반 설정"
+  },
+  "hideTokensWithout":{
+    "message": "잔액이 없는 토큰 숨기기"
+  },
+  "advanceSettings":{
+    "message": "고급 설정"
+  },
+  "securityandPrivacySettings":{
+    "message": "보안 및 개인 정보 설정"
+  },
+  "autoLockTimer":{
+    "message": "자동 잠금 타이머"
+  },
+  "autoLockTimerDesc":{
+    "message": "지갑이 잠기기 전에 유휴 시간을 분 단위로 설정하십시오."
+  },
+  "showIncomingTransactions":{
+    "message": "들어오는 거래 표시"
+  },
+  "showIncomingTransactionsDesc":{
+    "message": "XDC Observatory를 사용하여 트랜잭션 목록에 들어오는 트랜잭션을 표시하려면 선택하십시오."
+  },
+  "alertMsg" : {
+   "message" : "이 경고는 연결된 web3 사이트를 탐색 중일 때 팝업에 표시되지만 현재 선택된 계정이 연결되어 있지 않습니다."
+  },
+  "reveal":{
+    "message": "드러내다"
+  },
+  "contacts":{
+    "message": "콘택트 렌즈"
+  },
+  "addContact":{
+    "message": "주소록에 추가"
+  },
+  "walletAddress":{
+    "message": "지갑 주소"
+  },
+  "contactDetails":{
+    "message": "연락처 세부 정보"
+  },
+  "userName":{
+    "message": "사용자 이름"
+  },
+  "alertSettings":{
+    "message": "경고 설정"
+  },
+  "unconnectedAccountWarning" :{
+   "message" : "연결되지 않은 계정이 선택된 웹사이트 탐색"
+  },
+  "networkSettings":{
+    "message": "네트워크 설정"
+  },
+  "addNetwork":{
+    "message": "네트워크 추가"
+  },
+  "networkName":{
+    "message": "네트워크 이름"
+  },
+  "chainID":{
+    "message": "체인 ID"
+  },
+  "currencySymbol":{
+    "message": "통화 기호(선택 사항)"
+  },
+  "blockExplorer":{
+    "message": "블록 탐색기(선택 사항)"
+  },
+  "Add":{
+    "message": "추가하다"
+  },
+  "Update":{
+    "message": "업데이트"
+  },
+  "About":{
+    "message": "에 대한"
+  },
+  "Link":{
+    "message": "링크"
+  },
+  "visitOurWebsite":{
+    "message": "우리 홈페이지에 방문 해주세요"
+  },
+  "contactUs":{
+    "message": "문의하기"
+  },
+  "maxTransactionFee":{
+    "message": "최대 거래 수수료"
+  },
+  "Edit":{
+    "message": "편집하다"
+  },
+  "connectedSites":{
+    "message":"Siti collegati"
+  },
+  "advancedGasControls": {
+    "message": "Controlli avanzati del gas"
+  },
+  "advancedGasControlsDesc" : {
+    "message":  "Seleziona questa opzione per visualizzare il prezzo del gas e i controlli sui limiti direttamente nelle schermate di invio e conferma."
+  },
+  "infoDesc" : {
+    "message" : "XDCPay è un'estensione per accedere alle applicazioni distribuite abilitate XDPoS di XDC o Dapps nel tuo browser!"
+  },
+  "getYourSeedWords": {
+    "message": "Ottieni le tue parole chiave segrete inserendo la tua password."
   }
 }
