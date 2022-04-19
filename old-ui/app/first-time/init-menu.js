@@ -141,7 +141,7 @@ const RenderMenu = (props) => {
       type: 'password',
       id: 'password-box',
       placeholder: 'New Password (min 8 chars)',
-      onChange: (onPasswordChange,warningUpdate),
+      onChange: ((e)=>(onPasswordChange(e),warningUpdate(e))),
       style: {
         width: 265,
         height: 40,
@@ -162,7 +162,7 @@ const RenderMenu = (props) => {
       id: 'password-box-confirm',
       placeholder: 'Confirm Password',
       onKeyPress: createVaultOnEnter,
-      onChange: warningUpdate,
+      onChange: ((e)=>(warningUpdate(e))),
       style: {
         width: 265,
         height: 40,
