@@ -262,11 +262,11 @@ SendTransactionScreen.prototype.onSubmit = function () {
     return this.props.dispatch(actions.displayWarning(message));
   }
 
-  // if (txData.length > 0)
-  //  {
-  //   message = "Give gas limit greater than or equals to 35000 to send transaction note. ";
-  //   return this.props.dispatch(actions.displayWarning(message));
-  // }
+  if (txData.length > 0)
+   {
+    message = "Keep your gas fees 35,000 or above to transact successfully. ";
+    return this.props.dispatch(actions.displayWarning(message));
+  }
 
   // if (!isHex(ethUtil.stripHexPrefix(txData)) && txData) {
   //   message = 'Transaction data must be hex string.'
