@@ -80,7 +80,7 @@ class InitializeMenuScreen extends React.Component {
 
 const RenderMenu = (props) => {
   const {state, password, onPasswordChange, createVaultOnEnter, createNewVaultAndKeychain, showRestoreVault,warningUpdate} = props
-  return h('.initialize-screen.flex-column.flex-center.flex-grow', [
+  return h('.initialize-screen.flex-column.flex-center.flex-grow.cover', [
     h('.logo'),
     h(
       'div',
@@ -148,6 +148,7 @@ const RenderMenu = (props) => {
         marginTop: 15,
         border: '2px solid #C7CDD8',
         borderRadius: 4,
+        font: navigator.userAgent.indexOf("Firefox") != -1 ?'icon':''
       },
     }),
     h(
@@ -168,6 +169,7 @@ const RenderMenu = (props) => {
         marginTop: 15,
         border: '2px solid #C7CDD8',
         borderRadius: 4,
+        font: navigator.userAgent.indexOf("Firefox") != -1 ?'icon':''
       },
     }),
 

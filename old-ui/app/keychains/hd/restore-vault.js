@@ -51,9 +51,9 @@ class RestoreVaultScreen extends React.Component {
           marginTop: '-43px',
         }
       },
-        h('img', { style: { marginTop: '8px', marginLeft: '9px' }, src: "/images/Assets/xdc-icon-16X16.png" }),
+        h('img', { style: { marginTop: '8px', marginLeft: '9px' }, src: "/images/Assets/XDC-Icon-16X16.png" }),
       ),
-      h('.initialize-screen.flex-column.flex-center.flex-grow', {
+      h('.initialize-screen.flex-column.flex-center.flex-grow.cover', {
         style: {
           paddingLeft: '30px',
           paddingRight: '30px',
@@ -99,6 +99,7 @@ class RestoreVaultScreen extends React.Component {
             height: '40px',
             marginTop: 20,
             border: '2px solid #C7CDD8',
+            font: navigator.userAgent.indexOf("Firefox") != -1 ?'icon':''
           },
         }),
 
@@ -123,6 +124,7 @@ class RestoreVaultScreen extends React.Component {
             height: '40px',
             marginTop: 20,
             border: '2px solid #C7CDD8',
+            font: navigator.userAgent.indexOf("Firefox") != -1 ?'icon':''
           },
         }),
 
