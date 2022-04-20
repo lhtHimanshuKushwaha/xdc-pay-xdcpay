@@ -769,9 +769,6 @@
   "resetAccount": {
     "message": "Resetuj konto"
   },
-  "resetAccountDescription": {
-    "message": "Zresetowanie konta wyczyści Twoją historię transakcji."
-  },
   "restoreFromSeed": {
     "message": "Przywrócić konto?"
   },
