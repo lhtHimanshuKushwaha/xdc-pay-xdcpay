@@ -37,7 +37,7 @@ html {
   overflow: -moz-scrollbars-none;
 }
 
-/* .address-dropdown {
+.address-dropdown {
   background-image: url(/images/Assets/Options.svg);
   width: 45px;
   height: 24px;
@@ -58,17 +58,7 @@ html {
     background-repeat: no-repeat;
     background-position: center;
   }
-} */
-
-.address-dropdown {
-  background-image: url(/images/Assets/options.svg);
-  width: 45px;
-  height: 24px;
-  margin-top: -15px;
-  background-repeat: no-repeat;
-  background-position: center;
 }
-
 
 .infoWidth {
   max-width: none;
