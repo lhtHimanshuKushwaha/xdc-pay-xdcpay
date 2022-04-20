@@ -189,7 +189,7 @@ AccountDetailScreen.prototype.render = function () {
                   style: {
                     width: '8em',
                     display: 'inline-flex',
-                    margin: ' 0px 0px 15px 60px',
+                    margin: ' 0px 33px 15px 0',
                   },
                 }, [
                   h('span', {
