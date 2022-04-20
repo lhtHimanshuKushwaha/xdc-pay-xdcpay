@@ -44,9 +44,9 @@ function SendTransactionScreen() {
   PersistentForm.call(this);
 }
 
+
 SendTransactionScreen.prototype.render = function () {
   this.persistentFormParentId = "send-tx-form";
-
   const props = this.props;
   const { network, identities, addressBook, error } = props;
 
@@ -90,7 +90,7 @@ SendTransactionScreen.prototype.render = function () {
           fontFamily: "Inter-Semibold",
           lineHeight: "25px",
           marginLeft: "46px",
-          marginTop: "15px",
+          marginTop: "22px",
         },
       },
       "Amount"
@@ -119,36 +119,37 @@ SendTransactionScreen.prototype.render = function () {
     //
     // Optional Fields
     //
-    h(
-      "div",
-      {
-        style: {
-          fontSize: "12px",
-          fontFamily: "Inter-Semibold",
-          lineHeight: "25px",
-          marginLeft: "46px",
-          marginTop: "30px",
-        },
-      },
-      ["Transaction Note (optional)"]
-    ),
+    // h(
+    //   "div",
+    //   {
+    //     style: {
+    //       fontSize: "12px",
+    //       fontFamily: "Inter-Semibold",
+    //       lineHeight: "25px",
+    //       marginLeft: "46px",
+    //       marginTop: "30px",
+    //     },
+    //   },
+    //   ["Transaction Note (optional)"]
+    // ),
 
-    // 'data' field
-    h("section.flex-column.flex-center", [
-      h("input.large-input", {
-        name: "txData",
-        placeholder: "",
-        maxLength: 35,
-        style: {
-          width: "265px",
-          resize: "none",
-          marginTop: "-15px",
-        },
-        dataset: {
-          persistentFormId: "tx-data",
-        },
-      }),
-    ]),
+    // // 'data' field
+    // h("section.flex-column.flex-center", [
+    //   h("input.large-input", {
+    //     name: "txData",
+    //     placeholder: "",
+    //     maxLength: 35,
+    //     onChange: ((e)=>(this.displaywarning(e))),
+    //     style: {
+    //       width: "265px",
+    //       resize: "none",
+    //       marginTop: "-15px",
+    //     },
+    //     dataset: {
+    //       persistentFormId: "tx-data",
+    //     },
+    //   }),
+    // ]),
 
     // error message
     h("div", { style: { margin: "0 45px" } }, [
@@ -164,7 +165,7 @@ SendTransactionScreen.prototype.render = function () {
         style: {
           width: "265px",
           height: "40px",
-          marginTop: "25px",
+          marginTop: "65px",
           marginLeft: "46px",
         },
         onClick: this.onSubmit.bind(this),
@@ -191,6 +192,11 @@ SendTransactionScreen.prototype.recipientDidChange = function (
     recipient: recipient,
     nickname: nickname,
   });
+};
+
+SendTransactionScreen.prototype.displaywarning =function(){
+    let msg = "Give gas limit greater than or equals to 35000 to send transaction note. ";
+    this.props.dispatch(actions.displayWarning(msg))
 };
 
 SendTransactionScreen.prototype.onSubmit = function () {
@@ -229,7 +235,8 @@ SendTransactionScreen.prototype.onSubmit = function () {
   }
 
   const value = normalizeEthStringToWei(input);
-  const txData = document.querySelector('input[name="txData"]').value;
+  // const txData = document.querySelector('input[name="txData"]').value;
+  const txData = "";
   const balance = this.props.balance;
   if (value.gt(balance)) {
     message = "Insufficient funds.";
@@ -256,7 +263,7 @@ SendTransactionScreen.prototype.onSubmit = function () {
 
   if (txData.length > 0)
    {
-    message = "Give gas limit greater than or equals to 35000 to send transaction note. ";
+    message = "Keep your gas fees 35,000 or above to transact successfully. ";
     return this.props.dispatch(actions.displayWarning(message));
   }
 
