@@ -45,7 +45,7 @@ html {
   background-image: url(/images/Assets/Options.svg);
   width: 45px;
   height: 24px;
-  position: absolute;
+  position: initial;
   top: 62px;
   right: 23px;
   background-repeat: no-repeat;
@@ -64,6 +64,26 @@ html {
     background-position: center;
   }
 }
+
+
+/* .token-dropdown {
+  position: absolute;
+    min-width: 180px;
+    width: 317px;
+    bottom: 18px;
+    left: 20px;
+}
+
+@media only screen and (max-width: 600px) {
+  .token-dropdown {
+    position: absolute;
+    min-width: 180px;
+    width: 317px;
+    bottom: 18px;
+    left: 20px;
+  }
+} */
+
 
 .infoWidth {
   max-width: none;
@@ -688,7 +708,7 @@ p.buy-option {
     /* position: absolute;
   left: 0;
   bottom: 180px; */
-    top: 317px;
+    top: 276px;
     right: 22px;
   }
 }
