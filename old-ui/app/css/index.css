@@ -37,6 +37,10 @@ html {
   overflow: -moz-scrollbars-none;
 }
 
+.account-dropdown {
+  position: absolute !important;
+}
+
 .address-dropdown {
   background-image: url(/images/Assets/Options.svg);
   width: 45px;
@@ -47,12 +51,13 @@ html {
   background-repeat: no-repeat;
   background-position: center;
 }
+
 @media only screen and (max-width: 600px) {
   .address-dropdown {
     background-image: url(/images/Assets/Options.svg);
     width: 45px;
     height: 24px;
-    position: absolute;
+    position: initial;
     top: 62px;
     right: 0px;
     background-repeat: no-repeat;
@@ -91,6 +96,7 @@ html {
     line-height: 14px;
   }
 }
+
 .expandedUI {
   width: 60%;
   margin: auto;
@@ -108,7 +114,7 @@ html {
 }
 
 .sendExpandedUI {
-margin-left: 445px;
+  margin-left: 445px;
 }
 
 @media only screen and (max-width: 600px) {
@@ -130,6 +136,7 @@ margin-left: 445px;
   background-color: darkgrey;
   outline: 1px solid slategrey;
 }
+
 .account-detail-section input::-ms-reveal,
 .account-detail-section input::-ms-clear {
   display: none;
@@ -364,6 +371,7 @@ textarea.twelve-word-phrase1 {
   background: white;
   resize: none;
 }
+
 input.textarea.recipient-address {
   font-family: "Nunito Regular";
   width: 265px;
@@ -397,6 +405,7 @@ input.textarea.recipient-address {
   display: flex;
   justify-content: flex-end;
 }
+
 /*
 app sections
 */
@@ -459,6 +468,7 @@ app sections
   from {
     top: -50px;
   }
+
   to {
     top: 0px;
     transform: translateY(1);
@@ -548,6 +558,7 @@ p.buy-option {
   opacity: 0;
   transition: opacity 400ms ease-in, transform 400ms ease-in;
 }
+
 .lock.unlocked {
   transform: scale(1);
   opacity: 1;
@@ -559,15 +570,18 @@ p.buy-option {
   transform: scaleX(1) translateX(0);
   transition: transform 250ms ease-in;
 }
+
 .lock.unlocked .lock-top {
   transform: scaleX(-1) translateX(-12px);
   transition: transform 250ms ease-in;
 }
+
 .lock.unlocked:hover {
   border-radius: 4px;
   background: #e5e5e5;
   border: 1px solid #b1b1b1;
 }
+
 .lock.unlocked:active {
   background: #c3c3c3;
 }
@@ -620,10 +634,10 @@ p.buy-option {
 }
 
 @media (min--moz-device-pixel-ratio: 1.3),
-  (-o-min-device-pixel-ratio: 2.6/2),
-  (-webkit-min-device-pixel-ratio: 1.3),
-  (min-device-pixel-ratio: 1.3),
-  (min-resolution: 1.3dppx) {
+(-o-min-device-pixel-ratio: 2.6/2),
+(-webkit-min-device-pixel-ratio: 1.3),
+(min-device-pixel-ratio: 1.3),
+(min-resolution: 1.3dppx) {
   .logo {
     background-image: url(../images/Assets/XDCPay.png);
     background-size: 78px 92px;
@@ -647,6 +661,7 @@ p.buy-option {
   padding-top: 15px;
   padding-left: 114px;
 }
+
 .select-network-close-icon {
   margin-left: 86px;
   cursor: pointer;
@@ -667,6 +682,7 @@ p.buy-option {
   margin-top: 27px;
   margin-left: -281px;
 }
+
 @media only screen and (max-width: 600px) {
   .dropp {
     /* position: absolute;
@@ -689,6 +705,7 @@ p.buy-option {
   top: 37px;
   right: 418px;
 }
+
 @media only screen and (max-width: 600px) {
   .myAccountExpanded {
     top: 345px;
@@ -700,6 +717,7 @@ p.buy-option {
   top: 37px;
   right: 384px;
 }
+
 @media only screen and (max-width: 600px) {
   .walletOptionsExpanded {
     top: 393px;
@@ -707,42 +725,45 @@ p.buy-option {
   }
 }
 
-.image-display{display: none;}
+.image-display {
+  display: none;
+}
 
 @media only screen and (max-width: 600px) {
   .image-display {
     display: block;
-    cursor: pointer ;
+    cursor: pointer;
   }
 }
 
-.addContactTitle{
-  display:flex; 
+.addContactTitle {
+  display: flex;
   justify-content: center;
 }
 
 @media only screen and (max-width: 600px) {
   .addContactTitle {
-    display:flex; 
+    display: flex;
     justify-content: space-between;
   }
 }
 
-.addNetworkTitle{
-  display:flex; 
+.addNetworkTitle {
+  display: flex;
   justify-content: center;
 }
 
 @media only screen and (max-width: 600px) {
   .addNetworkTitle {
-    display:flex;
-    justify-content: flex-start; 
-    
+    display: flex;
+    justify-content: flex-start;
+
   }
 }
-.addNetworkExpand{
+
+.addNetworkExpand {
   display: grid;
-        justify-content: center;
+  justify-content: center;
 }
 
 @media only screen and (max-width: 600px) {
@@ -770,6 +791,7 @@ p.buy-option {
   margin-left: 95px;
   cursor: pointer;
 }
+
 .my-accounts-icon {
   margin-right: 10px;
 }
@@ -781,10 +803,12 @@ p.buy-option {
   padding-top: 15px;
   padding-left: 115px;
 }
+
 .wallet-options-close-icon {
   margin-left: 90px;
   cursor: pointer;
 }
+
 .wallet-options-icon {
   margin-left: 13px;
   margin-right: 8px;
@@ -797,10 +821,12 @@ p.buy-option {
   padding-top: 20px;
   padding-left: 109px;
 }
+
 .account-options-close-icon {
   margin-left: 86px;
   cursor: pointer;
 }
+
 .account-options-icon {
   margin-left: 13px;
   margin-right: 8px;
@@ -813,10 +839,12 @@ p.buy-option {
   padding-top: 15px;
   padding-left: 116px;
 }
+
 .token-options-close-icon {
   margin-left: 92px;
   cursor: pointer;
 }
+
 .token-options-icon {
   margin-left: 13px;
   margin-right: 13px;
@@ -842,12 +870,13 @@ p.buy-option {
   height: 12px;
 }
 
-.titleAdd{
-  padding:0 35px 17px 532px ;
+.titleAdd {
+  padding: 0 35px 17px 532px;
 }
-@media only screen and ( max-width: 600px ){
-  .titleAdd{
-    padding:0 0 0 0;
+
+@media only screen and (max-width: 600px) {
+  .titleAdd {
+    padding: 0 0 0 0;
   }
 }
 
@@ -872,6 +901,7 @@ p.buy-option {
   margin-bottom: 24px;
   padding: 8px;*/
 }
+
 /*export page reveal passsword turn off*/
 .sizing-input input::-ms-reveal,
 .sizing-input input::-ms-clear {
@@ -890,29 +920,35 @@ p.buy-option {
   display: flex;
   margin-bottom: 10px;
 }
+
 .editable-button {
   margin-left: 10px;
 }
+
 /* Webkit */
 .unlock-screen input::-webkit-input-placeholder {
   text-align: left;
   font-size: 14px;
 }
+
 /* Firefox 18- */
 .unlock-screen input:-moz-placeholder {
   text-align: left;
   font-size: 14px;
 }
+
 /* Firefox 19+ */
 .unlock-screen input::-moz-placeholder {
   text-align: left;
   font-size: 14px;
 }
+
 /* IE */
 .unlock-screen input:-ms-input-placeholder {
   text-align: left;
   font-size: 14px;
 }
+
 /*Login page reveal passsword turn off*/
 .unlock-screen input::-ms-reveal,
 .unlock-screen input::-ms-clear {
@@ -932,6 +968,7 @@ textarea.large-input {
 input.large-input {
   height: 32px;
 }
+
 /* input.large-input2 {
   height: 32px;
   width: 265px;
@@ -1057,6 +1094,7 @@ input.large-input {
   /* max-height: 585px; */
   flex-direction: inherit;
 }
+
 @media only screen and (max-width: 600px) {
   .account-detail-section {
     display: flex;
@@ -1113,6 +1151,7 @@ input.large-input {
   height: 100%;
   visibility: hidden;
 }
+
 .editing-label {
   display: flex;
   justify-content: center;
@@ -1121,9 +1160,11 @@ input.large-input {
   text-rendering: geometricPrecision;
   color: #2149b9;
 }
+
 .name-label:hover .edit-text {
   visibility: visible;
 }
+
 /* tx confirm */
 
 .unconftx-section input[type="password"] {
@@ -1152,12 +1193,14 @@ input.large-input {
   border: 2px solid #c7cdd8;
   border-radius: 4px;
 }
+
 /* removing of inc. dec.button from field*/
 .send-screen input::-webkit-outer-spin-button,
 .send-screen input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+
 /* removing of inc. dec.button from field*/
 .send-screen input[type="number"] {
   -moz-appearance: textfield;
@@ -1274,6 +1317,7 @@ input.large-input {
   border-width: 0.5px;
   border-radius: 2px;
 }
+
 .input-container:hover .buy-inputs {
   box-sizing: inherit;
   border: solid;
@@ -1383,6 +1427,7 @@ input.large-input {
   font-size: 16px;
   margin-top: 25px;
 }
+
 .qr-header1 {
   font-family: "Nunito SemiBold";
   font-size: 16px;
@@ -1394,7 +1439,7 @@ input.large-input {
   color: #6729a8;
 }
 
-div.message-container > div:first-child {
+div.message-container>div:first-child {
   margin-top: 18px;
   font-size: 15px;
   color: #4d4d4d;
@@ -1608,6 +1653,7 @@ div.message-container > div:first-child {
   background-color: rgba(103, 41, 168, 0.2);
   word-wrap: break-word;
 }
+
 .sent::after {
   content: url("../images/Assets/Sent.svg");
   width: 40px;
@@ -1738,6 +1784,7 @@ textarea[disabled] {
   background-image: none;
   /* background-image:'/images/Assets/Arrow.svg' ; */
 }
+
 @media only screen and (max-width: 600px) {
   .arrowImage {
     background-image: url("/images/Assets/Arrow.svg");
@@ -1746,16 +1793,18 @@ textarea[disabled] {
 
 .settingsExpanded {
   display: block;
- }
- 
- .settingsCollapsed{
-   display: none;
- }
+}
+
+.settingsCollapsed {
+  display: none;
+}
+
 @media only screen and (max-width: 600px) {
   .settingsExpanded {
-   display: none;
+    display: none;
   }
-  .settingsCollapsed{
+
+  .settingsCollapsed {
     display: block;
   }
 }
@@ -1799,16 +1848,16 @@ textarea[disabled] {
   transition: 0.4s;
 }
 
-input:checked + .slider {
+input:checked+.slider {
   background-color: #ffffff;
   border: 1px solid #2049b9;
 }
 
-input:focus + .slider {
+input:focus+.slider {
   box-shadow: 0 0 1px #2196f3;
 }
 
-input:checked + .slider:before {
+input:checked+.slider:before {
   -webkit-transform: translateX(26px);
   -ms-transform: translateX(26px);
   transform: translateX(26px);
@@ -1913,6 +1962,7 @@ input:checked + .slider:before {
   height: 30px;
   margin-left: 11px;
 }
+
 /*import account and reveal page reveal passsword turn off IE*/
 .cover input::-ms-reveal,
 .cover input::-ms-clear {
@@ -1944,7 +1994,8 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .main {
-  margin-left: 160px; /* Same as the width of the sidenav */
+  margin-left: 160px;
+  /* Same as the width of the sidenav */
   padding: 0px 10px;
 }
 
@@ -1952,6 +2003,7 @@ input[type="number"]::-webkit-outer-spin-button {
   .sidebar {
     display: none;
   }
+
   .sidebar a {
     font-size: 18px;
   }
