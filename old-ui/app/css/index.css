@@ -928,7 +928,7 @@ p.buy-option {
 }
 
 .titleAdd {
-  padding: 0 35px 17px 532px;
+  padding:0 35px 17px 388px;
 }
 
 @media only screen and (max-width: 600px) {
@@ -1992,7 +1992,7 @@ input:checked+.slider:before {
   display: flex;
   justify-content: space-between;
   width: 100%;
-  max-width: 331px;
+  min-width: 331px;
   margin-top: 18px;
   font-size: 14px;
   font-family: inter-medium;

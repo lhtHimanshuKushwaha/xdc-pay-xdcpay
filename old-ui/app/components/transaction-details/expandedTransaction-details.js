@@ -116,7 +116,7 @@ export default class ExpandedTransactionDetails extends React.Component {
         <div
           style={{
             width: "100%",
-            borderBottom: "2px solid grey",
+            borderBottom: "2px solid #EDEDED",
             display: "flex",
             height: "57px",
             justifyContent: "center",
@@ -125,7 +125,7 @@ export default class ExpandedTransactionDetails extends React.Component {
           <div
             className=" flex-row"
             style={{
-              justifyContent: "space-around",
+              justifyContent: "flex-start",
               width: "100%",
               alignItems: "center",
             }}
@@ -149,11 +149,11 @@ export default class ExpandedTransactionDetails extends React.Component {
                 display: "flex",
               }}
             >
-              <div>
+              <div style={{margin:'0 0 0 371px'}}>
                 <div
                   style={{
                     fontFamily: "Inter-Medium",
-                    marginLeft: "30px",
+                    marginLeft: "139px",
                     fontSize: "14px",
                     color: "#1F1F1F",
                   }}
@@ -176,8 +176,8 @@ export default class ExpandedTransactionDetails extends React.Component {
         <div
           style={{
             display: "flex",
-            width: "1152px",
-            height: 842,
+            width: "100%",
+            minHeight: "842px",
           }}
         >
           <div
@@ -185,10 +185,10 @@ export default class ExpandedTransactionDetails extends React.Component {
               width: "50%",
               display: "flex",
               justifyContent: "center",
-              borderRight: "2px solid grey",
+              borderRight: "2px solid #EDEDED",
             }}
           >
-            <div>
+            <div style={{width:'100%',padding:'24px 13px'}}>
               <div className="details">Details</div>
               <div className="flexbox">
                 <div className="trasaction-details-from-to">From</div>
@@ -204,7 +204,7 @@ export default class ExpandedTransactionDetails extends React.Component {
 
               {/* all trasaction details  */}
               <div className="trasaction-details-amount">
-                <div stye={{ marginLeft: "17px" }}>Amount</div>
+                <div style={{ marginLeft: "16px" }}>Amount</div>
                 <div style={{ marginRight: "6px", marginLeft: "auto" }}>
                   {value}
                 </div>
@@ -235,7 +235,7 @@ export default class ExpandedTransactionDetails extends React.Component {
           <div
             style={{ width: "50%", display: "flex", justifyContent: "center" }}
           >
-            <div>
+            <div style={{width:'100%',padding:"0px 13px "}}>
               <div>
                 <h2 className="transaction-log-heading">Transaction Log</h2>
 
