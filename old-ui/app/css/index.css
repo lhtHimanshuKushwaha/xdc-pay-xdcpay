@@ -65,7 +65,18 @@ html {
   }
 }
 
+.expandedscreen{
+  height: 100%;
+  width: 80%;
+}
 
+@media only screen and (max-width: 600px) {
+  .expandedscreen{
+    height: 100%;
+    width: 100%;
+  }
+
+}
 /* .token-dropdown {
   position: absolute;
     min-width: 180px;
@@ -136,10 +147,36 @@ html {
 .sendExpandedUI {
   margin-left: 445px;
 }
-
 @media only screen and (max-width: 600px) {
   .sendExpandedUI {
     margin-left: 46px;
+  }
+}
+
+.confTransaction{
+  padding: 0px 398px;
+}
+@media only screen and (max-width: 600px) {
+  .confTransaction{
+   padding: 0px 0px;
+  }
+
+}
+
+.confTransactionFiat{
+  position: absolute;           
+  font-size: 12px;
+  font-Family: Nunito SemiBold;
+  color: #848484;
+  right: 432px;
+}
+@media only screen and (max-width: 600px) {
+  .confTransactionFiat{
+    position: absolute;           
+    font-size: 12px;
+    font-Family: Nunito SemiBold;
+    color: #848484;
+   right: 60px;
   }
 }
 
@@ -758,7 +795,7 @@ p.buy-option {
 
 .addContactTitle {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
 }
 
 @media only screen and (max-width: 600px) {

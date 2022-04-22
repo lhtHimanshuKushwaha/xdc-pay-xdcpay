@@ -5,6 +5,10 @@ import Identicon from '../../ui/app/components/identicon'
 
 class Contacts extends React.Component {
 
+  onAddContact = () => {
+  this.setState({selectedComponent:'add-contact'})
+  console.log(this.state.selectedComponent,'working')
+  }
   render () {
     const state = this.props
     const contactList = state.metamask.addressBook
@@ -32,8 +36,9 @@ class Contacts extends React.Component {
                onClick={() => state.dispatch(actions.goConfig())}/>
           <h2 style={{fontFamily: 'Inter-bold',color:"#2A2A2A"}}>Contacts</h2>
           <img src="/images/Assets/Add.svg"
-               style={{cursor: 'pointer', marginRight: '11px'}}
-               onClick={() => state.dispatch(actions.showAddContactsPage())}
+            style={{ cursor: 'pointer', marginRight: '11px' }}
+            onClick={this.onAddContact}
+              // state.dispatch(actions.showAddContactsPage())}
           />
         </div>
         <div className="list" >

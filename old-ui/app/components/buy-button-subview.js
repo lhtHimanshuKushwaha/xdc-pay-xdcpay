@@ -80,6 +80,7 @@ class BuyButtonSubview extends Component {
               identity: props.identity,
               account: props.account,
               network: props.network,
+              networkList: props.networkList,
               // value: account && account.balance,
               conversionRate,
               currentCurrency,

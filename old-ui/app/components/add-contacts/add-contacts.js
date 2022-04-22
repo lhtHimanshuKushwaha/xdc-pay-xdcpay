@@ -29,7 +29,6 @@ const AddContactComponent = (props) => {
       >
         <img
           src="/images/Assets/BackArrow.svg"
-          className="image-display"
           style={{ marginLeft: "17px", cursor: "pointer" }}
           onClick={onBackClick}
         />
