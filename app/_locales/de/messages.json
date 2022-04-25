@@ -305,7 +305,7 @@
     "message": "Gasgebühren"
   },
   "gasLimit": {
-    "message": "Gaslimit"
+    "message": "Gaslimit (Einheiten)"
   },
   "gasLimitCalculation": {
     "message": "Wir berechnen das empfohlene Gaslimit basierend auf der Erfolgsrate des Netzwerks."
@@ -754,7 +754,7 @@
     "message": "Statelogs"
   },
   "stateLogsDescription": {
-    "message": "Statelogs zeigen die Public Adresse und die gesendeten Transaktionen deines Accounts."
+    "message": "Statusprotokolle enthalten Ihre öffentlichen Kontoadressen und gesendeten Transaktionen."
   },
   "stateLogError": {
     "message": "Fehler beim Abfragen der Statelogs."
@@ -766,7 +766,7 @@
     "message": "Abgeschickt"
   },
   "supportCenter": {
-    "message": "Gehe zu unserem Support Center"
+    "message": "Hilfecenter"
   },
   "symbolBetweenZeroTen": {
     "message": "Das Symbol muss zwischen 0 und 10 Zeichen haben."
@@ -890,5 +890,128 @@
   },
   "youSign": {
     "message": "Du unterschreibst"
+  },
+  "accountOptions": {
+    "message": "Kontoeinstellungen"
+  },
+  "expandedView": {
+    "message": "Erweiterte Ansicht"
+  },
+  "connectedSites":{
+    "message":"Verbundene Sites"
+  },
+  "viewOnBlockExplorer": {
+    "message": "Im Block-Explorer anzeigen"
+  },
+  "tokens":{
+    "message": "Token"
+  },
+  "generalSettings":{
+    "message": "Allgemeine Einstellungen"
+  },
+  "hideTokensWithout":{
+    "message": "Token ohne Guthaben verstecken"
+  },
+  "advanceSettings":{
+    "message": "Erweiterte Einstellungen"
+  },
+  "securityandPrivacySettings":{
+    "message": "Sicherheits- und Datenschutzeinstellungen"
+  },
+  "autoLockTimer":{
+    "message": "Auto-Lock Timer"
+  },
+  "autoLockTimerDesc":{
+    "message": "Legen Sie die Leerlaufzeit in Minuten fest, bevor die Brieftasche gesperrt wird."
+  },
+  "showIncomingTransactions":{
+    "message": "Show Incoming Transactions"
+  },
+  "showIncomingTransactionsDesc":{
+    "message": "Select this to use XDC Observatory to show incoming transactions in the transactions list."
+  },
+  "alertMsg" : {
+   "message" : "Diese Warnung wird im Popup angezeigt, wenn Sie eine verbundene Website3 durchsuchen, das aktuell ausgewählte Konto jedoch nicht verbunden ist."
+  },
+  "reveal":{
+    "message": "Aufdecken"
+  },
+  "contacts":{
+    "message": "Kontakte"
+  },
+  "addContact":{
+    "message": "Kontakt hinzufügen"
+  },
+  "walletAddress":{
+    "message": "Wallet-Adresse"
+  },
+  "contactDetails":{
+    "message": "Kontaktdetails"
+  },
+  "userName":{
+    "message": "Nutzername"
+  },
+  "alertSettings":{
+    "message": "Benachrichtigungseinstellungen"
+  },
+  "unconnectedAccountWarning" :{
+   "message" : "Durchsuchen einer Website mit einem ausgewählten nicht verbundenen Konto."
+  },
+  "networkSettings":{
+    "message": "Netzwerkeinstellungen"
+  },
+  "addNetwork":{
+    "message": "Netzwerk hinzufügen"
+  },
+  "networkName":{
+    "message": "Netzwerkname"
+  },
+  "chainID":{
+    "message": "Ketten-ID"
+  },
+  "currencySymbol":{
+    "message": "Währungssymbol (optional)"
+  },
+  "blockExplorer":{
+    "message": "Block-Explorer (optional)"
+  },
+  "Add":{
+    "message": "Hinzufügen"
+  },
+  "Update":{
+    "message": "Aktualisieren"
+  },
+  "About":{
+    "message": "Etwa"
+  },
+  "Link":{
+    "message": "Verknüpfung"
+  },
+  "visitOurWebsite":{
+    "message": "Besuche unsere Webseite"
+  },
+  "contactUs":{
+    "message": "Kontaktiere uns"
+  },
+  "maxTransactionFee":{
+    "message": "Maximale Transaktionsgebühr"
+  },
+  "Edit":{
+    "message": "Bearbeiten"
+  },
+  "advancedGasControls": {
+    "message": "Erweiterte Gassteuerung"
+  },
+  "advancedGasControlsDesc" : {
+    "message":  "Wählen Sie diese Option, um Gaspreis- und Limitkontrollen direkt auf den Sende- und Bestätigungsbildschirmen anzuzeigen."
+  },
+  "infoDesc" : {
+    "message" : "Das XDCPay ist eine Erweiterung für den Zugriff auf die XDPoS-fähigen verteilten Anwendungen oder „Dapps“ von XDC in Ihrem Browser!"
+  },
+  "resetAccountDescription": {
+    "message": "Durch das Zurücksetzen Ihres Kontos wird Ihr Transaktionsverlauf gelöscht. Dadurch werden die Salden auf Ihren Konten nicht geändert oder Sie müssen Ihre geheime Wiederherstellungsphrase erneut eingeben."
+  },
+  "getYourSeedWords": {
+    "message": "Erhalten Sie Ihre geheimen Startwörter, indem Sie Ihr Passwort eingeben."
   }
 }

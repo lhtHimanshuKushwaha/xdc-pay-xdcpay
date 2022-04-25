@@ -1,172 +1,192 @@
-const EventEmitter = require('events').EventEmitter
-const connect = require('react-redux').connect
-const h = require('react-hyperscript')
-const actions = require('../../../ui/app/actions')
-const React = require('react')
-import PasswordStrengthMeter, {checkPassword} from '../../../old-ui/app/components/PasswordStrengthMeter'
+const EventEmitter = require("events").EventEmitter;
+const connect = require("react-redux").connect;
+const h = require("react-hyperscript");
+const actions = require("../../../ui/app/actions");
+const React = require("react");
+import PasswordStrengthMeter, {
+  checkPassword,
+} from "../../../old-ui/app/components/PasswordStrengthMeter";
 
 class InitializeMenuScreen extends React.Component {
-  constructor (props) {
-    super(props)
-    this.animationEventEmitter = new EventEmitter()
+  constructor(props) {
+    super(props);
+    this.animationEventEmitter = new EventEmitter();
     this.state = {
-      class: 'JIII',
-      password: '',
+      class: "JIII",
+      password: "",
       passwordStrength: 0,
-    }
+    };
   }
 
   componentDidMount = () => {
-    document.getElementById('password-box').focus()
-  }
+    document.getElementById("password-box").focus();
+  };
 
   componentWillUnmount = () => {
     // eslint-disable-next-line react/prop-types
-    this.props.dispatch(actions.displayWarning(''))
-  }
+    this.props.dispatch(actions.displayWarning(""));
+  };
 
   showRestoreVault = () => {
-    this.props.dispatch(actions.showRestoreVault())
-  }
+    this.props.dispatch(actions.showRestoreVault());
+  };
 
   onPasswordChange = (e) => {
-    this.setState({password: e.target.value})
-    this.setState({passwordStrength: checkPassword(e.target.value)})
-  }
+    this.setState({ password: e.target.value });
+    this.setState({ passwordStrength: checkPassword(e.target.value) });
+  };
+  
+  warningUpdate=()=>{
+    this.warning=null
+    this.props.dispatch(actions.displayWarning(this.warning))
+  };
 
   createVaultOnEnter = (event) => {
-    if (event.key === 'Enter') {
-      event.preventDefault()
-      this.createNewVaultAndKeychain()
+    if (event.key === "Enter") {
+      event.preventDefault();
+      this.createNewVaultAndKeychain();
     }
-  }
+  };
 
   createNewVaultAndKeychain = () => {
-    const passwordBox = document.getElementById('password-box')
-    const password = passwordBox.value
+    const passwordBox = document.getElementById("password-box");
+    const password = passwordBox.value;
 
-    const passwordConfirmBox = document.getElementById('password-box-confirm')
-    const passwordConfirm = passwordConfirmBox.value
+    const passwordConfirmBox = document.getElementById("password-box-confirm");
+    const passwordConfirm = passwordConfirmBox.value;
     if (this.state.passwordStrength < 2) {
-      this.warning = 'Password strength is poor'
-      this.props.dispatch(actions.displayWarning(this.warning))
-      return
+      this.warning = "Password strength is poor";
+      this.props.dispatch(actions.displayWarning(this.warning));
+      return;
     }
     if (password !== passwordConfirm) {
-      this.warning = 'Password does not match'
-      this.props.dispatch(actions.displayWarning(this.warning))
-      return
+      this.warning = "Password does not match";
+      this.props.dispatch(actions.displayWarning(this.warning));
+      return;
     }
-    this.props.dispatch(actions.createNewVaultAndKeychain(password))
-  }
+    this.props.dispatch(actions.createNewVaultAndKeychain(password));
+  };
 
-  render () {
-    const state = this.props
+  render() {
+    const state = this.props;
     return (
-      <RenderMenu state={state}
-                  password={this.state.password}
-                  createVaultOnEnter={this.createVaultOnEnter}
-                  showRestoreVault={this.showRestoreVault}
-                  createNewVaultAndKeychain={this.createNewVaultAndKeychain}
-                  onPasswordChange={this.onPasswordChange}/>
-    )
+      <RenderMenu
+        state={state}
+        password={this.state.password}
+        createVaultOnEnter={this.createVaultOnEnter}
+        showRestoreVault={this.showRestoreVault}
+        createNewVaultAndKeychain={this.createNewVaultAndKeychain}
+        onPasswordChange={this.onPasswordChange}
+        warningUpdate={this.warningUpdate}
+      />
+    );
   }
 }
 
 const RenderMenu = (props) => {
-  const {state, password, onPasswordChange, createVaultOnEnter, createNewVaultAndKeychain, showRestoreVault} = props
-  return h('.initialize-screen.flex-column.flex-center.flex-grow', [
-    h('.logo'),
+  const {
+    state,
+    password,
+    onPasswordChange,
+    createVaultOnEnter,
+    createNewVaultAndKeychain,
+    showRestoreVault,
+    warningUpdate,
+  } = props;
+  return h(".initialize-screen.flex-column.flex-center.flex-grow.cover", [
+    h(".logo"),
     h(
-      'div',
+      "div",
       {
         style: {
-          marginTop: '40px',
-          display: 'flex',
-          flexDirection: 'row-reverse',
-          marginLeft: '-22px',
+          marginTop: "40px",
+          display: "flex",
+          flexDirection: "row-reverse",
+          marginLeft: "-22px",
         },
       },
       [
         h(
-          'h3',
+          "h3",
           {
             style: {
-              fontSize: '15px',
-              color: '#2a2a2a',
-              display: 'inline',
-              fontWeight: 'bold',
+              fontSize: "15px",
+              color: "#2a2a2a",
+              display: "inline",
+              fontWeight: "bold",
             },
           },
-          'Encrypt your new DEN',
+          "Encrypt your new DEN"
         ),
-        h('div', {className: 'tooltip'}, [
-          h('img', {
-            src: '/images/Assets/QuestionMark.svg',
+        h("div", { className: "tooltip" }, [
+          h("img", {
+            src: "/images/Assets/QuestionMark.svg",
             style: {
-              marginRight: '-22px',
-              paddingTop: '3px',
-              paddingLeft: '5px',
+              marginRight: "-22px",
+              paddingTop: "3px",
+              paddingLeft: "5px",
             },
           }),
           h(
-            'span',
-            {className: 'tooltiptext'},
-            'Your DEN is your password-encrypted Storage within XDC Pay',
+            "span",
+            { className: "tooltiptext" },
+            "Your DEN is your password-encrypted Storage within XDC Pay"
           ),
         ]),
-      ],
+      ]
     ),
 
     state.warning
       ? h(
-        'div',
-        {
-          style: {
-            width: '260px',
-            padding: '20px 0 0',
+          "div",
+          {
+            style: {
+              width: "260px",
+              padding: "20px 0 0",
+            },
           },
-        },
-        [h('div.error', state.warning)],
-      )
+          [h("div.error", state.warning)]
+        )
       : null,
 
     // password
-    h('input.large-input', {
-      type: 'password',
-      id: 'password-box',
-      placeholder: 'New Password (min 8 chars)',
-      onChange: onPasswordChange,
+    h("input.large-input", {
+      type: "password",
+      id: "password-box",
+      placeholder: "New Password (min 8 chars)",
+      onChange: ((e) => (onPasswordChange(e), warningUpdate(e))),
       style: {
         width: 265,
         height: 40,
         marginTop: 15,
-        border: '2px solid #C7CDD8',
+        border: "2px solid #C7CDD8",
         borderRadius: 4,
+        font: navigator.userAgent.indexOf("Firefox") != -1 ? "icon" : "",
       },
     }),
-    h(
-      PasswordStrengthMeter, {
-        password: password,
-      },
-    ),
+    h(PasswordStrengthMeter, {
+      password: password,
+    }),
     // confirm password
-    h('input.large-input', {
-      type: 'password',
-      id: 'password-box-confirm',
-      placeholder: 'Confirm Password',
+    h("input.large-input", {
+      type: "password",
+      id: "password-box-confirm",
+      placeholder: "Confirm Password",
       onKeyPress: createVaultOnEnter,
-      style: {
+      onChange: ((e) => warningUpdate(e)),
+
+      style: {          
         width: 265,
         height: 40,
-        marginTop: 15,
-        border: '2px solid #C7CDD8',
+        border: "2px solid #C7CDD8",
         borderRadius: 4,
+        font: navigator.userAgent.indexOf("Firefox") != -1 ? "icon" : "",
       },
-    }),
+      }),
+    
 
     h(
-      'button',
+      "button",
       {
         onClick: createNewVaultAndKeychain,
         style: {
@@ -175,32 +195,32 @@ const RenderMenu = (props) => {
           height: 40,
         },
       },
-      'Create',
+      "Create"
     ),
 
-    h('.flex-row.flex-center.flex-grow', [
+    h(".flex-row.flex-center.flex-grow", [
       h(
-        'p.pointer',
+        "p.pointer",
         {
           onClick: showRestoreVault,
           style: {
-            fontSize: '14px',
-            color: '#2149B9',
-            marginTop: '74px',
+            fontSize: "14px",
+            color: "#2149B9",
+            marginTop: "74px",
           },
         },
-        'Import Existing Den',
+        "Import Existing Den"
       ),
     ]),
-  ])
-}
+  ]);
+};
 
-function mapStateToProps (state) {
+function mapStateToProps(state) {
   return {
     // state from plugin
     currentView: state.appState.currentView,
     warning: state.appState.warning,
-  }
+  };
 }
 
-module.exports = connect(mapStateToProps)(InitializeMenuScreen)
+module.exports = connect(mapStateToProps)(InitializeMenuScreen);
