@@ -308,7 +308,7 @@
     "message": "Gas Ücreti"
   },
   "gasLimit": {
-    "message": "Gas Limiti"
+    "message": "Gaz Limiti (Birimler)"
   },
   "gasLimitCalculation": {
     "message": "Önerilen gas limitini ağ başarı oranını baz alarak hesaplıyoruz."
@@ -769,7 +769,7 @@
     "message": "Durum Kayıtları"
   },
   "stateLogsDescription": {
-    "message": "Durum kayıtları açık hesap adresinizi ve gönderilen işlemleri içerir."
+    "message": "Durum günlükleri, genel hesap adreslerinizi ve gönderilen işlemleri içerir."
   },
   "stateLogError": {
     "message": "Durum kayıtlarını alma hatası"
@@ -781,7 +781,7 @@
     "message": "Gönderildi"
   },
   "supportCenter": {
-    "message": "Destek merkezimizi ziyaret edin"
+    "message": "Destek Merkezi"
   },
   "symbolBetweenZeroTen": {
     "message": "Sembol 0 ve 10 karakter aralığında olmalıdır."
@@ -908,5 +908,128 @@
   },
   "youSign": {
     "message": "İmzalıyorsunuz"
+  },
+  "accountOptions":{
+    "message": "Hesap seçenekleri"
+  },
+  "expandedView": {
+    "message": "Genişletilmiş Görünüm"
+  },
+  "viewOnBlockExplorer":{
+    "message": "Blok Gezgini'nde Görüntüle"
+  },
+  "tokens":{
+    "message": "Jetonlar"
+  },
+  "generalSettings":{
+    "message": "Genel Ayarlar"
+  },
+  "hideTokensWithout":{
+    "message": "Bakiye Olmadan Jetonları Gizle"
+  },
+  "advanceSettings":{
+    "message": "Gelişmiş Ayarlar"
+  },
+  "securityandPrivacySettings":{
+    "message": "Güvenlik ve Gizlilik Ayarları"
+  },
+  "autoLockTimer":{
+    "message": "Otomatik Kilit Zamanlayıcı"
+  },
+  "autoLockTimerDesc":{
+    "message": "Cüzdan kilitlenmeden önce boşta kalma süresini dakika olarak ayarlayın."
+  },
+  "showIncomingTransactions":{
+    "message": "Gelen İşlemleri Göster"
+  },
+  "showIncomingTransactionsDesc":{
+    "message": "İşlemler listesinde gelen işlemleri göstermek üzere XDC Gözlemevi'ni kullanmak için bunu seçin."
+  },
+  "resetAccountDescription": {
+    "message": "Hesabınızı sıfırlamak, işlem geçmişinizi temizleyecektir. Bu, hesaplarınızdaki bakiyeleri değiştirmez veya Gizli Kurtarma Cümlenizi yeniden girmenizi gerektirmez."
+  },
+  "alertMsg" : {
+   "message" : "Bu uyarı, bağlı bir web3 sitesine göz atarken açılır pencerede gösterilir, ancak şu anda seçili olan hesap bağlı değildir."
+  },
+  "reveal":{
+    "message": "Ortaya çıkarmak"
+  },
+  "contacts":{
+    "message": "Kişiler"
+  },
+  "addContact":{
+    "message": "Kişi ekle"
+  },
+  "walletAddress":{
+    "message": "Cüzdan Adresi"
+  },
+  "contactDetails":{
+    "message": "İletişim detayları"
+  },
+  "userName":{
+    "message": "Kullanıcı adı"
+  },
+  "alertSettings":{
+    "message": "Uyarı Ayarları"
+  },
+  "unconnectedAccountWarning" :{
+   "message" : "Bağlı olmayan bir hesabın seçili olduğu bir web sitesinde gezinme"
+  },
+  "networkSettings":{
+    "message": "Ağ ayarları"
+  },
+  "addNetwork":{
+    "message": "Ağ ekle"
+  },
+  "networkName":{
+    "message": "Ağ Adı"
+  },
+  "chainID":{
+    "message": "zincir kimliği"
+  },
+  "currencySymbol":{
+    "message": "Para Birimi Sembolü (Opsiyonel)"
+  },
+  "blockExplorer":{
+    "message": "Blok Gezgini (Opsiyonel)"
+  },
+  "Add":{
+    "message": "Eklemek"
+  },
+  "Update":{
+    "message": "Güncelleme"
+  },
+  "About":{
+    "message": "Hakkında"
+  },
+  "Link":{
+    "message": "Bağlantı"
+  },
+  "visitOurWebsite":{
+    "message": "İnternet sitemizi ziyaret edin"
+  },
+  "contactUs":{
+    "message": "Bizimle iletişime geçin"
+  },
+  "maxTransactionFee":{
+    "message": "Maksimum İşlem Ücreti"
+  },
+  "Edit":{
+    "message": "Düzenlemek"
+  },
+  "connectedSites":{
+    "message":"Bağlı Siteler"
+  },
+  "advancedGasControls": {
+    "message": "Gelişmiş gaz kontrolleri"
+  },
+  "advancedGasControlsDesc" : {
+    "message":  "Benzin fiyatını ve limit kontrollerini doğrudan gönder ve onayla ekranlarında göstermek için bunu seçin."
+  },
+  "infoDesc" : {
+    "message" : "XDCPay, tarayıcınızda XDC'nin XDPoS etkin dağıtılmış uygulamalarına veya Dapps e erişmek için bir uzantıdır!"
+  },
+  "getYourSeedWords": {
+    "message": "Şifrenizi girerek gizli tohum kelimelerinizi alın."
   }
 }
