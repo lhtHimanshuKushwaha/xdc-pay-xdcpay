@@ -116,7 +116,7 @@ const RenderMenu = (props) => {
               fontWeight: "bold",
             },
           },
-          "Encrypt your new DEN"
+          "Create a Wallet"
         ),
         h("div", { className: "tooltip" }, [
           h("img", {
@@ -209,7 +209,7 @@ const RenderMenu = (props) => {
             marginTop: "74px",
           },
         },
-        "Import Existing Den"
+        "Import wallet"
       ),
     ]),
   ]);

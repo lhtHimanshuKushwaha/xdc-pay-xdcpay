@@ -88,7 +88,7 @@ class SendProfile extends Component {
 					{isToken ? <TokenBalance token={token} /> : <EthBalance {...{
 							value: account && account.balance,
 							conversionRate,
-							shorten: true,
+							shorten: false,
 							currentCurrency,
 							network,
 						}} />}
