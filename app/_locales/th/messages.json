@@ -287,7 +287,7 @@
     "message": "ค่าแก๊ส"
   },
   "gasLimit": {
-    "message": "วงเงินแก็ส"
+    "message": "ขีด จำกัด ก๊าซ (หน่วย)"
   },
   "gasLimitCalculation": {
     "message": "เราแนะนำวงเงินแก็สตามความสำเร็จบนเครือข่าย"
@@ -691,13 +691,13 @@
     "message": "บันทึกของสถานะ"
   },
   "stateLogsDescription": {
-    "message": "บันทึกของสถานะประกอบด้วยแอดแดรสสาธารณะและธุรกรรมที่ส่ง"
+    "message": "บันทึกสถานะมีที่อยู่บัญชีสาธารณะของคุณและธุรกรรมที่ส่ง"
   },
   "submit": {
     "message": "ตกลง"
   },
   "supportCenter": {
-    "message": "ไปที่ศูนย์สนับสนุนของเรา"
+    "message": "ศูนย์สนับสนุน"
   },
   "symbolBetweenZeroTen": {
     "message": "สัญลักษณ์ต้องมีความยาวตั้งแต่ 0 ถึง 10 อักขระ"
@@ -818,5 +818,128 @@
   },
   "youSign": {
     "message": "คุณกำลังเซ็นชื่อ"
+  },
+  "accountOptions":{
+    "message": "ตัวเลือกบัญชี"
+  },
+  "expandedView": {
+    "message": "มุมมองแบบขยาย"
+  },
+  "viewOnBlockExplorer":{
+    "message": "ดูบน Block Explorer"
+  },
+  "tokens":{
+    "message": "โทเค็น"
+  },
+  "generalSettings":{
+    "message": "การตั้งค่าทั่วไป"
+  },
+  "hideTokensWithout":{
+    "message": "ซ่อนโทเค็นโดยไม่มียอดคงเหลือ"
+  },
+  "advanceSettings":{
+    "message": "ตั้งค่าขั้นสูง"
+  },
+  "securityandPrivacySettings":{
+    "message": "การตั้งค่าความปลอดภัยและความเป็นส่วนตัว"
+  },
+  "autoLockTimer":{
+    "message": "ล็อคอัตโนมัติจับเวลา"
+  },
+  "autoLockTimerDesc":{
+    "message": "เลือกตัวเลือกนี้เพื่อใช้ XDC Observatory เพื่อแสดงธุรกรรมขาเข้าในรายการธุรกรรม"
+  },
+  "showIncomingTransactions":{
+    "message": "แสดงธุรกรรมที่เข้ามา"
+  },
+  "showIncomingTransactionsDesc":{
+    "message": "เลือกตัวเลือกนี้เพื่อใช้ XDC Observatory เพื่อแสดงธุรกรรมขาเข้าในรายการธุรกรรม"
+  },
+  "resetAccountDescription": {
+    "message": "การรีเซ็ตบัญชีจะล้างประวัติการทำธุรกรรมของคุณ การดำเนินการนี้จะไม่เปลี่ยนแปลงยอดคงเหลือในบัญชีของคุณ หรือกำหนดให้คุณต้องป้อนวลีกู้คืนลับของคุณอีกครั้ง"
+  },
+  "alertMsg" : {
+   "message" : "การแจ้งเตือนนี้จะแสดงในป๊อปอัปเมื่อคุณกำลังเรียกดูเว็บไซต์ที่เชื่อมต่ออยู่ 3 แห่ง แต่บัญชีที่เลือกในปัจจุบันไม่ได้เชื่อมต่อ"
+  },
+  "reveal":{
+    "message": "เปิดเผย"
+  },
+  "contacts":{
+    "message": "รายชื่อผู้ติดต่อ"
+  },
+  "addContact":{
+    "message": "เพิ่มผู้ติดต่อ"
+  },
+  "walletAddress":{
+    "message": "ที่อยู่กระเป๋าเงิน"
+  },
+  "contactDetails":{
+    "message": "รายละเอียดการติดต่อ"
+  },
+  "userName":{
+    "message": "ชื่อผู้ใช้"
+  },
+  "alertSettings":{
+    "message": "การตั้งค่าการแจ้งเตือน"
+  },
+  "unconnectedAccountWarning" :{
+   "message" : "เรียกดูเว็บไซต์โดยเลือกบัญชีที่ไม่ได้เชื่อมต่อ"
+  },
+  "networkSettings":{
+    "message": "การตั้งค่าเครือข่าย"
+  },
+  "addNetwork":{
+    "message": "เพิ่มเครือข่าย"
+  },
+  "networkName":{
+    "message": "ชื่อเครือข่าย"
+  },
+  "chainID":{
+    "message": "รหัสเชน"
+  },
+  "currencySymbol":{
+    "message": "สัญลักษณ์สกุลเงิน (ไม่บังคับ)"
+  },
+  "blockExplorer":{
+    "message": "Block Explorer (ไม่บังคับ)"
+  },
+  "Add":{
+    "message": "เพิ่ม"
+  },
+  "Update":{
+    "message": "Nadgradnja"
+  },
+  "About":{
+    "message": "เกี่ยวกับ"
+  },
+  "Link":{
+    "message": "ลิงค์"
+  },
+  "visitOurWebsite":{
+    "message": "เยี่ยมชมเว็บไซต์ของเรา"
+  },
+  "contactUs":{
+    "message": "ติดต่อเรา"
+  },
+  "maxTransactionFee":{
+    "message": "ค่าธรรมเนียมการทำธุรกรรมสูงสุด"
+  },
+  "Edit":{
+    "message": "แก้ไข"
+  },
+  "connectedSites":{
+    "message":"ไซต์ที่เชื่อมต่อ"
+  },
+  "advancedGasControls": {
+    "message": "การควบคุมก๊าซขั้นสูง"
+  },
+  "advancedGasControlsDesc" : {
+    "message":  "เลือกตัวเลือกนี้เพื่อแสดงราคาน้ำมันและจำกัดการควบคุมโดยตรงบนหน้าจอส่งและยืนยัน"
+  },
+  "infoDesc" : {
+    "message" : "XDCPay เป็นส่วนขยายสำหรับการเข้าถึงแอปพลิเคชันแบบกระจายที่เปิดใช้งาน XDPoS หรือ Dapps ของ XDC ในเบราว์เซอร์ของคุณ!"
+  },
+  "getYourSeedWords": {
+    "message": "รับคำที่เป็นความลับของคุณโดยป้อนรหัสผ่านของคุณ"
   }
 }

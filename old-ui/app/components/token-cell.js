@@ -2,7 +2,7 @@ const Component = require('react').Component
 const h = require('react-hyperscript')
 const inherits = require('util').inherits
 const Identicon = require('./identicon')
-const ethNetProps = require('xdc-net-props')
+const ethNetProps = require('../../../xdc-net-props')
 const Dropdown = require('./dropdown').Dropdown
 const DropdownMenuItem = require('./dropdown').DropdownMenuItem
 const copyToClipboard = require('copy-to-clipboard')
@@ -99,7 +99,7 @@ TokenCell.prototype.renderTokenOptions = function (menuToTop, ind) {
         // marginTop: menuToTop ? '-214px' : '30px',
         width: '317px',
         bottom: '18px',
-        left: '0'
+        left: '20px'
       },
       isOpen: optionsMenuActive,
       onClickOutside: (event) => {

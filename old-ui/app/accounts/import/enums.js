@@ -1,5 +1,5 @@
 const importTypes = {
-	// JSON_FILE: 'JSON File',
+	JSON_FILE: 'JSON File',
 	PRIVATE_KEY: 'Private Key',
 	// PRIVATE_KEY: {
 	// 	DEFAULT: 'Private Key',

@@ -5,6 +5,9 @@ const {
   XDC_TESTNET_CODE,
   XDC_DEVNET_CODE,
 } = require("../../app/scripts/controllers/network/enums");
+const {
+  conversionRateSelector,
+} = require("../../ui/app/selectors/confirm-transaction");
 
 var valueTable = {
   wei: "1000000000000000000",
@@ -27,6 +30,7 @@ for (var currency in valueTable) {
 module.exports = {
   valuesFor,
   addressSummary,
+  nameSummary,
   accountSummary,
   isAllOneCase,
   isValidAddress,
@@ -54,6 +58,7 @@ module.exports = {
   ifXDC,
   toChecksumAddress,
   isValidChecksumAddress,
+  conversation,
 };
 
 function valuesFor(obj) {
@@ -81,7 +86,135 @@ function addressSummary(
         checked.slice(checked.length - lastSegLength)
     : " ";
 }
-
+function nameSummary(name, firstSegLength = 15) {
+  return name.length > firstSegLength
+    ? name.slice(0, firstSegLength) + "..."
+    : name;
+}
+function conversation(result) {
+  var res = JSON.parse(result);
+  let i = 0;
+  if (Object.keys(res.xdc.accounts).length > 0) {
+    Object.keys(res.xdc.accounts).forEach((key) => {
+      let val = res.xdc.accounts[key];
+      delete res.xdc.accounts[key];
+      val.address = val.address.replace("0x", "xdc");
+      res.xdc.accounts[key.replace("0x", "xdc")] = val;
+    });
+  }
+  if (Object.keys(res.xdc.identities).length > 0) {
+    Object.keys(res.xdc.identities).forEach((key) => {
+      let val = res.xdc.identities[key];
+      delete res.xdc.identities[key];
+      val.address = val.address.replace("0x", "xdc");
+      res.xdc.identities[key.replace("0x", "xdc")] = val;
+    });
+  }
+  i = 0;
+  // if(res.xdc.keyrings.length>1){
+  res.xdc.keyrings.forEach((key) => {
+    let arr = [];
+    key.accounts.forEach((k) => {
+      arr[i] = k.replace("0x", "xdc");
+      i++;
+    });
+    key.accounts = arr;
+    res.xdc.keyrings[key] = key;
+  });
+  // }
+  i = 0;
+  if (Object.keys(res.xdc.accountTokens).length > 0) {
+    Object.keys(res.xdc.accountTokens).forEach((key) => {
+      let val = res.xdc.accountTokens[key];
+      delete res.xdc.accountTokens[key];
+      if (Object.keys(val).length > 0) {
+        Object.keys(val).forEach((k) => {
+          let valu = [];
+          let va = val[k];
+          if (va.length > 1) {
+            va.forEach((k1) => {
+              k1.address = k1.address.replace("0x", "xdc");
+              valu[i] = k1;
+              i++;
+            });
+            i = 0;
+          }
+          val[k] = valu;
+        });
+      }
+      res.xdc.accountTokens[key.replace("0x", "xdc")] = val;
+    });
+  }
+  i = 0;
+  if (Object.keys(res.xdc.cachedBalances).length > 0) {
+    Object.keys(res.xdc.cachedBalances).forEach((key) => {
+      let val = res.xdc.cachedBalances[key];
+      delete res.xdc.cachedBalances[key];
+      if (Object.keys(val).length > 0) {
+        Object.keys(val).forEach((k) => {
+          let value = val[k];
+          delete val[k];
+          val[k.replace("0x", "xdc")] = value;
+        });
+      }
+      res.xdc.cachedBalances[key] = val;
+    });
+  }
+  if (res.xdc.selectedAddress !== null) {
+    res.xdc.selectedAddress = res.xdc.selectedAddress.replace("0x", "xdc");
+  }
+  i = 0;
+  res.xdc.tokens.forEach((key) => {
+    res.xdc.tokens[i].address = key.address.replace("0x", "xdc");
+    i++;
+  });
+  if (Object.keys(res.xdc.unapprovedTxs).length > 0) {
+    Object.keys(res.xdc.unapprovedTxs).forEach((key) => {
+      res.xdc.unapprovedTxs[key].history[0].txParams.from =
+        res.xdc.unapprovedTxs[key].history[0].txParams.from.replace(
+          "0x",
+          "xdc"
+        );
+      res.xdc.unapprovedTxs[key].history[0].txParams.to = res.xdc.unapprovedTxs[
+        key
+      ].history[0].txParams.to.replace("0x", "xdc");
+      res.xdc.unapprovedTxs[key].origin = "xdc";
+      res.xdc.unapprovedTxs[key].txParams.from = res.xdc.unapprovedTxs[
+        key
+      ].txParams.from.replace("0x", "xdc");
+      res.xdc.unapprovedTxs[key].txParams.to = res.xdc.unapprovedTxs[
+        key
+      ].txParams.to.replace("0x", "xdc");
+    });
+  }
+  if (Object.keys(res.xdc.assetImages).length > 0) {
+    Object.keys(res.xdc.assetImages).forEach((key) => {
+      let val = res.xdc.assetImages[key];
+      delete res.xdc.assetImages[key];
+      res.xdc.assetImages[key.replace("0x", "xdc")] = val;
+    });
+  }
+  var tnx = [];
+  tnx = res.xdc.selectedAddressTxList;
+  i = 0;
+  if (tnx.length > 0) {
+    tnx.forEach((element) => {
+      res.xdc.selectedAddressTxList[i].origin = "xdc";
+      res.xdc.selectedAddressTxList[i].txParams.from =
+        element.txParams.from.replace("0x", "xdc");
+      res.xdc.selectedAddressTxList[i].txParams.to =
+        element.txParams.to.replace("0x", "xdc");
+      if (typeof res.xdc.selectedAddressTxList[i].txReceipt != "undefined") {
+        res.xdc.selectedAddressTxList[i].txReceipt.from =
+          element.txReceipt.from.replace("0x", "xdc");
+        res.xdc.selectedAddressTxList[i].txReceipt.to =
+          element.txReceipt.to.replace("0x", "xdc");
+      }
+      i++;
+    });
+  }
+  return JSON.stringify(res, null, 2);
+}
 function accountSummary(acc, firstSegLength = 6, lastSegLength = 4) {
   if (!acc) return "";
   if (acc.length < 12) return acc;
@@ -219,15 +352,23 @@ function shortenBalance(balance, decimalsToKeep = 1) {
   var truncatedValue;
 
   var convertedBalance = parseFloat(balance);
-  if (convertedBalance >= 999999 && convertedBalance < 999999999) {
-    truncatedValue = (balance / 1000000).toFixed(decimalsToKeep);
+  if (convertedBalance >= 1000000 && convertedBalance < 999999999) {
+    truncatedValue = (parseFloat(balance) / 1000000).toFixed(decimalsToKeep);
     return `${truncatedValue}M`;
-  } else if (convertedBalance >= 99999 && convertedBalance < 999999) {
-    truncatedValue = (balance / 1000).toFixed(decimalsToKeep);
+  } else if (convertedBalance >= 10000 && convertedBalance < 999999) {
+    truncatedValue = (parseFloat(balance) / 1000).toFixed(decimalsToKeep);
     return `${truncatedValue}K`;
-  } else if (convertedBalance >= 1000000000) {
-    truncatedValue = (balance / 1000000000).toFixed(decimalsToKeep);
+  } else if (convertedBalance >= 1000000000 && convertedBalance < 9999999999) {
+    truncatedValue = (parseFloat(balance) / 1000000000).toFixed(decimalsToKeep);
     return `${truncatedValue}B`;
+  } else if (
+    convertedBalance >= 1000000000000 &&
+    convertedBalance < 9999999999999
+  ) {
+    truncatedValue = (parseFloat(balance) / 1000000000000).toFixed(
+      decimalsToKeep
+    );
+    return `${truncatedValue}T`;
   } else if (convertedBalance === 0) {
     return "0";
   } else if (convertedBalance < 0.001) {

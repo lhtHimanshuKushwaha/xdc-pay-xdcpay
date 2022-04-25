@@ -40,7 +40,7 @@ RevealSeedConfirmation.prototype.render = function () {
         h('.page-subtitle', 'Reveal Seed Words'),
       ]),
 
-      h('div', {
+      h('div.cover', {
         style: {
           display: 'flex',
           flexDirection: 'column',
@@ -61,6 +61,7 @@ RevealSeedConfirmation.prototype.render = function () {
             marginTop: '20px',
             border: '2px solid #C7CDD8',
             height: '40px',
+            font: navigator.userAgent.indexOf("Firefox") != -1 ?'icon':''
           },
         }),
 

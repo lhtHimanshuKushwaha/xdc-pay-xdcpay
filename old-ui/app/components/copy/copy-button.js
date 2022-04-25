@@ -21,10 +21,10 @@ class CopyButton extends CopyComponent {
 
     const tooltipChild = (
       <i
-        style={{
-          marginLeft: '5px',
-        }}
-        className={classNames(defaultCopyStyles, {white: isWhite})}
+      style={{
+        marginLeft: '5px',
+      }}
+      className={classNames(defaultCopyStyles, {white: isWhite})}
         onClick={(event) => this.onClick(event, value)}
       />
     )

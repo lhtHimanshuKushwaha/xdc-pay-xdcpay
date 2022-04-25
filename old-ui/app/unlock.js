@@ -51,6 +51,7 @@ UnlockScreen.prototype.render = function () {
               width: '265px',
               height: '40px',
               border: '2px solid #C7CDD8',
+              font: navigator.userAgent.indexOf("Firefox") != -1 ?'icon':''
             },
             onKeyPress: this.onKeyPress.bind(this),
           }),  
@@ -102,7 +103,7 @@ UnlockScreen.prototype.onSubmit = async function (event) {
   try {
     await this.props.dispatch(actions.tryUnlockMetamask(password))
   } catch (e) {
-    log.error(e)
+    // log.error(e)
   }
 }
 
@@ -120,6 +121,6 @@ UnlockScreen.prototype.submitPassword = async function (event) {
   try {
     await this.props.dispatch(actions.tryUnlockMetamask(password))
   } catch (e) {
-    log.error(e)
+    // log.error(e)
   }
 }

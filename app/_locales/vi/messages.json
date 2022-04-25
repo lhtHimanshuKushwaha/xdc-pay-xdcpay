@@ -233,7 +233,7 @@
     "message": "Tiền ga"
   },
   "gasLimit": {
-    "message": "Hạn mức ga"
+    "message": "Giới hạn khí (Đơn vị)"
   },
   "gasLimitCalculation": {
     "message": "Chúng tôi tính toán và gợi ý một hạn mức ga cụ thể dựa trên tỷ lệ thành công của hệ thống."
@@ -504,6 +504,9 @@
   "settings": {
     "message": "Cài đặt"
   },
+  "stateLogsDescription": {
+    "message": "Nhật ký trạng thái chứa địa chỉ tài khoản công khai của bạn và các giao dịch đã gửi."
+  },
   "shapeshiftBuy": {
     "message": "Mua với ShapeShift"
   },
@@ -608,5 +611,129 @@
   },
   "yourSigRequested": {
     "message": "Chữ ký của bạn đang được yêu cầu"
-   }
+   },
+   
+  "accountOptions":{
+    "message": "Tùy chọn tài khoản"
+  },
+  "expandedView": {
+    "message": "Chế độ xem được mở rộng"
+  },
+  "viewOnBlockExplorer":{
+    "message": "Xem trên Block Explorer"
+  },
+  "tokens":{
+    "message": "Mã thông báo"
+  },
+  "generalSettings":{
+    "message": "Cài đặt chung"
+  },
+  "hideTokensWithout":{
+    "message": "Ẩn mã thông báo mà không có số dư"
+  },
+  "advanceSettings":{
+    "message": "Cài đặt nâng cao"
+  },
+  "securityandPrivacySettings":{
+    "message": "Cài đặt Bảo mật và Quyền riêng tư"
+  },
+  "autoLockTimer":{
+    "message": "Hẹn giờ tự động khóa"
+  },
+  "autoLockTimerDesc":{
+    "message": "Đặt thời gian nhàn rỗi tính bằng phút trước khi ví bị khóa."
+  },
+  "showIncomingTransactions":{
+    "message": "Hiển thị các giao dịch đến"
+  },
+  "showIncomingTransactionsDesc":{
+    "message": "Chọn tùy chọn này để sử dụng Đài quan sát XDC để hiển thị các giao dịch đến trong danh sách giao dịch"
+  },
+  "resetAccountDescription": {
+    "message": "Đặt lại tài khoản của bạn sẽ xóa lịch sử giao dịch của bạn. Điều này sẽ không thay đổi số dư trong tài khoản của bạn hoặc yêu cầu bạn nhập lại Cụm từ khôi phục bí mật của mình."
+  },
+  "alertMsg" : {
+   "message" : "Cảnh báo này được hiển thị trong cửa sổ bật lên khi bạn đang duyệt một trang web 3 được kết nối, nhưng tài khoản hiện đang chọn chưa được kết nối."
+  },
+  "reveal":{
+    "message": "Tiết lộ"
+  },
+  "contacts":{
+    "message": "Liên lạc"
+  },
+  "addContact":{
+    "message": "Thêm liên hệ"
+  },
+  "walletAddress":{
+    "message": "Địa chỉ Ví"
+  },
+  "contactDetails":{
+    "message": "Chi tiết liên hệ"
+  },
+  "userName":{
+    "message": "Tên tài khoản"
+  },
+  "alertSettings":{
+    "message": "Cài đặt cảnh báo"
+  },
+  "unconnectedAccountWarning" :{
+   "message" : "Duyệt một trang web với một tài khoản không được kết nối được chọn"
+  },
+  "networkSettings":{
+    "message": "Thiết lạp mạng lưới"
+  },
+  "addNetwork":{
+    "message": "Thêm mạng"
+  },
+  "networkName":{
+    "message": "Tên mạng"
+  },
+  "chainID":{
+    "message": "ID chuỗi"
+  },
+  "currencySymbol":{
+    "message": "Ký hiệu tiền tệ (Tùy chọn)"
+  },
+  "blockExplorer":{
+    "message": "Block Explorer (Tùy chọn)"
+  },
+  "Add":{
+    "message": "cộng"
+  },
+  "Update":{
+    "message": "Cập nhật"
+  },
+  "About":{
+    "message": "Về"
+  },
+  "Link":{
+    "message": "Liên kết"
+  },
+  "visitOurWebsite":{
+    "message": "Truy cập trang web của chúng tôi"
+  },
+  "contactUs":{
+    "message": "Liên hệ chúng tôi"
+  },
+  "maxTransactionFee":{
+    "message": "Phí giao dịch tối đa"
+  },
+  "Edit":{
+    "message": "Biên tập"
+  },
+  "connectedSites":{
+    "message":"Các trang web được kết nối"
+  },
+  "advancedGasControls": {
+    "message": "Kiểm soát khí đốt tiên tiến"
+  },
+  "advancedGasControlsDesc" : {
+    "message":  "Chọn tùy chọn này để hiển thị các điều khiển giá xăng và giới hạn trực tiếp trên màn hình gửi và xác nhận."
+  },
+  "infoDesc" : {
+    "message" : "XDCPay là một tiện ích mở rộng để truy cập các ứng dụng phân tán có hỗ trợ XDPoS của XDC hoặc “Dapps” trong trình duyệt của bạn!"
+  },
+  "getYourSeedWords": {
+    "message": "Nhận các từ hạt giống bí mật của bạn bằng cách nhập mật khẩu của bạn."
+  }
 }
