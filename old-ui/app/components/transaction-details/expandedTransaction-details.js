@@ -34,7 +34,8 @@ export default class ExpandedTransactionDetails extends React.Component {
     var gas;
     var gasPrice;
     var txnId;
-    var date;
+    var submitTime;
+    var createdTime;
     // var time = formatDate(date);
     const valueBn = hexToBn(value);
     const gasPriceBn = hexToBn(gasPrice);
@@ -47,7 +48,7 @@ export default class ExpandedTransactionDetails extends React.Component {
 
       const pickData = transactionList.map(({ id }) => id);
 
-      console.log(pickData, "--");
+      
 
       // if (viewTrans === pickData) {
       transactionList.filter((txObj) => {
@@ -55,20 +56,22 @@ export default class ExpandedTransactionDetails extends React.Component {
         (fromAdd = txObj.txParams.from),
           // fromAdd = fromAdd.replace('0x', 'xdc'),
           (toAdd = txObj.txParams.to),
-          console.log(txObj.txParams.to, "****");
+        
         // console.log(toAdd.replace('0x', 'xdc'),'[--]'),
         (value = txObj.txParams.value),
           (gas = txObj.txParams.gas),
           //  txnId = txObj.id,
           (gasPrice = txObj.txParams.gasPrice);
-        date = txObj.txParams.time;
+          submitTime = formatDate(txObj.submittedTime);
+          createdTime = formatDate(txObj.time);
+            
       });
 
       // }
     }
-    // function formatDate(date) {
-    //   return vreme.format(new Date(date), "Mar 16 2014, 02:30 PM");
-    // }
+    function formatDate(date) {
+      return vreme.format(new Date(date), "Mar 16 2014, 02:30 PM");
+    }
 
     // console.log(contactList.address, ' +-+ ')
     // if(fromAdd === contactList.address)
@@ -248,7 +251,7 @@ export default class ExpandedTransactionDetails extends React.Component {
                       />
                       <div className="transaction-border"></div>
                     </div>
-                    <div> Transaction created with a value of {value} XDC.</div>
+                    <div> Transaction created with a value of {value} XDC at {createdTime}.</div>
                   </div>
                   <div style={{ display: "flex" }}>
                     <div style={{ display: "flex", flexDirection: "column" }}>
@@ -260,7 +263,7 @@ export default class ExpandedTransactionDetails extends React.Component {
                     </div>
                     <div>
                       {" "}
-                      Trasaction submitted with estimated gas fee of 1.00 GWEI.{" "}
+                      Trasaction submitted with estimated gas fee of 1.00 GWEI at {submitTime}.{" "}
                     </div>
                   </div>
 
@@ -271,7 +274,7 @@ export default class ExpandedTransactionDetails extends React.Component {
                         src="/images/Assets/TransactionComplete.svg"
                       />
                     </div>
-                    <div> Trasaction confirmed. </div>
+                    <div> Trasaction confirmed at {submitTime}. </div>
                   </div>
                 </div>
               </div>
