@@ -34,7 +34,8 @@ class TransactionDetails extends React.Component {
     var value;
     var gas;
     var gasPrice;
-    var date
+    var submitTime;
+    var createdTime;
     // var time = formatDate(date);
     const valueBn = hexToBn(value);
     const gasPriceBn = hexToBn(gasPrice);
@@ -51,24 +52,25 @@ class TransactionDetails extends React.Component {
 
       // if (viewTrans === pickData) {
       transactionList.filter((txObj) => {
-        viewTrans === props.txId;
+        viewTrans === pickData;
         (fromAdd = txObj.txParams.from),
           // fromAdd = fromAdd.replace('0x', 'xdc'),
           (toAdd = txObj.txParams.to),
-          console.log(txObj.txParams.to, "****");
-        // console.log(toAdd.replace('0x', 'xdc'),'[--]'),
-        (value = txObj.txParams.value),
+          // console.log(toAdd.replace('0x', 'xdc'),'[--]'),
+          (value = txObj.txParams.value),
           (gas = txObj.txParams.gas),
           //  txnId = txObj.id,
           (gasPrice = txObj.txParams.gasPrice);
-        date = txObj.txParams.time;
+        submitTime = formatDate(txObj.submittedTime);
+        createdTime = formatDate(txObj.time);
+          console.log(submitTime,"****");
       });
 
       // }
     }
-    // function formatDate(date) {
-    //   return vreme.format(new Date(date), "Mar 16 2014, 02:30 PM");
-    // }
+    function formatDate(date) {
+      return vreme.format(new Date(date), "Mar 16 2014, 02:30 PM");
+    }
 
     // console.log(contactList.address, ' +-+ ')
     // if(fromAdd === contactList.address)
@@ -213,7 +215,7 @@ class TransactionDetails extends React.Component {
                 />
                 <div className="transaction-border"></div>
               </div>
-              <div> Transaction created with a value of {value} XDC.</div>
+              <div> Transaction created with a value of {value} XDC at {createdTime}.</div>
             </div>
             <div style={{ display: "flex" }}>
               <div style={{ display: "flex", flexDirection: "column" }}>
@@ -225,7 +227,7 @@ class TransactionDetails extends React.Component {
               </div>
               <div>
                 {" "}
-                trasaction submitted with estimated gas fee of 1.00 GWEI.{" "}
+                Trasaction submitted with estimated gas fee of 1.00 GWEI at {submitTime}.{" "}
               </div>
             </div>
 
@@ -236,14 +238,11 @@ class TransactionDetails extends React.Component {
                   src="/images/Assets/TransactionComplete.svg"
                 />
               </div>
-              <div> trasaction confirmed. </div>
+              <div> Trasaction confirmed at {submitTime}. </div>
             </div>
           </div>
         </div>
       )
-      // function formatDate (date) {
-      //   return vreme.format(new Date(date), 'Mar 16 2014, 14:30')
-      // }
     }
     return (
       <div style={{width:'100%'}}>
