@@ -29,7 +29,7 @@ class BuyButtonSubview extends Component {
 
   headerSubview() {
     const props = this.props;
-    const { network, conversionRate, currentCurrency } = props;
+    const { network, conversionRate, currentCurrency,networkList } = props;
     var selected = props.address || Object.keys(props.accounts)[0]
     var checksumAddress = selected && toChecksumAddress(network, selected)
     const isLoading = props.isSubLoading;
@@ -84,7 +84,7 @@ class BuyButtonSubview extends Component {
               conversionRate,
               currentCurrency,
               checksumAddress,
-              
+              networkList
               // network,
             }}
           />
@@ -274,6 +274,7 @@ class BuyButtonSubview extends Component {
 }
 
 BuyButtonSubview.propTypes = {
+  networkList:PropTypes.array,
   dispatch: PropTypes.func,
   network: PropTypes.string,
   buyView: PropTypes.object,
@@ -290,6 +291,7 @@ function mapStateToProps(state) {
     warning: state.appState.warning,
     buyView: state.appState.buyView,
     network: state.metamask.network,
+    networkList:[...state.metamask.networkList, ...state.metamask.frequentRpcList],
     provider: state.metamask.provider,
     address: state.metamask.selectedAddress,
     context: state.appState.currentView.context,

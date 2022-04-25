@@ -31,6 +31,7 @@ TokenBalance.prototype.render = function () {
   const props = this.props
   const { symbol, string, isLoading } = state
   const { balanceOnly } = this.props
+  var realTokenBalance=(parseFloat(string)).toLocaleString('en-US', {valute: 'USD'})
 
   const valueStyle = props.valueStyle ? props.valueStyle : {
     color: '#848484',
@@ -62,7 +63,7 @@ TokenBalance.prototype.render = function () {
     },'Available:'),
       h('div.hide-text-overflow.token-balance__amount', {
           style: valueStyle,
-      }, string),
+      }, realTokenBalance),
       !balanceOnly && h('span.token-balance__symbol', {
           style: dimStyle,
       }, symbol),
