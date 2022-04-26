@@ -28,7 +28,7 @@ export default class AddNetwork extends React.Component {
 
   onBackClick = () => {
     // eslint-disable-next-line react/prop-types
-    this.props.dispatch(actions.networkSettings())
+    this.props.backToNetwork ? this.props.backToNetwork() :this.props.dispatch(actions.networkSettings())
   }
 
   onStateChange = (event) => {
