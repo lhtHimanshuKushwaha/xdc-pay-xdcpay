@@ -823,7 +823,8 @@ p.buy-option {
 }
 
 .account-options-close-icon {
-  margin-left: 86px;
+  margin-left: 79px;
+  margin-right: 23px;
   cursor: pointer;
 }
 
