@@ -88,7 +88,7 @@ TransactionListItem.prototype.render = function () {
   if (transaction.key === "shapeshift") {
     if (Number(network) === MAINNET_CODE) return h(ShiftListItem, transaction);
   }
-  var date = formatDate(transaction.time);
+  var date = formatDate(transaction.submittedTime);
 
   let isLinkable = false;
   const numericNet = isNaN(network) ? network : parseInt(network);
@@ -220,7 +220,7 @@ TransactionListItem.prototype.render = function () {
                 conversionRate,
                 currentCurrency,
                 // width: '55px',
-                shorten: false,
+                shorten: true,
                 showFiat: false,
                 network,
                 style: {
