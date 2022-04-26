@@ -119,37 +119,37 @@ SendTransactionScreen.prototype.render = function () {
     //
     // Optional Fields
     //
-    // h(
-    //   "div",
-    //   {
-    //     style: {
-    //       fontSize: "12px",
-    //       fontFamily: "Inter-Semibold",
-    //       lineHeight: "25px",
-    //       marginLeft: "46px",
-    //       marginTop: "30px",
-    //     },
-    //   },
-    //   ["Transaction Note (optional)"]
-    // ),
+    h(
+      "div",
+      {
+        style: {
+          fontSize: "12px",
+          fontFamily: "Inter-Semibold",
+          lineHeight: "25px",
+          marginLeft: "46px",
+          marginTop: "30px",
+        },
+      },
+      ["Transaction Note (optional)"]
+    ),
 
-    // // 'data' field
-    // h("section.flex-column.flex-center", [
-    //   h("input.large-input", {
-    //     name: "txData",
-    //     placeholder: "",
-    //     maxLength: 35,
-    //     onChange: ((e)=>(this.displaywarning(e))),
-    //     style: {
-    //       width: "265px",
-    //       resize: "none",
-    //       marginTop: "-15px",
-    //     },
-    //     dataset: {
-    //       persistentFormId: "tx-data",
-    //     },
-    //   }),
-    // ]),
+    // 'data' field
+    h("section.flex-column.flex-center", [
+      h("input.large-input", {
+        name: "txData",
+        placeholder: "",
+        maxLength: 35,
+        onChange: ((e)=>(this.displaywarning(e))),
+        style: {
+          width: "265px",
+          resize: "none",
+          marginTop: "-15px",
+        },
+        dataset: {
+          persistentFormId: "tx-data",
+        },
+      }),
+    ]),
 
     // error message
     h("div", { style: { margin: "0 45px" } }, [
@@ -235,8 +235,8 @@ SendTransactionScreen.prototype.onSubmit = function () {
   }
 
   const value = normalizeEthStringToWei(input);
-  // const txData = document.querySelector('input[name="txData"]').value;
-  const txData = "";
+  const txData = document.querySelector('input[name="txData"]').value;
+  // const txData = "";
   const balance = this.props.balance;
   if (value.gt(balance)) {
     message = "Insufficient funds.";
@@ -261,11 +261,11 @@ SendTransactionScreen.prototype.onSubmit = function () {
     return this.props.dispatch(actions.displayWarning(message));
   }
 
-  if (txData.length > 0)
-   {
-    message = "Keep your gas fees 35,000 or above to transact successfully. ";
-    return this.props.dispatch(actions.displayWarning(message));
-  }
+  // if (txData.length > 0)
+  //  {
+  //   message = "Keep your gas fees 35,000 or above to transact successfully. ";
+  //   return this.props.dispatch(actions.displayWarning(message));
+  // }
 
   // if (!isHex(ethUtil.stripHexPrefix(txData)) && txData) {
   //   message = 'Transaction data must be hex string.'
@@ -282,6 +282,7 @@ SendTransactionScreen.prototype.onSubmit = function () {
   };
   if (recipient) txParams.to = ethUtil.addHexPrefix(recipient);
   if (txData) txParams.data = "00" + txData;
+  txParams.gas = txParams.data ? "0x"+((21340+((txParams.data.length<2?txParams.data.length-2:(txParams.data.length-3)*90))).toString(16)) : txParams.gas;
 
   this.props.dispatch(actions.signTx(txParams));
 };

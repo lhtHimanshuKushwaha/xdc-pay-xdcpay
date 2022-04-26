@@ -285,7 +285,7 @@ class AccountDropdowns extends Component {
               className="account-options-icon"
               src="/images/Assets/CopyClipboard.svg"
             />
-            {`${t('copyToClipboard')}`}
+            {`${t('copyAddress')}`}
           </DropdownMenuItem>
           {ifContractAcc(keyring) ? (
             <DropdownMenuItem closeMenu={() => {

@@ -220,7 +220,7 @@ TransactionListItem.prototype.render = function () {
                 conversionRate,
                 currentCurrency,
                 // width: '55px',
-                shorten: true,
+                shorten: false,
                 showFiat: false,
                 network,
                 style: {
