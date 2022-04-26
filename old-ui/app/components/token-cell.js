@@ -161,7 +161,7 @@ TokenCell.prototype.renderTokenOptions = function (menuToTop, ind) {
           h('img',
             {className: 'token-options-icon', src: "/images/Assets/CopyClipboard.svg"},
           ),
-        'Copy address to clipboard',]
+        'Copy Address to clipboard',]
       ),
       h(
         DropdownMenuItem,
