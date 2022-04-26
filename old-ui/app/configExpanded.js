@@ -1,3 +1,5 @@
+import AddNetwork from './add-network'
+
 const connect = require('react-redux').connect
 const actions = require('../../ui/app/actions')
 import React from 'react'
@@ -19,9 +21,13 @@ export default class ConfigScreenExpanded extends React.Component {
     }
   }
 
+  setComponent = (selectedComponent) => {
+    this.setState({selectedComponent})
+  }
+
   render () {
     const state = this.props
-     return (
+    return (
       <div
         className="sidebar settingsExpanded"
         style={{
@@ -34,8 +40,8 @@ export default class ConfigScreenExpanded extends React.Component {
             display: 'flex',
             alignItems: 'left',
             height: '42px',
-                     padding: '11px 0 0 10px',
-            borderBottom: '1px solid #E3E7EB'
+            padding: '11px 0 0 10px',
+            borderBottom: '1px solid #E3E7EB',
           }}
         >
           <img
@@ -50,7 +56,7 @@ export default class ConfigScreenExpanded extends React.Component {
               state.dispatch(actions.goHome())
             }}
           />
-          <h2 style={{margin: '-3px 0px 0px 27px',fontFamily:'Inter-Bold'}}>Settings</h2>
+          <h2 style={{margin: '-3px 0px 0px 27px', fontFamily: 'Inter-Bold'}}>Settings</h2>
         </div>
 
         <div
@@ -59,7 +65,7 @@ export default class ConfigScreenExpanded extends React.Component {
             width: '20%',
             position: 'absolute',
             left: '0',
-            height:'100%',
+            height: '100%',
             borderRight: '1px solid #E3E7EB ',
           }}
         >
@@ -118,14 +124,22 @@ export default class ConfigScreenExpanded extends React.Component {
             position: 'absolute',
             right: '0',
           }}
-            >{console.log(this.state.selectedComponent,this.state.expandedUI,'321+')}
+        >
           {this.state.selectedComponent === 'generalSettings' && <GeneralSettings/>}
           {this.state.selectedComponent === 'advanceSettings' && <AdvanceSettings/>}
           {this.state.selectedComponent === 'securityAndPrivacySettings' && <SecurityAndPrivacySettings/>}
-          {this.state.selectedComponent === 'Contacts' && <Contacts/>}
-          {this.state.selectedComponent === 'NetworkSettings' && <NetworkSettings/>}
-           {this.state.selectedComponent === 'infoScreen' && <InfoScreen />}
-           {this.state.selectedComponent === 'add-contact' && <AddContact/>}
+
+          {this.state.selectedComponent === 'Contacts' &&
+          <Contacts onAddContactClicked={() => this.setComponent('AddContact')}/>}
+          {this.state.selectedComponent === 'AddContact' &&
+          <AddContact backToContacts={() => this.setComponent('Contacts')}/>}
+
+          {this.state.selectedComponent === 'NetworkSettings' &&
+          <NetworkSettings onAddNetworkClicked={() => this.setComponent('AddNetwork')}/>}
+          {this.state.selectedComponent === 'AddNetwork' &&
+          <AddNetwork backToNetwork={() => this.setComponent('NetworkSettings')}/>}
+
+          {this.state.selectedComponent === 'infoScreen' && <InfoScreen/>}
         </div>
       </div>
     )
