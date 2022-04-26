@@ -14,6 +14,10 @@ class ContactDetails extends React.Component {
     t: PropTypes.func,
   }
 
+  onBackToContacts = () => {
+    this.props.backToContacts ?  this.props.backToContacts() : this.props.dispatch(actions.Contacts())
+  }
+
   render () {
     const state = this.props
     const {t} = this.context
@@ -34,7 +38,7 @@ class ContactDetails extends React.Component {
         b.length,
       )}`
     }
-    
+    console.log(contactObj,'obje')
     return (
       <div
         className="flex-column flex-grow"
@@ -49,8 +53,8 @@ class ContactDetails extends React.Component {
           }}
         >
           <img src="/images/Assets/BackArrow.svg"
-               style={{marginLeft: '17px', cursor: 'pointer'}}
-               onClick={() => state.dispatch(actions.Contacts())}
+            style={{ marginLeft: '17px', cursor: 'pointer' }}
+            onClick={() => this.onBackToContacts }
           />
           <h2 style={{fontFamily: 'Inter-bold', marginLeft: '30px'}}>
             Contact Details
@@ -95,7 +99,7 @@ class ContactDetails extends React.Component {
 
                 }}
               >
-                {contactObj.name}
+                {contactObj.name || this.props.object.name}
               </div>
               <div
                 style={{
