@@ -139,7 +139,6 @@ SendTransactionScreen.prototype.render = function () {
         name: "txData",
         placeholder: "",
         maxLength: 35,
-        onChange: ((e)=>(this.displaywarning(e))),
         style: {
           width: "265px",
           resize: "none",
@@ -165,7 +164,7 @@ SendTransactionScreen.prototype.render = function () {
         style: {
           width: "265px",
           height: "40px",
-          marginTop: "65px",
+          marginTop: "33px",
           marginLeft: "46px",
         },
         onClick: this.onSubmit.bind(this),
@@ -192,11 +191,6 @@ SendTransactionScreen.prototype.recipientDidChange = function (
     recipient: recipient,
     nickname: nickname,
   });
-};
-
-SendTransactionScreen.prototype.displaywarning =function(){
-    let msg = "Give gas limit greater than or equals to 35000 to send transaction note. ";
-    this.props.dispatch(actions.displayWarning(msg))
 };
 
 SendTransactionScreen.prototype.onSubmit = function () {
