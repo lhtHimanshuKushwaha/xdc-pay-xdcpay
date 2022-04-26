@@ -1045,7 +1045,7 @@ module.exports = class XdcController extends EventEmitter {
    */
   signMessage (msgParams) {
     log.info('MetaMaskController - signMessage')
-    const msgId = msgParams.xdcId
+    const msgId = msgParams.metamaskId
 
     // sets the status op the message to 'approved'
     // and removes the xdcId for signing
@@ -1104,7 +1104,7 @@ module.exports = class XdcController extends EventEmitter {
    */
   signPersonalMessage (msgParams) {
     log.info('MetaMaskController - signPersonalMessage')
-    const msgId = msgParams.xdcId
+    const msgId = msgParams.metamaskId
     // sets the status op the message to 'approved'
     // and removes the xdcId for signing
     return this.personalMessageManager.approveMessage(msgParams)
@@ -1157,7 +1157,7 @@ module.exports = class XdcController extends EventEmitter {
    */
   async signTypedMessage (msgParams) {
     log.info('MetaMaskController - eth_signTypedData')
-    const msgId = msgParams.xdcId
+    const msgId = msgParams.metamaskId
     const version = msgParams.version
     try {
       const cleanMsgParams = await this.typedMessageManager.approveMessage(msgParams)

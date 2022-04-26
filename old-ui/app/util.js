@@ -374,8 +374,8 @@ function shortenBalance(balance, decimalsToKeep) {
     return `${truncatedValue}T`;
   } else if (convertedBalance === 0) {
     return "0";
-  } else if (convertedBalance < 0.001) {
-    return "<0.001";
+  } else if (convertedBalance < 0.0001) {
+    return "<"+convertedBalance.toFixed(decimalsToKeep).toString();
   } else if (convertedBalance < 1) {
     var stringBalance = convertedBalance.toString();
     if (stringBalance.split(".")[1].length > 9) {

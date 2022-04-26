@@ -158,9 +158,9 @@ PendingTx.prototype.render = function () {
   // recipient check
   const isValidAddress =
     !txParams.to || util.isValidAddress(txParams.to, network);
-
-  // Gas
-  const gas = txParams.gas;
+  
+//Gas
+  const gas =  txParams.gas;
   const gasBn = hexToBn(gas);
   // default to 8MM gas limit
   const gasLimit = new BN(parseInt(blockGasLimit) || "8000000");
@@ -175,8 +175,6 @@ PendingTx.prototype.render = function () {
   const txFeeBn = gasBn.mul(gasPriceBn);
   const valueBn = hexToBn(txParams.value);
   const maxCost = txFeeBn.add(valueBn);
-
-  const dataLength = txParams.data ? (txParams.data.length - 2) / 2 : 0;
 
   const balanceBn = hexToBn(balance);
   const insufficientBalance = balanceBn.lt(maxCost);
@@ -918,7 +916,7 @@ PendingTx.prototype.gasPriceChanged = function (newBN, valid) {
 };
 
 PendingTx.prototype.gasLimitChanged = function (newBN, valid) {
-  log.info(`Gas limit changed to ${newBN.toString(10)}`);
+  log.info(`Gas limit changed to ${newBN.toString(10)}`,valid);
   const txMeta = this.gatherTxMeta();
   txMeta.txParams.gas = "0x" + newBN.toString("hex");
   this.setState({
