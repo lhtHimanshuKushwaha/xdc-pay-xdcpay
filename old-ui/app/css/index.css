@@ -730,6 +730,7 @@ p.buy-option {
   padding-bottom: 12px;
   padding-top: 15px;
   padding-left: 120px;
+  padding-right: 18px;
 }
 
 .dropp {
@@ -832,7 +833,7 @@ p.buy-option {
 
 .selectNetworkExpanded {
   top: 38px;
-  left: 380px;
+  left: 384px;
   width: 317px;
 }
 
@@ -859,6 +860,7 @@ p.buy-option {
   padding-bottom: 12px;
   padding-top: 15px;
   padding-left: 115px;
+ padding-right :18px;
 }
 
 .wallet-options-close-icon {
@@ -1988,7 +1990,7 @@ input:checked+.slider:before {
 }
 
 .trasaction-details-amount {
-  padding-bottom: 17px;
+  padding: 0 12px 17px 0;
   border-bottom: 1px solid #e3e7eb;
   display: flex;
   justify-content: space-between;

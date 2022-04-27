@@ -11,7 +11,7 @@ import ExpandedTransactionDetails from "./expandedTransaction-details";
 
 class TransactionDetails extends React.Component {
   render() {
-    function shorten(b, amountL = 7, /*amountR = 4,*/ stars = 3) {
+    function shorten(b, amountL = 10, /*amountR = 4,*/ stars = 3) {
       return `${b.slice(0, amountL)}${".".repeat(stars)}${b.slice(
         b.length - 4,
         b.length
@@ -21,11 +21,15 @@ class TransactionDetails extends React.Component {
     var props = this.props;
     const contactList = props.metamask.addressBook;
     const viewTrans = props.viewTransaction;
-    const { network, conversionRate, currentCurrency, networkList } = props;
+    const {
+      network,
+      conversionRate,
+      currentCurrency,
+      networkList,
+      transactions,
+    } = props;
     var selected = props.address || Object.keys(props.accounts)[0];
     var checksumAddress = selected && toChecksumAddress(network, selected);
-    console.log(viewTrans, " ++-- ");
-    const { transactions } = this.props;
 
     // var msgData = this.props.txData
     // var msgParams = msgData.id
@@ -36,35 +40,29 @@ class TransactionDetails extends React.Component {
     var gasPrice;
     var submitTime;
     var createdTime;
-    // var time = formatDate(date);
-    const valueBn = hexToBn(value);
-    const gasPriceBn = hexToBn(gasPrice);
-    const gasBn = hexToBn(gas);
+    // const valueBn = value;
+    // const gasPriceBn = gasPrice;
+    // const gasBn = gas;
     // const txFeeBn = gasBn.mul(gasPriceBn)
     // const maxCost = txFeeBn.add(valueBn)
-    // console.log(msgParams,'paramsData')
+  // console.log(valueBn,gasPriceBn,gasBn,txFeeBn,maxCost.toString(16),'maximum')
     {
       const transactionList = transactions.sort((a, b) => a.time - b.time);
-
-      const pickData = transactionList.map(({ id }) => id);
-
-      console.log(pickData, "--");
-
+      var detailsOf;
       // if (viewTrans === pickData) {
       transactionList.filter((txObj) => {
-        viewTrans === pickData;
-        (fromAdd = txObj.txParams.from),
-          // fromAdd = fromAdd.replace('0x', 'xdc'),
-          (toAdd = txObj.txParams.to),
-          // console.log(toAdd.replace('0x', 'xdc'),'[--]'),
-          (value = txObj.txParams.value),
-          (gas = txObj.txParams.gas),
-          //  txnId = txObj.id,
-          (gasPrice = txObj.txParams.gasPrice);
-        submitTime = formatDate(txObj.submittedTime);
-        createdTime = formatDate(txObj.time);
-          console.log(submitTime,"****");
+        if (txObj.id === viewTrans) {
+          detailsOf = txObj;
+          // console.log('chutiya',detailsOf)
+        }
       });
+        fromAdd = detailsOf.txParams.from
+        toAdd = detailsOf.txParams.to
+        value = detailsOf.txParams.value
+        gas = detailsOf.txParams.gas
+        gasPrice = detailsOf.txParams.gasPrice
+      submitTime = formatDate(detailsOf.submittedTime);
+      createdTime = formatDate(detailsOf.time);
 
       // }
     }
@@ -119,7 +117,7 @@ class TransactionDetails extends React.Component {
           <div style={{ paddingBottom: "17px" }}>
             <div
               className="section-title flex-row"
-              style={{ justifyContent: "space-between", width: "64%" }}
+              style={{ justifyContent: "space-between", width: "75%" }}
             >
               <div>
                 {" "}
@@ -165,12 +163,12 @@ class TransactionDetails extends React.Component {
           <div className="flexbox">
             <div className="trasaction-details-from-to">From</div>
             <div className="trasaction-details-from-to-accounts">
-              {shorten(fromAdd)}
+              {shorten (fromAdd.replace("0x", "xdc"))}
             </div>
             <img src="/images/Assets/DownArrow.svg" />
             <div className="trasaction-details-from-to">To</div>
             <div className="trasaction-details-from-to-accounts">
-              {shorten(toAdd)}
+              {shorten (toAdd.replace("0x", "xdc"))}
             </div>
           </div>
 
@@ -196,8 +194,8 @@ class TransactionDetails extends React.Component {
           <div className="trasaction-details-amount">
             <div style={{ marginLeft: "16px" }}>Total</div>
             <div style={{ marginLeft: "200px" }}>
-              {/* <EthBalanceComponent 
-              value={maxCost.toString(16)} /> */}
+             
+              {/* {maxCost.toString(16)} */}
             </div>
             <h1 style={{ color: "#848484" }}>XDC</h1>
           </div>
@@ -215,7 +213,11 @@ class TransactionDetails extends React.Component {
                 />
                 <div className="transaction-border"></div>
               </div>
-              <div> Transaction created with a value of {value} XDC at {createdTime}.</div>
+              <div>
+                {" "}
+                Transaction created with a value of {value} XDC at {createdTime}
+                .
+              </div>
             </div>
             <div style={{ display: "flex" }}>
               <div style={{ display: "flex", flexDirection: "column" }}>
@@ -227,7 +229,8 @@ class TransactionDetails extends React.Component {
               </div>
               <div>
                 {" "}
-                Trasaction submitted with estimated gas fee of 1.00 GWEI at {submitTime}.{" "}
+                Trasaction submitted with estimated gas fee of 1.00 GWEI at{" "}
+                {submitTime}.{" "}
               </div>
             </div>
 
@@ -242,15 +245,14 @@ class TransactionDetails extends React.Component {
             </div>
           </div>
         </div>
-      )
-    }
+      );
+    };
     return (
-      <div style={{width:'100%'}}>
+      <div style={{ width: "100%" }}>
         <TransactionComponent />
-        <ExpandedTransactionDetails/>
-
+        <ExpandedTransactionDetails />
       </div>
-    )
+    );
   }
 }
 

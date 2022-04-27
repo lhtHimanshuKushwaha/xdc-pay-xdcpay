@@ -156,10 +156,10 @@ export default class ConfigScreenExpanded extends React.Component {
           {this.state.selectedComponent === "Contacts" && (
             <Contacts
               onAddContactClicked={() => this.setComponent("AddContact")}
-              onViewContactDetails={(contactObj) => {
-                this.setComponent("ContactDetails",contactObj)
+              onViewContactDetails={() => 
+                this.setComponent("ContactDetails",)
                 // this.props.dispatch(actions.contactDetails(contactObj))
-              }}
+              }
               />
               )}
           {this.state.selectedComponent === "AddContact" && (

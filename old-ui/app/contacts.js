@@ -11,9 +11,9 @@ class Contacts extends React.Component {
       : this.props.dispatch(actions.showAddContactsPage());
   };
 
-  onViewContactDetails = (contactObj) => {
+  ViewContactDetails = (contactObj) => {
     this.props.onViewContactDetails
-      ? this.props.onViewContactDetails(contactObj)
+      ? this.props.onViewContactDetails()
       : this.props.dispatch(actions.contactDetails(contactObj));
   };
 
@@ -112,7 +112,7 @@ class Contacts extends React.Component {
                       padding: "3px 0 0 0",
                     }}
                     onClick={() => {
-                      this.onViewContactDetails(contactObj);
+                      this.ViewContactDetails(contactObj);
                     }}
                   >
                     {contactObj.name}
