@@ -29,7 +29,8 @@ TokenCell.prototype.render = function () {
   const { optionsMenuActive } = this.state
 
   const tokenBalanceRaw = Number.parseFloat(string)
-  const tokenBalance = tokenBalanceRaw.toFixed(countSignificantDecimals(tokenBalanceRaw, 2))
+  const tokenBalance = (parseFloat(tokenBalanceRaw.toFixed(countSignificantDecimals(tokenBalanceRaw, 2)))).toLocaleString('en-US', {valute: 'USD'});
+  
 
   
   return (
@@ -160,7 +161,7 @@ TokenCell.prototype.renderTokenOptions = function (menuToTop, ind) {
           h('img',
             {className: 'token-options-icon', src: "/images/Assets/CopyClipboard.svg"},
           ),
-        'Copy address to clipboard',]
+        'Copy Address to clipboard',]
       ),
       h(
         DropdownMenuItem,

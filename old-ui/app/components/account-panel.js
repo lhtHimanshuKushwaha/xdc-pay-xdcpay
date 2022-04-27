@@ -17,7 +17,7 @@ function AccountPanel () {
 AccountPanel.prototype.render = function () {
   var state = this.props
   var identity = state.identity || {}
-  const { network, conversionRate, currentCurrency ,checksumAddress} = state
+  const { network, conversionRate, currentCurrency ,checksumAddress,networkList} = state
   // function shorten(b, amountL = 7, /*amountR = 4,*/ stars = 3) {
 
   //   return `${b.slice(0, amountL)}${".".repeat(stars)}${b.slice(
@@ -129,6 +129,7 @@ AccountPanel.prototype.render = function () {
           conversionRate,
           currentCurrency,
           network,
+          networkList,
 
           style: {
             lineHeight: '7px',
