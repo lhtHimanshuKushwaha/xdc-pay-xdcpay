@@ -240,6 +240,7 @@ PendingTx.prototype.render = function () {
                   marginTop: "26px",
                   marginBottom: "14px",
                   fontWeight: "bold",
+                  fontFamily:"Inter-semibold",
                   marginLeft: !isNotification ? "" : "78px",
                 },
               },
@@ -278,6 +279,7 @@ PendingTx.prototype.render = function () {
                           color: "#2149B9",
                           background: "#ffffff",
                           fontWeight: "bold",
+                          fontFamily:"Inter-semibold",
                         },
                       },
                       "Reset"
@@ -451,7 +453,7 @@ PendingTx.prototype.render = function () {
               ".table-box",
               {
                 style: {
-                  overflowY: "scroll",
+                  overflowY: "auto",
                   height: !!("to" in this.props.txData.txParams)
                     ? dangerousGasLimit
                       ? dangerousGasLimit && insufficientBalance
@@ -481,7 +483,7 @@ PendingTx.prototype.render = function () {
                 // in the way that gas and gasLimit currently are.
 
                 h(".row", [
-                  h(".cell.label", "Amount"),
+                  h(".cell.label",{style:{fontFamily: navigator.userAgent.indexOf("Firefox") != -1 ?"Inter-semibold":"Inter-regular" ,fontWeight:navigator.userAgent.indexOf("Firefox") != -1 ?"100":"bold"}}, "Amount"),
                   h(EthBalance, {
                     valueStyle,
                     dimStyle,
@@ -502,7 +504,7 @@ PendingTx.prototype.render = function () {
                       h(".cell.row", [
                         h(
                           ".cell.label",
-                          { style: { marginTop: "20px" } },
+                          { style: { marginTop: "20px" ,fontFamily: navigator.userAgent.indexOf("Firefox") != -1 ?"Inter-semibold":"Inter-regular",fontWeight:navigator.userAgent.indexOf("Firefox") != -1 ?"100":"bold"} },
                           "Gas Limit (Units)"
                         ),
                         h(
@@ -542,7 +544,7 @@ PendingTx.prototype.render = function () {
                       h(".cell.row", [
                         h(
                           ".cell.label",
-                          { style: { marginTop: "20px" } },
+                          { style: { marginTop: "20px" ,fontFamily: navigator.userAgent.indexOf("Firefox") != -1 ?"Inter-semibold":"Inter-regular",fontWeight:navigator.userAgent.indexOf("Firefox") != -1 ?"100":"bold"} },
                           "Gas Price (GWEI)"
                         ),
                         h(
@@ -580,7 +582,7 @@ PendingTx.prototype.render = function () {
                 h(".cell.row", [
                   h(
                     ".cell.label",
-                    { style: { marginTop: "20px" } },
+                    { style: { marginTop: "20px" ,fontFamily: navigator.userAgent.indexOf("Firefox") != -1 ?"Inter-semibold":"Inter-regular",fontWeight:navigator.userAgent.indexOf("Firefox") != -1 ?"100":"bold"} },
                     "Max Transaction Fee"
                   ),
                   h(EthBalance, {
@@ -603,7 +605,7 @@ PendingTx.prototype.render = function () {
                   [
                     h(
                       ".cell.label",
-                      { style: { marginTop: "20px" } },
+                      { style: { marginTop: "20px" ,fontFamily: navigator.userAgent.indexOf("Firefox") != -1 ?"Inter-semibold":"Inter-regular",fontWeight:navigator.userAgent.indexOf("Firefox") != -1 ?"100":"bold"} },
                       "Max Total"
                     ),
                     h(
@@ -823,11 +825,12 @@ PendingTx.prototype.miniAccountPanelForRecipient = function (
               ".cell.row",
               {
                 style: {
-                  fontFamily: "Inter-SemiBold",
+                  fontFamily: navigator.userAgent.indexOf("Firefox") != -1 ?"Inter-semibold":"Inter-regular",
                   color: "#2A2A2A",
                   display: "flex",
                   whiteSpace: "nowrap",
                   fontSize: "12px",
+                  fontWeight:navigator.userAgent.indexOf("Firefox") != -1 ?"100":"bold"
                 },
               },
               "Recipient Address" /*accountSummary(nameForAddress(to, props.identities, props.network)), 6, 4*/
