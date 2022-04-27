@@ -28,7 +28,7 @@ class Contacts extends React.Component {
                justifyContent: 'space-between',
              }}
         >
-          <img src="/images/Assets/BackArrow.svg" className='image-display' style={{marginLeft: '17px', cursor: 'pointer'}}
+          <img src="/images/Assets/BackArrow.svg" className='image-display' style={{marginLeft: '17px', cursor: 'pointer' ,width:"19px" ,height:"17px"}}
                onClick={() => state.dispatch(actions.goConfig())}/>
           <h2 style={{fontFamily: 'Inter-bold',color:"#2A2A2A"}}>Contacts</h2>
           <img src="/images/Assets/Add.svg"

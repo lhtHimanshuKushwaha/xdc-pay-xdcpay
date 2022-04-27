@@ -32,7 +32,7 @@ class NetworkSettings extends React.Component {
           <img
             src="/images/Assets/BackArrow.svg"
             className="image-display"
-            style={{ marginLeft: "12px", cursor: "pointer" }}
+            style={{ marginLeft: "12px", cursor: "pointer" ,width:"19px" ,height:"17px"}}
             onClick={() => {
               state.dispatch(actions.goConfig());
             }}
