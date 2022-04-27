@@ -47,7 +47,7 @@ EthBalanceComponent.prototype.renderBalance = function (value) {
   const { conversionRate, shorten, incoming, currentCurrency } = props
   if (value === 'None') return value
   if (value === '...') return value
-  var balanceObj = generateBalanceObject(value, shorten ? 1 : 3)
+  var balanceObj = generateBalanceObject(value, shorten ? 1 : 4)
   var balance
   var splitBalance = value.split('')
   var ethNumber = splitBalance[0]
@@ -76,7 +76,7 @@ EthBalanceComponent.prototype.renderBalance = function (value) {
   return (
     h(Tooltip, {
       position: 'bottom',
-      title: `${ethNumber} ${ethSuffix}`,
+      title: `${balance}`,
     }, h('div', {style:{display: 'flex', justifyContent: 'space-between'}}, [
       h('.flex-row', {
         style: {

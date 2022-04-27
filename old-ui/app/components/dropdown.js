@@ -38,7 +38,7 @@ class Dropdown extends Component {
     } = this.props
 
     const innerStyleDefaults = extend({
-      padding: '0px 12px 0 0',
+      // padding: '0px 12px 0 0',
       background: 'transparent',
       // filter: 'contrast(0.6)',
       boxShadow: 'rgba(0, 0, 0, 0.15) 0px 2px 2px 2px',

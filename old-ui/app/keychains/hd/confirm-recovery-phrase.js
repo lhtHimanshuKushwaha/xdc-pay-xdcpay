@@ -38,6 +38,7 @@ class ConfirmRecoveryPhrase extends React.Component {
             fontWeight: '600',
             justifyContent: 'center',
             margin: '29px 0 36px 0 ',
+            fontSize:"15px",
           }}>
 
             Confirm Recovery Phrase

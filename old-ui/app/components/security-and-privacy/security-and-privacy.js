@@ -52,12 +52,12 @@ class SecurityAndPrivacySettings extends React.Component {
           <img
             className="image-display"
             src="/images/Assets/BackArrow.svg"
-            style={{ marginLeft: "-30px", cursor: "pointer" }}
+            style={{ marginLeft: "-49px", cursor: "pointer" ,width:"19px",height:"17px"}}
             onClick={() => {
               state.dispatch(actions.goConfig());
             }}
           />
-          <h2 style={{ marginLeft: "39px", fontFamily: "Inter-bold" }}>
+          <h2 style={{ marginLeft: "39px", fontFamily: navigator.userAgent.indexOf("Firefox") != -1 ?"Inter-semiBold":"Inter-Bold" ,fontSize:"15px"}}>
           {`${t('securityandPrivacySettings')}`}
           </h2>
         </div>
@@ -68,7 +68,7 @@ class SecurityAndPrivacySettings extends React.Component {
           }}
         >
           <span
-            style={{ fontWeight: "bold", fontSize: "14px", color: "#2149B9" }}
+            style={{ fontSize: "14px", color: "#2149B9",fontFamily: navigator.userAgent.indexOf("Firefox") != -1 ?"Inter-semiBold":"Inter-Medium" }}
           >{`${t('revealSeedWords')}`}</span>
           <br />
           <p
@@ -88,6 +88,7 @@ class SecurityAndPrivacySettings extends React.Component {
               background: "#FFFFFF",
               border: "2px solid #03BE46",
               fontWeight: "600",
+              fontFamily:"Inter-semiBold",
             }}
             onClick={(event) => {
               event.preventDefault();
