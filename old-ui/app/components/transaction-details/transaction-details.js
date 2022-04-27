@@ -48,11 +48,11 @@ class TransactionDetails extends React.Component {
     {
       const transactionList = transactions.sort((a, b) => a.time - b.time);
       var detailsOf;
-      // if (viewTrans === pickData) {
+      
       transactionList.filter((txObj) => {
         if (txObj.id === viewTrans) {
           detailsOf = txObj;
-          // console.log('chutiya',detailsOf)
+          
         }
       });
         fromAdd = detailsOf.txParams.from
@@ -63,34 +63,13 @@ class TransactionDetails extends React.Component {
       submitTime = formatDate(detailsOf.submittedTime);
       createdTime = formatDate(detailsOf.time);
 
-      // }
+      
     }
     function formatDate(date) {
       return vreme.format(new Date(date), "Mar 16 2014, 02:30 PM");
     }
 
-    // console.log(contactList.address, ' +-+ ')
-    // if(fromAdd === contactList.address)
-
-    // const
-    //   var adde
-    //   {
-    //   addressBook.map((obj) => {
-    //     adde = obj.address
-
-    //     if (fromAdd === adde) {
-    //       fromAdd = obj.name
-    //     } else if (toAdd === adde) {
-    //       toAdd = obj.name
-    //     }
-    //     else {
-    //       fromAdd = fromAdd
-    //     }
-
-    //   }
-    //   )
-    //   console.log(adde,'add')
-    // }
+   
 
     //value calculated
     value = parseInt(value, 16);
@@ -102,8 +81,6 @@ class TransactionDetails extends React.Component {
     //gasPrice calculated
     gasPrice = parseInt(gasPrice, 16);
     gasPrice = gasPrice / Math.pow(10, 9);
-    //  var date = formatDate(transactions.time)
-    console.log(value,gasPrice,gas,'maximum')
     const TransactionComponent = () => {
       return (
         <div
