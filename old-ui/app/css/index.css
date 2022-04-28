@@ -408,12 +408,12 @@ textarea {
 
 textarea.twelve-word-phrase {
   font-family: "Inter-Regular";
-  padding: 4px 0px 4px 2px;
+  /* padding: 4px 0px 4px 2px; */
   margin-top: 17px;
-  width: 95px;
-  height: 29px;
+  width: 86px;
+  height: 24px;
   text-align: left;
-  font-size: 14px;
+  font-size: 12px;
   background: white;
   resize: none;
 }
@@ -717,10 +717,11 @@ p.buy-option {
   padding-bottom: 12px;
   padding-top: 15px;
   padding-left: 114px;
+  font-family: "Inter-semibold";
 }
 
 .select-network-close-icon {
-  margin-left: 86px;
+  margin-left: 80px;
   cursor: pointer;
 }
 
@@ -847,6 +848,7 @@ p.buy-option {
 
 .my-accounts-close-icon {
   margin-left: 95px;
+  margin-right: 16px;
   cursor: pointer;
 }
 
@@ -860,11 +862,12 @@ p.buy-option {
   padding-bottom: 12px;
   padding-top: 15px;
   padding-left: 115px;
- padding-right :18px;
+  font-family: "Inter-semibold";
 }
 
 .wallet-options-close-icon {
   margin-left: 90px;
+  margin-right: 21px;
   cursor: pointer;
 }
 
@@ -912,7 +915,7 @@ p.buy-option {
 
 .selected-network {
   width: 16.79px;
-  height: 16.79px;
+  height: 16.82px;
   background-image: url(../images/Assets/Check-Blue.svg);
   position: absolute;
   object-fit: cover;

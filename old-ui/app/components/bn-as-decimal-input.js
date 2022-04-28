@@ -60,6 +60,7 @@ BnAsDecimalInput.prototype.render = function () {
             fontFamily: 'Nunito Regular',
             fontSize: '14px',
             paddingLeft: '10px',
+            appearance:"textfield",
           }, style),
           value: newValue,
           onBlur: (event) => {

@@ -120,37 +120,37 @@ SendTransactionScreen.prototype.render = function () {
     //
     // Optional Fields
     //
-    h(
-      "div",
-      {
-        style: {
-          fontSize: "12px",
-          fontFamily: "Inter-Semibold",
-          lineHeight: "25px",
-          marginLeft: "46px",
-          marginTop: "30px",
-        },
-      },
-      ["Transaction Note (optional)"]
-    ),
+    // h(
+    //   "div",
+    //   {
+    //     style: {
+    //       fontSize: "12px",
+    //       fontFamily: "Inter-Semibold",
+    //       lineHeight: "25px",
+    //       marginLeft: "46px",
+    //       marginTop: "30px",
+    //     },
+    //   },
+    //   ["Transaction Note (optional)"]
+    // ),
 
-    // 'data' field
-    h("section.flex-column.flex-center", [
-      h("input.large-input", {
-        name: "txData",
-        placeholder: "",
-        maxLength: 35,
-        onChange: ((e)=>(this.displaywarning(e))),
-        style: {
-          width: "265px",
-          resize: "none",
-          marginTop: "-15px",
-        },
-        dataset: {
-          persistentFormId: "tx-data",
-        },
-      }),
-    ]),
+    // // 'data' field
+    // h("section.flex-column.flex-center", [
+    //   h("input.large-input", {
+    //     name: "txData",
+    //     placeholder: "",
+    //     maxLength: 35,
+    //     onChange: ((e)=>(this.displaywarning(e))),
+    //     style: {
+    //       width: "265px",
+    //       resize: "none",
+    //       marginTop: "-15px",
+    //     },
+    //     dataset: {
+    //       persistentFormId: "tx-data",
+    //     },
+    //   }),
+    // ]),
 
     // error message
     h("div.sendExpandedUI", { style: {width:'265px' } }, [
@@ -193,11 +193,6 @@ SendTransactionScreen.prototype.recipientDidChange = function (
     recipient: recipient,
     nickname: nickname,
   });
-};
-
-SendTransactionScreen.prototype.displaywarning =function(){
-    let msg = "Give gas limit greater than or equals to 35000 to send transaction note. ";
-    this.props.dispatch(actions.displayWarning(msg))
 };
 
 SendTransactionScreen.prototype.onSubmit = function () {
