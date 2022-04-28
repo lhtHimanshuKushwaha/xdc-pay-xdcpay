@@ -11,9 +11,14 @@ const AddContactComponent = (props) => {
     viewContactObj,
     onDeleteClicked,
     state,
+    detailObj,
   } = props;
-
+  console.log(detailObj, viewContactObj, "comong");
+  var viewContact = viewContactObj;
+  !viewContact ? (viewContact = detailObj) : viewContact;
+  console.log(viewContact, detailObj, "comon");
   const { contactAddress, contactName } = state;
+  console.log(contactAddress, contactName,state, "details");
 
   return (
     <div
@@ -40,7 +45,7 @@ const AddContactComponent = (props) => {
             marginRight: "20px",
           }}
         >
-          {`${viewContactObj ? "Edit" : "Add"} Contact`}
+          {`${viewContact ? "Edit" : "Add"} Contact`}
         </h2>
         <h2
           style={{
@@ -50,9 +55,9 @@ const AddContactComponent = (props) => {
             marginRight: "15px",
             cursor: "pointer",
           }}
-          onClick={() => onDeleteClicked(viewContactObj)}
+          onClick={() => onDeleteClicked(viewContact)}
         >
-          {`${viewContactObj ? "Delete" : " "}`}
+          {`${viewContact ? "Delete" : " "}`}
         </h2>
       </div>
       <div style={{ margin: "25px 42px" }}>
@@ -74,7 +79,7 @@ const AddContactComponent = (props) => {
             value={contactAddress}
             placeholder="Contact's Wallet Address"
             onChange={onStateChange}
-            style={{ width: "266px", border: "none", color: "#2A2A2A" }}
+            style={{ width: "100%", border: "none", color: "#2A2A2A" }}
           />
           {/* <img
             src="/images/Assets/Scan.svg"
@@ -99,7 +104,7 @@ const AddContactComponent = (props) => {
             name="contactName"
             value={contactName}
             onChange={onStateChange}
-            style={{ width: "265px", border: "none", color: "#2A2A2A" }}
+            style={{ width: "100%", border: "none", color: "#2A2A2A" }}
           />
         </div>
         {warningMsg && <div className="error">{warningMsg}</div>}
@@ -141,10 +146,10 @@ const AddContactComponent = (props) => {
             }}
             onClick={(event) => {
               event.preventDefault();
-              onAddContactClicked(!!viewContactObj);
+              onAddContactClicked(!!viewContact);
             }}
           >
-            {`${!!viewContactObj ? "Update" : "Save"}`}
+            {`${!!viewContact ? "Update" : "Save"}`}
           </div>
         </div>
       </div>

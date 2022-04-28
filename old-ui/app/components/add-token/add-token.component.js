@@ -272,6 +272,8 @@ class AddTokenScreen extends Component {
           style: {
             // alignSelf: 'center',
             // float: 'right',
+            display: 'flex',
+            justifyContent: 'center',
             marginTop: '36px',
           },
         }, [

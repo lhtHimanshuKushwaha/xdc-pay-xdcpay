@@ -12,7 +12,8 @@ export default class AddContact extends React.Component {
   constructor (props) {
     super(props)
     // eslint-disable-next-line react/prop-types
-    const contactObj = this.props.viewContactObj
+    var contactObj = this.props.viewContactObj
+    !contactObj ? contactObj = this.props.detailObj : contactObj
     this.state = {
       contactAddress: contactObj ? contactObj.address : '',
       contactName: contactObj ? contactObj.name : '',
@@ -62,7 +63,7 @@ export default class AddContact extends React.Component {
   render () {
     const {t} = this.context
     // eslint-disable-next-line react/prop-types
-    const {warning, viewContactObj} = this.props
+    const {warning, viewContactObj,detailObj} = this.props
     return (
       <AddContactComponent
         t={t}
@@ -73,6 +74,7 @@ export default class AddContact extends React.Component {
         onBackClick={this.onBackToContacts}
         onStateChange={this.onStateChange}
         onDeleteClicked={this.onDeleteClicked}
+        detailObj={detailObj}
         onAddContactClicked={this.onAddContactClicked}
 
       />

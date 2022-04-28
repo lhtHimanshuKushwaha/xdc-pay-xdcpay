@@ -17,14 +17,13 @@ export default class ConfigScreenExpanded extends React.Component {
     super(props);
     this.state = {
       selectedComponent: "generalSettings",
-      expandedUI: false,
+      detailObj: "",
     };
   }
 
-  setComponent = (selectedComponent) => {
-    this.setState({ selectedComponent });
+  setComponent = (selectedComponent, detailObj) => {
+    this.setState({ selectedComponent, detailObj });
   };
-
 
   render() {
     const state = this.props;
@@ -156,27 +155,29 @@ export default class ConfigScreenExpanded extends React.Component {
           {this.state.selectedComponent === "Contacts" && (
             <Contacts
               onAddContactClicked={() => this.setComponent("AddContact")}
-              onViewContactDetails={() => 
-                this.setComponent("ContactDetails",)
+              onViewContactDetails={
+                (contactObj) => this.setComponent("ContactDetails", contactObj)
                 // this.props.dispatch(actions.contactDetails(contactObj))
               }
-              />
-              )}
+            />
+          )}
           {this.state.selectedComponent === "AddContact" && (
-            <AddContact backToContacts={() => this.setComponent("Contacts")} />
-            )}
+            <AddContact detailObj={this.state.detailObj} backToContacts={() => this.setComponent("Contacts")} />
+          )}
           {this.state.selectedComponent === "ContactDetails" && (
-            <ContactDetails              
-            backToContacts={() => this.setComponent("Contacts")}
+            <ContactDetails
+              detailObj={this.state.detailObj}
+              backToContacts={() => this.setComponent("Contacts")}
+              onAddContactClicked={(contactObj) => this.setComponent("AddContact",contactObj)}
             />
           )}
           {this.state.selectedComponent === "NetworkSettings" && (
             <NetworkSettings
-              onAddNetworkClicked={() => this.setComponent("AddNetwork")}
+              onAddNetworkClicked={(networkObj) => this.setComponent("AddNetwork",networkObj)}
             />
           )}
           {this.state.selectedComponent === "AddNetwork" && (
-            <AddNetwork
+            <AddNetwork detailObj={this.state.detailObj}
               backToNetwork={() => this.setComponent("NetworkSettings")}
             />
           )}

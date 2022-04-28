@@ -11,7 +11,8 @@ export default class AddNetwork extends React.Component {
   constructor (props) {
     super(props)
     // eslint-disable-next-line react/prop-types
-    const viewNetworkObj = this.props.viewNetworkObj
+    var viewNetworkObj = this.props.viewNetworkObj
+    !viewNetworkObj ? viewNetworkObj = this.props.detailObj : viewNetworkObj
     this.state = {
       rpcNetworkId: viewNetworkObj ? viewNetworkObj.rpcNetworkId : '',
       networkName: viewNetworkObj ? viewNetworkObj.name : '',
@@ -106,13 +107,14 @@ export default class AddNetwork extends React.Component {
   render () {
     const { t } = this.context
     // eslint-disable-next-line react/prop-types
-    const {warning, viewNetworkObj} = this.props
+    const {warning, viewNetworkObj,detailObj} = this.props
     return (
       <AddNetworkComponent
         t={t}
         state={this.state}
         viewNetworkObj={viewNetworkObj}
         warningMsg={warning}
+        detailObj = {detailObj}
         onBackClick={this.onBackClick}
         onStateChange={this.onStateChange}
         onAddNetworkClicked={this.onAddNetworkClicked}/>

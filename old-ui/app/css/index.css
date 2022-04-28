@@ -77,23 +77,23 @@ html {
   }
 
 }
-/* .token-dropdown {
+.token-options-dropp{
   position: absolute;
     min-width: 180px;
     width: 317px;
-    bottom: 18px;
-    left: 20px;
+    bottom: none;
+    right: 410px;
 }
 
 @media only screen and (max-width: 600px) {
-  .token-dropdown {
+  .token-options-dropp {
     position: absolute;
     min-width: 180px;
     width: 317px;
     bottom: 18px;
     left: 20px;
   }
-} */
+}
 
 
 .infoWidth {
@@ -168,7 +168,7 @@ html {
   font-size: 12px;
   font-Family: Nunito SemiBold;
   color: #848484;
-  right: 432px;
+  right: 450px;
 }
 @media only screen and (max-width: 600px) {
   .confTransactionFiat{
@@ -809,13 +809,15 @@ p.buy-option {
 
 .addNetworkTitle {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  padding-right: 427px;
 }
 
 @media only screen and (max-width: 600px) {
   .addNetworkTitle {
     display: flex;
     justify-content: flex-start;
+    padding-right: none;
 
   }
 }
