@@ -54,16 +54,16 @@ class AdvanceSettings extends React.Component{
         overflowY: "auto",}}>
             <div className="section-title flex-row"
                  style={{ borderBottom: "1px solid #E3E7EB", paddingBottom: "17px",display:'flex', justifyContent:'center' } }>
-            <img src="/images/Assets/BackArrow.svg" className='image-display' style={{margin:'0 -18px 0 -75px', cursor:'pointer'}} onClick={() => { state.dispatch(actions.goConfig()) }} />
-            <h2 style={{ marginLeft:'88px',fontFamily:'Inter-bold'}}>{`${t('advanceSettings')}`}</h2>
+            <img src="/images/Assets/BackArrow.svg" className='image-display' style={{margin:'0 -14px 0 -90px', cursor:'pointer' ,width:"19px",height:"17px"}} onClick={() => { state.dispatch(actions.goConfig()) }} />
+            <h2 style={{ marginLeft:'88px',fontFamily: navigator.userAgent.indexOf("Firefox") != -1 ?"Inter-semiBold":"Inter-Bold" }}>{`${t('advanceSettings')}`}</h2>
             </div>
             <div style={{
                 padding: ' 14px 17px 14px 17px ',
                 borderBottom: '1px solid #E3E7EB',
             }}>
-                <span style={{ fontWeight: "bold", fontSize: "14px", color: "#2149B9" }}>{`${t('stateLogs')}`}</span><br />
+                <span style={{ fontFamily:"Inter-semiBold",fontSize: "14px", color: "#2149B9" }}>{`${t('stateLogs')}`}</span><br />
                 <p style={{fontSize:'14px', marginBottom:'15px',fontFamily:'Inter-medium'}}>{`${t('stateLogsDescription')}`} </p>
-                <button style={{ width: "324px", height: "40px", color: "#03BE46", background: "#FFFFFF", border: "2px solid #03BE46", fontWeight: "600", }}
+                <button style={{ width: "324px", height: "40px", color: "#03BE46", background: "#FFFFFF", border: "2px solid #03BE46", fontWeight: "600",fontFamily: navigator.userAgent.indexOf("Firefox") != -1 ?"Inter-semiBold":"Inter-Medium" }}
                     onClick={(event) => {
                         window.logStateString((err, result) => {
                                         if (err) {
@@ -82,9 +82,9 @@ class AdvanceSettings extends React.Component{
                 padding: ' 14px 17px 14px 17px ',
                 borderBottom: '1px solid #E3E7EB',
             }}>
-                    <span style={{ fontWeight: "bold", fontSize: "14px", color: "#2149B9" }}>{`${t('resetAccount')}` }</span><br />
+                    <span style={{ fontFamily:"Inter-semiBold", fontSize: "14px", color: "#2149B9" }}>{`${t('resetAccount')}` }</span><br />
                 <p style={{fontSize:'14px',marginBottom:'15px',fontFamily:'Inter-medium'}}>{`${t('resetAccountDescription')}`}  </p>
-                    <button style={{ width: "324px", height: "40px", color: "#FF0035", background: "#FFFFFF", border: "2px solid #FF0035", fontWeight: "600", }}
+                    <button style={{ width: "324px", height: "40px", color: "#FF0035", background: "#FFFFFF", border: "2px solid #FF0035", fontWeight: "600",fontFamily: navigator.userAgent.indexOf("Firefox") != -1 ?"Inter-semiBold":"Inter-Medium" }}
                         onClick={(event) => {
                             event.preventDefault();
                             state.dispatch(actions.resetAccount());
@@ -95,7 +95,7 @@ class AdvanceSettings extends React.Component{
                     padding: ' 14px 17px 14px 17px',
                     // borderBottom: '1px solid #E3E7EB',
                 }}>
-                    <span style={{ fontWeight: "bold", fontSize: "14px", color: "#2149B9" }}>{`${t('advancedGasControls')}` }</span><br />
+                    <span style={{ fontFamily:"Inter-semiBold", fontSize: "14px", color: "#2149B9" }}>{`${t('advancedGasControls')}` }</span><br />
                 <p style={{fontSize:'14px',marginBottom:'15px',fontFamily:'Inter-medium'}}>{`${t('advancedGasControlsDesc')}` }</p>
                     <label className="switch">
                         <input type="checkbox" onChange={this.handleCheckBox} checked={showGasFields }/>
