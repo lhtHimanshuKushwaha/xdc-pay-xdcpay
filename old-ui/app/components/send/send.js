@@ -83,25 +83,24 @@ SendTransactionScreen.prototype.render = function () {
 
     // 'amount'
     h(
-      "div.sendExpandedUI",
+      "div",
       {
         style: {
           fontSize: "12px",
           fontFamily: "Inter-Semibold",
           lineHeight: "25px",
-          // marginLeft: "46px",
+          marginLeft: "46px",
           marginTop: "22px",
         },
       },
       "Amount"
     ),
     h(
-      "section.flex-column.flex-center.sendExpandedUI",
+      "section.flex-column.flex-center",
       {
         style: {
           width: "265px",
-          // marginTop: "-5px 0 0 46px",
-          marginTop: '-5px'
+          margin: "-5px 0 0 46px",
         },
       },
       [
@@ -120,40 +119,39 @@ SendTransactionScreen.prototype.render = function () {
     //
     // Optional Fields
     //
-    // h(
-    //   "div",
-    //   {
-    //     style: {
-    //       fontSize: "12px",
-    //       fontFamily: "Inter-Semibold",
-    //       lineHeight: "25px",
-    //       marginLeft: "46px",
-    //       marginTop: "30px",
-    //     },
-    //   },
-    //   ["Transaction Note (optional)"]
-    // ),
+    h(
+      "div",
+      {
+        style: {
+          fontSize: "12px",
+          fontFamily: "Inter-Semibold",
+          lineHeight: "25px",
+          marginLeft: "46px",
+          marginTop: "30px",
+        },
+      },
+      ["Transaction Note (optional)"]
+    ),
 
-    // // 'data' field
-    // h("section.flex-column.flex-center", [
-    //   h("input.large-input", {
-    //     name: "txData",
-    //     placeholder: "",
-    //     maxLength: 35,
-    //     onChange: ((e)=>(this.displaywarning(e))),
-    //     style: {
-    //       width: "265px",
-    //       resize: "none",
-    //       marginTop: "-15px",
-    //     },
-    //     dataset: {
-    //       persistentFormId: "tx-data",
-    //     },
-    //   }),
-    // ]),
+    // 'data' field
+    h("section.flex-column.flex-center", [
+      h("input.large-input", {
+        name: "txData",
+        placeholder: "",
+        maxLength: 35,
+        style: {
+          width: "265px",
+          resize: "none",
+          marginTop: "-15px",
+        },
+        dataset: {
+          persistentFormId: "tx-data",
+        },
+      }),
+    ]),
 
     // error message
-    h("div.sendExpandedUI", { style: {width:'265px' } }, [
+    h("div", { style: { margin: "0 45px" } }, [
       h(ErrorComponent, {
         error,
       }),
@@ -161,13 +159,13 @@ SendTransactionScreen.prototype.render = function () {
 
     // Send button
     h(
-      "button.sendExpandedUI",
+      "button",
       {
         style: {
           width: "265px",
           height: "40px",
-          marginTop: "65px",
-          
+          marginTop: "33px",
+          marginLeft: "46px",
         },
         onClick: this.onSubmit.bind(this),
       },
