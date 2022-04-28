@@ -33,15 +33,9 @@ export default class ExpandedTransactionDetails extends React.Component {
     var value;
     var gas;
     var gasPrice;
-    var txnId;
     var submitTime;
     var createdTime;
-    // var time = formatDate(date);
-    const valueBn = hexToBn(value);
-    const gasPriceBn = hexToBn(gasPrice);
-    const gasBn = hexToBn(gas);
-    const txFeeBn = gasBn.mul(gasPriceBn)
-    const maxCost = txFeeBn.add(valueBn)
+   
     {
       const transactionList = transactions.sort((a, b) => a.time - b.time);
       var detailsOf;
@@ -100,7 +94,6 @@ export default class ExpandedTransactionDetails extends React.Component {
     //gasPrice calculated
     gasPrice = parseInt(gasPrice, 16);
     gasPrice = gasPrice / Math.pow(10, 9);
-    //  var date = formatDate(transactions.time)
 
     return (
       <div
@@ -220,11 +213,10 @@ export default class ExpandedTransactionDetails extends React.Component {
 
               <div className="trasaction-details-amount">
                 <div style={{ marginLeft: "16px" }}>Total</div>
-                <div style={{ marginLeft: "200px" }}>
-                  {/* <EthBalanceComponent 
-              value={maxCost.toString(16)} /> */}
+                <div style={{marginRight: "6px", marginLeft: "auto" }}>
+                 {value}
                 </div>
-                <h1 style={{ color: "#848484" }}>{maxCost.toString(16) }XDC</h1>
+                <h1 style={{ color: "#848484" }}>XDC</h1>
               </div>
             </div>
           </div>

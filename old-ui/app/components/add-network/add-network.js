@@ -2,15 +2,16 @@ import React from 'react'
 
 const AddNetworkComponent = (props) => {
   // eslint-disable-next-line react/prop-types
-  const {onBackClick, onStateChange, onAddNetworkClicked, warningMsg, viewNetworkObj, state, t} = props
+  const {onBackClick, onStateChange, onAddNetworkClicked, warningMsg, viewNetworkObj, state, t,detailObj} = props
   const {networkName, rpcUrl, chainId, currencySymbol, explorerLink} = state
-
-  const isPermanentNetwork = viewNetworkObj && viewNetworkObj.isPermanent
+ var networkObj = viewNetworkObj
+  !networkObj ? networkObj = detailObj : networkObj
+  const isPermanentNetwork = networkObj && networkObj.isPermanent
   return (
     <div className="flex-column flex-grow" style={{maxHeight: '585px', overflowY: 'auto'}}>
       <div className="section-title flex-row addNetworkTitle" style={{borderBottom: '1px solid #E3E7EB', paddingBottom: '17px',}}>
         <img src="/images/Assets/BackArrow.svg" style={{marginLeft: '12px', cursor: 'pointer'}} onClick={onBackClick}/>
-        <h2 style={{marginLeft: '88px', fontFamily: 'Inter-bold'}}>{`${viewNetworkObj ? 'View' : 'Add'} Network`}</h2>
+        <h2 style={{marginLeft: '88px', fontFamily: 'Inter-bold'}}>{`${networkObj ? 'View' : 'Add'} Network`}</h2>
       </div>
       <div style={{margin: '20px 50px'}} className='addNetworkExpand' >
         <div className="word" style={{fontFamily: 'Inter-Medium',marginTop:"0px",marginBottom:"-5px"}}>{`${t('networkName')}`}</div>
@@ -89,9 +90,9 @@ const AddNetworkComponent = (props) => {
                  }}
                  onClick={(event) => {
                    event.preventDefault()
-                   onAddNetworkClicked(!!viewNetworkObj)
+                   onAddNetworkClicked(!!networkObj)
                  }}
-            >{`${viewNetworkObj ? 'Update' : 'Add'}`}
+            >{`${networkObj ? 'Update' : 'Add'}`}
             </div>
           </div>}
       </div>

@@ -13,9 +13,14 @@ class Contacts extends React.Component {
 
   ViewContactDetails = (contactObj) => {
     this.props.onViewContactDetails
-      ? this.props.onViewContactDetails()
+      ? this.props.onViewContactDetails(contactObj)
       : this.props.dispatch(actions.contactDetails(contactObj));
   };
+
+  onBackToContacts = () => {
+    // eslint-disable-next-line react/prop-types
+    this.props.backToContacts ? this.props.backToContacts() : this.props.dispatch(actions.Contacts())
+  }
 
   render() {
     const state = this.props;

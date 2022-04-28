@@ -93,7 +93,7 @@ class NetworkSettings extends React.Component {
               />
               <img
                 src="/images/Assets/Arrow.svg"
-                onClick={() => state.onAddNetworkClicked ? state.onAddNetworkClicked() :state.dispatch(actions.viewNetwork(networkObj))}
+                onClick={() => state.onAddNetworkClicked ? state.onAddNetworkClicked(networkObj) :state.dispatch(actions.viewNetwork(networkObj))}
                 style={{
                   position: 'absolute',
                   right: '15px',
