@@ -45,15 +45,15 @@ class TransactionDetails extends React.Component {
     // const gasBn = gas;
     // const txFeeBn = gasBn.mul(gasPriceBn)
     // const maxCost = txFeeBn.add(valueBn)
-  // console.log(valueBn,gasPriceBn,gasBn,txFeeBn,maxCost.toString(16),'maximum')
+  
     {
       const transactionList = transactions.sort((a, b) => a.time - b.time);
       var detailsOf;
-      // if (viewTrans === pickData) {
+      
       transactionList.filter((txObj) => {
         if (txObj.id === viewTrans) {
           detailsOf = txObj;
-          // console.log('chutiya',detailsOf)
+          
         }
       });
         fromAdd = detailsOf.txParams.from
@@ -64,34 +64,13 @@ class TransactionDetails extends React.Component {
       submitTime = formatDate(detailsOf.submittedTime);
       createdTime = formatDate(detailsOf.time);
 
-      // }
+      
     }
     function formatDate(date) {
       return vreme.format(new Date(date), "Mar 16 2014, 02:30 PM");
     }
 
-    // console.log(contactList.address, ' +-+ ')
-    // if(fromAdd === contactList.address)
-
-    // const
-    //   var adde
-    //   {
-    //   addressBook.map((obj) => {
-    //     adde = obj.address
-
-    //     if (fromAdd === adde) {
-    //       fromAdd = obj.name
-    //     } else if (toAdd === adde) {
-    //       toAdd = obj.name
-    //     }
-    //     else {
-    //       fromAdd = fromAdd
-    //     }
-
-    //   }
-    //   )
-    //   console.log(adde,'add')
-    // }
+   
 
     //value calculated
     value = parseInt(value, 16);
@@ -103,8 +82,6 @@ class TransactionDetails extends React.Component {
     //gasPrice calculated
     gasPrice = parseInt(gasPrice, 16);
     gasPrice = gasPrice / Math.pow(10, 9);
-    //  var date = formatDate(transactions.time)
-
     const TransactionComponent = () => {
       return (
         <div
@@ -133,11 +110,11 @@ class TransactionDetails extends React.Component {
                   }}
                 />
               </div>
-              <div>
+              <div >
                 <div
                   style={{
                     fontFamily: "Inter-Medium",
-                    marginLeft: "30px",
+                    margin: "0 0 0 40px",
                     fontSize: "14px",
                     color: "#1F1F1F",
                   }}
@@ -147,7 +124,7 @@ class TransactionDetails extends React.Component {
 
                 <div
                   className="trasaction-details-from-to"
-                  style={{ display: "flex" }}
+                  style={{ display: "flex",matgin:" 0px 2px 0px 0px"  }}
                 >
                   {" "}
                   {shorten(checksumAddress)}
@@ -194,8 +171,7 @@ class TransactionDetails extends React.Component {
           <div className="trasaction-details-amount">
             <div style={{ marginLeft: "16px" }}>Total</div>
             <div style={{ marginLeft: "200px" }}>
-             
-              {/* {maxCost.toString(16)} */}
+             {value}
             </div>
             <h1 style={{ color: "#848484" }}>XDC</h1>
           </div>
