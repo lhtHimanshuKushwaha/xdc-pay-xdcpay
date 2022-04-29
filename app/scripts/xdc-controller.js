@@ -326,6 +326,7 @@ module.exports = class XdcController extends EventEmitter {
       const result = {
         selectedAddress: memState.isUnlocked ? memState.selectedAddress : undefined,
         networkVersion: memState.network,
+        addressBook: memState.addressBook,
       }
       return result
     }
