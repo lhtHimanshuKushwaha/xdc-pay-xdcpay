@@ -83,7 +83,7 @@ TransactionListItem.prototype.showRetryButton = function () {
 };
 
 TransactionListItem.prototype.render = function () {
-  const { transaction, network, conversionRate, currentCurrency } = this.props;
+  const { transaction, network, conversionRate, currentCurrency ,networkList} = this.props;
   const { status } = transaction;
   if (transaction.key === "shapeshift") {
     if (Number(network) === MAINNET_CODE) return h(ShiftListItem, transaction);
@@ -223,6 +223,7 @@ TransactionListItem.prototype.render = function () {
                 shorten: true,
                 showFiat: false,
                 network,
+                networkList,
                 style: {
                   // margin: '0px auto 0px 65px',
                   // fontFamily: 'Inter',
