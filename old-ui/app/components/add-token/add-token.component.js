@@ -101,18 +101,7 @@ class AddTokenScreen extends Component {
     const networkID = parseInt(network)
     let views = []
     const isProdNetworkWithKnownTokens = networkID === MAINNET_CODE || networkID === POA_CODE
-    isProdNetworkWithKnownTokens ? views = [h(TabBar, {
-      style: {
-        paddingTop: '0px',
-      },
-      tabs: [
-        { content: 'Search', key: SEARCH_TAB },
-        { content: 'Custom', key: CUSTOM_TOKEN_TAB },
-      ],
-      defaultTab: this.state.displayedTab || CUSTOM_TOKEN_TAB,
-      tabSelected: (key) => this.setCurrentAddTokenTab(key),
-    }),
-    this.tabSwitchView()] : views = [this.renderAddToken()]
+    views = [this.renderAddToken()]
 
     return (
       h('.flex-column.flex-grow', {
