@@ -43,7 +43,7 @@ CreateVaultCompleteScreen.prototype.render = function () {
       h('h3.flex-center.section-title', {
         style: {
           color: '#333333',
-          fontWeight: '600'
+          fontFamily:"Inter-semiBold",
         },
       }, [
         h('img', { style: { marginRight: '3px', }, src: "/images/Assets/Check-Green.svg" }),
@@ -206,6 +206,8 @@ CreateVaultCompleteScreen.prototype.render = function () {
         h('img', {
         style:{
           marginRight: '12px',
+          width:'20px',
+          height:'21px',
         },
          src: "/images/Assets/Download.svg"}),
          h('div',{style: {
@@ -226,7 +228,8 @@ CreateVaultCompleteScreen.prototype.render = function () {
           background: '#0CBE46',
           width: '265px',
           height: '40px',
-          border: 'none'
+          border: 'none',
+          fontFamily:"Inter-medium"
         },
       }, 'I have copied it somewhere safe'),
 

@@ -48,6 +48,8 @@ class FiatValue extends Component {
       conversionRate = this.state.conversionRate
     } else if (isDai) {
       conversionRate = 1
+    }else{
+      conversionRate = 1
     }
     const renderedCurrency = currentCurrency || ''
 
@@ -58,7 +60,7 @@ class FiatValue extends Component {
     const splitBalance = value.split(' ')
 
     const fiatTooltipNumber = Number(splitBalance[0]) * conversionRate
-    const fiatDisplayNumber = fiatTooltipNumber.toFixed(countSignificantDecimals(fiatTooltipNumber, 2))
+    const fiatDisplayNumber = (parseFloat(fiatTooltipNumber.toFixed(countSignificantDecimals(fiatTooltipNumber, 2)))).toLocaleString('en-US', {valute: 'USD',minimumFractionDigits: 2});
 
     const valueStyle =  {
       width: '100%',

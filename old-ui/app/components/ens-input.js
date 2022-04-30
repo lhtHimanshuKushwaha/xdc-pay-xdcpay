@@ -55,7 +55,7 @@ EnsInput.prototype.render = function () {
         fontSize: '12px',
         fontFamily: 'Inter-Semibold',
         lineHeight: '15px',
-        marginTop: '31px',
+        marginTop: '16px',
     },
     }, [ 'Recipient Address',
       h('input.large-input', { style: {
@@ -64,6 +64,7 @@ EnsInput.prototype.render = function () {
         name: props.name,
         placeholder: props.placeholder,
         list: 'addresses',
+        autoComplete:'off',
         onChange: onInputChange.bind(this),
       }),
       // The address book functionality.
@@ -75,8 +76,8 @@ EnsInput.prototype.render = function () {
           // Corresponds to the addresses owned.
           Object.keys(props.identities).map((key) => {
             const identity = props.identities[key]
-            return h(/*'option'*/'div', {
-              value: identity.address.replace('0x', 'xdc').toLowerCase(),
+            return h('option', {
+              value: shorten(identity.address.replace('0x', 'xdc').toLowerCase()),
               label: identity.name,
               key: identity.address,
             })

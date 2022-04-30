@@ -44,7 +44,7 @@ EthBalanceComponent.prototype.renderBalance = function (value) {
   const {conversionRate, shorten, incoming, currentCurrency} = props
   if (value === 'None') return value
   if (value === '...') return value
-  var balanceObj = generateBalanceObject(value, shorten ? 1 : 3)
+  var balanceObj = generateBalanceObject(value, shorten ? 1 : 4)    
   var balance
   var splitBalance = value.split(' ')
   var ethNumber = splitBalance[0]
@@ -54,7 +54,7 @@ EthBalanceComponent.prototype.renderBalance = function (value) {
   if (true && shorten) {
     balance = balanceObj.shortBalance
   } else {
-    balance = balanceObj.balance
+    balance = balanceObj.shortBalance
   }
 
   var label = balanceObj.label

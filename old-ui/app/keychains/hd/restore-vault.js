@@ -27,6 +27,10 @@ class RestoreVaultScreen extends React.Component {
     this.setState({passwordStrength: checkPassword(e.target.value)})
   }
 
+  warningUpdate=()=>{
+    this.warning=null
+    this.props.dispatch(actions.displayWarning(this.warning))
+  }
   render () {
 
 
@@ -47,9 +51,9 @@ class RestoreVaultScreen extends React.Component {
           marginTop: '-43px',
         }
       },
-        h('img', { style: { marginTop: '8px', marginLeft: '9px' }, src: "/images/Assets/xdc-icon-16X16.png" }),
+        h('img', { style: { marginTop: '9px', marginLeft: '9px' ,width:"22px",height:"22px"}, src: "/images/Assets/XDC-Icon-48X48.png" }),
       ),
-      h('.initialize-screen.flex-column.flex-center.flex-grow', {
+      h('.initialize-screen.flex-column.flex-center.flex-grow.cover', {
         style: {
           paddingLeft: '30px',
           paddingRight: '30px',
@@ -65,7 +69,7 @@ class RestoreVaultScreen extends React.Component {
             paddingTop: 40,
           },
         }, [
-          h('.page-subtitle', {style: {fontWeight: 600}}, 'Restore Vault'),
+          h('.page-subtitle', {style: {fontWeight: 600,fontFamily:"Inter-semibold"}}, 'Restore Vault'),
         ]),
 
         // wallet seed entry
@@ -85,7 +89,7 @@ class RestoreVaultScreen extends React.Component {
         h('input.large-input', {
           type: 'password',
           id: 'password-box',
-          onChange: this.onPasswordChange,
+          onChange: ((e)=>(this.onPasswordChange(e),this.warningUpdate(e))),
           placeholder: 'New Password (min 8 chars)',
           dataset: {
             persistentFormId: 'password',
@@ -95,6 +99,7 @@ class RestoreVaultScreen extends React.Component {
             height: '40px',
             marginTop: 20,
             border: '2px solid #C7CDD8',
+            font: navigator.userAgent.indexOf("Firefox") != -1 ?'icon':''
           },
         }),
 
@@ -108,6 +113,7 @@ class RestoreVaultScreen extends React.Component {
         h('input.large-input', {
           type: 'password',
           id: 'password-box-confirm',
+          onChange: ((e)=>(this.warningUpdate(e))),
           placeholder: 'Confirm Password',
           onKeyPress: this.createOnEnter.bind(this),
           dataset: {
@@ -118,6 +124,7 @@ class RestoreVaultScreen extends React.Component {
             height: '40px',
             marginTop: 20,
             border: '2px solid #C7CDD8',
+            font: navigator.userAgent.indexOf("Firefox") != -1 ?'icon':''
           },
         }),
 
@@ -151,6 +158,7 @@ class RestoreVaultScreen extends React.Component {
               background: '#E3E7EB',
               color: '#2A2A2A',
               marginRight: '25px',
+              fontFamily:"Inter-Medium"
             },
           }, 'Cancel'),
 
@@ -161,6 +169,7 @@ class RestoreVaultScreen extends React.Component {
               width: '120px',
               height: '40px',
               background: '#03BE46',
+              fontFamily:"Inter-Medium"
             },
           }, 'Restore'),
 

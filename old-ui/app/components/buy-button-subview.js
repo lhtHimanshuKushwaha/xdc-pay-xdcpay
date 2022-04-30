@@ -20,7 +20,7 @@ const { toChecksumAddress } = require('../util')
 class BuyButtonSubview extends Component {
   render() {
     return (
-      <div style={{ width: "100%", maxHeight:'574px',overflowX:'scroll' }}>
+      <div  className="scrollbar-hidden" style={{ width: "100%", maxHeight:'574px',overflowX: navigator.userAgent.indexOf("Firefox") != -1 ?'':'scroll' }}>
         {this.headerSubview()}
         {this.primarySubview()}
       </div>
@@ -29,7 +29,7 @@ class BuyButtonSubview extends Component {
 
   headerSubview() {
     const props = this.props;
-    const { network, conversionRate, currentCurrency } = props;
+    const { network, conversionRate, currentCurrency,networkList } = props;
     var selected = props.address || Object.keys(props.accounts)[0]
     var checksumAddress = selected && toChecksumAddress(network, selected)
     const isLoading = props.isSubLoading;
@@ -42,7 +42,7 @@ class BuyButtonSubview extends Component {
         <div>
           <Loading isLoading={isLoading} />
         </div>
-        <div
+         <div
           className="flex-row section-title"
           style={{
             alignItems: "center",
@@ -73,7 +73,7 @@ class BuyButtonSubview extends Component {
           >{`Buy `}</h2>
         </div>
         {/* account panel*/}
-        <div>
+         <div>
           <AccountPanel
             {...{
               showFullAddress: true,
@@ -84,14 +84,14 @@ class BuyButtonSubview extends Component {
               conversionRate,
               currentCurrency,
               checksumAddress,
-              
+              networkList
               // network,
             }}
           />
-        </div>
+        </div> 
         {/* header bar (back button, label)*/}
 
-        <div>
+         <div>
           <h3
             className="flex-center select-service"
             style={{
@@ -101,7 +101,7 @@ class BuyButtonSubview extends Component {
           >
             Select Service
           </h3>
-        </div>
+        </div> 
       </div>
     );
   }
@@ -119,7 +119,7 @@ class BuyButtonSubview extends Component {
 
       default:
         return (
-          <div className="flex-column" style={{ margin: "0px 20px " }}>
+          <div  className="flex-column"  style={{ margin: "0px 20px " }}>
             {this._getBuyOptionsView(network)}
           </div>
         );
@@ -274,6 +274,7 @@ class BuyButtonSubview extends Component {
 }
 
 BuyButtonSubview.propTypes = {
+  networkList:PropTypes.array,
   dispatch: PropTypes.func,
   network: PropTypes.string,
   buyView: PropTypes.object,
@@ -290,6 +291,7 @@ function mapStateToProps(state) {
     warning: state.appState.warning,
     buyView: state.appState.buyView,
     network: state.metamask.network,
+    networkList:[...state.metamask.networkList, ...state.metamask.frequentRpcList],
     provider: state.metamask.provider,
     address: state.metamask.selectedAddress,
     context: state.appState.currentView.context,

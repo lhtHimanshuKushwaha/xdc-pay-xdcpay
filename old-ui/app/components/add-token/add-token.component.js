@@ -231,6 +231,7 @@ class AddTokenScreen extends Component {
           h('input.large-input#token_symbol', {
             placeholder: `Like 'XDC'`,
             value: customSymbol,
+            readOnly: true,
             style: {
               width: '100%',
               marginTop: '-4px',

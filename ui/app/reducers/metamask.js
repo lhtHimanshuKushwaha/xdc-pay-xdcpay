@@ -26,7 +26,7 @@ function reduceMetamask (state, action) {
       isMascara: window.platform instanceof MetamascaraPlatform,
       isPopup:
         getEnvironmentType(window.location.href) === ENVIRONMENT_TYPE_POPUP,
-      rpcTarget: 'https://rawtestrpc.metamask.io/',
+      // rpcTarget: 'https://rawtestrpc.metamask.io/',
       identities: {},
       unapprovedTxs: {},
       noActiveNotices: true,
@@ -69,6 +69,7 @@ function reduceMetamask (state, action) {
       isValidAddress: false,
       networkList: permanentNetworks,
       currentViewNetwork: null,
+      screenKey: 'generalSettings',
     },
     state.metamask,
   )
@@ -118,6 +119,10 @@ function reduceMetamask (state, action) {
       return extend(metamaskState, {
         showTokens: action.value,
       })
+      case actions.UPDATE_EXPANDEDUI:
+        return extend(metamaskState, {
+          expandUi: action.value,
+        })
     case actions.LOCK_METAMASK:
       return extend(metamaskState, {
         isUnlocked: false,

@@ -37,7 +37,7 @@ BnAsDecimalInput.prototype.render = function () {
 
   return (
     h('.flex-column', [
-      h('.flex-row', {
+      h('.flex-row .arrowrm', {
         style: {
           alignItems: 'flex-end',
           lineHeight: '13px',
@@ -60,6 +60,7 @@ BnAsDecimalInput.prototype.render = function () {
             fontFamily: 'Nunito Regular',
             fontSize: '14px',
             paddingLeft: '10px',
+            appearance:"textfield",
           }, style),
           value: newValue,
           onBlur: (event) => {

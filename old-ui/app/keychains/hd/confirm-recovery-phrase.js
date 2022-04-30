@@ -38,6 +38,7 @@ class ConfirmRecoveryPhrase extends React.Component {
             fontWeight: '600',
             justifyContent: 'center',
             margin: '29px 0 36px 0 ',
+            fontSize:"15px",
           }}>
 
             Confirm Recovery Phrase
@@ -54,7 +55,7 @@ class ConfirmRecoveryPhrase extends React.Component {
             <div style={{marginBottom: '24px', border: '1px solid #e2e2e2', borderRadius: '4px'}}>
               <input className="input large-input" type="text" placeholder="word" id="password-box1"
                      style={{width: '265px', border: 'none', color: '#2A2A2A'}}
-                     onChange={(e) => this.setState({firstWord: e.target.value})}
+                     onChange={(e) => {this.setState({firstWord: e.target.value});this.warningUpdate()}}
               />
               {this.state.firstWord === seedArr[this.state.seed1] ? <img src="/images/Assets/Check-Green.svg" style={{
                 position: 'absolute',
@@ -72,7 +73,7 @@ class ConfirmRecoveryPhrase extends React.Component {
             <div style={{marginBottom: '24px', border: '1px solid #e2e2e2', borderRadius: '4px'}}>
               <input className="input large-input" type="text" placeholder="word" id="password-box2"
                      style={{width: '265px', border: 'none', color: '#2A2A2A'}}
-                     onChange={(e) => this.setState({secondWord: e.target.value})}/>
+                     onChange={(e) =>{ this.setState({secondWord: e.target.value});this.warningUpdate()}}/>
               {this.state.secondWord === seedArr[this.state.seed2] ? <img src="/images/Assets/Check-Green.svg" style={{
                 position: 'absolute',
                 right: '13%',
@@ -89,7 +90,7 @@ class ConfirmRecoveryPhrase extends React.Component {
             <div style={{marginBottom: '24px', border: '1px solid #e2e2e2', borderRadius: '4px'}}>
               <input className="input large-input" type="text" placeholder="word" id="password-box3"
                      style={{width: '265px', border: 'none', color: '#2A2A2A'}}
-                     onChange={(e) => this.setState({thirdWord: e.target.value})}/>
+                     onChange={(e) =>{ this.setState({thirdWord: e.target.value});this.warningUpdate()}}/>
               {this.state.thirdWord === seedArr[this.state.seed3 - 1] ? <img src="/images/Assets/Check-Green.svg"
                                                                              style={{
                                                                                position: 'absolute',
@@ -140,6 +141,11 @@ function mapStateToProps (state) {
 
 module.exports = connect(mapStateToProps)(ConfirmRecoveryPhrase)
 
+ConfirmRecoveryPhrase.prototype.warningUpdate=function()
+{
+    this.warning=null
+    this.props.dispatch(actions.displayWarning(this.warning))
+}
 
 ConfirmRecoveryPhrase.prototype.confirmSeedWords = function () {
   var passwordBox1 = document.getElementById('password-box1')

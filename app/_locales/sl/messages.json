@@ -287,7 +287,7 @@
     "message": "Gas fee"
   },
   "gas Limit": {
-    "message": "Gas limit"
+    "message": "Omejitev plina (enote)"
   },
   "gasLimit ": {
     "message": "Priporočen gas limit je izračunan glede na omrežje."
@@ -691,13 +691,13 @@
     "message": "State dnevniki"
   },
   "stateLogsDescription": {
-    "message": "State dnevniki vsebujejo naslove vašega računa in poslane transakcije.."
+    "message": "Državni dnevniki vsebujejo naslove vaših javnih računov in poslane transakcije."
   },
   "submit": {
     "message": "Potrdi"
   },
   "supportCenter": {
-    "message": "Obiščite našo podporo"
+    "message": "Center za podporo"
   },
   "symbolBetweenZeroTen": {
     "message": "Simbol mora biti dolg od 0 do 10 znakov."
@@ -818,5 +818,128 @@
   },
   "youSign": {
     "message": "Podpisani ste"
+  },
+  "accountOptions":{
+    "message": "Možnosti računa"
+  },
+  "expandedView": {
+    "message": "Razširjen pogled"
+  },
+  "viewOnBlockExplorer":{
+    "message": "Ogled v Raziskovalcu blokov"
+  },
+  "tokens":{
+    "message": "Žetoni"
+  },
+  "generalSettings":{
+    "message": "Splošne nastavitve"
+  },
+  "hideTokensWithout":{
+    "message": "Skrij žetone brez ravnovesja"
+  },
+  "advanceSettings":{
+    "message": "Napredne nastavitve"
+  },
+  "securityandPrivacySettings":{
+    "message": "Nastavitve varnosti in zasebnosti"
+  },
+  "autoLockTimer":{
+    "message": "Časovnik za samodejno zaklepanje"
+  },
+  "autoLockTimerDesc":{
+    "message": "Nastavite čas mirovanja v minutah, preden bo denarnica zaklenjena."
+  },
+  "showIncomingTransactions":{
+    "message": "Pokaži dohodne transakcije"
+  },
+  "showIncomingTransactionsDesc":{
+    "message": "Izberite to, če želite uporabiti XDC Observatory za prikaz dohodnih transakcij na seznamu transakcij"
+  },
+  "resetAccountDescription": {
+    "message": "Ponastavitev računa bo počistila zgodovino transakcij. To ne bo spremenilo stanja na vaših računih ali od vas zahtevalo, da znova vnesete svojo skrivno frazo za obnovitev."
+  },
+  "alertMsg" : {
+   "message" : "To opozorilo je prikazano v pojavnem oknu, ko brskate po povezanem spletnem mestu 3, vendar trenutno izbrani račun ni povezan."
+  },
+  "reveal":{
+    "message": "Razkrij"
+  },
+  "contacts":{
+    "message": "Stiki"
+  },
+  "addContact":{
+    "message": "Dodaj stik"
+  },
+  "walletAddress":{
+    "message": "Naslov denarnice"
+  },
+  "contactDetails":{
+    "message": "Kontaktni podatki"
+  },
+  "userName":{
+    "message": "Uporabniško ime"
+  },
+  "alertSettings":{
+    "message": "Nastavitve opozoril"
+  },
+  "unconnectedAccountWarning" :{
+   "message" : "Brskanje po spletnem mestu z izbranim nepovezanim računom"
+  },
+  "networkSettings":{
+    "message": "Omrežne nastavitve"
+  },
+  "addNetwork":{
+    "message": "Dodaj omrežje"
+  },
+  "networkName":{
+    "message": "Ime omrežja"
+  },
+  "chainID":{
+    "message": "ID verige"
+  },
+  "currencySymbol":{
+    "message": "Simbol valute (izbirno)"
+  },
+  "blockExplorer":{
+    "message": "Raziskovalec blokov (izbirno)"
+  },
+  "Add":{
+    "message": "Dodaj"
+  },
+  "Update":{
+    "message": "Nadgradnja"
+  },
+  "About":{
+    "message": "O"
+  },
+  "Link":{
+    "message": "Povezava"
+  },
+  "visitOurWebsite":{
+    "message": "Obiščite našo spletno stran"
+  },
+  "contactUs":{
+    "message": "Kontaktiraj nas"
+  },
+  "maxTransactionFee":{
+    "message": "Najvišja provizija za transakcijo"
+  },
+  "Edit":{
+    "message": "Uredi"
+  },
+  "connectedSites":{
+    "message":"Povezana spletna mesta"
+  },
+  "advancedGasControls": {
+    "message": "Napredne kontrole plina"
+  },
+  "advancedGasControlsDesc" : {
+    "message":  "Izberite to za prikaz cen plina in kontrole omejitev neposredno na zaslonih za pošiljanje in potrditev."
+  },
+  "infoDesc" : {
+    "message" : "XDCPay je razširitev za dostop do XDC-jevih XDPoS omogočenih porazdeljenih aplikacij ali Dapps v vašem brskalniku!"
+  },
+  "getYourSeedWords": {
+    "message": "Pridobite svoje skrivne semenske besede z vnosom gesla."
   }
 }

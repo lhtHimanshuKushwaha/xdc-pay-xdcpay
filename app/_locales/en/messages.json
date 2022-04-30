@@ -219,7 +219,7 @@
     "message": "Copy"
   },
   "copyAddress": {
-    "message": "Copy address to clipboard"
+    "message": "Copy Address to clipboard"
   },
   "copyToClipboard": {
     "message": "Copy to clipboard"
@@ -411,7 +411,7 @@
   "gas": {
     "message": "Gas",
     "description": "Short indication of gas cost"
-  },  
+  },
   "gasFee": {
     "message": "Gas Fee"
   },
@@ -1109,7 +1109,7 @@
     "message": "Submitted"
   },
   "supportCenter": {
-    "message": "Visit our Support Center"
+    "message": "Support Center"
   },
   "symbolBetweenZeroTen": {
     "message": " Symbol must be between 0 and 10 characters."
@@ -1136,7 +1136,7 @@
   "tokenAddress": {
     "message": "Token Address"
   },
-  "hideTokensWithoutBalance":{
+  "hideTokensWithoutBalance": {
     "message": "Hide Tokens Without Balance"
   },
   "tokenAlreadyAdded": {
@@ -1321,116 +1321,115 @@
   "yourPrivateSeedPhrase": {
     "message": "Your private seed phrase"
   },
-  "viewOnBlockExplorer":{
+  "viewOnBlockExplorer": {
     "message": "View on Block Explorer"
   },
-  "tokens":{
+  "tokens": {
     "message": "Tokens"
   },
-  "generalSettings":{
+  "generalSettings": {
     "message": "General Settings"
   },
-  "hideTokensWithout":{
-    "message": "General Settings"
+  "hideTokensWithout": {
+    "message": "Hide Tokens Without Balance"
   },
-  "advanceSettings":{
+  "advanceSettings": {
     "message": "Advance Settings"
   },
-  "securityandPrivacySettings":{
+  "securityandPrivacySettings": {
     "message": "Security and Privacy Settings"
   },
-  "autoLockTimer":{
+  "autoLockTimer": {
     "message": "Auto-Lock Timer"
   },
-  "autoLockTimerDesc":{
+  "autoLockTimerDesc": {
     "message": "Set the idle time in minutes before the wallet will be locked."
   },
-  "showIncomingTransactions":{
+  "showIncomingTransactions": {
     "message": "Show Incoming Transactions"
   },
-  "showIncomingTransactionsDesc":{
+  "showIncomingTransactionsDesc": {
     "message": "Select this to use XDC Observatory to show incoming transactions in the transactions list."
   },
-  "alertMsg" : {
-   "message" : "This alert is shown in the popup when you are browsing a connected web3 site, but the currently selected account is not connected."
+  "alertMsg": {
+    "message": "This alert is shown in the popup when you are browsing a connected web3 site, but the currently selected account is not connected."
   },
-  "reveal":{
+  "reveal": {
     "message": "Reveal"
   },
-  "contacts":{
+  "contacts": {
     "message": "Contacts"
   },
-  "addContact":{
+  "addContact": {
     "message": "Add Contact"
   },
-  "walletAddress":{
+  "walletAddress": {
     "message": "Wallet Address"
   },
-  "contactDetails":{
+  "contactDetails": {
     "message": "Contact Details"
   },
-  "userName":{
+  "userName": {
     "message": "User Name"
   },
-  "alertSettings":{
+  "alertSettings": {
     "message": "Alert Settings"
   },
-  "unconnectedAccountWarning" :{
-   "message" : "Browsing a website with an unconnected account selected."
+  "unconnectedAccountWarning": {
+    "message": "Browsing a website with an unconnected account selected."
   },
-  "networkSettings":{
+  "networkSettings": {
     "message": "Network Settings"
   },
-  "addNetwork":{
+  "addNetwork": {
     "message": "Add Network"
   },
-  "networkName":{
+  "networkName": {
     "message": "Network Name"
   },
-  "chainID":{
+  "chainID": {
     "message": "Chain ID"
   },
-  "currencySymbol":{
+  "currencySymbol": {
     "message": "Currency Symbol (Optional)"
   },
-  "blockExplorer":{
+  "blockExplorer": {
     "message": "Block Explorer (Optional)"
   },
-  "Add":{
+  "Add": {
     "message": "Add"
   },
-  "Update":{
+  "Update": {
     "message": "Update"
   },
-  "About":{
+  "About": {
     "message": "About"
   },
-  "Link":{
+  "Link": {
     "message": "Link"
   },
-  "visitOurWebsite":{
+  "visitOurWebsite": {
     "message": "Visit Our Website"
   },
-  "contactUs":{
+  "contactUs": {
     "message": "Contact Us"
   },
-  "maxTransactionFee":{
+  "maxTransactionFee": {
     "message": "Max Transaction Fee"
   },
-  "Edit":{
+  "Edit": {
     "message": "Edit"
   },
-  "connectedSites":{
-    "message":"Connected Sites"
+  "connectedSites": {
+    "message": "Connected Sites"
   },
   "advancedGasControls": {
     "message": "Advanced gas controls"
   },
-  "advancedGasControlsDesc" : {
-    "message":  "Select this to show gas price and limit controls directly on the send and confirm screens."
+  "advancedGasControlsDesc": {
+    "message": "Select this to show gas price and limit controls directly on the send and confirm screens."
   },
-  "infoDesc" : {
-    "message" : "The XDCPay is an extension for accessing XDC’s XDPoS enabled distributed applications or “Dapps” in your browser!"
+  "infoDesc": {
+    "message": "The XDCPay is an extension for accessing XDC’s XDPoS enabled distributed applications or “Dapps” in your browser!"
   }
-  }
- 
+}

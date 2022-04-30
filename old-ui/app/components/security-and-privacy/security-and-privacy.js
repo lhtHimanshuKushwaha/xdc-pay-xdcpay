@@ -46,17 +46,19 @@ class SecurityAndPrivacySettings extends React.Component {
       >
         <div
           className="section-title flex-row"
-          style={{ borderBottom: "1px solid #E3E7EB", paddingBottom: "17px" }}
+          style={{ borderBottom: "1px solid #E3E7EB", paddingBottom: "17px", display: 'flex',justifyContent: 'center',
+      }}
         >
           <img
+            className="image-display"
             src="/images/Assets/BackArrow.svg"
-            style={{ marginLeft: "12px", cursor: "pointer" }}
+            style={{ marginLeft: "-49px", cursor: "pointer" ,width:"19px",height:"17px"}}
             onClick={() => {
               state.dispatch(actions.goConfig());
             }}
           />
-          <h2 style={{ marginLeft: "39px", fontFamily: "Inter-bold" }}>
-            Security and Privacy Settings
+          <h2 style={{ marginLeft: "39px", fontFamily: navigator.userAgent.indexOf("Firefox") != -1 ?"Inter-semiBold":"Inter-Bold" ,fontSize:"15px"}}>
+          {`${t('securityandPrivacySettings')}`}
           </h2>
         </div>
         <div
@@ -66,8 +68,8 @@ class SecurityAndPrivacySettings extends React.Component {
           }}
         >
           <span
-            style={{ fontWeight: "bold", fontSize: "14px", color: "#2149B9" }}
-          >{`${t("revealSeedWords")}`}</span>
+            style={{ fontSize: "14px", color: "#2149B9",fontFamily: navigator.userAgent.indexOf("Firefox") != -1 ?"Inter-semiBold":"Inter-Medium" }}
+          >{`${t('revealSeedWords')}`}</span>
           <br />
           <p
             style={{
@@ -76,7 +78,7 @@ class SecurityAndPrivacySettings extends React.Component {
               fontFamily: "Inter-medium",
             }}
           >
-            Get your secret seed words by entering your password.
+             {`${t('getYourSeedWords')}`}
           </p>
           <button
             style={{
@@ -86,16 +88,17 @@ class SecurityAndPrivacySettings extends React.Component {
               background: "#FFFFFF",
               border: "2px solid #03BE46",
               fontWeight: "600",
+              fontFamily:"Inter-semiBold",
             }}
             onClick={(event) => {
               event.preventDefault();
               state.dispatch(actions.revealSeedConfirmation());
             }}
           >
-            Reveal Seed Words
+            Reveal Secret Seed Words
           </button>
         </div>
-        {/* <div
+         {/* <div
           style={{
             padding: " 15px 17px 20px 15px ",
             borderBottom: "1px solid #E3E7EB",
@@ -104,7 +107,7 @@ class SecurityAndPrivacySettings extends React.Component {
           <span
             style={{ fontWeight: "bold", fontSize: "14px", color: "#2149B9" }}
           >
-            Auto-Lock Timer
+           {`${t('autoLockTimer')}`} 
           </span>
           <br />
           <p
@@ -114,7 +117,7 @@ class SecurityAndPrivacySettings extends React.Component {
               fontFamily: "Inter-medium",
             }}
           >
-            Set the idle time in minutes before the wallet will be locked.
+           {`${t('autoLockTimerDesc')}`} 
           </p>
 
           <CustomDropdown
@@ -123,7 +126,7 @@ class SecurityAndPrivacySettings extends React.Component {
             selectedOption={TimePeriod}
             // onSelect={}
           />
-        </div> */}
+        </div>  */}
         {/* <div
           style={{
             padding: " 15px 17px 20px 15px ",
@@ -132,7 +135,7 @@ class SecurityAndPrivacySettings extends React.Component {
           <span
             style={{ fontWeight: "bold", fontSize: "14px", color: "#2149B9" }}
           >
-            Show Incoming Transactions
+           {`${t(' showIncomingTransactions')}`}  
           </span>
           <br />
           <p
@@ -142,8 +145,7 @@ class SecurityAndPrivacySettings extends React.Component {
               fontFamily: "Inter-medium",
             }}
           >
-            Select this to use Etherscan to show incoming transactions in the
-            transactions list
+             {`${t(' showIncomingTransactionsDesc')}`}  
           </p>
           <label className="switch">
             <input
