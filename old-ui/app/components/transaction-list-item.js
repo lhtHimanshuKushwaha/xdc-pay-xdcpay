@@ -84,12 +84,12 @@ TransactionListItem.prototype.showRetryButton = function () {
 }
 
 TransactionListItem.prototype.render = function () {
-  const {transaction, network, conversionRate, currentCurrency} = this.props
-  const {status} = transaction
-  if (transaction.key === 'shapeshift') {
-    if (Number(network) === MAINNET_CODE) return h(ShiftListItem, transaction)
+  const { transaction, network, conversionRate, currentCurrency ,networkList} = this.props;
+  const { status } = transaction;
+  if (transaction.key === "shapeshift") {
+    if (Number(network) === MAINNET_CODE) return h(ShiftListItem, transaction);
   }
-  var date = formatDate(transaction.submittedTime)
+  var date = formatDate(transaction.submittedTime||transaction.time);
 
   let isLinkable = false
   const numericNet = isNaN(network) ? network : parseInt(network)
@@ -214,22 +214,23 @@ TransactionListItem.prototype.render = function () {
 
           isTx
             ? h(EthBalance, {
-              valueStyle,
-              dimStyle,
-              value: txParams.value,
-              conversionRate,
-              currentCurrency,
-              // width: '55px',
-              shorten: true,
-              showFiat: false,
-              network,
-              style: {
-                // margin: '0px auto 0px 65px',
-                // fontFamily: 'Inter',
-              },
-            })
-            : h('.flex-column'),
-        ],
+                valueStyle,
+                dimStyle,
+                value: txParams.value,
+                conversionRate,
+                currentCurrency,
+                // width: '55px',
+                shorten: true,
+                showFiat: false,
+                network,
+                networkList,
+                style: {
+                  // margin: '0px auto 0px 65px',
+                  // fontFamily: 'Inter',
+                },
+              })
+            : h(".flex-column"),
+        ]
       ),
 
       this.showRetryButton() &&
