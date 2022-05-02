@@ -7,7 +7,10 @@ const vreme = new (require("vreme"))();
 const hexToBn = require("../../../../app/scripts/lib/hex-to-bn");
 const EthBalanceComponent = require("../eth-balance-cnf-tx");
 const { pick, view } = require("ramda");
-
+import {
+  XDC_TESTNET_CODE,
+  XDC_CODE,
+} from '../../../../app/scripts/controllers/network/enums'
 export default class ExpandedTransactionDetails extends React.Component {
   render() {
     function shorten(b, amountL = 7, /*amountR = 4,*/ stars = 3) {
@@ -23,7 +26,7 @@ export default class ExpandedTransactionDetails extends React.Component {
     const { network, conversionRate, currentCurrency, networkList,frequentRpcList } = props;
     var selected = props.address || Object.keys(props.accounts)[0];
     var checksumAddress = selected && toChecksumAddress(network, selected);
-
+    const isTestnet = parseInt(network) === XDC_TESTNET_CODE || parseInt(network) === XDC_CODE 
     const { transactions } = this.props;
     var symbol; 
     var fromAdd;
@@ -168,12 +171,12 @@ export default class ExpandedTransactionDetails extends React.Component {
               <div className="flexbox">
                 <div className="trasaction-details-from-to">From</div>
                 <div className="trasaction-details-from-to-accounts">
-                  {fromAdd.replace('0x','xdc')}
+                  {isTestnet ? fromAdd.replace('0x','xdc') : fromAdd}
                 </div>
                 <img src="/images/Assets/DownArrow.svg" />
                 <div className="trasaction-details-from-to">To</div>
                 <div className="trasaction-details-from-to-accounts">
-                  {toAdd.replace('0x','xdc')}
+                  {isTestnet ? toAdd.replace('0x','xdc') : toAdd}
                 </div>
               </div>
 
