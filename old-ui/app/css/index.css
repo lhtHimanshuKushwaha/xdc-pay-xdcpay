@@ -1172,6 +1172,16 @@ input.large-input {
   }
 }
 
+.send-fields {
+  width: 500px;
+}
+
+@media only screen and (max-width: 600px) {
+  .send-fields {
+    width: 265px;
+  }
+}
+
 .grow-tenx {
   flex-grow: 10;
 }
