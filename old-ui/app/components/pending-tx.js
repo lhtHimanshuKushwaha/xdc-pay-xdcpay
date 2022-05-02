@@ -465,7 +465,7 @@ PendingTx.prototype.render = function () {
                         : "260px"
                       : insufficientBalance
                       ? "286px"
-                      : "329px"
+                      : txMeta.simulationFails?"286px":"329px"
                     : !isNotification
                     ? insufficientBalance
                       ? "289px"
