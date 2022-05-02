@@ -20,14 +20,12 @@ export default class ExpandedTransactionDetails extends React.Component {
     var props = this.props;
     const contactList = props.metamask.addressBook;
     const viewTrans = props.viewTransaction;
-    const { network, conversionRate, currentCurrency, networkList } = props;
+    const { network, conversionRate, currentCurrency, networkList,frequentRpcList } = props;
     var selected = props.address || Object.keys(props.accounts)[0];
     var checksumAddress = selected && toChecksumAddress(network, selected);
 
     const { transactions } = this.props;
-
-    // var msgData = this.props.txData
-    // var msgParams = msgData.id
+    var symbol; 
     var fromAdd;
     var toAdd;
     var value;
@@ -61,28 +59,15 @@ export default class ExpandedTransactionDetails extends React.Component {
       return vreme.format(new Date(date), "Mar 16 2014, 02:30 PM");
     }
 
-    // console.log(contactList.address, ' +-+ ')
-    // if(fromAdd === contactList.address)
-
-    // const
-    //   var adde
-    //   {
-    //   addressBook.map((obj) => {
-    //     adde = obj.address
-
-    //     if (fromAdd === adde) {
-    //       fromAdd = obj.name
-    //     } else if (toAdd === adde) {
-    //       toAdd = obj.name
-    //     }
-    //     else {
-    //       fromAdd = fromAdd
-    //     }
-
-    //   }
-    //   )
-    //   console.log(adde,'add')
-    // }
+    frequentRpcList.filter(netObj => {
+      if (netObj.chainId === network) {
+        symbol = netObj.currencySymbol
+      }
+      else if (isTestnet) {
+        symbol = 'XDC'
+        
+      }
+    })
 
     //value calculated
     value = parseInt(value, 16);
@@ -198,7 +183,7 @@ export default class ExpandedTransactionDetails extends React.Component {
                 <div style={{ marginRight: "6px", marginLeft: "auto" }}>
                   {value}
                 </div>
-                <h1 style={{ color: "#848484" }}>XDC</h1>
+                <h1 style={{ color: "#848484" }}>{symbol}</h1>
               </div>
 
               <div className="trasaction-details-amount">
@@ -216,7 +201,7 @@ export default class ExpandedTransactionDetails extends React.Component {
                 <div style={{marginRight: "6px", marginLeft: "auto" }}>
                  {value}
                 </div>
-                <h1 style={{ color: "#848484" }}>XDC</h1>
+                <h1 style={{ color: "#848484" }}>{symbol}</h1>
               </div>
             </div>
           </div>
@@ -237,7 +222,7 @@ export default class ExpandedTransactionDetails extends React.Component {
                       />
                       <div className="transaction-border"></div>
                     </div>
-                    <div> Transaction created with a value of {value} XDC at {createdTime}.</div>
+                    <div> Transaction created with a value of {value} {symbol} at {createdTime}.</div>
                   </div>
                   <div style={{ display: "flex" }}>
                     <div style={{ display: "flex", flexDirection: "column" }}>
@@ -282,6 +267,7 @@ function mapStateToProps(state) {
     transactions: state.metamask.selectedAddressTxList || [],
     addressBook: state.metamask.addressBook || [],
     viewTransaction: state.appState.currentViewTransactionObj,
+    frequentRpcList: state.metamask.frequentRpcList,
   };
 }
 
