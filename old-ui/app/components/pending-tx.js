@@ -88,6 +88,7 @@ function mapStateToProps(state) {
     unapprovedPersonalMsgs: state.metamask.unapprovedPersonalMsgs,
     unapprovedTypedMessages: state.metamask.unapprovedTypedMessages,
     index: state.appState.currentView.pendingTxIndex || 0,
+    networkList: [...state.metamask.networkList, ...state.metamask.frequentRpcList],
     warning: state.appState.warning,
     network: state.metamask.network,
     provider: state.metamask.provider,
@@ -113,6 +114,7 @@ PendingTx.prototype.render = function () {
     provider,
     isUnlocked,
     showGasFields,
+    networkList,
   } = props;
   // const showGasFields = this.state.showGasFields
   const conversionRate = this.state.conversionRate;
@@ -463,7 +465,7 @@ PendingTx.prototype.render = function () {
                         : "260px"
                       : insufficientBalance
                       ? "286px"
-                      : "329px"
+                      : txMeta.simulationFails?"286px":"329px"
                     : !isNotification
                     ? insufficientBalance
                       ? "289px"
@@ -495,6 +497,7 @@ PendingTx.prototype.render = function () {
                     isToken,
                     tokenSymbol: this.state.tokenSymbol,
                     showFiat: !isToken,
+                    networkList
                   }),
                 ]),
                 // Gas Limit (customizable)
@@ -591,6 +594,7 @@ PendingTx.prototype.render = function () {
                     currentCurrency,
                     conversionRate,
                     network,
+                    networkList
                   }),
                 ]),
 
@@ -627,6 +631,7 @@ PendingTx.prototype.render = function () {
                           network,
                           labelColor: "black",
                           fontSize: "16px",
+                          networkList
                         }),
                       ]
                     ),

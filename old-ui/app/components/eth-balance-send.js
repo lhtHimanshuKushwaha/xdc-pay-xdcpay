@@ -16,9 +16,9 @@ function EthBalanceComponent () {
 EthBalanceComponent.prototype.render = function () {
   var props = this.props
   let { value } = props
-  const { style, width, network, isToken, tokenSymbol } = props
+  const { style, width, network, isToken, tokenSymbol,networkList } = props
   var needsParse = this.props.needsParse !== undefined ? this.props.needsParse : true
-  value = value ? formatBalance(value, 6, needsParse, network, isToken, tokenSymbol) : '...'
+  value = value ? formatBalance(value, 6, needsParse, network, isToken, tokenSymbol,networkList) : '...'
 
   return (
 

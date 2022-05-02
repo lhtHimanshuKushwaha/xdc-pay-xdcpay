@@ -421,7 +421,7 @@ AccountDetailScreen.prototype.tabSwitchView = function () {
 AccountDetailScreen.prototype.transactionList = function () {
   const {
     transactions, unapprovedMsgs, address,
-    network, shapeShiftTxList, conversionRate,
+    network, shapeShiftTxList, conversionRate,networkList
   } = this.props
 
   return h(TransactionList, {
@@ -431,6 +431,7 @@ AccountDetailScreen.prototype.transactionList = function () {
     conversionRate,
     address,
     shapeShiftTxList,
+    networkList,
     viewPendingTx: (txId) => {
       this.props.dispatch(actions.viewPendingTx(txId))
     },
