@@ -8,7 +8,10 @@ const hexToBn = require("../../../../app/scripts/lib/hex-to-bn");
 const EthBalanceComponent = require("../eth-balance-cnf-tx");
 const { pick, view } = require("ramda");
 import ExpandedTransactionDetails from "./expandedTransaction-details";
-
+import {
+  XDC_TESTNET_CODE,
+  XDC_CODE,
+} from '../../../../app/scripts/controllers/network/enums'
 class TransactionDetails extends React.Component {
   render() {
     function shorten(b, amountL = 10, /*amountR = 4,*/ stars = 3) {
@@ -27,10 +30,16 @@ class TransactionDetails extends React.Component {
       currentCurrency,
       networkList,
       transactions,
+      frequentRpcList,
     } = props;
+
+    const isTestnet = parseInt(network) === XDC_TESTNET_CODE || parseInt(network) === XDC_CODE 
     var selected = props.address || Object.keys(props.accounts)[0];
     var checksumAddress = selected && toChecksumAddress(network, selected);
-
+    
+    var symbol
+    
+    
     // var msgData = this.props.txData
     // var msgParams = msgData.id
     var fromAdd;
@@ -66,6 +75,16 @@ class TransactionDetails extends React.Component {
 
       
     }
+    frequentRpcList.filter(netObj => {
+      if (netObj.chainId === network) {
+        symbol = netObj.currencySymbol
+      }
+      else if (isTestnet) {
+        symbol = 'XDC'
+        
+      }
+      console.log(symbol,netObj,'symbol')
+    })
     function formatDate(date) {
       return vreme.format(new Date(date), "Mar 16 2014, 02:30 PM");
     }
@@ -140,12 +159,12 @@ class TransactionDetails extends React.Component {
           <div className="flexbox">
             <div className="trasaction-details-from-to">From</div>
             <div className="trasaction-details-from-to-accounts">
-              {shorten (fromAdd.replace("0x", "xdc"))}
+             {isTestnet ? shorten (fromAdd.replace("0x", "xdc")) : shorten(fromAdd) }
             </div>
             <img src="/images/Assets/DownArrow.svg" />
             <div className="trasaction-details-from-to">To</div>
             <div className="trasaction-details-from-to-accounts">
-              {shorten (toAdd.replace("0x", "xdc"))}
+             {isTestnet ? shorten(toAdd.replace("0x", "xdc")) : shorten(toAdd) }
             </div>
           </div>
 
@@ -155,7 +174,7 @@ class TransactionDetails extends React.Component {
             <div style={{ marginRight: "6px", marginLeft: "auto" }}>
               {value}
             </div>
-            <h1 style={{ color: "#848484" }}>XDC</h1>
+            <h1 style={{ color: "#848484" }}>{symbol}</h1>
           </div>
 
           <div className="trasaction-details-amount">
@@ -173,7 +192,7 @@ class TransactionDetails extends React.Component {
             <div style={{ marginLeft: "200px" }}>
              {value}
             </div>
-            <h1 style={{ color: "#848484" }}>XDC</h1>
+            <h1 style={{ color: "#848484" }}>{symbol}</h1>
           </div>
 
           {/* Transaction-log */}
@@ -191,7 +210,7 @@ class TransactionDetails extends React.Component {
               </div>
               <div>
                 {" "}
-                Transaction created with a value of {value} XDC at {createdTime}
+                Transaction created with a value of {value} {symbol} at {createdTime}
                 .
               </div>
             </div>
@@ -242,6 +261,7 @@ function mapStateToProps(state) {
     transactions: state.metamask.selectedAddressTxList || [],
     addressBook: state.metamask.addressBook || [],
     viewTransaction: state.appState.currentViewTransactionObj,
+    frequentRpcList: state.metamask.frequentRpcList,
   };
 }
 
