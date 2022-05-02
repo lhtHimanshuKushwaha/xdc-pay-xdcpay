@@ -37,11 +37,7 @@ class TransactionDetails extends React.Component {
     var selected = props.address || Object.keys(props.accounts)[0];
     var checksumAddress = selected && toChecksumAddress(network, selected);
     
-    var symbol
-    
-    
-    // var msgData = this.props.txData
-    // var msgParams = msgData.id
+    var symbol;
     var fromAdd;
     var toAdd;
     var value;
@@ -49,12 +45,7 @@ class TransactionDetails extends React.Component {
     var gasPrice;
     var submitTime;
     var createdTime;
-    // const valueBn = value;
-    // const gasPriceBn = gasPrice;
-    // const gasBn = gas;
-    // const txFeeBn = gasBn.mul(gasPriceBn)
-    // const maxCost = txFeeBn.add(valueBn)
-  
+    
     {
       const transactionList = transactions.sort((a, b) => a.time - b.time);
       var detailsOf;
@@ -83,8 +74,8 @@ class TransactionDetails extends React.Component {
         symbol = 'XDC'
         
       }
-      console.log(symbol,netObj,'symbol')
     })
+    
     function formatDate(date) {
       return vreme.format(new Date(date), "Mar 16 2014, 02:30 PM");
     }
