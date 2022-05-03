@@ -51,7 +51,7 @@ TokenBalance.prototype.render = function () {
         style: {
           lineHeight: '20px',
           textRendering: 'geometricPrecision',
-          marginTop: '140px',
+          marginTop: '137px',
         },
       }, [h('div',{
         style: {

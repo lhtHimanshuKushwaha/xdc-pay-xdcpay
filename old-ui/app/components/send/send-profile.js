@@ -14,6 +14,7 @@ class SendProfile extends Component {
 			account,
 			identity,
 			network,
+			networkList,
 			conversionRate,
 			currentCurrency,
 			isToken,
@@ -91,6 +92,7 @@ class SendProfile extends Component {
 							shorten: false,
 							currentCurrency,
 							network,
+							networkList,
 						}} />}
 					</div>
 				</div>
@@ -106,6 +108,7 @@ function mapStateToProps (state) {
 		accounts,
 		identities: state.metamask.identities,
 		network: state.metamask.network,
+		networkList: [...state.metamask.networkList, ...state.metamask.frequentRpcList],
 		conversionRate: state.metamask.conversionRate,
 		currentCurrency: state.metamask.currentCurrency,
 	}
