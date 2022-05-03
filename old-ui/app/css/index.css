@@ -768,7 +768,7 @@ p.buy-option {
 @media only screen and (max-width: 600px) {
   .myAccountExpanded {
     top: 345px;
-    right: 23px;
+    right: 14px;
   }
 }
 
@@ -810,18 +810,26 @@ p.buy-option {
 .addNetworkTitle {
   display: flex;
   justify-content: space-between;
-  padding-right: 427px;
+  padding:0 427px 0 0;
 }
 
 @media only screen and (max-width: 600px) {
   .addNetworkTitle {
     display: flex;
     justify-content: flex-start;
-    padding-right: none;
+    padding: 0 0 17px 0;
 
   }
 }
 
+.noContactsTitle{
+  margin: 250px 371px;
+}
+@media only screen and (max-width: 600px) {
+  .noContactsTitle {
+    margin: 182px 113px;
+  }
+}
 .addNetworkExpand {
   display: grid;
   justify-content: center;
@@ -941,6 +949,16 @@ p.buy-option {
 
 @media only screen and (max-width: 600px) {
   .titleAdd {
+    padding: 0 0 0 0;
+  }
+}
+
+.titleAddNetwork {
+  padding:0 35px 17px 288px;
+}
+
+@media only screen and (max-width: 600px) {
+  .titleAddNetwork {
     padding: 0 0 0 0;
   }
 }

@@ -38,7 +38,7 @@ class NetworkSettings extends React.Component {
               state.dispatch(actions.goConfig())
             }}
           />
-          <h2 className="titleAdd" style={{marginLeft: '80px', fontFamily: 'Inter-bold'}}>{`${t(
+          <h2 className="titleAddNetwork" style={{marginLeft: '80px', fontFamily: 'Inter-bold'}}>{`${t(
             'networkSettings',
           )}`}</h2>
           <img

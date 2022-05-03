@@ -126,9 +126,9 @@ class Contacts extends React.Component {
               </div>
             ))
           ) : (
-            <p
+            <p className="noContactsTitle"
               style={{
-                margin: "182px 113px",
+                // margin: "182px 113px",
                 color: "#9FA9BA",
                 fontSize: "14px",
               }}
