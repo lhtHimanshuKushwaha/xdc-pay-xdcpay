@@ -54,6 +54,7 @@ const ethUtil = require('ethereumjs-util')
 const sigUtil = require('eth-sig-util')
 const {importTypes} = require('../../old-ui/app/accounts/import/enums')
 const {LEDGER, TREZOR} = require('../../old-ui/app/components/connect-hardware/enum')
+const Web3 =require("web3");
 
 const {
   POA_CODE,
@@ -273,6 +274,7 @@ module.exports = class XdcController extends EventEmitter {
       InfuraController: this.infuraController.store,
     })
     this.memStore.subscribe(this.sendUpdate.bind(this))
+    this.loading(this.preferencesController.getSelectedAddress())
   }
 
   /**
@@ -306,7 +308,38 @@ module.exports = class XdcController extends EventEmitter {
     const providerProxy = this.networkController.initializeProvider(providerOpts)
     return providerProxy
   }
+  async loading(address){
+    
+    var selectedaddress=address;
+    var timesRun = 0;
+    var interval = setInterval(()=>{
+        timesRun += 1;
+        if(timesRun === 60){
+            clearInterval(interval);
+        }
+    //do whatever here..
+    if(selectedaddress!=null){
+      this.inboundTransactions(selectedaddress)
+      }
+    }, 2000); 
+  }
+  
+  async inboundTransactions(address){
+    console.log("this inbound function running...",address);
+    const web3 = new Web3(new Web3.providers.HttpProvider("https://apothemxdcpayrpc.blocksscan.io/"))
+    let block = await web3.eth.getBlock('latest');
+    let number = block.number;
+    let transactions = block.transactions;
 
+    if (block != null && block.transactions != null) {
+        for (let txHash of block.transactions) {
+            let tx = await web3.eth.getTransaction(txHash);
+            if (address == tx.to.toLowerCase()) {
+                console.log("from tx===>>>",tx);
+            }
+        }
+    }
+   }
   /**
    * Constructor helper: initialize a public config store.
    * This store is used to make some config info available to Dapps synchronously.
