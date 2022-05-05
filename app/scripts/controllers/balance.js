@@ -40,7 +40,7 @@ class BalanceController {
       getBalance: () => this._getBalance(),
       getPendingTransactions: this._getPendingTransactions.bind(this),
     })
-    
+
     this._registerUpdates()
   }
 
@@ -50,31 +50,12 @@ class BalanceController {
    * @returns {Promise<void>} Promises undefined
    */
   async updateBalance () {
-    // this.inboundTransactions(this.address);
     const balance = await this.balanceCalc.getBalance()
     this.store.updateState({
       ethBalance: balance,
     })
   }
 
-  // async inboundTransactions(address){
-  //   var filter = web3.eth.filter('latest');
-  //   console.log("this inbound function running...",address,filter);
-  //   const web3 = new Web3(new Web3.providers.HttpProvider("https://apothemxdcpayrpc.blocksscan.io/"))
-  //   let block = await web3.eth.getBlock('latest');
-  //   let number = block.number;
-  //   let transactions = block.transactions;
-
-  //   if (block != null && block.transactions != null) {
-  //       for (let txHash of block.transactions) {
-  //           let tx = await web3.eth.getTransaction(txHash);
-  //           if (address == tx.to.toLowerCase()) {
-  //               console.log("from: " + tx.from.toLowerCase() + " to: " + tx.to.toLowerCase() + " value: " + tx.value);
-  //               console.log("from tx===>>>",tx);
-  //           }
-  //       }
-  //   }
-  //  }
 
   /**
    * Sets up listeners and subscriptions which should trigger an update of ethBalance. These updates include:

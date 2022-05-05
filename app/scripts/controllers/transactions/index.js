@@ -488,7 +488,6 @@ class TransactionController extends EventEmitter {
     and blockTracker
   */
   _setupListeners () {
-    // console.log("listner===>>>");
     this.txStateManager.on('tx:status-update', this.emit.bind(this, 'tx:status-update'))
     this._setupBlockTrackerListener()
     this.pendingTxTracker.on('tx:warning', (txMeta) => {
