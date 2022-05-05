@@ -60,6 +60,7 @@ class TransactionStateManager extends EventEmitter {
   getTxList () {
     const network = this.getNetwork()
     const fullTxList = this.getFullTxList()
+    
     return fullTxList.filter((txMeta) => txMeta.metamaskNetworkId === network)
   }
 

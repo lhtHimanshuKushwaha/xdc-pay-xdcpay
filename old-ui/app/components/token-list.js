@@ -166,7 +166,9 @@ TokenList.prototype.render = function () {
       style: {
         display: 'flex',
         flexDirection: 'column',
-        paddingBottom: '27px',
+        // paddingBottom: '27px',
+        maxHeight:"162px",
+        overflowY:"auto",
       },
     }, [
       h('style', `
@@ -176,7 +178,6 @@ TokenList.prototype.render = function () {
           flex-direction: row;
           align-items: center;
           padding: 10px;
-          min-height: 50px;
         }
 
         li.token-cell > h3 {
