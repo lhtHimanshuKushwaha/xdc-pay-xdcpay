@@ -18,13 +18,17 @@ function ExportAccountView() {
 function mapStateToProps(state) {
   return {
     warning: state.appState.warning,
+    accounts: state.metamask.accounts,
   };
 }
 
 ExportAccountView.prototype.render = function () {
   const state = this.props;
   const accountDetail = state.accountDetail;
+  const accounts = state.identities
+  const accLength = Object.keys(accounts).length
   const nickname = state.identities[state.address].name;
+  console.log(accLength, 'privatekey')
 
   if (!accountDetail) return h("div");
   const accountExport = accountDetail.accountExport;
@@ -306,9 +310,12 @@ ExportAccountView.prototype.componentWillUnmount = function () {
 };
 
 ExportAccountView.prototype.onExportKeyPress = function (event) {
-  if (event.key !== "Enter") return;
-  event.preventDefault();
-
-  const input = document.getElementById("exportAccount").value;
-  this.props.dispatch(actions.exportAccount(input, this.props.address));
+  // while (this.accLength != 0)
+  // {
+    
+    if (event.key !== "Enter") return;
+    event.preventDefault();
+    const input = document.getElementById("exportAccount").value;
+    this.props.dispatch(actions.exportAccount(input, this.props.address));
+  // }
 };
