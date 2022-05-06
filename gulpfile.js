@@ -17,7 +17,6 @@ const fs = require('fs')
 const path = require('path')
 const manifest = require('./app/manifest.json')
 const mkdirp = require('mkdirp')
-const sass = require('gulp-sass')
 const autoprefixer = require('gulp-autoprefixer')
 const gulpStylelint = require('gulp-stylelint')
 const stylefmt = require('gulp-stylefmt')
@@ -25,6 +24,8 @@ const uglify = require('gulp-uglify-es').default
 const pify = require('pify')
 const gulpMultiProcess = require('gulp-multi-process')
 const endOfStream = pify(require('end-of-stream'))
+
+const sass = require('gulp-sass')(require('sass'));
 
 function gulpParallel (...args) {
   return function spawnGulpChildProcess (cb) {
