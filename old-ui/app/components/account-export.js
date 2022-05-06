@@ -25,11 +25,8 @@ function mapStateToProps(state) {
 ExportAccountView.prototype.render = function () {
   const state = this.props;
   const accountDetail = state.accountDetail;
-  const accounts = state.identities
-  const accLength = Object.keys(accounts).length
+ 
   const nickname = state.identities[state.address].name;
-  console.log(accLength, 'privatekey')
-
   if (!accountDetail) return h("div");
   const accountExport = accountDetail.accountExport;
 
@@ -166,6 +163,8 @@ ExportAccountView.prototype.render = function () {
   }
 
   if (accountExported) {
+    
+
     const plainKey = ethUtil.stripHexPrefix(accountDetail.privateKey);
     let parsedata, stringifydata;
       const input = document.getElementById("exportAccount").value;
@@ -310,7 +309,11 @@ ExportAccountView.prototype.componentWillUnmount = function () {
 };
 
 ExportAccountView.prototype.onExportKeyPress = function (event) {
-  // while (this.accLength != 0)
+  const accounts = this.props.identities
+    const accLength = Object.keys(accounts).length
+
+    console.log(accLength, 'privatekey')
+  // while (accLength != 0)
   // {
     
     if (event.key !== "Enter") return;
