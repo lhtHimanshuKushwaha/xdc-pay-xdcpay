@@ -15,6 +15,7 @@ const AccountDropdowns = require('./components/account-dropdowns/account-dropdow
 const CopyButton = require('./components/copy/copy-button')
 const ToastComponent = require('./components/toast')
 import { getMetaMaskAccounts } from '../../ui/app/selectors'
+import TooltipNew from "react-tooltip";
 
 
 module.exports = connect(mapStateToProps)(AccountDetailScreen)
@@ -213,6 +214,7 @@ AccountDetailScreen.prototype.render = function () {
                     value: checksumAddress,
                     isWhite: true,
                   }),
+                  
                 ]),
                 [
                   h(
