@@ -318,27 +318,40 @@ module.exports = class XdcController extends EventEmitter {
             clearInterval(interval);
         }
     //do whatever here..
+   const web3 = new Web3(new Web3.providers.HttpProvider("https://apothemxdcpayrpc.blocksscan.io/"))
     if(selectedaddress!=null){
-      this.inboundTransactions(selectedaddress)
-      }
+    this.inboundTransactions(web3)
+    .then(block=>{
+      this.trans(selectedaddress,block,web3);
+    })
+  }
     }, 2000); 
   }
-  
-  async inboundTransactions(address){
-    console.log("this inbound function running...",address);
-    const web3 = new Web3(new Web3.providers.HttpProvider("https://apothemxdcpayrpc.blocksscan.io/"))
-    let block = await web3.eth.getBlock('latest');
-    let number = block.number;
-    let transactions = block.transactions;
 
-    if (block != null && block.transactions != null) {
-        for (let txHash of block.transactions) {
-            let tx = await web3.eth.getTransaction(txHash);
-            if (address == tx.to.toLowerCase()) {
-                console.log("from tx===>>>",tx);
-            }
+  trans(address,block,web3){
+    let number = block.number;
+      let transactions = block.transactions;
+
+        if (block != null && block.transactions != null) {
+          for (let txHash of block.transactions) {
+               this.getTx(address,web3,txHash)
+               .then(tx=>{
+                console.log("tx==>>",tx);
+              })
+          }
+      }
+  }
+  async inboundTransactions(web3){
+    // console.log("this inbound function running...",address);
+    let block = await web3.eth.getBlock('latest')
+    return block;
+   }
+   
+   async getTx(address,web3,txHash){
+    let tx=await web3.eth.getTransaction(txHash)
+        if (address == tx.to.toLowerCase()) {
+            return tx;
         }
-    }
    }
   /**
    * Constructor helper: initialize a public config store.
