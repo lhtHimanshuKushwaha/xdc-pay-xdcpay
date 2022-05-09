@@ -27,12 +27,14 @@ class CopyComponent extends Component {
   componentWillUnmount () {
     clearTimeout(this.timerID)
   }
+  
 
   renderTooltip (message, position, children) {
+    
     return (
       <Tooltip
-        title={message}
-        position={position}
+        message={message}
+        place={position}
       >
       {children}
       </Tooltip>
@@ -44,8 +46,9 @@ class CopyComponent extends Component {
     clearTimeout(this.timerID)
     this.timerID = setTimeout(() => {
       this.setState({ copied: false })
-    }, 850)
+    }, 2000)
   }
+  
 }
 
 module.exports = CopyComponent
