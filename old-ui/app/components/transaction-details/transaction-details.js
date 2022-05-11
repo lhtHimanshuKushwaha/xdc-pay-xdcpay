@@ -67,12 +67,13 @@ class TransactionDetails extends React.Component {
       
     }
     frequentRpcList.filter(netObj => {
+      // console.log(symbol,frequentRpcList,netObj,'symbol-->>')
       if (netObj.chainId === network) {
         symbol = netObj.currencySymbol
       }
       else if (isTestnet) {
         symbol = 'XDC'
-        
+        // console.log(isTestnet,symbol,'symbole')
       }
     })
     

@@ -77,16 +77,20 @@ class AccountImportSubview extends Component {
               Import Accounts
             </h2>
           </div>
+          <div style={{
+            margin: '0 20px ',
+          }}>
           <div
-            className="error"
+            className="error importError"
             style={{
               display: "inline-block",
               alignItems: "center",
               marginTop: '13px',
               // border: "1px solid red",
               alignItems: "center",
-              width: "257px",
-              marginLeft: "20px",
+              width: "100%",
+              maxWidth: '100%',
+              // marginLeft: "20px",
               backgroundPosition: '15px 30px'
             }}
           >
@@ -94,7 +98,8 @@ class AccountImportSubview extends Component {
               Imported accounts will not be associated with your originally
               created XDCPay account seed phrase.
             </span>
-          </div>
+            </div>
+            </div>
           <div style={{ padding: "10px 20px" }}>
             <h3 style={{ fontSize: "12px", fontFamily: "Inter-SemiBold" }}>
               Select Type

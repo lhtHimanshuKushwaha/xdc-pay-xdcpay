@@ -78,11 +78,12 @@ html {
 
 }
 .token-options-dropp{
-  position: absolute;
+  position: absolute !important;
     min-width: 180px;
     width: 317px;
     bottom: none;
-    right: 410px;
+    right: 27px;
+    box-shadow: 0px 3px 6px #00000029;
 }
 
 @media only screen and (max-width: 600px) {
@@ -92,6 +93,7 @@ html {
     width: 317px;
     bottom: 18px;
     left: 20px;
+    box-shadow: rgb(0 0 0 / 50%) 0px 0px 30px;
   }
 }
 
@@ -447,12 +449,37 @@ input.textarea.recipient-address {
 }
 
 .network-name {
-  width: 68px;
+  width: 111px;
   line-height: 9px;
   text-rendering: geometricPrecision;
   padding-left: 5px;
   font-family: Inter-Medium;
   color: #2a2a2a;
+}
+@media only screen and (max-width:600px){
+  .network-name{
+    width: 68px;
+    line-height: 9px;
+    text-rendering: geometricPrecision;
+    padding-left: 5px;
+    font-family: Inter-Medium;
+    color: #2a2a2a;
+  }
+}
+
+.network-name-container {
+  background: #ffffff;
+    border-radius: 15px;
+    width: 163px;
+    height: 29px;
+}
+@media only screen and (max-width:600px){
+  .network-name-container{
+    background: #ffffff;
+    border-radius: 15px;
+    width: 118px;
+    height: 29px;
+  }
 }
 
 .check {
@@ -581,6 +608,14 @@ app sections
   font-family: Inter-Regular;
 }
 
+.importError{
+  padding: 30px 0 30px 50px ;
+}
+@media only screen and (max-width:600px){
+  .importError{
+    padding: 8px 9px 9px 39px;
+  }
+}
 .warning {
   color: #60db97;
 }
@@ -740,6 +775,8 @@ p.buy-option {
   top: 95px; */
   margin-top: 27px;
   margin-left: -281px;
+  box-shadow: 0px 3px 6px #00000029;
+  width: 317px;
 }
 
 @media only screen and (max-width: 600px) {
@@ -748,7 +785,9 @@ p.buy-option {
   left: 0;
   bottom: 180px; */
     top: 276px;
+    width: 317px;
     right: 22px;
+    box-shadow: rgb(0 0 0 / 50%) 0px 0px 30px;
   }
 }
 
@@ -761,26 +800,65 @@ p.buy-option {
   }
 } */
 .myAccountExpanded {
+  position: absolute !important;
   top: 37px;
-  right: 418px;
+  width: 317px;
+  right: 40px;
+box-shadow: 0px 3px 6px #00000029;
 }
 
 @media only screen and (max-width: 600px) {
   .myAccountExpanded {
     top: 345px;
+    width: 317px;
     right: 14px;
+    box-shadow: rgb(0 0 0 / 50%) 0px 0px 30px;
+  }
+}
+
+.hideMenuOption{
+  display: none !important ;
+}
+
+@media only screen and (max-width: 600px) {
+  .hideMenuOption {
+    display: flex !important;
+  }
+}
+
+.sendTitle{
+  display: flex;
+  border-bottom: 1px solid #EDEDED;
+}
+@media only screen and (max-width:600px){
+  .sendTitle{
+    display: block;
+    border-bottom: none;
+  }
+}
+.sendHeader{
+  margin: 28px 0 25px 60px;
+}
+@media only screen and (max-width: 600px){
+  .sendHeader{
+    margin: 28px 0 0 0;
   }
 }
 
 .walletOptionsExpanded {
+  position: absolute !important;
   top: 37px;
-  right: 384px;
+  width: 317px;
+  right: 0px;
+  box-shadow: 0px 3px 6px #00000029 ;
 }
 
 @media only screen and (max-width: 600px) {
   .walletOptionsExpanded {
     top: 393px;
     right: 23px;
+    width: 317px;
+    box-shadow: rgb(0 0 0 / 50%) 0px 0px 30px;
   }
 }
 
@@ -795,6 +873,16 @@ p.buy-option {
   }
 }
 
+.dropdownCloseImage {
+  display: none;
+}
+
+@media only screen and (max-width: 600px) {
+  .dropdownCloseImage {
+    display: initial;
+  
+  }
+}
 .addContactTitle {
   display: flex;
   justify-content: space-between;
@@ -843,9 +931,11 @@ p.buy-option {
 }
 
 .selectNetworkExpanded {
+  position: absolute !important;
   top: 38px;
-  left: 384px;
+  left: 0px;
   width: 317px;
+  box-shadow: 0px 3px 6px #00000029;
 }
 
 @media only screen and (max-width: 600px) {
@@ -853,12 +943,13 @@ p.buy-option {
     top: 367px;
     left: 18px;
     width: 317px;
+    box-shadow: rgb(0 0 0 / 50%) 0px 0px 30px ;
   }
 }
 
 .my-accounts-close-icon {
   margin-left: 95px;
-  margin-right: 16px;
+  /* margin-right: 16px; */
   cursor: pointer;
 }
 
@@ -877,7 +968,7 @@ p.buy-option {
 
 .wallet-options-close-icon {
   margin-left: 90px;
-  margin-right: 21px;
+  /* margin-right: 21px; */
   cursor: pointer;
 }
 

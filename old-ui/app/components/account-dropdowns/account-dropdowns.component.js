@@ -174,7 +174,7 @@ class AccountDropdowns extends Component {
         <div className="my-accounts-list">
           My Accounts
           <img
-            className="my-accounts-close-icon"
+            className="my-accounts-close-icon dropdownCloseImage"
             src="/images/Assets/Close.svg"
           ></img>
         </div>
@@ -223,11 +223,12 @@ class AccountDropdowns extends Component {
           <div className="account-options-list">
             {`${t('accountOptions')}` }
             <img
-              className="account-options-close-icon"
+              className="account-options-close-icon dropdownCloseImage"
               src="/images/Assets/Close.svg"
             />
           </div>
           <DropdownMenuItem
+          className={"hideMenuOption"}
             closeMenu={() => {
             }}
             onClick={() => {
@@ -460,6 +461,7 @@ class AccountDropdowns extends Component {
         {this.renderAccountSelector()}
         <Identicon
           diameter={24}
+          borderStyle = {'1px solid #2049B9'}
           address={selected}
 
         />
