@@ -102,7 +102,8 @@ const RenderMenu = (props) => {
           marginTop: "40px",
           display: "flex",
           flexDirection: "row-reverse",
-          marginLeft: "-22px",
+          width: '265px',
+          justifyContent: 'center',
         },
       },
       [
@@ -118,11 +119,11 @@ const RenderMenu = (props) => {
           },
           "Create a Wallet"
         ),
-        h("div", { className: "tooltip" }, [
+        h("div",{ className: "tooltip" ,style:{margin:'0 0 0 136px',} }, [
           h("img", {
             src: "/images/Assets/QuestionMark.svg",
             style: {
-              marginRight: "-22px",
+              // marginRight: "-22px",
               paddingTop: "3px",
               paddingLeft: "5px",
             },
