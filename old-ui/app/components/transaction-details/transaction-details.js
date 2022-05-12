@@ -34,10 +34,11 @@ class TransactionDetails extends React.Component {
     } = props;
 
     const isTestnet = parseInt(network) === XDC_TESTNET_CODE || parseInt(network) === XDC_CODE 
+    
     var selected = props.address || Object.keys(props.accounts)[0];
     var checksumAddress = selected && toChecksumAddress(network, selected);
     
-    var symbol;
+    const rpcList = frequentRpcList
     var fromAdd;
     var toAdd;
     var value;
@@ -63,20 +64,18 @@ class TransactionDetails extends React.Component {
         gasPrice = detailsOf.txParams.gasPrice
       submitTime = formatDate(detailsOf.submittedTime);
       createdTime = formatDate(detailsOf.time);
-
-      
     }
-    frequentRpcList.filter(netObj => {
-      // console.log(symbol,frequentRpcList,netObj,'symbol-->>')
+    
+    
+      
+    var symbol = 'XDC';
+    rpcList.filter((netObj) => {
+      console.log(symbol,rpcList,netObj,'symbol>>')
       if (netObj.chainId === network) {
         symbol = netObj.currencySymbol
       }
-      else if (isTestnet) {
-        symbol = 'XDC'
-        // console.log(isTestnet,symbol,'symbole')
-      }
     })
-    
+
     function formatDate(date) {
       return vreme.format(new Date(date), "Mar 16 2014, 02:30 PM");
     }
@@ -113,7 +112,6 @@ class TransactionDetails extends React.Component {
                   src="/images/Assets/BackArrow.svg"
                   style={{
                     marginLeft: "17px",
-                    marginTop: "14",
                     cursor: "pointer",
                   }}
                   onClick={() => {
@@ -163,7 +161,7 @@ class TransactionDetails extends React.Component {
           {/* all trasaction details  */}
           <div className="trasaction-details-amount">
             <div >Amount</div>
-            <div style={{ marginRight: "30px", marginLeft: "auto" }}>
+            <div style={{ marginRight: "6px", marginLeft: "auto" }}>
               {value}
             </div>
             <h1 style={{ color: "#848484" }}>{symbol}</h1>
@@ -171,17 +169,17 @@ class TransactionDetails extends React.Component {
 
           <div className="trasaction-details-amount">
             <div >Gas Limit</div>
-            <div style={{ marginRight: "30px", marginLeft: "auto" }}>{gas}</div>
+            <div style={{ marginRight: "0px", marginLeft: "auto" }}>{gas}</div>
           </div>
 
           <div className="trasaction-details-amount">
             <div >Gas Price (GWEI)</div>
-            <div style={{ marginRight: "43px", marginLeft: "auto" }}>{gasPrice}</div>
+            <div style={{ marginRight: "6px", marginLeft: "auto" }}>{gasPrice}</div>
           </div>
 
           <div className="trasaction-details-amount">
             <div >Total</div>
-            <div style={{ marginLeft: "200px" }}>
+            <div style={{ marginRight: "6px", marginLeft: "auto" }}>
              {value}
             </div>
             <h1 style={{ color: "#848484" }}>{symbol}</h1>

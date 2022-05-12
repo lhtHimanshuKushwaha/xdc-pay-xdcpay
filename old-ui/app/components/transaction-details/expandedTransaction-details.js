@@ -28,7 +28,7 @@ export default class ExpandedTransactionDetails extends React.Component {
     var checksumAddress = selected && toChecksumAddress(network, selected);
     const isTestnet = parseInt(network) === XDC_TESTNET_CODE || parseInt(network) === XDC_CODE 
     const { transactions } = this.props;
-    var symbol; 
+    const rpcList = frequentRpcList
     var fromAdd;
     var toAdd;
     var value;
@@ -61,14 +61,11 @@ export default class ExpandedTransactionDetails extends React.Component {
     function formatDate(date) {
       return vreme.format(new Date(date), "Mar 16 2014, 02:30 PM");
     }
-
-    frequentRpcList.filter(netObj => {
+    var symbol = 'XDC';
+    rpcList.filter((netObj) => {
+      console.log(symbol,rpcList,netObj,'symbol>>')
       if (netObj.chainId === network) {
         symbol = netObj.currencySymbol
-      }
-      else if (isTestnet) {
-        symbol = 'XDC'
-        
       }
     })
 

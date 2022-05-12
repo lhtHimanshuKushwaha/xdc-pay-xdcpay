@@ -2142,6 +2142,7 @@ input:checked+.slider:before {
     min-width: 331px;
     margin: 18px 0 0 21px;
     font-size: 14px;
+    padding: 0 25px 0 0; 
     font-family: inter-medium;
   }
 }
@@ -2172,7 +2173,7 @@ input:checked+.slider:before {
 
 .transaction-log-main {
   font-size: 12px;
-  padding: 6px 6px 50px 6px;
+  padding: 18px 6px 50px 19px;
 }
 
 .transaction-border {
