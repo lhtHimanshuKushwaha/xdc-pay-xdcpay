@@ -107,12 +107,12 @@ class TransactionDetails extends React.Component {
               className="section-title flex-row"
               style={{ justifyContent: "space-between", width: "75%" }}
             >
-              <div>
+              <div >
                 {" "}
                 <img
                   src="/images/Assets/BackArrow.svg"
                   style={{
-                    marginLeft: "25px",
+                    marginLeft: "17px",
                     marginTop: "14",
                     cursor: "pointer",
                   }}
@@ -135,7 +135,7 @@ class TransactionDetails extends React.Component {
 
                 <div
                   className="trasaction-details-from-to"
-                  style={{ display: "flex",matgin:" 0px 2px 0px 0px"  }}
+                  style={{ display: "flex",margin:" 0px 2px 0px 0px"  }}
                 >
                   {" "}
                   {shorten(checksumAddress)}
@@ -162,25 +162,25 @@ class TransactionDetails extends React.Component {
 
           {/* all trasaction details  */}
           <div className="trasaction-details-amount">
-            <div style={{ marginLeft: "17px" }}>Amount</div>
-            <div style={{ marginRight: "6px", marginLeft: "auto" }}>
+            <div >Amount</div>
+            <div style={{ marginRight: "30px", marginLeft: "auto" }}>
               {value}
             </div>
             <h1 style={{ color: "#848484" }}>{symbol}</h1>
           </div>
 
           <div className="trasaction-details-amount">
-            <div style={{ marginLeft: "16px" }}>Gas Limit</div>
-            <div>{gas}</div>
+            <div >Gas Limit</div>
+            <div style={{ marginRight: "30px", marginLeft: "auto" }}>{gas}</div>
           </div>
 
           <div className="trasaction-details-amount">
-            <div style={{ marginLeft: "16px" }}>Gas Price (GWEI)</div>
-            <div>{gasPrice}</div>
+            <div >Gas Price (GWEI)</div>
+            <div style={{ marginRight: "43px", marginLeft: "auto" }}>{gasPrice}</div>
           </div>
 
           <div className="trasaction-details-amount">
-            <div style={{ marginLeft: "16px" }}>Total</div>
+            <div >Total</div>
             <div style={{ marginLeft: "200px" }}>
              {value}
             </div>
