@@ -101,19 +101,20 @@ export default class ExpandedTransactionDetails extends React.Component {
           }}
         >
           <div
-            className=" flex-row"
+           
             style={{
-              justifyContent: "flex-start",
+              display:'flex',
+              // justifyContent: "flex-start",
               width: "100%",
               alignItems: "center",
             }}
           >
-            <div>
+            <div style={{ maxWidth: '100%', width: '36%'}}>
               {" "}
               <img
                 src="/images/Assets/BackArrow.svg"
                 style={{
-                  marginLeft: "25px",
+                  marginLeft: "29px",
                   marginTop: "14",
                   cursor: "pointer",
                 }}
@@ -127,7 +128,8 @@ export default class ExpandedTransactionDetails extends React.Component {
                 display: "flex",
               }}
             >
-              <div style={{margin:'0 0 0 371px'}}>
+              <div>
+                {/* style={{ margin: '0 0 0 371px' }} */}
                 <div
                   style={{
                     fontFamily: "Inter-Medium",
@@ -173,7 +175,7 @@ export default class ExpandedTransactionDetails extends React.Component {
                 <div className="trasaction-details-from-to-accounts">
                   {isTestnet ? fromAdd.replace('0x','xdc') : fromAdd}
                 </div>
-                <img src="/images/Assets/DownArrow.svg" />
+                <img style={{marginLeft:'2px'}} src="/images/Assets/DownArrow.svg" />
                 <div className="trasaction-details-from-to">To</div>
                 <div className="trasaction-details-from-to-accounts">
                   {isTestnet ? toAdd.replace('0x','xdc') : toAdd}
