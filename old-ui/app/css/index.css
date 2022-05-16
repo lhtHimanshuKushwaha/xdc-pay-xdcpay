@@ -65,25 +65,26 @@ html {
   }
 }
 
-.expandedscreen{
+.expandedscreen {
   height: 100%;
   width: 80%;
 }
 
 @media only screen and (max-width: 600px) {
-  .expandedscreen{
+  .expandedscreen {
     height: 100%;
     width: 100%;
   }
 
 }
-.token-options-dropp{
+
+.token-options-dropp {
   position: absolute !important;
-    min-width: 180px;
-    width: 317px;
-    bottom: none;
-    right: 27px;
-    box-shadow: 0px 3px 6px #00000029;
+  min-width: 180px;
+  width: 317px;
+  bottom: none;
+  right: 27px;
+  box-shadow: 0px 3px 6px #00000029;
 }
 
 @media only screen and (max-width: 600px) {
@@ -150,6 +151,7 @@ html {
   margin: 0 auto 0 auto;
   width: 265px;
 }
+
 @media only screen and (max-width: 600px) {
   .sendExpandedUI {
     margin: 0 0 0 46px;
@@ -157,10 +159,10 @@ html {
   }
 }
 
-.confTransaction{
+.confTransaction {
   display: flex;
-    flex-direction: column;
-    align-items: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 /* @media only screen and (max-width: 600px) {
@@ -172,16 +174,17 @@ html {
 
 } */
 
-.confTransactionFiat{
-  position: absolute;           
+.confTransactionFiat {
+  position: absolute;
   font-size: 12px;
   font-Family: Nunito SemiBold;
   color: #848484;
   margin-left: 188px;
 }
+
 @media only screen and (max-width: 600px) {
-  .confTransactionFiat{
-    position: absolute;           
+  .confTransactionFiat {
+    position: absolute;
     font-size: 12px;
     font-Family: Nunito SemiBold;
     color: #848484;
@@ -217,7 +220,7 @@ html {
   display: flex;
   background: #ffffff;
   width: 100%;
-  /* overflow-y: auto; */
+  overflow-y: auto;
   justify-content: center;
 }
 
@@ -463,8 +466,9 @@ input.textarea.recipient-address {
   font-family: Inter-Medium;
   color: #2a2a2a;
 }
-@media only screen and (max-width:600px){
-  .network-name{
+
+@media only screen and (max-width:600px) {
+  .network-name {
     width: 68px;
     line-height: 9px;
     text-rendering: geometricPrecision;
@@ -476,12 +480,13 @@ input.textarea.recipient-address {
 
 .network-name-container {
   background: #ffffff;
-    border-radius: 15px;
-    width: 163px;
-    height: 29px;
+  border-radius: 15px;
+  width: 163px;
+  height: 29px;
 }
-@media only screen and (max-width:600px){
-  .network-name-container{
+
+@media only screen and (max-width:600px) {
+  .network-name-container {
     background: #ffffff;
     border-radius: 15px;
     width: 118px;
@@ -615,14 +620,16 @@ app sections
   font-family: Inter-Regular;
 }
 
-.importError{
-  padding: 30px 0 30px 50px ;
+.importError {
+  padding: 30px 0 30px 50px;
 }
-@media only screen and (max-width:600px){
-  .importError{
+
+@media only screen and (max-width:600px) {
+  .importError {
     padding: 8px 9px 9px 39px;
   }
 }
+
 .warning {
   color: #60db97;
 }
@@ -811,7 +818,7 @@ p.buy-option {
   top: 37px;
   width: 317px;
   right: 40px;
-box-shadow: 0px 3px 6px #00000029;
+  box-shadow: 0px 3px 6px #00000029;
 }
 
 @media only screen and (max-width: 600px) {
@@ -823,8 +830,8 @@ box-shadow: 0px 3px 6px #00000029;
   }
 }
 
-.hideMenuOption{
-  display: none !important ;
+.hideMenuOption {
+  display: none !important;
 }
 
 @media only screen and (max-width: 600px) {
@@ -833,21 +840,24 @@ box-shadow: 0px 3px 6px #00000029;
   }
 }
 
-.sendTitle{
+.sendTitle {
   display: flex;
   border-bottom: 1px solid #EDEDED;
 }
-@media only screen and (max-width:600px){
-  .sendTitle{
+
+@media only screen and (max-width:600px) {
+  .sendTitle {
     display: block;
     border-bottom: none;
   }
 }
-.sendHeader{
+
+.sendHeader {
   margin: 28px 0 25px 60px;
 }
-@media only screen and (max-width: 600px){
-  .sendHeader{
+
+@media only screen and (max-width: 600px) {
+  .sendHeader {
     margin: 28px 0 0 0;
   }
 }
@@ -857,7 +867,7 @@ box-shadow: 0px 3px 6px #00000029;
   top: 37px;
   width: 317px;
   right: 0px;
-  box-shadow: 0px 3px 6px #00000029 ;
+  box-shadow: 0px 3px 6px #00000029;
 }
 
 @media only screen and (max-width: 600px) {
@@ -887,9 +897,10 @@ box-shadow: 0px 3px 6px #00000029;
 @media only screen and (max-width: 600px) {
   .dropdownCloseImage {
     display: initial;
-  
+
   }
 }
+
 .addContactTitle {
   display: flex;
   justify-content: space-between;
@@ -905,7 +916,7 @@ box-shadow: 0px 3px 6px #00000029;
 .addNetworkTitle {
   display: flex;
   justify-content: space-between;
-  padding:0 427px 0 0;
+  padding: 0 427px 0 0;
 }
 
 @media only screen and (max-width: 600px) {
@@ -917,14 +928,16 @@ box-shadow: 0px 3px 6px #00000029;
   }
 }
 
-.noContactsTitle{
+.noContactsTitle {
   margin: 250px 371px;
 }
+
 @media only screen and (max-width: 600px) {
   .noContactsTitle {
     margin: 182px 113px;
   }
 }
+
 .addNetworkExpand {
   display: grid;
   justify-content: center;
@@ -950,7 +963,7 @@ box-shadow: 0px 3px 6px #00000029;
     top: 367px;
     left: 18px;
     width: 317px;
-    box-shadow: rgb(0 0 0 / 50%) 0px 0px 30px ;
+    box-shadow: rgb(0 0 0 / 50%) 0px 0px 30px;
   }
 }
 
@@ -1042,7 +1055,7 @@ box-shadow: 0px 3px 6px #00000029;
 }
 
 .titleAdd {
-  padding:0 35px 17px 388px;
+  padding: 0 35px 17px 388px;
 }
 
 @media only screen and (max-width: 600px) {
@@ -1052,7 +1065,7 @@ box-shadow: 0px 3px 6px #00000029;
 }
 
 .titleAddNetwork {
-  padding:0 35px 17px 288px;
+  padding: 0 35px 17px 288px;
 }
 
 @media only screen and (max-width: 600px) {
@@ -2127,12 +2140,12 @@ input:checked+.slider:before {
   justify-content: space-between;
   width: 100%;
   min-width: 331px;
-  margin: 18px 0 0 0  ;
+  margin: 18px 0 0 0;
   font-size: 14px;
   font-family: inter-medium;
 }
 
-@media only screen and (max-width:600px){
+@media only screen and (max-width:600px) {
   .trasaction-details-amount {
     padding: 0 17px 17px 0;
     border-bottom: 1px solid #e3e7eb;
@@ -2142,7 +2155,7 @@ input:checked+.slider:before {
     min-width: 331px;
     margin: 18px 0 0 21px;
     font-size: 14px;
-    padding: 0 25px 0 0; 
+    padding: 0 25px 0 0;
     font-family: inter-medium;
   }
 }
@@ -2157,18 +2170,19 @@ input:checked+.slider:before {
   padding-bottom: 11px;
   /* border-bottom: 1px solid #e3e7eb; */
 }
-@media only screen and (max-width:600px){
-  .transaction-log-heading{
-      margin-left: 17px;
-      margin-top: 25px;
-      color: #2149b9;
-      opacity: 1;
-      font-size: 14px;
-      width: 91%;
-      padding-bottom: 11px;
-      border-bottom: 1px solid #e3e7eb;
-    }
+
+@media only screen and (max-width:600px) {
+  .transaction-log-heading {
+    margin-left: 17px;
+    margin-top: 25px;
+    color: #2149b9;
+    opacity: 1;
+    font-size: 14px;
+    width: 91%;
+    padding-bottom: 11px;
+    border-bottom: 1px solid #e3e7eb;
   }
+}
 
 
 .transaction-log-main {
