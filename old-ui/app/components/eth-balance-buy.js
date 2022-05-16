@@ -85,7 +85,7 @@ EthBalanceComponent.prototype.renderBalance = function (value) {
   return h(
     Tooltip,
     {
-      place: "bottom",
+      position: "bottom",
       title: `${ethNumber} ${ethSuffix}`,
     },
     h("div.flex-column", {
