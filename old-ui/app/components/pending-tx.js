@@ -452,7 +452,7 @@ PendingTx.prototype.render = function () {
             ),
 
             h(
-              ".table-box",
+              ".table-box.confTransaction",
               {
                 style: {
                   overflowY: "auto",
@@ -481,7 +481,6 @@ PendingTx.prototype.render = function () {
                     : "320px",
                   width: "auto",
                   margin: "20px 0px 10px 0px",
-                  padding: "0px",
                   // display: "flex",
                   // flexDirection: "column",
                   // alignItems: "center",
@@ -682,7 +681,7 @@ PendingTx.prototype.render = function () {
             {
               style: {
                 display: "flex",
-                justifyContent: "flex-end",
+                justifyContent: "center",
               },
             },
             [
@@ -691,9 +690,10 @@ PendingTx.prototype.render = function () {
                 {
                   style: {
                     display: "flex",
-                    position: "absolute",
-                    left: "46px",
+                    // position: "absolute",
+                    // left: "46px",
                     height: "40px",
+                    margin: "0px 28px 0px 0px",
                     width: "119px",
                     paddingLeft: "37px",
                     paddingTop: "12px",
@@ -711,8 +711,8 @@ PendingTx.prototype.render = function () {
                     {
                       style: {
                         display: "flex",
-                        position: "absolute",
-                        right: "46px",
+                        // position: "absolute",
+                        // right: "46px",
                         height: "40px",
                         width: "119px",
                         paddingLeft: "37px",
@@ -726,8 +726,8 @@ PendingTx.prototype.render = function () {
                 : h("input.confirm", {
                     style: {
                       display: "flex",
-                      position: "absolute",
-                      right: "46px",
+                      // position: "absolute",
+                      // right: "46px",
                       height: "40px",
                       width: "119px",
                       justifyContent: "center",

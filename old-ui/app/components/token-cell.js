@@ -93,15 +93,17 @@ TokenCell.prototype.renderTokenOptions = function (menuToTop, ind) {
   return h(
     Dropdown,
     {
-      style: {
-        position: 'absolute',
-        // marginLeft: menuToTop ? '-273px' : '-263px',
-        minWidth: '180px',
-        // marginTop: menuToTop ? '-214px' : '30px',
-        width: '317px',
-        bottom: '18px',
-        left: '20px'
-      },
+      className: 'token-options-dropp',
+      // style: {
+      //   position: 'absolute',
+      //   // marginLeft: menuToTop ? '-273px' : '-263px',
+      //   minWidth: '180px',
+      //   // marginTop: menuToTop ? '-214px' : '30px',
+      //   width: '317px',
+      //   bottom: '18px',
+      //   left: '20px'
+      // },
+      
       isOpen: optionsMenuActive,
       onClickOutside: (event) => {
         const { classList, id: targetID } = event.target
@@ -117,7 +119,7 @@ TokenCell.prototype.renderTokenOptions = function (menuToTop, ind) {
         {className: 'token-options-list'},
         [`Token Options`,
         h('img',
-          {className: 'token-options-close-icon', src: "/images/Assets/Close.svg"}
+          {className: 'token-options-close-icon dropdownCloseImage', src: "/images/Assets/Close.svg"}
         ),]
       ),
     

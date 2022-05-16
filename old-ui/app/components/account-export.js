@@ -18,14 +18,15 @@ function ExportAccountView() {
 function mapStateToProps(state) {
   return {
     warning: state.appState.warning,
+    accounts: state.metamask.accounts,
   };
 }
 
 ExportAccountView.prototype.render = function () {
   const state = this.props;
   const accountDetail = state.accountDetail;
+ 
   const nickname = state.identities[state.address].name;
-
   if (!accountDetail) return h("div");
   const accountExport = accountDetail.accountExport;
 
@@ -162,6 +163,8 @@ ExportAccountView.prototype.render = function () {
   }
 
   if (accountExported) {
+    
+
     const plainKey = ethUtil.stripHexPrefix(accountDetail.privateKey);
     let parsedata, stringifydata;
       const input = document.getElementById("exportAccount").value;
@@ -191,7 +194,7 @@ ExportAccountView.prototype.render = function () {
           },
           "Your private key"
         ),
-        h("div.flex-row", [
+        h("div.flex-center", [
           h(
             "p",
             {
@@ -224,7 +227,8 @@ ExportAccountView.prototype.render = function () {
           "div",
           {
             style: {
-              textAlign: "right",
+              display: 'flex',
+              justifyContent: 'space-evenly',
               marginTop: "30px",
             },
           },
@@ -248,7 +252,7 @@ ExportAccountView.prototype.render = function () {
                   height: "40px",
                   border: "1px solid #0CBE46",
                   display: "flex",
-                  position: "absolute",
+                  // position: "absolute",
                   paddingLeft: "8px",
                   paddingTop: "7px",
                 },
@@ -279,8 +283,8 @@ ExportAccountView.prototype.render = function () {
               {
                 style: {
                   display: "flex",
-                  position: "absolute",
-                  right: "30px",
+                  // position: "absolute",
+                  // right: "30px",
                   height: "40px",
                   width: "122px",
                   paddingLeft: "45px",
@@ -306,9 +310,17 @@ ExportAccountView.prototype.componentWillUnmount = function () {
 };
 
 ExportAccountView.prototype.onExportKeyPress = function (event) {
-  if (event.key !== "Enter") return;
-  event.preventDefault();
+  // const accounts = this.props.identities
+  //   var accLength = Object.keys(accounts).length
 
-  const input = document.getElementById("exportAccount").value;
-  this.props.dispatch(actions.exportAccount(input, this.props.address));
+  //   console.log(accLength,accounts, 'privatekey')
+    if (event.key !== "Enter") return;
+    event.preventDefault();
+    // while (accLength != 0)
+    // {
+      // var expAccount = accounts[accLength].address
+    const input = document.getElementById("exportAccount").value;
+    this.props.dispatch(actions.exportAccount(input, this.props.address));
+  //   accLength=-1
+  // }
 };
