@@ -588,7 +588,6 @@ class TransactionController extends EventEmitter {
       to: this.getSelectedAddress(),
       metamaskNetworkId: this.getNetwork(),
     })]
-    console.log("List==>", selectedAddressTxList);
     this.memStore.updateState({ unapprovedTxs, selectedAddressTxList })
   }
 }
