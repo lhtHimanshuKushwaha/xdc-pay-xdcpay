@@ -61,10 +61,12 @@ SendTransactionScreen.prototype.render = function () {
     //
     // Send Header
     //
-
-    h(SendHeader, {
-      title: "Send",
-    }),
+    h('div.sendTitle', [
+  
+      h(SendHeader, {
+        title: "Send",
+      }),
+    ]),
 
     //
     // Sender Profile
@@ -86,24 +88,23 @@ SendTransactionScreen.prototype.render = function () {
 
     // 'amount'
     h(
-      "div",
+      "div.sendExpandedUI",
       {
         style: {
           fontSize: "12px",
           fontFamily: "Inter-Semibold",
           lineHeight: "25px",
-          marginLeft: "46px",
           marginTop: "22px",
         },
       },
       "Amount"
     ),
     h(
-      "section.flex-column.flex-center",
+      "section.flex-column.flex-center.sendExpandedUI",
       {
         style: {
           width: "265px",
-          margin: "-5px 0 0 46px",
+          marginTop: "-5px ",
         },
       },
       [
@@ -123,13 +124,12 @@ SendTransactionScreen.prototype.render = function () {
     // Optional Fields
     //
     h(
-      "div",
+      "div.sendExpandedUI",
       {
         style: {
           fontSize: "12px",
           fontFamily: "Inter-Semibold",
           lineHeight: "25px",
-          marginLeft: "46px",
           marginTop: "30px",
         },
       },
@@ -154,7 +154,7 @@ SendTransactionScreen.prototype.render = function () {
     ]),
 
     // error message
-    h("div", { style: { margin: "0 45px" } }, [
+    h("div.sendExpandedUI", { style: { width: "265px" } }, [
       h(ErrorComponent, {
         error,
       }),
@@ -162,13 +162,12 @@ SendTransactionScreen.prototype.render = function () {
 
     // Send button
     h(
-      "button",
+      "button.sendExpandedUI",
       {
         style: {
           width: "265px",
           height: "40px",
           marginTop: "33px",
-          marginLeft: "46px",
         },
         onClick: this.onSubmit.bind(this),
       },

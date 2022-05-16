@@ -3,6 +3,7 @@ const actions = require('../../ui/app/actions')
 // const LoadingIndicator = require('./components/loading')
 const Web3 = require('web3')
 import React from 'react'
+
 const validUrl = require('valid-url')
 
 export default class AddNetwork extends React.Component {
@@ -23,8 +24,9 @@ export default class AddNetwork extends React.Component {
     return (
       <div className="flex-column flex-grow" style={{maxHeight: '585px', overflowY: 'auto'}}>
         <div className="section-title flex-row" style={{borderBottom: '1px solid #E3E7EB', paddingBottom: '17px'}}>
-          <img src="/images/Assets/BackArrow.svg" className='image-display' style={{marginLeft: '12px', cursor: 'pointer'}} onClick={() => {
-            state.dispatch(actions.networkSettings())
+          <img src="/images/Assets/BackArrow.svg" className="image-display"
+               style={{marginLeft: '12px', cursor: 'pointer'}} onClick={() => {
+            state.backToNetwork ? state.backToNetwork() : state.dispatch(actions.networkSettings())
           }}/>
           <h2 style={{marginLeft: '88px', fontFamily: 'Inter-bold'}}>Add Network</h2>
         </div>
@@ -75,7 +77,7 @@ export default class AddNetwork extends React.Component {
           <div style={{display: 'flex', justifyContent: 'space-around'}}>
             <div className="button"
                  onClick={() => {
-                   state.dispatch(actions.networkSettings())
+                   state.backToNetwork ? state.backToNetwork() : state.dispatch(actions.networkSettings())
                  }}
                  style={{
                    fontFamily: 'Inter-Medium',
@@ -149,4 +151,5 @@ function mapStateToProps (state) {
     warning: state.appState.warning,
   }
 }
+
 module.exports = connect(mapStateToProps)(AddNetwork)
