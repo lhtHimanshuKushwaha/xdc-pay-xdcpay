@@ -96,10 +96,12 @@ var actions = {
   SHOW_HARDWARE_WALLET_PAGE: 'SHOW_HARDWARE_WALLET_PAGE',
   SHOW_NEW_ACCOUNT_PAGE: 'SHOW_NEW_ACCOUNT_PAGE',
   SET_NEW_ACCOUNT_FORM: 'SET_NEW_ACCOUNT_FORM',
+  SHOW_CREATE_WALLET : 'SHOW_CREATE_WALLET',
   unlockMetamask: unlockMetamask,
   unlockFailed: unlockFailed,
   unlockSucceeded,
   showCreateVault: showCreateVault,
+  createWalletScreen : createWalletScreen,
   showRestoreVault: showRestoreVault,
   showInitializeMenu: showInitializeMenu,
   showImportPage,
@@ -1699,6 +1701,12 @@ function showCreateVault () {
   return {
     type: actions.SHOW_CREATE_VAULT,
   }
+}
+
+function createWalletScreen() {
+  return {
+  type: actions.SHOW_CREATE_WALLET,
+}  
 }
 
 function showRestoreVault () {

@@ -218,8 +218,18 @@ function reduceApp (state, action) {
 
     case actions.SHOW_INIT_MENU:
       return extend(appState, {
-        currentView: defaultView,
+        currentView: {
+          name:'menuScreenInit'
+        },
         transForward: false,
+      })
+    
+    case actions.SHOW_CREATE_WALLET:
+      return extend(appState, {
+        currentView: {
+          name: 'walletFirstScreen'
+        },
+        transForward: true,
       })
 
     case actions.SHOW_CONFIG_PAGE:
