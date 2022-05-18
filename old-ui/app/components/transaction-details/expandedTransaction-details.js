@@ -53,11 +53,13 @@ export default class ExpandedTransactionDetails extends React.Component {
       gasPrice = detailsOf.txParams.gasPrice
     submitTime = formatDate(detailsOf.submittedTime);
     createdTime = formatDate(detailsOf.time);
-      
+  }
+  if (typeof submitTime === 'undefined' ) {
+    submitTime = createdTime
+  }   
             
 
       // }
-    }
     function formatDate(date) {
       return vreme.format(new Date(date), "Mar 16 2014, 02:30 PM");
     }
