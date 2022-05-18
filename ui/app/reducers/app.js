@@ -92,7 +92,6 @@ function reduceApp (state, action) {
       contactName: null,
     },
     screenKey: 'generalSettings',
-    expandedUI: false,
 
   }, state.appState)
 
