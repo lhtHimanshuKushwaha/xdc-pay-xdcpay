@@ -133,7 +133,21 @@ const RenderMenu = (props) => {
           },
           "Create a New Wallet"
         ),
-        
+        // h("div", { className: "tooltip" }, [
+        //   h("img", {
+        //     src: "/images/Assets/QuestionMark.svg",
+        //     style: {
+        //       marginRight: "-22px",
+        //       paddingTop: "3px",
+        //       paddingLeft: "5px",
+        //     },
+        //   }),
+        //   h(
+        //     "span",
+        //     { className: "tooltiptext" },
+        //     "Your DEN is your password-encrypted Storage within XDC Pay"
+        //   ),
+        // ]),
       ]
     ),
 
