@@ -58,10 +58,12 @@ SendTransactionScreen.prototype.render = function () {
     //
     // Send Header
     //
-
-    h(SendHeader, {
-      title: "Send",
-    }),
+    h('div.sendTitle', [
+  
+      h(SendHeader, {
+        title: "Send",
+      }),
+    ]),
 
     //
     // Sender Profile

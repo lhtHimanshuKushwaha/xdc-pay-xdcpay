@@ -166,13 +166,14 @@ class AddTokenScreen extends Component {
     return h('.flex-column.flex-justify-center.flex-grow.select-none', [
         warning ? h('div', {
           style: {
-            margin: '20px 30px 0 30px',
+            margin: '20px 63px 0px 29px',
           },
         }, [
           h('.error', {
             style: {
               display: 'block',
-              width: '265px',
+              width: '100%',
+              maxWidth: '100%',
               marginLeft: '16px'
             },
           }, warning),
