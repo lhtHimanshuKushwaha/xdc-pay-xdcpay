@@ -1,5 +1,7 @@
 const inherits = require('util').inherits
 const Component = require('react').Component
+import React from "react";
+import ReactTooltip from "react-tooltip";
 const h = require('react-hyperscript')
 const connect = require('react-redux').connect
 const vreme = new (require('vreme'))()
@@ -9,12 +11,13 @@ const addressSummary = require('../util').addressSummary
 
 const CopyButton = require('./copy/copy-button')
 const EthBalance = require('./eth-balance')
-const Tooltip = require('./tooltip')
+// const Tooltip = require('./tooltip')
+
 
 
 module.exports = connect(mapStateToProps)(ShiftListItem)
 
-function mapStateToProps (state) {
+function mapStateToProps(state) {
   return {
     conversionRate: state.metamask.conversionRate,
     currentCurrency: state.metamask.currentCurrency,
@@ -23,7 +26,7 @@ function mapStateToProps (state) {
 
 inherits(ShiftListItem, Component)
 
-function ShiftListItem () {
+function ShiftListItem() {
   Component.call(this)
 }
 
@@ -60,7 +63,7 @@ ShiftListItem.prototype.render = function () {
   )
 }
 
-function formatDate (date) {
+function formatDate(date) {
   return vreme.format(new Date(date), 'March 16 2014 14:30')
 }
 
@@ -82,24 +85,29 @@ ShiftListItem.prototype.renderUtilComponents = function () {
     marginLeft: '5px',
     fontSize: '14px',
   }
+  const randomnumber = Math.floor(Math.random() * 1000000);
 
   switch (props.response.status) {
     case 'no_deposits':
       return h('.flex-row', [
-        h(Tooltip, {
-          title: 'QR Code',
-        }, [
-          h('i.fa.fa-qrcode.pointer.pop-hover', {
-            onClick: () => props.dispatch(actions.reshowQrCode(props.depositAddress, props.depositType)),
-            style: {
-              margin: '5px',
-              marginLeft: '23px',
-              marginRight: '12px',
-              fontSize: '20px',
-              color: '#6729a8',
-            },
-          }),
-        ]),
+        <div data-tip data-for={`${randomnumber}`} className={'i.fa.fa-qrcode.pointer.pop-hover'}
+          onClick={() => props.dispatch(actions.reshowQrCode(props.depositAddress, props.depositType))}
+          style={{
+            margin: '5px',
+            marginLeft: '23px',
+            marginRight: '12px',
+            fontSize: '20px',
+            color: '#6729a8',
+          }}>
+        </div>,
+        <ReactTooltip
+          id={`${randomnumber}`}
+          place="bottom"
+          type="dark"
+          effect="solid"
+        >
+          {`QR Code`}
+        </ReactTooltip>
       ])
     case 'received':
       return h('.flex-row')
@@ -151,7 +159,7 @@ ShiftListItem.prototype.renderInfo = function () {
           },
         }, [
           `${props.depositType} to ETH via ShapeShift`,
-            h(CopyButton, {
+          h(CopyButton, {
             value: props.depositAddress,
           })]),
         h('div', {
