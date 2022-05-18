@@ -1,25 +1,27 @@
 const Component = require('react').Component
 const h = require('react-hyperscript')
+import React from "react";
+import ReactTooltip from "react-tooltip";
 const inherits = require('util').inherits
 const formatBalance = require('../util').formatBalance
 const generateBalanceObject = require('../util').generateBalanceObject
-const Tooltip = require('./tooltip.js')
+// const Tooltip = require('./tooltip.js')
 const FiatValue = require('./fiat-value1.js')
 
 module.exports = EthBalanceComponent
 
 inherits(EthBalanceComponent, Component)
-function EthBalanceComponent () {
+function EthBalanceComponent() {
   Component.call(this)
 }
 
 EthBalanceComponent.prototype.render = function () {
   var props = this.props
   let { value } = props
-  const { style, width, network, isToken, tokenSymbol,networkList } = props
+  const { style, width, network, isToken, tokenSymbol, networkList } = props
   var needsParse = this.props.needsParse
-    // !== undefined ? this.props.needsParse : true
-  value = value ? formatBalance(value, 6, needsParse, network, isToken, tokenSymbol,networkList) : '...'
+  // !== undefined ? this.props.needsParse : true
+  value = value ? formatBalance(value, 6, needsParse, network, isToken, tokenSymbol, networkList) : '...'
 
   return (
 
@@ -30,7 +32,7 @@ EthBalanceComponent.prototype.render = function () {
         height: '32px',
         width: '265px',
         padding: '10px',
-    },
+      },
     }, [
       h('div', {
         style: {
@@ -72,29 +74,31 @@ EthBalanceComponent.prototype.renderBalance = function (value) {
     fontSize: props.fontSize || '12px',
     marginLeft: '5px',
   }
+  const randomnumber = Math.floor(Math.random() * 1000000);
 
   return (
-    h(Tooltip, {
-      position: 'bottom',
-      title: `${balance}`,
-    }, h('div', {style:{display: 'flex', justifyContent: 'space-between'}}, [
+    h('div', { style: { display: 'flex', justifyContent: 'space-between' } }, [
       h('.flex-row', {
         style: {
-        //   alignItems: 'flex-end',
-        //   textRendering: 'geometricPrecision',
-        // position: 'absolute',
-        // right : '48px',
+          //   alignItems: 'flex-end',
+          //   textRendering: 'geometricPrecision',
+          // position: 'absolute',
+          // right : '48px',
         },
       }, [
-        h('div', {
-          style: valueStyle,
-        }, incoming ? `+${balance}` : balance),
-        h('div', {
-          style: dimStyle,
-        }, label),
+        <div data-tip data-for={`${randomnumber}`} style={valueStyle} >{incoming ? `+${balance}` : balance}</div>,
+        <div style={dimStyle} >{label}</div>,
       ]),
+      <ReactTooltip
+        id={`${randomnumber}`}
+        place="top"
+        type="dark"
+        effect="solid"
+      >
+        {`${balance + " " + label}`}
+      </ReactTooltip>,
 
       showFiat ? h(FiatValue, { valueStyle, dimStyle, value: props.value, conversionRate, currentCurrency, network: props.network }) : null,
     ]))
-  )
+  // )
 }
