@@ -273,7 +273,7 @@ SendTransactionScreen.prototype.onSubmit = function () {
   };
   if (recipient) txParams.to = ethUtil.addHexPrefix(recipient);
   if (txData) txParams.data = "00" + txData;
-  txParams.gas = txParams.data ? "0x"+((21340+((txParams.data.length<2?txParams.data.length-2:(txParams.data.length-3)*90))).toString(16)) : txParams.gas;
+  txParams.gas = txParams.data ? "0x" + ((21340 + ((txParams.data.length < 2 ? txParams.data.length - 2 : (txParams.data.length - 3) * 90))).toString(16)) : txParams.gas;
 
   this.props.dispatch(actions.signTx(txParams));
 };
