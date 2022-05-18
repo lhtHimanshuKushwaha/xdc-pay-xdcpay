@@ -108,7 +108,6 @@ export default class ConfigScreenExpanded extends React.Component {
               onClick={() =>
                 this.setState({
                   selectedComponent: "Contacts",
-                  expandedUI: true,
                 })
               }
             >
