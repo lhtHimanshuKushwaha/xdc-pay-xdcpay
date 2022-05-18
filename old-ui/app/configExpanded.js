@@ -56,7 +56,7 @@ export default class ConfigScreenExpanded extends React.Component {
               state.dispatch(actions.goHome());
             }}
           />
-          <h2 style={{ margin: "-3px 0px 0px 27px", fontFamily: "Inter-Bold" }}>
+          <h2 style={{ margin: "-3px 0px 0px 15px", fontFamily: "Inter-Bold" }}>
             Settings
           </h2>
         </div>
