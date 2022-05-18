@@ -66,7 +66,13 @@ class TransactionDetails extends React.Component {
       createdTime = formatDate(detailsOf.time);
     }
     
+    if (typeof submitTime === 'undefined' ) {
+      submitTime = createdTime
+    }
     
+    if (toAdd === null) {
+      toAdd = detailsOf.txReceipt.contractAddress
+    }
       
     var symbol = 'XDC';
     rpcList.filter((netObj) => {
