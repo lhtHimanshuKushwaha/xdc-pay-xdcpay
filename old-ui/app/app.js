@@ -1,8 +1,8 @@
 const inherits = require('util').inherits
 const Component = require('react').Component
 const connect = require('react-redux').connect
-const {withRouter} = require('react-router-dom')
-const {compose} = require('recompose')
+const { withRouter } = require('react-router-dom')
+const { compose } = require('recompose')
 const h = require('react-hyperscript')
 const actions = require('../../ui/app/actions')
 const log = require('loglevel')
@@ -34,7 +34,7 @@ const RemoveTokenScreen = require('./remove-token')
 const AddSuggestedTokenScreen = require('./add-suggested-token')
 const Import = require('./accounts/import')
 const ForgetDeviceScreen = require('./components/connect-hardware/forget-screen')
-import {transactionDetails} from '../../ui/app/actions'
+import { transactionDetails } from '../../ui/app/actions'
 import ConnectHardwareForm from './components/connect-hardware/index'
 import TransactionList from './components/transaction-list'
 import createVaultComplete from './keychains/hd/create-vault-complete'
@@ -51,7 +51,7 @@ const DeleteRpc = require('./components/delete-rpc')
 const DeleteImportedAccount = require('./components/delete-imported-account')
 const ConfirmChangePassword = require('./components/confirm-change-password')
 const ethNetProps = require('xdc-net-props')
-const {getMetaMaskAccounts} = require('../../ui/app/selectors')
+const { getMetaMaskAccounts } = require('../../ui/app/selectors')
 const ConfirmRecoveryPhrase = require('./keychains/hd/confirm-recovery-phrase')
 const GeneralSettings = require('../app/general-settings')
 const AdvanceSettings = require('../app/advance-settings')
@@ -66,6 +66,7 @@ const ContactDetails = require('./components/add-contacts/contactDetails')
 const ConnectedSites = require('../app/connectedSites')
 const TransactionDetails = require('./components/transaction-details/transaction-details')
 
+
 module.exports = compose(
   withRouter,
   connect(mapStateToProps),
@@ -73,11 +74,11 @@ module.exports = compose(
 
 inherits(App, Component)
 
-function App () {
+function App() {
   Component.call(this)
 }
 
-function mapStateToProps (state) {
+function mapStateToProps(state) {
 
   const accounts = getMetaMaskAccounts(state)
 
@@ -147,7 +148,7 @@ App.prototype.render = function () {
   const confirmMsgTx = (props.currentView.name === 'confTx' && Object.keys(props.unapprovedTxs).length === 0)
 
   return (
-    h('div', { style: { height: '100%' } }, [
+    h('div', { style: { height: 'auto' } }, [
       h('div', {
         style: {
           height: '118px',
@@ -158,34 +159,34 @@ App.prototype.render = function () {
       }),
       h('.flex-column.full-height.expandedUI', {
         style: {
-        // Windows was showing a vertical scroll bar:
-        overflow: 'hidden',
-        // position: 'relative',
-        alignItems: 'center',
-        background: (props.isUnlocked || props.currentView.name === 'restoreVault' || props.currentView.name === 'config') ? 'white' : '#ffffff',
-      },
-    }, [
-      h(AppBar, {
-        ...this.props,
-      }),
-      this.renderLoadingIndicator({isLoading, isLoadingNetwork, loadMessage}),
-
-      // panel content
-      h('.app-primary' + (transForward ? '.from-right' : '.from-left'), {
-        style: {
-          background: (props.isUnlocked || props.currentView.name === 'restoreVault' || props.currentView.name === 'config') ? confirmMsgTx ? '#2050fd' : 'white' : 'transparent',
-          height: (props.isUnlocked && confirmMsgTx) ? '100%' : 'auto',
+          // Windows was showing a vertical scroll bar:
+          overflow: 'hidden',
+          // position: 'relative',
+          alignItems: 'center',
+          background: (props.isUnlocked || props.currentView.name === 'restoreVault' || props.currentView.name === 'config') ? 'white' : '#ffffff',
         },
       }, [
-        this.renderPrimary(),
+        h(AppBar, {
+          ...this.props,
+        }),
+        this.renderLoadingIndicator({ isLoading, isLoadingNetwork, loadMessage }),
+
+        // panel content
+        h('.app-primary' + (transForward ? '.from-right' : '.from-left'), {
+          style: {
+            background: (props.isUnlocked || props.currentView.name === 'restoreVault' || props.currentView.name === 'config') ? confirmMsgTx ? '#2050fd' : 'white' : 'transparent',
+            height: (props.isUnlocked && confirmMsgTx) ? '100%' : 'auto',
+          },
+        }, [
+          this.renderPrimary(),
+        ]),
       ]),
-    ]),
     ])
   )
 }
 
-App.prototype.renderLoadingIndicator = function ({isLoading, isLoadingNetwork, loadMessage}) {
-  const {isMascara} = this.props
+App.prototype.renderLoadingIndicator = function ({ isLoading, isLoadingNetwork, loadMessage }) {
+  const { isMascara } = this.props
 
   return isMascara
     ? null
@@ -199,7 +200,7 @@ App.prototype.renderPrimary = function () {
   log.debug('rendering primary')
   var props = this.props
   log.debug('rendering currentView', props.currentView)
-  const {isMascara, isOnboarding} = props
+  const { isMascara, isOnboarding } = props
 
   if (isMascara && isOnboarding) {
     return h(MascaraFirstTime)
@@ -209,7 +210,7 @@ App.prototype.renderPrimary = function () {
   if (!props.noActiveNotices) {
     log.debug('rendering notice screen for unread notices.')
     return h('div', {
-      style: {width: '100%'},
+      style: { width: '100%' },
     }, [
 
       h(NoticeScreen, {
@@ -235,11 +236,11 @@ App.prototype.renderPrimary = function () {
 
       case 'restoreVault':
         log.debug('rendering restore vault screen')
-        return h(HDRestoreVaultScreen, {key: 'HDRestoreVaultScreen'})
+        return h(HDRestoreVaultScreen, { key: 'HDRestoreVaultScreen' })
 
       default:
         log.debug('rendering menu screen')
-        return h(InitializeMenuScreen, {key: 'menuScreenInit'})
+        return h(InitializeMenuScreen, { key: 'menuScreenInit' })
     }
   }
 
@@ -249,22 +250,22 @@ App.prototype.renderPrimary = function () {
 
       case 'restoreVault':
         log.debug('rendering restore vault screen')
-        return h(HDRestoreVaultScreen, {key: 'HDRestoreVaultScreen'})
+        return h(HDRestoreVaultScreen, { key: 'HDRestoreVaultScreen' })
 
       case 'config':
         log.debug('rendering config screen from unlock screen.')
-        return h(ConfigScreen, {key: 'config'})
+        return h(ConfigScreen, { key: 'config' })
 
       default:
         log.debug('rendering locked screen')
-        return h(UnlockScreen, {key: 'locked'})
+        return h(UnlockScreen, { key: 'locked' })
     }
   }
 
   // show seed words screen
   if (props.seedWords && props.currentView.name !== 'reveal-seed' && !props.isRevealingSeedWords) {
     log.debug('rendering seed words')
-    return props.currentView.name === 'confirmRecoveryPhrase' ? h(ConfirmRecoveryPhrase, {key: 'confirm-recovery-phrase'}) : h(HDCreateVaultComplete, {key: 'HDCreateVaultComplete'})
+    return props.currentView.name === 'confirmRecoveryPhrase' ? h(ConfirmRecoveryPhrase, { key: 'confirm-recovery-phrase' }) : h(HDCreateVaultComplete, { key: 'HDCreateVaultComplete' })
   }
 
   // show current view
@@ -272,134 +273,134 @@ App.prototype.renderPrimary = function () {
 
     case 'accountDetail':
       log.debug('rendering account detail screen')
-      return h(AccountDetailScreen, {key: 'account-detail'})
+      return h(AccountDetailScreen, { key: 'account-detail' })
     case 'confirmRecoveryPhrase':
       log.debug('rendering Confirm recovery screen')
-      return h(ConfirmRecoveryPhrase, {key: 'confirm-recovery-phrase'})
+      return h(ConfirmRecoveryPhrase, { key: 'confirm-recovery-phrase' })
 
     case 'sendTransaction':
       log.debug('rendering send tx screen')
-      return h(SendTransactionScreen, {key: 'send-transaction'})
+      return h(SendTransactionScreen, { key: 'send-transaction' })
 
     case 'sendToken':
       log.debug('rendering send token tx screen')
-      return h(SendTokenScreen, {key: 'send-token'})
+      return h(SendTokenScreen, { key: 'send-token' })
 
     case 'sendContract':
       log.debug('rendering send contract tx screen')
-      return h(SendContractScreen, {key: 'send-contract'})
+      return h(SendContractScreen, { key: 'send-contract' })
 
     case 'show-choose-contract-executor-page':
       log.debug('rendering choose contract executor screen')
-      return h(ChooseContractExecutorScreen, {key: 'show-choose-contract-executor-page'})
+      return h(ChooseContractExecutorScreen, { key: 'show-choose-contract-executor-page' })
 
     case 'newKeychain':
       log.debug('rendering new keychain screen')
-      return h(NewKeyChainScreen, {key: 'new-keychain'})
+      return h(NewKeyChainScreen, { key: 'new-keychain' })
 
     case 'confTx':
       log.debug('rendering confirm tx screen')
-      return h(ConfirmTxScreen, {key: 'confirm-tx'})
+      return h(ConfirmTxScreen, { key: 'confirm-tx' })
 
     case 'add-token':
       log.debug('rendering add-token screen from unlock screen.')
-      return h(AddTokenScreen, {key: 'add-token'})
+      return h(AddTokenScreen, { key: 'add-token' })
 
     case 'general-settings':
       log.debug('rendering general-settings screen ')
-      return h(GeneralSettings, {key: 'general-settings'})
+      return h(GeneralSettings, { key: 'general-settings' })
 
     case 'config':
       log.debug('rendering config screen ')
-      return h(ConfigScreen, {key: 'config'})
+      return h(ConfigScreen, { key: 'config' })
 
     case 'CreateVaultCompleteScreen':
       log.debug('rendering seed words screen')
-      return h(createVaultComplete, {key: 'CreateVaultCompleteScreen'})
+      return h(createVaultComplete, { key: 'CreateVaultCompleteScreen' })
 
     case 'reveal-seed':
       log.debug('rendering the reveal seed words')
-      return h(revealSeed, {key: 'reveal-seed'})
+      return h(revealSeed, { key: 'reveal-seed' })
 
     case 'advance-settings':
       log.debug('rendering advance-settings screen ')
-      return h(AdvanceSettings, {key: 'advance-settings'})
+      return h(AdvanceSettings, { key: 'advance-settings' })
 
     case 'securityandprivacy-settings':
       log.debug('rendering security-privacy-screen')
-      return h(SecurityAndPrivacy, {key: 'securityandprivacy-settings'})
+      return h(SecurityAndPrivacy, { key: 'securityandprivacy-settings' })
 
     case 'contacts':
       log.debug('rendering contacts-screen')
-      return h(Contacts, {key: 'contacts'})
+      return h(Contacts, { key: 'contacts' })
 
     case 'contactDetails':
       log.debug('rendering contactDetails-screen')
-      return h(ContactDetails, {key: 'contactDetails'})
+      return h(ContactDetails, { key: 'contactDetails' })
 
     case 'add-contacts':
       log.debug('rendering add Contacts screen ')
-      return h(AddContacts, {key: 'add-contacts'})
+      return h(AddContacts, { key: 'add-contacts' })
 
     case 'network-settings':
       log.debug('renderng network-settings screen ')
-      return h(NetworkSettings, {key: 'network-settings'})
+      return h(NetworkSettings, { key: 'network-settings' })
 
     case 'add-network':
       log.debug('rendering add-network screen ')
-      return h(AddNetwork, {key: 'add-network'})
+      return h(AddNetwork, { key: 'add-network' })
 
     case 'view-network':
       log.debug('rendering view-network screen ')
-      return h(ViewNetwork, {key: 'view-network'})
+      return h(ViewNetwork, { key: 'view-network' })
 
     case 'alert-settings':
       log.debug('rendering alert-settings screen')
-      return h(AlertSettings, {key: 'alert-settings'})
+      return h(AlertSettings, { key: 'alert-settings' })
 
     case 'confirm-add-token':
       log.debug('rendering confirm-add-token screen from unlock screen.')
-      return h(ConfirmAddTokenScreen, {key: 'confirm-add-token'})
+      return h(ConfirmAddTokenScreen, { key: 'confirm-add-token' })
 
     case 'remove-token':
       log.debug('rendering remove-token screen from unlock screen.')
-      return h(RemoveTokenScreen, {key: 'remove-token', ...props.currentView.context})
+      return h(RemoveTokenScreen, { key: 'remove-token', ...props.currentView.context })
 
     case 'add-suggested-token':
       log.debug('rendering add-suggested-token screen from unlock screen.')
-      return h(AddSuggestedTokenScreen, {key: 'add-suggested-token'})
+      return h(AddSuggestedTokenScreen, { key: 'add-suggested-token' })
 
     case 'config':
       log.debug('rendering config screen')
-      return h(ConfigScreen, {key: 'config'})
+      return h(ConfigScreen, { key: 'config' })
 
     case 'import-menu':
       log.debug('rendering import screen')
-      return h(Import, {key: 'import-menu'})
+      return h(Import, { key: 'import-menu' })
 
     case 'forget-device':
       log.debug('rendering forget device screen')
-      return h(ForgetDeviceScreen, {key: 'forget-device'})
+      return h(ForgetDeviceScreen, { key: 'forget-device' })
 
     case 'hardware-wallets-menu':
       log.debug('rendering hardware wallet menu screen')
-      return h(ConnectHardwareForm, {key: 'hardware-wallets-menu'})
+      return h(ConnectHardwareForm, { key: 'hardware-wallets-menu' })
 
     case 'reveal-seed-conf':
       log.debug('rendering reveal seed confirmation screen')
-      return h(RevealSeedConfirmation, {key: 'reveal-seed-conf'})
+      return h(RevealSeedConfirmation, { key: 'reveal-seed-conf' })
 
     case 'info':
       log.debug('rendering info screen')
-      return h(InfoScreen, {key: 'info'})
+      return h(InfoScreen, { key: 'info' })
 
     case 'buyEth':
       log.debug('rendering buy ether screen')
-      return h(BuyView, {key: 'buyEthView'})
+      return h(BuyView, { key: 'buyEthView' })
 
     case 'onboardingBuyEth':
       log.debug('rendering onboarding buy ether screen')
-      return h(MascaraBuyEtherScreen, {key: 'buyEthView'})
+      return h(MascaraBuyEtherScreen, { key: 'buyEthView' })
 
     case 'qr':
       log.debug('rendering show qr screen')
@@ -411,7 +412,7 @@ App.prototype.renderPrimary = function () {
           width: '100%',
         },
       }, [
-        h('.section-title.flex-row.flex-center', {style: {marginTop: '38px'}}, [
+        h('.section-title.flex-row.flex-center', { style: { marginTop: '38px' } }, [
           h('img', {
             src: '/images/Assets/BackArrow.svg',
             onClick: () => props.dispatch(actions.backToAccountDetail(props.selectedAddress)),
@@ -441,30 +442,30 @@ App.prototype.renderPrimary = function () {
       ])
     case 'delete-rpc':
       log.debug('rendering delete rpc confirmation screen')
-      return h(DeleteRpc, {key: 'delete-rpc'})
+      return h(DeleteRpc, { key: 'delete-rpc' })
     case 'delete-imported-account':
       log.debug('rendering delete imported account confirmation screen')
-      return h(DeleteImportedAccount, {key: 'delete-imported-account'})
+      return h(DeleteImportedAccount, { key: 'delete-imported-account' })
     case 'confirm-change-password':
       log.debug('rendering confirm password changing screen')
-      return h(ConfirmChangePassword, {key: 'confirm-change-password'})
+      return h(ConfirmChangePassword, { key: 'confirm-change-password' })
 
     case 'connected-sites':
       log.debug('rendering confirm password changing screen')
-      return h(ConnectedSites, {key: 'connected-sites'})
+      return h(ConnectedSites, { key: 'connected-sites' })
 
     case 'transaction-details':
       log.debug('rendering the transaction details screen')
-      return h(TransactionDetails, {key: 'transaction-details'})
+      return h(TransactionDetails, { key: 'transaction-details' })
 
 
     default:
       log.debug('rendering default, account detail screen')
-      return h(AccountDetailScreen, {key: 'account-detail'})
+      return h(AccountDetailScreen, { key: 'account-detail' })
   }
 }
 
 App.prototype.getNetworkName = function () {
-  const {network} = this.props
+  const { network } = this.props
   return ethNetProps.props.getNetworkDisplayName(network)
 }

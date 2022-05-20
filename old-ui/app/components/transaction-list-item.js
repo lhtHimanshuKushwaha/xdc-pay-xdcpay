@@ -3,7 +3,7 @@ const h = require('react-hyperscript')
 const inherits = require('util').inherits
 const connect = require('react-redux').connect
 import React from "react";
-import ReactTooltip from "react-tooltip";
+import { Tooltip as ReactTooltip } from "react-tippy";
 const EthBalance = require('./eth-balance-txn-list')
 const addressSummary = require('../util').addressSummary
 const CopyButton = require('./copy/copy-button')
@@ -342,8 +342,7 @@ function formatDate(date) {
 }
 
 function renderErrorOrWarning(transaction, network) {
-  const { status, err, warning } = transaction
-  const randomnumber = Math.floor(Math.random() * 1000000);
+  const { status, err, warning } = transaction;
 
   // show dropped
   if (status === 'dropped') {
@@ -359,17 +358,18 @@ function renderErrorOrWarning(transaction, network) {
   if (err) {
     const message = err.message || ''
 
-    return <div>
-      < div data-tip data-for={`${randomnumber}`} ><div>{`(Failed)`}</div></div>
-      <ReactTooltip
-        id={`${randomnumber}`}
-        place="bottom"
-        type="dark"
-        effect="solid"
-      >
-        {`${err.rpc.message}`}
-      </ReactTooltip>
-    </div>
+    return <ReactTooltip
+      arrow={true}
+      trigger={'mouseenter focus'}
+      position='bottom'
+      size='small'
+      title={`${err.rpc.message}`}
+      theme='dark'
+    >
+      <div>
+        {`(Failed)`}
+      </div>
+    </ReactTooltip>
   }
 
   // show warning
@@ -381,16 +381,16 @@ function renderErrorOrWarning(transaction, network) {
       !warning.error.includes('[ethjs-rpc] rpc error with payload'))
   ) {
     const message = warning.message
-    return < div >
-      < div data-tip data-for={`${randomnumber}`} ><div>{`(Warning)`}</div></div>
-      <ReactTooltip
-        id={`${randomnumber}`}
-        place="bottom"
-        type="dark"
-        effect="solid"
-      >
-        {`${message}`}
-      </ReactTooltip>
-    </div >
+    return <ReactTooltip
+      arrow={true}
+      trigger={'mouseenter focus'}
+      position='bottom'
+      size='small'
+      title={`${message}`}
+      theme='dark'
+    >
+      <div>{`(Warning)`}</div>
+    </ReactTooltip>
+
   }
 }
