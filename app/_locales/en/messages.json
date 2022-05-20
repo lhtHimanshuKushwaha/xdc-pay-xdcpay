@@ -1427,7 +1427,7 @@
     "message": "Advanced gas controls"
   },
   "advancedGasControlsDesc": {
-    "message": "Select this to show gas price and limit controls directly on the confirm screens."
+    "message": "Select this to show gas price and limit controls directly on the confirm screen."
   },
   "infoDesc": {
     "message": "The XDCPay is an extension for accessing XDC’s XDPoS enabled distributed applications or “Dapps” in your browser!"
