@@ -35,6 +35,7 @@ InfoScreen.prototype.render = function () {
         h('img.cursor-pointer', {
           src: "/images/Assets/BackArrow.svg",
           onClick: (event) => {
+            state.backToSetting ? state.backToSetting() :
             state.dispatch(actions.goHome())
           },
           style: {
@@ -60,10 +61,10 @@ InfoScreen.prototype.render = function () {
             
           h('.info', [
             h('div', { style: { fontSize: '12px', fontWeight: '600', }, }, 'XDCPay Version'),
-            h('div', { style: { color: '#848484', fontSize: '12', }, }, `${version}`),
+            h('div', { style: { color: '#848484', fontSize: 12, }, }, `${version}`),
             h('.infoDesc','The XDCPay is an extension for accessing XDC’s XDPoS enabled distributed applications, or “Dapps” in your browser!'),
           ]),
-          h('div', {style:{fontSize:'12',}},[
+          h('div', {style:{fontSize:12,}},[
             h('div', { style: {fontWeight:'600', }, },'Link: '),
             h('div', {
               onClick: () => {
