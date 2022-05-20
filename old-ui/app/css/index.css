@@ -25,6 +25,16 @@ body {
   height: 100%;
 }
 
+.bodyStyle {
+  height: 100%;
+}
+
+@media only screen and (max-width: 600px) {
+  .bodyStyle {
+    height: auto;
+  }
+}
+
 @-moz-document url-prefix() {
   .ff-body-style {
     width: 357px;
@@ -65,24 +75,25 @@ html {
   }
 }
 
-.expandedscreen{
+.expandedscreen {
   height: 100%;
   width: 80%;
 }
 
 @media only screen and (max-width: 600px) {
-  .expandedscreen{
+  .expandedscreen {
     height: 100%;
     width: 100%;
   }
 
 }
-.token-options-dropp{
+
+.token-options-dropp {
   position: absolute;
-    min-width: 180px;
-    width: 317px;
-    bottom: none;
-    right: 410px;
+  min-width: 180px;
+  width: 317px;
+  bottom: none;
+  right: 410px;
 }
 
 @media only screen and (max-width: 600px) {
@@ -147,36 +158,39 @@ html {
 .sendExpandedUI {
   margin-left: 445px;
 }
+
 @media only screen and (max-width: 600px) {
   .sendExpandedUI {
     margin-left: 46px;
   }
 }
 
-.confTransaction{
+.confTransaction {
   padding: 0px 398px;
 }
+
 @media only screen and (max-width: 600px) {
-  .confTransaction{
-   padding: 0px 0px;
+  .confTransaction {
+    padding: 0px 0px;
   }
 
 }
 
-.confTransactionFiat{
-  position: absolute;           
+.confTransactionFiat {
+  position: absolute;
   font-size: 12px;
   font-Family: Nunito SemiBold;
   color: #848484;
   right: 450px;
 }
+
 @media only screen and (max-width: 600px) {
-  .confTransactionFiat{
-    position: absolute;           
+  .confTransactionFiat {
+    position: absolute;
     font-size: 12px;
     font-Family: Nunito SemiBold;
     color: #848484;
-   right: 60px;
+    right: 60px;
   }
 }
 
@@ -237,7 +251,7 @@ textarea:focus {
 }
 
 #app-content {
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -810,7 +824,7 @@ p.buy-option {
 .addNetworkTitle {
   display: flex;
   justify-content: space-between;
-  padding:0 427px 0 0;
+  padding: 0 427px 0 0;
 }
 
 @media only screen and (max-width: 600px) {
@@ -822,14 +836,16 @@ p.buy-option {
   }
 }
 
-.noContactsTitle{
+.noContactsTitle {
   margin: 250px 371px;
 }
+
 @media only screen and (max-width: 600px) {
   .noContactsTitle {
     margin: 182px 113px;
   }
 }
+
 .addNetworkExpand {
   display: grid;
   justify-content: center;
@@ -944,7 +960,7 @@ p.buy-option {
 }
 
 .titleAdd {
-  padding:0 35px 17px 388px;
+  padding: 0 35px 17px 388px;
 }
 
 @media only screen and (max-width: 600px) {
@@ -954,7 +970,7 @@ p.buy-option {
 }
 
 .titleAddNetwork {
-  padding:0 35px 17px 288px;
+  padding: 0 35px 17px 288px;
 }
 
 @media only screen and (max-width: 600px) {
@@ -1173,6 +1189,7 @@ input.large-input {
   flex-wrap: wrap;
   overflow-x: hidden;
   /*overflow-y: auto;*/
+  width: 100%;
   overflow-y: -moz-scrollbars-none;
   /* max-height: 585px; */
   flex-direction: inherit;
@@ -1183,6 +1200,7 @@ input.large-input {
     display: flex;
     flex-wrap: wrap;
     overflow-x: hidden;
+    width: 100%;
     /*overflow-y: auto;*/
     overflow-y: -moz-scrollbars-none;
     max-height: 585px;

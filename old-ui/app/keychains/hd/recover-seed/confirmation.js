@@ -8,11 +8,11 @@ const log = require('loglevel')
 module.exports = connect(mapStateToProps)(RevealSeedConfirmation)
 
 inherits(RevealSeedConfirmation, Component)
-function RevealSeedConfirmation () {
+function RevealSeedConfirmation() {
   Component.call(this)
 }
 
-function mapStateToProps (state) {
+function mapStateToProps(state) {
   return {
     warning: state.appState.warning,
   }
@@ -37,7 +37,7 @@ RevealSeedConfirmation.prototype.render = function () {
           fontFamily: 'Nunito  bold',
         },
       }, [
-        h('.page-subtitle', 'Reveal Seed Words'),
+        h('.page-subtitle', 'Secret Seed Words'),
       ]),
 
       h('div.cover', {
@@ -61,7 +61,7 @@ RevealSeedConfirmation.prototype.render = function () {
             marginTop: '20px',
             border: '2px solid #C7CDD8',
             height: '40px',
-            font: navigator.userAgent.indexOf("Firefox") != -1 ?'icon':''
+            font: navigator.userAgent.indexOf("Firefox") != -1 ? 'icon' : ''
           },
         }),
 
@@ -69,8 +69,8 @@ RevealSeedConfirmation.prototype.render = function () {
           style: {
             display: warning ? 'block' : 'none',
             marginTop: '20px',
-          }, 
-        }, 'Incorrect Password',warning),
+          },
+        }, 'Incorrect Password', warning),
 
         // (props.warning) && (
         //   h('span.error', {
@@ -92,29 +92,29 @@ RevealSeedConfirmation.prototype.render = function () {
         }, [
           // cancel
           h('button.btn-violet', {
-            style:{
+            style: {
               display: 'flex',
-                    position: 'absolute',
-                    left: '46px',
-                    height: '40px',
-                    width: '119px',
-                    paddingLeft: '37px',
-                    paddingTop: '12px',
-                    background: '#FF0035',
+              position: 'absolute',
+              left: '46px',
+              height: '40px',
+              width: '119px',
+              paddingLeft: '37px',
+              paddingTop: '12px',
+              background: '#FF0035',
             },
             onClick: this.goHome.bind(this),
           }, 'Cancel'),
 
           // submit
           h('button', {
-            style:{
+            style: {
               display: 'flex',
-                    position: 'absolute',
-                    right: '46px',
-                    height: '40px',
-                    width: '119px',
-                    paddingLeft: '51px',
-                    paddingTop: '12px',
+              position: 'absolute',
+              right: '46px',
+              height: '40px',
+              width: '119px',
+              paddingLeft: '51px',
+              paddingTop: '12px',
             },
             onClick: this.revealSeedWords.bind(this),
           }, 'OK'),
@@ -147,7 +147,7 @@ RevealSeedConfirmation.prototype.revealSeedWords = function () {
   console.log(password, '12345')
   try {
     this.props.dispatch(actions.requestRevealSeed1(password))
-  }catch (e) {
+  } catch (e) {
     log.error(e)
   }
 }

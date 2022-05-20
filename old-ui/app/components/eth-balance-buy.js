@@ -4,7 +4,7 @@ import React from "react";
 const inherits = require("util").inherits;
 const formatBalance = require("../util").formatBalance;
 const generateBalanceObject = require("../util").generateBalanceObject;
-import ReactTooltip from "react-tooltip";
+import { Tooltip as ReactTooltip } from "react-tippy";
 const FiatValue = require("./fiat-value.js");
 
 module.exports = EthBalanceComponent;
@@ -102,24 +102,22 @@ EthBalanceComponent.prototype.renderBalance = function (value) {
         },
       },
       [
-        <div data-tip data-for={`${randomnumber}`} style={valueStyle} >{incoming ? `+${balance}` : balance}</div>,
-        h(
-          "div",
-          {
-            style: dimStyle,
-          },
-          label
-        ),
+        <ReactTooltip
+          arrow={true}
+          trigger={'mouseenter focus'}
+          position='bottom'
+          size='small'
+          title={`${balance + " " + label}`}
+          theme='dark'
+        >
+          <div style={{ display: "flex" }}>
+            <div data-tip data-for={`${randomnumber}`} style={valueStyle} >{incoming ? `+${balance}` : balance}</div>,
+            <div style={dimStyle} >{label}</div>
+          </div>
+        </ReactTooltip>,
       ]
     ),
-    <ReactTooltip
-      id={`${randomnumber}`}
-      place="top"
-      type="dark"
-      effect="solid"
-    >
-      {`${balance + " " + label}`}
-    </ReactTooltip>,
+
 
     showFiat
       ? h(FiatValue, {
