@@ -172,7 +172,8 @@ class AddTokenScreen extends Component {
         h('.error', {
           style: {
             display: 'block',
-            width: '265px',
+            width: '100%',
+            maxWidth: '100%',
             marginLeft: '16px'
           },
         }, warning),

@@ -92,7 +92,7 @@ const AddContactComponent = (props) => {
         <br />
         <div
           style={{
-            marginBottom: "45px",
+            // marginBottom: "45px",
             border: "1px solid #e2e2e2",
             borderRadius: "4px",
           }}
@@ -107,7 +107,13 @@ const AddContactComponent = (props) => {
             style={{ width: "100%", border: "none", color: "#2A2A2A" }}
           />
         </div>
+        <div
+        style={{
+          height:45,
+          paddingTop:9,
+        }}>
         {warningMsg && <div className="error">{warningMsg}</div>}
+        </div>
         <div style={{ display: "flex", justifyContent: "space-between" }}>
           <div
             className="button"

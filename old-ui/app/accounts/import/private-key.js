@@ -49,7 +49,8 @@ PrivateKeyImportView.prototype.render = function () {
           font: navigator.userAgent.indexOf("Firefox") != -1 ?'icon':''
         },
       }),
-
+      h(
+        "div", {style:{display:'flex',justifyContent:'center'}},[
       h('button', {
         onClick: this.createNewKeychain.bind(this),
         style: {
@@ -57,7 +58,7 @@ PrivateKeyImportView.prototype.render = function () {
           width: '257px',
           height: '40px',
         },
-      }, 'Import'),
+      }, 'Import'), ]),
 
       error ? h('span.error',{style:{marginTop: '20px',}}, error) : null,
     ])

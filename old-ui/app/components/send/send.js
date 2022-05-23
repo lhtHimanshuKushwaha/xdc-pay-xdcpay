@@ -9,6 +9,7 @@ const {
   normalizeEthStringToWei,
   isInvalidChecksumAddress,
   isValidAddress,
+  ascii_to_hex,
 } = require("../../util");
 const EnsInput = require("../ens-input");
 const ethUtil = require("ethereumjs-util");
@@ -17,7 +18,9 @@ import SendHeader from "./send-header";
 import ErrorComponent from "../error";
 import { getMetaMaskAccounts } from "../../../../ui/app/selectors";
 import ToastComponent from "../toast";
+
 module.exports = connect(mapStateToProps)(SendTransactionScreen);
+
 
 function mapStateToProps(state) {
   const accounts = getMetaMaskAccounts(state);
@@ -58,10 +61,12 @@ SendTransactionScreen.prototype.render = function () {
     //
     // Send Header
     //
+    h('div.sendTitle', [
 
-    h(SendHeader, {
-      title: "Send",
-    }),
+      h(SendHeader, {
+        title: "Send",
+      }),
+    ]),
 
     //
     // Sender Profile
@@ -142,9 +147,9 @@ SendTransactionScreen.prototype.render = function () {
           resize: "none",
           marginTop: "-15px",
         },
-        dataset: {
-          persistentFormId: "tx-data",
-        },
+        // dataset: {
+        //   persistentFormId: "tx-data",
+        // },
       }),
     ]),
 
@@ -211,7 +216,6 @@ SendTransactionScreen.prototype.onSubmit = function () {
   const parts = input.split(".");
 
   let message;
-
   if (isNaN(input) || input === "") {
     message = "Invalid XDC value.";
     return this.props.dispatch(actions.displayWarning(message));
@@ -252,6 +256,7 @@ SendTransactionScreen.prototype.onSubmit = function () {
     return this.props.dispatch(actions.displayWarning(message));
   }
 
+
   // if (txData.length > 0)
   //  {
   //   message = "Keep your gas fees 35,000 or above to transact successfully. ";
@@ -272,8 +277,7 @@ SendTransactionScreen.prototype.onSubmit = function () {
     value: "0x" + value.toString(16),
   };
   if (recipient) txParams.to = ethUtil.addHexPrefix(recipient);
-  if (txData) txParams.data = "00" + txData;
-  txParams.gas = txParams.data ? "0x" + ((21340 + ((txParams.data.length < 2 ? txParams.data.length - 2 : (txParams.data.length - 3) * 90))).toString(16)) : txParams.gas;
+  if (txData) txParams.data = ascii_to_hex(txData);
 
   this.props.dispatch(actions.signTx(txParams));
 };
