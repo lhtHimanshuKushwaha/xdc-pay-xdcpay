@@ -6,7 +6,7 @@ const { connect } = require('react-redux')
 const { isHexPrefixed } = require('ethereumjs-util')
 const CopyButton = require('./components/copy/copy-button')
 const { toChecksumAddress, ifXDC } = require('./util')
-import ethNetProps from "xdc-net-props";
+import ethNetProps from "../../xdc-net-props/helpers/get-explorer-links";
 
 function shorten(b, amountL = 7, /*amountR = 4,*/ stars = 3) {
 
@@ -35,7 +35,7 @@ class AccountQrScreen extends PureComponent {
     const addressChecksum = toChecksumAddress(network, Qr.data)
     const address = ifXDC ? addressChecksum : `${isHexPrefixed(Qr.data) ? 'ethereum:' : ''}${Qr.data}`
     const qrImage = qrCode(4, 'M')
-    const url = ethNetProps.explorerLinks.getExplorerAccountLinkFor(addressChecksum, network)
+    const url = ethNetProps.getExplorerAccountLinkFor(addressChecksum, network)
     qrImage.addData(address)
     qrImage.make()
 
