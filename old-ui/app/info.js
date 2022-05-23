@@ -36,7 +36,7 @@ InfoScreen.prototype.render = function () {
           src: "/images/Assets/BackArrow.svg",
           onClick: (event) => {
             state.backToSetting ? state.backToSetting() :
-            state.dispatch(actions.goHome())
+            state.dispatch(actions.goConfig())
           },
           style: {
             position: 'absolute',

@@ -940,14 +940,26 @@ box-shadow: 0px 3px 6px #00000029;
 }
 
 .addNetworkExpand {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
 }
 
 @media only screen and (max-width: 600px) {
   .addNetworkExpand {
     display: block;
+    flex-direction: none;
     justify-content: flex-start;
+  }
+}
+
+.addNetworkFields {
+  width: 100%;
+}
+
+@media only screen and (max-width: 600px) {
+  .addNetworkFields {
+    width: 265px;
   }
 }
 

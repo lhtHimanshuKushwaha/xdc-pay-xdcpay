@@ -144,9 +144,9 @@ SendTransactionScreen.prototype.render = function () {
           resize: "none",
           marginTop: "-15px",
         },
-        dataset: {
-          persistentFormId: "tx-data",
-        },
+        // dataset: {
+        //   persistentFormId: "tx-data",
+        // },
       }),
     ]),
 

@@ -16,18 +16,18 @@ const AddNetworkComponent = (props) => {
       <div style={{margin: '20px 50px'}} className='addNetworkExpand' >
         <div className="word" style={{fontFamily: 'Inter-Medium',marginTop:"0px",marginBottom:"-5px"}}>{`${t('networkName')}`}</div>
         
-        <div style={{marginBottom: '28px', border: '1px solid #C7CDD8', borderRadius: '4px', width: '265px'}}>
+        <div className='addNetworkFields' style={{marginBottom: '28px', border: '1px solid #C7CDD8', borderRadius: '4px'}}>
           <input disabled={isPermanentNetwork} className="input large-input" type="text" name="networkName"
                  value={networkName}
                  onChange={onStateChange} maxLength={24} style={{border: 'none', color: '#2A2A2A', width: '260px'}}/>
         </div>
         <div className="word" style={{fontFamily: 'Inter-Medium',marginTop:"0px",marginBottom:"-5px"}}>New RPC URL</div>
         
-        <div style={{
+        <div className='addNetworkFields' style={{
           marginBottom: "28px",
           border: '1px solid #C7CDD8',
           borderRadius: '4px',
-          width: '265px',
+          
         }}>
           <input disabled={isPermanentNetwork} className="input large-input" id="new_rpc" type="text" name="rpcUrl"
                  value={rpcUrl}
@@ -35,26 +35,26 @@ const AddNetworkComponent = (props) => {
         </div>
         <div className="word" style={{fontFamily: 'Inter-Medium',marginTop:"0px",marginBottom:"-5px"}}>{`${t('chainID')}`}</div>
         
-        <div style={{marginBottom: '28px', border: '1px solid #C7CDD8', borderRadius: '4px', width: '265px'}}>
+        <div className='addNetworkFields' style={{marginBottom: '28px', border: '1px solid #C7CDD8', borderRadius: '4px'}}>
           <input disabled={isPermanentNetwork} className="input large-input" type="number"
                  style={{border: 'none', color: '#2A2A2A', width: '260px'}}
                  name="chainId" onChange={onStateChange} value={chainId}/>
         </div>
         <div className="word" style={{fontFamily: 'Inter-Medium',marginTop:"0px",marginBottom:"-5px"}}>{`${t('currencySymbol')}`} </div>
         
-        <div style={{marginBottom: '28px', border: '1px solid #C7CDD8', borderRadius: '4px', width: '265px'}}>
+        <div className='addNetworkFields' style={{marginBottom: '28px', border: '1px solid #C7CDD8', borderRadius: '4px'}}>
           <input disabled={isPermanentNetwork} className="input large-input" type="text"
                  style={{border: 'none', color: '#2A2A2A', width: '260px'}}
                  name="currencySymbol" onChange={onStateChange} value={currencySymbol}/>
         </div>
         <div className="word" style={{fontFamily: 'Inter-Medium',marginTop:"0px",marginBottom:"-5px"}}>{`${t('blockExplorer')}`} </div>
         
-        <div style={{marginBottom: '2px', border: '1px solid #C7CDD8', borderRadius: '4px', width: '265px'}}>
+        <div className='addNetworkFields' style={{marginBottom: '2px', border: '1px solid #C7CDD8', borderRadius: '4px'}}>
           <input disabled={isPermanentNetwork} className="input large-input" type="text"
                  style={{border: 'none', color: '#2A2A2A', width: '260px'}}
                  name="explorerLink" onChange={onStateChange} value={explorerLink}/>
         </div>
-        <div style={{height:'45px',marginBottom:'2px'}}>
+        <div style={{height:'45px',marginBottom:'2px',display:'flex', justifyContent: 'center', alignItems: 'center'}}>
           {warningMsg && <div className="error" style={{width:'265px' ,marginBottom:'0px'}}>{warningMsg}</div>}
         </div>
         {isPermanentNetwork ? '' :
@@ -85,7 +85,7 @@ const AddNetworkComponent = (props) => {
                    width: '120px',
                    height: '40px',
                    border: 'none',
-                   marginRight: '-8px',
+                  //  marginRight: '-8px',
 
                  }}
                  onClick={(event) => {

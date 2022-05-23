@@ -64,7 +64,7 @@ export default class AddNetwork extends React.Component {
           this.props.dispatch(actions.displayWarning('Invalid RPC endpoint'))
         }
         else if (chainId === '') {
-          return this.props.dispatch(actions.displayWarning('Invalid chainId'))
+          return this.props.dispatch(actions.displayWarning('Invalid chainID'))
         } else {
           if ((frequentRpcList && frequentRpcList.length) || networkList.length) {
              const isRPCAlreadyExists = frequentRpcList.find(netObj => netObj.rpcURL === rpcUrl)
