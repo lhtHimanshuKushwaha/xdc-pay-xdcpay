@@ -46,18 +46,34 @@ export default class ExpandedTransactionDetails extends React.Component {
           detailsOf = txObj;
         }
       });
+
+      if (typeof detailsOf.submittedTime == 'undefined' ) {
+        submitTime = formatDate(detailsOf.time);
+      }
+      else {
+        submitTime = formatDate(detailsOf.submittedTime);
+
+      }
+      
+      if (detailsOf.txParams.to == null) {
+        toAdd = detailsOf.txReceipt.contractAddress
+      } else {
+        toAdd = detailsOf.txParams.to
+      }
       fromAdd = detailsOf.txParams.from
-      toAdd = detailsOf.txParams.to
+      // toAdd = detailsOf.txParams.to
       value = detailsOf.txParams.value
       gas = detailsOf.txParams.gas
       gasPrice = detailsOf.txParams.gasPrice
-    submitTime = formatDate(detailsOf.submittedTime);
+    // submitTime = formatDate(detailsOf.submittedTime);
     createdTime = formatDate(detailsOf.time);
-      
+  }
+  if (typeof submitTime === 'undefined' ) {
+    submitTime = createdTime
+  }   
             
 
       // }
-    }
     function formatDate(date) {
       return vreme.format(new Date(date), "Mar 16 2014, 02:30 PM");
     }

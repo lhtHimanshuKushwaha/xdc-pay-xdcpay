@@ -97,7 +97,8 @@ class RestoreVaultScreen extends React.Component {
             height: '40px',
             marginTop: 20,
             border: '2px solid #C7CDD8',
-            font: navigator.userAgent.indexOf("Firefox") != -1 ? 'icon' : ''
+            font: navigator.userAgent.indexOf("Firefox") != -1 ? 'icon' : '',
+            fontSize: 14,
           },
         }),
 
@@ -122,7 +123,8 @@ class RestoreVaultScreen extends React.Component {
             height: '40px',
             marginTop: 20,
             border: '2px solid #C7CDD8',
-            font: navigator.userAgent.indexOf("Firefox") != -1 ? 'icon' : ''
+            font: navigator.userAgent.indexOf("Firefox") != -1 ? 'icon' : '',
+            fontSize: 14,
           },
         }),
 
