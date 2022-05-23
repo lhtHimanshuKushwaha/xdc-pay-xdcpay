@@ -1,15 +1,18 @@
 import React from "react";
-import ReactTooltip from "react-tooltip";
+import { Tooltip as ReactTooltip } from "react-tippy";
 
 export default function Tooltip({ message, value, children }) {
-  const randomnumber = Math.floor(Math.random() * 1000000);
-  return (
-    <div className="App" data-tip data-for={`${randomnumber}`}>
 
+  return (
+    <ReactTooltip
+      arrow={true}
+      trigger={'mouseenter focus'}
+      position='bottom'
+      size='small'
+      title={message}
+      theme='dark'
+    >
       {children}
-      <ReactTooltip id={`${randomnumber}`} place={value || "bottom"} effect="solid">
-        {message}
-      </ReactTooltip>
-    </div>
+    </ReactTooltip>
   );
 }

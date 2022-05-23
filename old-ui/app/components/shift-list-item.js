@@ -85,28 +85,27 @@ ShiftListItem.prototype.renderUtilComponents = function () {
     marginLeft: '5px',
     fontSize: '14px',
   }
-  const randomnumber = Math.floor(Math.random() * 1000000);
 
   switch (props.response.status) {
     case 'no_deposits':
       return h('.flex-row', [
-        <div data-tip data-for={`${randomnumber}`} className={'i.fa.fa-qrcode.pointer.pop-hover'}
-          onClick={() => props.dispatch(actions.reshowQrCode(props.depositAddress, props.depositType))}
-          style={{
-            margin: '5px',
-            marginLeft: '23px',
-            marginRight: '12px',
-            fontSize: '20px',
-            color: '#6729a8',
-          }}>
-        </div>,
         <ReactTooltip
-          id={`${randomnumber}`}
-          place="bottom"
-          type="dark"
-          effect="solid"
+          arrow={true}
+          trigger={'mouseenter focus'}
+          position='bottom'
+          size='small'
+          theme='dark'
+          title={`QR Code`}
         >
-          {`QR Code`}
+          <div className={'i.fa.fa-qrcode.pointer.pop-hover'}
+            onClick={() => props.dispatch(actions.reshowQrCode(props.depositAddress, props.depositType))}
+            style={{
+              margin: '5px',
+              marginLeft: '23px',
+              marginRight: '12px',
+              fontSize: '20px',
+              color: '#6729a8',
+            }} />
         </ReactTooltip>
       ])
     case 'received':

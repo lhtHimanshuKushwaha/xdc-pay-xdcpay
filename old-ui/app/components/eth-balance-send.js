@@ -4,8 +4,6 @@ const h = require('react-hyperscript')
 const inherits = require('util').inherits
 const formatBalance = require('../util').formatBalance
 const generateBalanceObject = require('../util').generateBalanceObject
-// const Tooltip = require('./tooltip.js')
-import ReactTooltip from "react-tooltip";
 const FiatValue = require('./fiat-value2.js')
 
 module.exports = EthBalanceComponent
