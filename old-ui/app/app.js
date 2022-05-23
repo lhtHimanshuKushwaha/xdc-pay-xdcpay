@@ -212,7 +212,6 @@ App.prototype.render = function () {
       ]),
     ]),
   ])
-  )
 }
 
 App.prototype.renderLoadingIndicator = function ({ isLoading, isLoadingNetwork, loadMessage }) {
