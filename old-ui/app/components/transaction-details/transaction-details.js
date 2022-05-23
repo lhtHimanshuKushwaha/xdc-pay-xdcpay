@@ -57,15 +57,26 @@ class TransactionDetails extends React.Component {
           
         }
       });
-        fromAdd = detailsOf.txParams.from
+      if (typeof detailsOf.submittedTime == 'undefined' ) {
+        submitTime = formatDate(detailsOf.time);
+      }
+      else {
+        submitTime = formatDate(detailsOf.submittedTime);
+
+      }
+      
+      if (detailsOf.txParams.to == null) {
+        toAdd = detailsOf.txReceipt.contractAddress
+      } else {
         toAdd = detailsOf.txParams.to
+      }
+        fromAdd = detailsOf.txParams.from
         value = detailsOf.txParams.value
         gas = detailsOf.txParams.gas
         gasPrice = detailsOf.txParams.gasPrice
-      submitTime = formatDate(detailsOf.submittedTime);
       createdTime = formatDate(detailsOf.time);
     }
-    
+  
     
       
     var symbol = 'XDC';

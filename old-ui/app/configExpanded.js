@@ -108,7 +108,6 @@ export default class ConfigScreenExpanded extends React.Component {
               onClick={() =>
                 this.setState({
                   selectedComponent: "Contacts",
-                  expandedUI: true,
                 })
               }
             >
@@ -182,7 +181,9 @@ export default class ConfigScreenExpanded extends React.Component {
             />
           )}
 
-          {this.state.selectedComponent === "infoScreen" && <InfoScreen />}
+          {this.state.selectedComponent === "infoScreen" && <InfoScreen
+            backToSetting = {()=> this.setComponent('generalSettings')}
+          />}
         </div>
       </div>
     );

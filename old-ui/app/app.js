@@ -7,24 +7,25 @@ const h = require('react-hyperscript')
 const actions = require('../../ui/app/actions')
 const log = require('loglevel')
 // mascara
-const MascaraFirstTime = require('../../mascara/src/app/first-time').default
-const MascaraBuyEtherScreen = require('../../mascara/src/app/first-time/buy-ether-screen').default
+const MascaraFirstTime = require("../../mascara/src/app/first-time").default;
+const MascaraBuyEtherScreen = require("../../mascara/src/app/first-time/buy-ether-screen")
+  .default;
 // init
-const InitializeMenuScreen = require('./first-time/init-menu')
-const NewKeyChainScreen = require('./new-keychain')
+const InitializeMenuScreen = require("./first-time/init-menu");
+const NewKeyChainScreen = require("./new-keychain");
 // unlock
-const UnlockScreen = require('./unlock')
+const UnlockScreen = require("./unlock");
 // accounts
-const AccountDetailScreen = require('./account-detail')
-const AccountQrScreen = require('./account-qr')
-const SendTransactionScreen = require('./components/send/send')
-const SendTokenScreen = require('./components/send/send-token')
-const SendContractScreen = require('./components/send/send-contract')
-const ChooseContractExecutorScreen = require('./components/send/choose-contract-executor')
-const ConfirmTxScreen = require('./conf-tx')
+const AccountDetailScreen = require("./account-detail");
+const AccountQrScreen = require("./account-qr");
+const SendTransactionScreen = require("./components/send/send");
+const SendTokenScreen = require("./components/send/send-token");
+const SendContractScreen = require("./components/send/send-contract");
+const ChooseContractExecutorScreen = require("./components/send/choose-contract-executor");
+const ConfirmTxScreen = require("./conf-tx");
 // notice
-const NoticeScreen = require('./components/notice')
-const generateLostAccountsNotice = require('../lib/lost-accounts-notice')
+const NoticeScreen = require("./components/notice");
+const generateLostAccountsNotice = require("../lib/lost-accounts-notice");
 // other views
 const ConfigScreen = require('./config')
 const ExpandedSettings = require('./expandViewSettings')
@@ -89,9 +90,9 @@ function mapStateToProps(state) {
     isInitialized,
     noActiveNotices,
     seedWords,
-    featureFlags,
-  } = state.metamask
-  const selected = address || Object.keys(accounts)[0]
+    featureFlags
+  } = state.metamask;
+  const selected = address || Object.keys(accounts)[0];
 
   return {
     // state from plugin
@@ -105,7 +106,11 @@ function mapStateToProps(state) {
     transForward: state.appState.transForward,
     isMascara: state.metamask.isMascara,
     isRevealingSeedWords: state.metamask.isRevealingSeedWords,
-    isOnboarding: Boolean(!noActiveNotices || (seedWords && !state.metamask.isRevealingSeedWords) || !isInitialized),
+    isOnboarding: Boolean(
+      !noActiveNotices ||
+      (seedWords && !state.metamask.isRevealingSeedWords) ||
+      !isInitialized
+    ),
     seedWords: state.metamask.seedWords,
     unapprovedTxs: state.metamask.unapprovedTxs,
     unapprovedMsgs: state.metamask.unapprovedMsgs,
@@ -124,64 +129,89 @@ function mapStateToProps(state) {
     // state needed to get account dropdown temporarily rendering from app bar
     identities,
     selected,
-    keyrings,
-  }
+    keyrings
+  };
 }
 
 App.prototype.render = function () {
-  var props = this.props
+  var props = this.props;
   const {
     currentView,
     isLoading,
     loadingMessage,
     transForward,
     network,
-    provider,
-  } = props
-  const isLoadingNetwork = network === 'loading' && currentView.name !== 'config' && currentView.name !== 'delete-rpc'
-  const networkName = provider.type === 'rpc' ? `${this.getNetworkName()} (${provider.rpcTarget})` : this.getNetworkName()
-  const loadMessage = loadingMessage || isLoadingNetwork ?
-    `Connecting to selected network` : null
-  log.debug('Main ui render function')
+    provider
+  } = props;
+  const isLoadingNetwork =
+    network === "loading" &&
+    currentView.name !== "config" &&
+    currentView.name !== "delete-rpc";
+  const networkName =
+    provider.type === "rpc"
+      ? `${this.getNetworkName()} (${provider.rpcTarget})`
+      : this.getNetworkName();
+  const loadMessage =
+    loadingMessage || isLoadingNetwork
+      ? `Connecting to selected network`
+      : null;
+  log.debug("Main ui render function");
 
-  log.debug('rendering currentView--', currentView)
-  const confirmMsgTx = (props.currentView.name === 'confTx' && Object.keys(props.unapprovedTxs).length === 0)
+  log.debug("rendering currentView--", currentView);
+  const confirmMsgTx =
+    props.currentView.name === "confTx" &&
+    Object.keys(props.unapprovedTxs).length === 0;
 
-  return (
-    h('div', { style: { height: '100%' } }, [
-      h('div', {
-        style: {
-          height: '118px',
-          position: 'absolute',
-          width: '100%',
-          backgroundColor: '#E3E7EB'
-        }
-      }),
-      h('.flex-column.full-height.expandedUI', {
+  return h("div", { style: { height: "100%" } }, [
+    h("div", {
+      style: {
+        height: "118px",
+        position: "absolute",
+        width: "100%",
+        backgroundColor: "#E3E7EB"
+      }
+    }),
+    h(
+      ".flex-column.full-height.expandedUI",
+      {
         style: {
           // Windows was showing a vertical scroll bar:
-          overflow: 'hidden',
+          overflow: "hidden",
           // position: 'relative',
-          alignItems: 'center',
-          background: (props.isUnlocked || props.currentView.name === 'restoreVault' || props.currentView.name === 'config') ? 'white' : '#ffffff',
+          alignItems: "center",
+          background:
+            props.isUnlocked ||
+              props.currentView.name === "restoreVault" ||
+              props.currentView.name === "config"
+              ? "white"
+              : "#ffffff"
+        }
+      }),
+    h('.flex-column.full-height.expandedUI', {
+      style: {
+        // Windows was showing a vertical scroll bar:
+        overflow: 'hidden',
+        // position: 'relative',
+        alignItems: 'center',
+        background: (props.isUnlocked || props.currentView.name === 'restoreVault' || props.currentView.name === 'config') ? 'white' : '#ffffff',
+      },
+    }, [
+      h(AppBar, {
+        ...this.props,
+      }),
+      this.renderLoadingIndicator({ isLoading, isLoadingNetwork, loadMessage }),
+
+      // panel content
+      h('.app-primary' + (transForward ? '.from-right' : '.from-left'), {
+        style: {
+          background: (props.isUnlocked || props.currentView.name === 'restoreVault' || props.currentView.name === 'config') ? confirmMsgTx ? '#2050fd' : 'white' : 'transparent',
+          height: (props.isUnlocked && confirmMsgTx) ? '100%' : 'auto',
         },
       }, [
-        h(AppBar, {
-          ...this.props,
-        }),
-        this.renderLoadingIndicator({ isLoading, isLoadingNetwork, loadMessage }),
-
-        // panel content
-        h('.app-primary' + (transForward ? '.from-right' : '.from-left'), {
-          style: {
-            background: (props.isUnlocked || props.currentView.name === 'restoreVault' || props.currentView.name === 'config') ? confirmMsgTx ? '#2050fd' : 'white' : 'transparent',
-            height: (props.isUnlocked && confirmMsgTx) ? '100%' : 'auto',
-          },
-        }, [
-          this.renderPrimary(),
-        ]),
+        this.renderPrimary(),
       ]),
-    ])
+    ]),
+  ])
   )
 }
 
@@ -192,9 +222,9 @@ App.prototype.renderLoadingIndicator = function ({ isLoading, isLoadingNetwork, 
     ? null
     : h(Loading, {
       isLoading: isLoading || isLoadingNetwork,
-      loadingMessage: loadMessage,
-    })
-}
+      loadingMessage: loadMessage
+    });
+};
 
 App.prototype.renderPrimary = function () {
   log.debug('rendering primary')
@@ -203,7 +233,7 @@ App.prototype.renderPrimary = function () {
   const { isMascara, isOnboarding } = props
 
   if (isMascara && isOnboarding) {
-    return h(MascaraFirstTime)
+    return h(MascaraFirstTime);
   }
 
   // notices
@@ -220,19 +250,22 @@ App.prototype.renderPrimary = function () {
       }),
     ])
   } else if (props.lostAccounts && props.lostAccounts.length > 0) {
-    log.debug('rendering notice screen for lost accounts view.')
+    log.debug("rendering notice screen for lost accounts view.");
     return h(NoticeScreen, {
       notice: generateLostAccountsNotice(props.lostAccounts),
-      key: 'LostAccountsNotice',
-      onConfirm: () => props.dispatch(actions.markAccountsFound()),
-    })
+      key: "LostAccountsNotice",
+      onConfirm: () => props.dispatch(actions.markAccountsFound())
+    });
   }
 
   // show initialize screen
   if (!props.isInitialized || props.forgottenPassword) {
     // show current view
-    log.debug('rendering an initialize screen')
+    log.debug("rendering an initialize screen");
     switch (props.currentView.name) {
+      case "restoreVault":
+        log.debug("rendering restore vault screen");
+        return h(HDRestoreVaultScreen, { key: "HDRestoreVaultScreen" });
 
       case 'restoreVault':
         log.debug('rendering restore vault screen')
@@ -247,6 +280,9 @@ App.prototype.renderPrimary = function () {
   // show unlock screen
   if (!props.isUnlocked) {
     switch (props.currentView.name) {
+      case "restoreVault":
+        log.debug("rendering restore vault screen");
+        return h(HDRestoreVaultScreen, { key: "HDRestoreVaultScreen" });
 
       case 'restoreVault':
         log.debug('rendering restore vault screen')
@@ -270,6 +306,12 @@ App.prototype.renderPrimary = function () {
 
   // show current view
   switch (props.currentView.name) {
+    case "accountDetail":
+      log.debug("rendering account detail screen");
+      return h(AccountDetailScreen, { key: "account-detail" });
+    case "confirmRecoveryPhrase":
+      log.debug("rendering Confirm recovery screen");
+      return h(ConfirmRecoveryPhrase, { key: "confirm-recovery-phrase" });
 
     case 'accountDetail':
       log.debug('rendering account detail screen')
@@ -458,12 +500,15 @@ App.prototype.renderPrimary = function () {
       log.debug('rendering the transaction details screen')
       return h(TransactionDetails, { key: 'transaction-details' })
 
+    case "transaction-details":
+      log.debug("rendering the transaction details screen");
+      return h(TransactionDetails, { key: "transaction-details" });
 
     default:
       log.debug('rendering default, account detail screen')
       return h(AccountDetailScreen, { key: 'account-detail' })
   }
-}
+};
 
 App.prototype.getNetworkName = function () {
   const { network } = this.props

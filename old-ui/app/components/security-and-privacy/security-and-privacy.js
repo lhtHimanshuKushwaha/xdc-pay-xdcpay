@@ -52,7 +52,7 @@ class SecurityAndPrivacySettings extends React.Component {
           <img
             className="image-display"
             src="/images/Assets/BackArrow.svg"
-            style={{ marginLeft: "-49px", cursor: "pointer" ,width:"19px",height:"17px"}}
+            style={{ marginLeft: "-54px", cursor: "pointer" ,width:"19px",height:"17px"}}
             onClick={() => {
               state.dispatch(actions.goConfig());
             }}
