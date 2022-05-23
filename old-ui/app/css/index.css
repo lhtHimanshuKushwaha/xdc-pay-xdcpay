@@ -29,7 +29,7 @@ body {
   height: 100%;
 }
 
-@media only screen and (max-width: 600px) {
+@media screen and (max-height:600px) {
   .bodyStyle {
     height: auto;
   }
@@ -2117,5 +2117,21 @@ input[type="number"]::-webkit-outer-spin-button {
 
   .sidebar a {
     font-size: 18px;
+  }
+}
+
+.tx-list {
+  overflow-y: auto;
+  max-height: 377px;
+  padding: 0 13px 20px 13px;
+  text-align: center;
+}
+
+@media screen and (max-height: 600px) {
+  .tx-list {
+    overflow-y: auto;
+    max-height: 234px;
+    padding: 0 13px 20px 13px;
+    text-align: center;
   }
 }

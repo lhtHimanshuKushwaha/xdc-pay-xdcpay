@@ -148,7 +148,7 @@ App.prototype.render = function () {
   const confirmMsgTx = (props.currentView.name === 'confTx' && Object.keys(props.unapprovedTxs).length === 0)
 
   return (
-    h('div', { style: { height: 'auto' } }, [
+    h('div', { style: { height: '100%' } }, [
       h('div', {
         style: {
           height: '118px',
