@@ -65,6 +65,7 @@ function reduceMetamask (state, action) {
       },
       showGasFields: true,
       showTokens: true,
+      showIncomingTransaction: false,
       isValidName: false,
       isValidAddress: false,
       networkList: permanentNetworks,
@@ -119,6 +120,12 @@ function reduceMetamask (state, action) {
       return extend(metamaskState, {
         showTokens: action.value,
       })
+    
+      case actions.UPDATE_TRANSACTIONLIST:
+        return extend(metamaskState, {
+          showIncomingTransaction: action.value,
+        })
+    
       case actions.UPDATE_EXPANDEDUI:
         return extend(metamaskState, {
           expandUi: action.value,
