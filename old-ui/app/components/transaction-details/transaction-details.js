@@ -34,10 +34,11 @@ class TransactionDetails extends React.Component {
     } = props;
 
     const isTestnet = parseInt(network) === XDC_TESTNET_CODE || parseInt(network) === XDC_CODE 
+    
     var selected = props.address || Object.keys(props.accounts)[0];
     var checksumAddress = selected && toChecksumAddress(network, selected);
     
-    var symbol;
+    const rpcList = frequentRpcList
     var fromAdd;
     var toAdd;
     var value;
@@ -63,19 +64,18 @@ class TransactionDetails extends React.Component {
         gasPrice = detailsOf.txParams.gasPrice
       submitTime = formatDate(detailsOf.submittedTime);
       createdTime = formatDate(detailsOf.time);
-
-      
     }
-    frequentRpcList.filter(netObj => {
+    
+    
+      
+    var symbol = 'XDC';
+    rpcList.filter((netObj) => {
+      console.log(symbol,rpcList,netObj,'symbol>>')
       if (netObj.chainId === network) {
         symbol = netObj.currencySymbol
       }
-      else if (isTestnet) {
-        symbol = 'XDC'
-        
-      }
     })
-    
+
     function formatDate(date) {
       return vreme.format(new Date(date), "Mar 16 2014, 02:30 PM");
     }
@@ -106,13 +106,12 @@ class TransactionDetails extends React.Component {
               className="section-title flex-row"
               style={{ justifyContent: "space-between", width: "75%" }}
             >
-              <div>
+              <div >
                 {" "}
                 <img
                   src="/images/Assets/BackArrow.svg"
                   style={{
-                    marginLeft: "25px",
-                    marginTop: "14",
+                    marginLeft: "17px",
                     cursor: "pointer",
                   }}
                   onClick={() => {
@@ -134,7 +133,7 @@ class TransactionDetails extends React.Component {
 
                 <div
                   className="trasaction-details-from-to"
-                  style={{ display: "flex",matgin:" 0px 2px 0px 0px"  }}
+                  style={{ display: "flex",margin:" 0px 2px 0px 0px"  }}
                 >
                   {" "}
                   {shorten(checksumAddress)}
@@ -161,7 +160,7 @@ class TransactionDetails extends React.Component {
 
           {/* all trasaction details  */}
           <div className="trasaction-details-amount">
-            <div style={{ marginLeft: "17px" }}>Amount</div>
+            <div >Amount</div>
             <div style={{ marginRight: "6px", marginLeft: "auto" }}>
               {value}
             </div>
@@ -169,18 +168,18 @@ class TransactionDetails extends React.Component {
           </div>
 
           <div className="trasaction-details-amount">
-            <div style={{ marginLeft: "16px" }}>Gas Limit</div>
-            <div>{gas}</div>
+            <div >Gas Limit</div>
+            <div style={{ marginRight: "0px", marginLeft: "auto" }}>{gas}</div>
           </div>
 
           <div className="trasaction-details-amount">
-            <div style={{ marginLeft: "16px" }}>Gas Price (GWEI)</div>
-            <div>{gasPrice}</div>
+            <div >Gas Price (GWEI)</div>
+            <div style={{ marginRight: "6px", marginLeft: "auto" }}>{gasPrice}</div>
           </div>
 
           <div className="trasaction-details-amount">
-            <div style={{ marginLeft: "16px" }}>Total</div>
-            <div style={{ marginLeft: "200px" }}>
+            <div >Total</div>
+            <div style={{ marginRight: "6px", marginLeft: "auto" }}>
              {value}
             </div>
             <h1 style={{ color: "#848484" }}>{symbol}</h1>
