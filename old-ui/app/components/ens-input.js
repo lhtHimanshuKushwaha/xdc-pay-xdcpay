@@ -49,9 +49,9 @@ EnsInput.prototype.render = function () {
   }
 
   return (
-    h('div', {
+    h('div.sendFields', {
       style: {
-        width: '265px',
+        // width: '265px',
         fontSize: '12px',
         fontFamily: 'Inter-Semibold',
         lineHeight: '15px',

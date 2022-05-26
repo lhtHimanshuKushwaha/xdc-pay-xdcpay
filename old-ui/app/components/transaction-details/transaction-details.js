@@ -157,7 +157,7 @@ class TransactionDetails extends React.Component {
           <div className="details">Details</div>
 
           {/* flexbox */}
-          <div className="flexbox">
+          <div className="flexbox" style={{backgroundColor:'#FAFAFA'}}>
             <div className="trasaction-details-from-to">From</div>
             <div className="trasaction-details-from-to-accounts">
              {isTestnet ? shorten (fromAdd.replace("0x", "xdc")) : shorten(fromAdd) }
