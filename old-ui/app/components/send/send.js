@@ -100,7 +100,7 @@ SendTransactionScreen.prototype.render = function () {
       "section.flex-column.flex-center.sendExpandedUI",
       {
         style: {
-          width: "265px",
+          // width: "265px",
           marginTop: "-5px ",
         },
       },
@@ -135,7 +135,7 @@ SendTransactionScreen.prototype.render = function () {
 
     // 'data' field
     h("section.flex-column.flex-center", [
-      h("input.large-input", {
+      h("input.large-input.sendFields", {
         name: "txData",
         placeholder: "",
         maxLength: 35,
@@ -151,7 +151,9 @@ SendTransactionScreen.prototype.render = function () {
     ]),
 
     // error message
-    h("div.sendExpandedUI", { style: { width: "265px" } }, [
+    h("div.sendExpandedUI",
+      // { style: { width: "265px" } },
+      [
       h(ErrorComponent, {
         error,
       }),

@@ -183,12 +183,14 @@ export default class ExpandedTransactionDetails extends React.Component {
           >
             <div style={{width:'100%',padding:'24px 13px'}}>
               <div className="details">Details</div>
-              <div className="flexbox">
+              <div className="flexbox" style={{backgroundColor:'#FAFAFA'}}>
                 <div className="trasaction-details-from-to">From</div>
                 <div className="trasaction-details-from-to-accounts">
                   {isTestnet ? fromAdd.replace('0x','xdc') : fromAdd}
                 </div>
-                <img style={{marginLeft:'2px'}} src="/images/Assets/DownArrow.svg" />
+                <div style={{  width: '20px', margin: '9px 0px 7px 2px', height: '20px' }}>
+                <img src="/images/Assets/DownArrow.svg" />
+                </div>
                 <div className="trasaction-details-from-to">To</div>
                 <div className="trasaction-details-from-to-accounts">
                   {isTestnet ? toAdd.replace('0x','xdc') : toAdd}

@@ -43,7 +43,8 @@ class ConfirmScreen extends Component {
 				</div>
 			) : null}
 			{this.props.renderAdditionalData ? this.props.renderAdditionalData() : null}
-			<p className="confirm-label"
+				<div>
+				<p className="confirm-label"
 				style={{
 					textAlign: 'center',
 					margin: '30px 46px 33px',
@@ -52,8 +53,9 @@ class ConfirmScreen extends Component {
 					border: '1px solid',
 					padding: '20px 20px',
 				}}
-			>{this.props.question}
+				>{this.props.question}
 			</p>
+				</div>
 			<div className="flex-row flex-right"
 				style={{
 					marginRight: '30px',

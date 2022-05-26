@@ -60,7 +60,7 @@ revealSeed.prototype.render = function () {
           marginTop: '25px',
         },
       }, [
-        h('div.error1', {
+        h('div.errorReveal', {
           style: { fontFamily: 'Inter-medium' },
         }, 'These 12 words are the only way to restore your XDCPay accounts.\nSave them somewhere safe and secret.'),
       ]),

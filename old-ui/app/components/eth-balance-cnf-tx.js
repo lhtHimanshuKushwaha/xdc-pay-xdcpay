@@ -26,7 +26,7 @@ EthBalanceComponent.prototype.render = function () {
 
   return (
 
-    h('.ether-balance.ether-balance-amount', {
+    h('.ether-balance.ether-balance-amount.sendFields', {
       style: {
         border: '2px solid #C7CDD8',
         borderRadius: '4px',

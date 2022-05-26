@@ -61,12 +61,12 @@ class GeneralSettings extends React.Component {
       <div className="flex-column flex-grow">
         {/* <LoadingIndicator/> */}
         <div className="section-title flex-row" style={{paddingBottom: '17px',display:'flex', justifyContent:'center'}}>
-          <img src="/images/Assets/BackArrow.svg" className='image-display' style={{ margin:'0px 84px 0px -88px',width:"19px",height:"17px"}}
+          <img src="/images/Assets/BackArrow.svg" className='image-display' style={{ position:'absolute', left:'20px',width:"19px",height:"17px"}}
             onClick={() => {
           
             state.dispatch(actions.goConfig())
           }}/>
-          <h2 style={{ fontFamily: navigator.userAgent.indexOf("Firefox") != -1 ?"Inter-semiBold":"Inter-Bold" }}>General Settings</h2>
+          <h2 style={{ fontFamily: navigator.userAgent.indexOf("Firefox") != -1 ?"Inter-semiBold":"Inter-Bold" }}> {`${t('generalSettings')}`}</h2>
         </div>
         <div style={{borderTop: '1px solid #E3E7EB', padding: '20px 20px'}}>
           {currentConversionInformation(metamaskState, state,t)}
