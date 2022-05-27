@@ -210,7 +210,7 @@ PendingTx.prototype.render = function() {
   const dimStyle = {
     // fontFamily: 'Inter-SemiBold',
     // color: '#848484',
-    marginLeft: "2px"
+    margin: "0 0 0 2px"
     // fontSize: '12px',
   };
 
@@ -744,12 +744,12 @@ PendingTx.prototype.render = function() {
 
           // send + cancel
           h(
-            ".flex-row.flex-space-around",
+            ".flex-row.flex-space-around.btnConf",
             {
               style: {
                 display: "flex",
-                justifyContent: "center"
-
+                justifyContent: "center",
+                margin: showGasFields ? '0 0 0 0' : ''  ,
               }
             },
             [

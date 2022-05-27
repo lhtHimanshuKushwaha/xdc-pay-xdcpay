@@ -180,7 +180,8 @@ html {
 .confTransaction{
   display: flex;
     flex-direction: column;
-    height: 386px;
+    height: 386px;   
+     min-height: 369px;
     align-items: center;
 }
 
@@ -188,6 +189,7 @@ html {
   .confTransaction{
     display: flex;
     height:329px ;
+    min-height: 0px;
     flex-direction: column;
     align-items: center;
   }
@@ -990,6 +992,15 @@ box-shadow: 0px 3px 6px #00000029;
     margin: 0 28px 0 0px;
     height: 40px;
   }
+}
+
+.btnConf{
+  margin: -164px 0 0 0;
+}
+@media only screen and (max-width: 600px) {
+.btnConf{
+  margin: -136px 0 0 0;
+}
 }
 
 
@@ -1947,12 +1958,24 @@ div.message-container>div:first-child {
 }
 
 .confirm-label {
-  padding: 20px 50px;
-  color: #6729a8;
-  border: solid 1px #6729a8;
-  border-radius: 5px;
-  background-color: rgba(103, 41, 168, 0.2);
+  padding:none;
+  color: none;
+  border: none;
+  border-radius: none;
+  background-color: none;
   word-wrap: break-word;
+}
+
+@media only screen and (max-width:600px){
+
+  .confirm-label {
+    padding: 20px 50px;
+    color: #6729a8;
+    border: solid 1px #6729a8;
+    border-radius: 5px;
+    background-color: rgba(103, 41, 168, 0.2);
+    word-wrap: break-word;
+  }
 }
 
 .sent::after {
@@ -2091,6 +2114,23 @@ textarea[disabled] {
     background-image: url("/images/Assets/Arrow.svg");
   }
 }
+
+.remove-token{
+  margin: 110px 0 73px 0 ;
+  padding: 29px;
+  height: 80px;
+  width: 548px;
+
+}
+@media only screen and (max-width: 600px) {
+  .remove-token{
+    margin: 30px 46px 33px ;
+    padding: 20px;
+    width: none;
+    height: none;
+  }
+}
+
 
 .settingsExpanded {
   display: block;
