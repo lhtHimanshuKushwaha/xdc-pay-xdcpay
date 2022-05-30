@@ -464,20 +464,26 @@ PendingTx.prototype.render = function() {
                 style: {
                   overflowY: isNotification ? '' :"auto",
                   height: !!("to" in this.props.txData.txParams)
-                    ? dangerousGasLimit
-                      ? dangerousGasLimit && insufficientBalance
+                    ? dangerousGasLimit && !txMeta.simulationFails
+                      ? dangerousGasLimit && insufficientBalance && !txMeta.simulationFails
                         ? insufficientBalance
                           ? "220px"
                           : "288px"
                         : "260px"
-                      : insufficientBalance
-                      ? "286px"
+                      : insufficientBalance && !txMeta.simulationFails
+                          ? "286px"
                       : txMeta.simulationFails
-                      ? "286px"
-                      : "329px"
+                          ? dangerousGasLimit
+                            ? dangerousGasLimit && insufficientBalance
+                              ? insufficientBalance
+                                ? "176px"
+                              : "288px"
+                            : "216px"
+                          :"286px"
+                        :"329px"
                     : !isNotification
-                    ? insufficientBalance
-                      ? "289px"
+                      ? insufficientBalance
+                        ? "289px"
                       : "320px"
                     : "337px",
                   width: "auto",
