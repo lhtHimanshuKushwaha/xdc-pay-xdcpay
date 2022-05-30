@@ -60,12 +60,13 @@ class SecurityAndPrivacySettings extends React.Component {
           <img
             className="image-display"
             src="/images/Assets/BackArrow.svg"
-            style={{ marginLeft: "-54px", cursor: "pointer" ,width:"19px",height:"17px"}}
+            style={{ position: 'absolute',
+              left: '16px', cursor: "pointer" ,width:"19px",height:"17px"}}
             onClick={() => {
               state.dispatch(actions.goConfig());
             }}
           />
-          <h2 style={{ marginLeft: "39px", fontFamily: navigator.userAgent.indexOf("Firefox") != -1 ?"Inter-semiBold":"Inter-Bold" ,fontSize:"15px"}}>
+          <h2 style={{ fontFamily: navigator.userAgent.indexOf("Firefox") != -1 ?"Inter-semiBold":"Inter-Bold" ,fontSize:"15px"}}>
           {`${t('securityandPrivacySettings')}`}
           </h2>
         </div>
@@ -100,6 +101,7 @@ class SecurityAndPrivacySettings extends React.Component {
             }}
             onClick={(event) => {
               event.preventDefault();
+              // state.onAddContactClicked()
               state.dispatch(actions.revealSeedConfirmation());
             }}
           >

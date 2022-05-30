@@ -4,8 +4,8 @@ import React from "react";
 const inherits = require('util').inherits
 const formatBalance = require('../util').formatBalance
 const generateBalanceObject = require('../util').generateBalanceObject
-// const Tooltip = require('./tooltip.js')
-import ReactTooltip from "react-tooltip";
+import { Tooltip as ReactTooltip } from "react-tippy";
+
 const FiatValue = require('./fiat-value.js')
 
 module.exports = EthBalanceComponent
@@ -68,23 +68,24 @@ EthBalanceComponent.prototype.renderBalance = function (value) {
           textRendering: 'geometricPrecision',
         },
       }, [
-        <div data-tip data-for={`${randomnumber}`} style={valueStyle} >{this.props.incoming ? `+${balance}` : balance}</div>,
-        h('div', {
-          style: {
-            color: ' #AEAEAE',
-            fontSize: '12px',
-            marginLeft: '5px',
-          },
-        }, label),
+        <ReactTooltip
+          arrow={true}
+          trigger={'mouseenter focus'}
+          position='bottom'
+          size='small'
+          title={`${balance} ${label}`}
+          theme='dark'
+        >
+          <div>{this.props.incoming ? `+${balance}` : balance}</div>
+          <div
+            style={{
+              color: ' #AEAEAE',
+              fontSize: '12px',
+              marginLeft: '5px',
+            }}
+          > {label}</div>
+        </ReactTooltip>
       ]),
-      <ReactTooltip
-        id={`${randomnumber}`}
-        place="top"
-        type="dark"
-        effect="solid"
-      >
-        {`${balance + " " + label}`}
-      </ReactTooltip>,
 
       showFiat ? h(FiatValue, { value: props.value, network: props.network }) : null,
     ])

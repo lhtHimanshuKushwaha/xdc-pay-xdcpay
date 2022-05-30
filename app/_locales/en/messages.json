@@ -1424,7 +1424,7 @@
     "message": "Connected Sites"
   },
   "advancedGasControls": {
-    "message": "Advanced gas controls"
+    "message": "Advanced Gas Controls"
   },
   "advancedGasControlsDesc": {
     "message": "Select this to show gas price and limit controls directly on the confirm screen."

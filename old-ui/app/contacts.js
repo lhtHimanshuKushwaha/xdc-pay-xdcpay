@@ -46,13 +46,13 @@ class Contacts extends React.Component {
             borderBottom: "1px solid #E3E7EB",
             paddingBottom: "17px",
             display: "flex",
-            justifyContent: "space-between",
+            justifyContent: "center",
           }}
         >
           <img
             src="/images/Assets/BackArrow.svg"
             className="image-display"
-            style={{ marginLeft: "17px", cursor: "pointer" }}
+            style={{ marginLeft: "17px", cursor: "pointer",position:'absolute', left:'0px' }}
             onClick={() => state.dispatch(actions.goConfig())}
           />
           <h2 style={{ fontFamily: "Inter-bold", color: "#2A2A2A" }}>
@@ -60,7 +60,7 @@ class Contacts extends React.Component {
           </h2>
           <img
             src="/images/Assets/Add.svg"
-            style={{ cursor: "pointer", marginRight: "11px" }}
+            style={{ cursor: "pointer", marginRight: "11px",position:'absolute', right:'7px' }}
             onClick={this.onAddContact}
             // state.dispatch(actions.showAddContactsPage())}
           />
@@ -126,15 +126,17 @@ class Contacts extends React.Component {
               </div>
             ))
           ) : (
-            <p className="noContactsTitle"
+            <div className="noContactsTitle"
               style={{
                 // margin: "182px 113px",
                 color: "#9FA9BA",
                 fontSize: "14px",
+                display: 'flex',
+                justifyContent: 'center',
               }}
             >
               No Contacts Added
-            </p>
+            </div>
           )}{" "}
         </div>
       </div>
