@@ -59,12 +59,101 @@ class TransactionStateManager extends EventEmitter {
    This function is for Add the (Inbound or incoming) transactions
    from a specific address
     @param data {object} - the object is getting the latest block details
-
   */
 
+  // async addInboundTx(data) {
+  //   // this Obj provide the template for the adding an inbound transaction 
+  //   // in the List of transaction of observale store
+  //   var obj = {
+  //     estimatedGas: null,
+  //     firstRetryBlockNumber: null,
+  //     gasLimitSpecified: false,
+  //     gasPriceSpecified: false,
+  //     hash: null,
+  //     history: null,
+  //     id: createId(),
+  //     loadingDefaults: false,
+  //     metamaskNetworkId: this.getNetwork(),
+  //     nonceDetails: null,
+  //     origin: "Unknown",
+  //     rawTx: null,
+  //     simpleSend: true,
+  //     status: "confirmed",
+  //     submittedTime: (new Date()).getTime(),
+  //     time: (new Date()).getTime(),
+  //     txParams: {
+  //       from: null,
+  //       gas: null,
+  //       gasPrice: null,
+  //       nonce: null,
+  //       to: null,
+  //       value: null
+  //     },
+  //     txReceipt: {},
+  //     type: "standard"
+  //   };
+
+  //   if (typeof data !== "undefined") {
+  //     const txReceipt = await this.query.getTransactionReceipt(data.hash);
+  //     const gasUsed = typeof txReceipt.gasUsed !== 'string'
+  //       ? txReceipt.gasUsed.toString(16)
+  //       : txReceipt.gasUsed
+
+  //     const value = typeof data.value !== "number"
+  //       ? data.value.toString(16)
+  //       : data.value
+
+  //     obj.txReceipt = {
+  //       ...txReceipt,
+  //       gasUsed,
+  //     }
+
+  //     /* txParams */
+  //     obj.txParams.from = txReceipt.from,
+  //       obj.txParams.gas = txReceipt.gas,
+  //       obj.txParams.gasPrice = `0x${gasUsed}`,
+  //       obj.txParams.nonce = `0x${data.nonce.toString(16)}`,
+  //       obj.txParams.to = txReceipt.to,
+  //       obj.txParams.value = `0x${value}`,
+  //       obj.estimatedGas = `0x${gasUsed}`,
+  //       obj.hash = data.hash
+
+
+  //     const transactions = this.getFullTxList()
+  //     const txCount = transactions.length
+  //     const txHistoryLimit = this.txHistoryLimit
+
+  //     // checks if the length of the tx history is
+  //     // longer then desired persistence limit
+  //     // and then if it is removes only confirmed
+  //     // or rejected tx's.
+  //     // not tx's that are pending or unapproved
+  //     const indexTx = transactions.findIndex(tx => {
+  //       tx.hash == obj.hash
+  //     })
+
+  //     if (txCount > txHistoryLimit - 1) {
+  //       const index = transactions.findIndex((metaTx) => {
+  //         return getFinalStates().includes(metaTx.status)
+  //       })
+  //       if (index !== -1) {
+  //         transactions.splice(index, 1)
+  //       }
+  //     }
+  //     if (indexTx == -1) {
+  //       transactions.push(obj)
+  //       this._saveTxList(transactions)
+  //     }
+  //   }
+  // }
+
+  /** 
+  This function is for Add the (Inbound or incoming) transactions
+  from a specific address
+   @param data {object} - the object is getting the latest block details
+ */
+
   async addInboundTx(data) {
-    // this Obj provide the template for the adding an inbound transaction 
-    // in the List of transaction of observale store
     var obj = {
       estimatedGas: null,
       firstRetryBlockNumber: null,
@@ -74,7 +163,7 @@ class TransactionStateManager extends EventEmitter {
       history: null,
       id: createId(),
       loadingDefaults: false,
-      metamaskNetworkId: this.getNetwork(),
+      metamaskNetworkId: "50",
       nonceDetails: null,
       origin: "Unknown",
       rawTx: null,
@@ -93,58 +182,55 @@ class TransactionStateManager extends EventEmitter {
       txReceipt: {},
       type: "standard"
     };
+    if (typeof data != "undefined") {
+      data.forEach(async (item) => {
+        const txReceipt = await this.query.getTransactionReceipt(item.hash);
 
-    if (typeof data !== "undefined") {
-      const txReceipt = await this.query.getTransactionReceipt(data.hash);
-      const gasUsed = typeof txReceipt.gasUsed !== 'string'
-        ? txReceipt.gasUsed.toString(16)
-        : txReceipt.gasUsed
+        const gasUsed = typeof txReceipt.gasUsed !== 'string'
+          ? txReceipt.gasUsed.toString(16)
+          : txReceipt.gasUsed
 
-      const value = typeof data.value !== "number"
-        ? data.value.toString(16)
-        : data.value
-
-      obj.txReceipt = {
-        ...txReceipt,
-        gasUsed,
-      }
-
-      /* txParams */
-      obj.txParams.from = txReceipt.from,
-        obj.txParams.gas = txReceipt.gas,
-        obj.txParams.gasPrice = `0x${gasUsed}`,
-        obj.txParams.nonce = `0x${data.nonce.toString(16)}`,
-        obj.txParams.to = txReceipt.to,
-        obj.txParams.value = `0x${value}`,
-        obj.estimatedGas = `0x${gasUsed}`,
-        obj.hash = data.hash
-
-
-      const transactions = this.getFullTxList()
-      const txCount = transactions.length
-      const txHistoryLimit = this.txHistoryLimit
-
-      // checks if the length of the tx history is
-      // longer then desired persistence limit
-      // and then if it is removes only confirmed
-      // or rejected tx's.
-      // not tx's that are pending or unapproved
-      const indexTx = transactions.findIndex(tx => {
-        tx.hash == obj.hash
-      })
-
-      if (txCount > txHistoryLimit - 1) {
-        const index = transactions.findIndex((metaTx) => {
-          return getFinalStates().includes(metaTx.status)
-        })
-        if (index !== -1) {
-          transactions.splice(index, 1)
+        obj.txReceipt = {
+          ...txReceipt,
+          gasUsed,
         }
-      }
-      if (indexTx == -1) {
-        transactions.push(obj)
-        this._saveTxList(transactions)
-      }
+
+        obj.txParams.from = txReceipt.from,
+          obj.txParams.gas = `0x${gasUsed}`,
+          obj.txParams.value = `0x${parseFloat(item.value).toString(16)}`
+        obj.txParams.gasPrice = `0x${parseFloat(item.gasPrice).toString(16)}`,
+          obj.txParams.nonce = `0x${item.nonce.toString(16)}`,
+          obj.txParams.to = txReceipt.to,
+          obj.estimatedGas = `0x${gasUsed}`,
+          obj.hash = item.hash,
+          obj.time = Date.parse(item.createdAt),
+          obj.submittedTime = Date.parse(item.updatedAt)
+
+        const transactions = this.getFullTxList()
+        const txCount = transactions.length
+        const txHistoryLimit = this.txHistoryLimit
+
+        // checks if the length of the tx history is
+        // longer then desired persistence limit
+        // and then if it is removes only confirmed
+        // or rejected tx's.
+        // not tx's that are pending or unapproved
+        const indexTx = transactions.findIndex(tx => {
+          return tx.hash == obj.hash
+        })
+        if (txCount > txHistoryLimit - 1) {
+          const index = transactions.findIndex((metaTx) => {
+            return getFinalStates().includes(metaTx.status)
+          })
+          if (index !== -1) {
+            transactions.splice(index, 1)
+          }
+        }
+        if (indexTx == -1) {
+          transactions.push(obj)
+          this._saveTxList(transactions)
+        }
+      });
     }
   }
 

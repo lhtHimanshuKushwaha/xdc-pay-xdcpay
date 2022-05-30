@@ -162,7 +162,7 @@ TokenList.prototype.render = function () {
   }, [
     this.renderTokenStatusBar(),
 
-    h('ol.full-flex-height.flex-column', {
+    h('ol.full-flex-height-token.flex-column', {
       style: {
         display: 'flex',
         flexDirection: 'column',

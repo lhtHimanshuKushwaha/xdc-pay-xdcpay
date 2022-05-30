@@ -177,7 +177,7 @@ ConfirmRecoveryPhrase.prototype.showAccountDetail = function (account) {
 }
 
 ConfirmRecoveryPhrase.prototype.exportAsFile = function (seed) {
-  return this.props.dispatch(actions.exportAsFile(`XDCPay Seed Words`, seed))
+  return this.props.dispatch(actions.exportAsFile(`XDCPay Seed Phrase`, seed))
 }
 
 // ConfirmRecoveryPhrase.prototype.confirmSeedWords = function () {

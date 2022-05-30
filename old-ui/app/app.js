@@ -171,22 +171,6 @@ App.prototype.render = function () {
         backgroundColor: "#E3E7EB"
       }
     }),
-    h(
-      ".flex-column.full-height.expandedUI",
-      {
-        style: {
-          // Windows was showing a vertical scroll bar:
-          overflow: "hidden",
-          // position: 'relative',
-          alignItems: "center",
-          background:
-            props.isUnlocked ||
-              props.currentView.name === "restoreVault" ||
-              props.currentView.name === "config"
-              ? "white"
-              : "#ffffff"
-        }
-      }),
     h('.flex-column.full-height.expandedUI', {
       style: {
         // Windows was showing a vertical scroll bar:
