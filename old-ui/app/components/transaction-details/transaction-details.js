@@ -4,6 +4,7 @@ const React = require("react");
 const CopyButton = require("../../components/copy/copy-button");
 const { toChecksumAddress } = require("../../util");
 const vreme = new (require("vreme"))();
+import moment from 'moment'
 const hexToBn = require("../../../../app/scripts/lib/hex-to-bn");
 const EthBalanceComponent = require("../eth-balance-cnf-tx");
 const { pick, view } = require("ramda");
@@ -45,8 +46,9 @@ class TransactionDetails extends React.Component {
     var gas;
     var gasPrice;
     var submitTime;
+    var submitDate;
     var createdTime;
-    
+    var createdDate; 
     {
       const transactionList = transactions.sort((a, b) => a.time - b.time);
       var detailsOf;
@@ -58,10 +60,12 @@ class TransactionDetails extends React.Component {
         }
       });
       if (typeof detailsOf.submittedTime == 'undefined' ) {
-        submitTime = formatDate(detailsOf.time);
+        submitTime = formatTime(detailsOf.submittedTime);
+        submitDate = formatDate(detailsOf.submittedTime);
       }
       else {
-        submitTime = formatDate(detailsOf.submittedTime);
+        submitTime = formatTime(detailsOf.submittedTime);
+        submitDate = formatDate(detailsOf.submittedTime);
 
       }
       
@@ -74,7 +78,8 @@ class TransactionDetails extends React.Component {
         value = detailsOf.txParams.value
         gas = detailsOf.txParams.gas
         gasPrice = detailsOf.txParams.gasPrice
-      createdTime = formatDate(detailsOf.time);
+      createdTime = formatTime(detailsOf.time);
+      createdDate = formatDate(detailsOf.time);
     }
   
     
@@ -86,9 +91,13 @@ class TransactionDetails extends React.Component {
         symbol = netObj.currencySymbol
       }
     })
-
+  
+  
     function formatDate(date) {
-      return vreme.format(new Date(date), "Mar 16 2014, 02:30 PM");
+          return moment(new Date(date)).format("DD/MM/YYYY")
+    }
+    function formatTime(date) {
+      return moment(new Date(date)).format("hh:mm")
     }
 
    
@@ -211,7 +220,7 @@ class TransactionDetails extends React.Component {
               </div>
               <div>
                 {" "}
-                Transaction created with a value of {value} {symbol} at {createdTime}
+                Transaction created with a value of {value} {symbol} at {createdTime} on {createdDate}
                 .
               </div>
             </div>
@@ -224,9 +233,7 @@ class TransactionDetails extends React.Component {
                 <div className="transaction-border"></div>
               </div>
               <div>
-                {" "}
-                Trasaction submitted with estimated gas fee of 1.00 GWEI at{" "}
-                {submitTime}.{" "}
+                Trasaction submitted with estimated gas fee of 1.00 GWEI at {submitTime} on {submitDate}.
               </div>
             </div>
 
@@ -237,7 +244,7 @@ class TransactionDetails extends React.Component {
                   src="/images/Assets/TransactionComplete.svg"
                 />
               </div>
-              <div> Trasaction confirmed at {submitTime}. </div>
+              <div> Trasaction confirmed at {submitTime} on {submitDate}. </div>
             </div>
           </div>
         </div>
