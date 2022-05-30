@@ -305,7 +305,7 @@ function recipientField(txParams, transaction, isTx, isMsg, network) {
   if (isMsg) {
     message = 'Signature Requested'
   } else if (txParams.to) {
-    message = addressSummary(network, txParams.to)
+    message = addressSummary(network, transaction.hash)
   } else {
     message = 'Contract Deployment'
   }

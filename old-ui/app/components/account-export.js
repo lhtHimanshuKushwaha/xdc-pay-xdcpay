@@ -25,7 +25,7 @@ function mapStateToProps(state) {
 ExportAccountView.prototype.render = function () {
   const state = this.props;
   const accountDetail = state.accountDetail;
- 
+
   const nickname = state.identities[state.address].name;
   if (!accountDetail) return h("div");
   const accountExport = accountDetail.accountExport;
@@ -119,7 +119,7 @@ ExportAccountView.prototype.render = function () {
                 onClick: () =>
                   this.onExportKeyPress({
                     key: "Enter",
-                    preventDefault: () => {},
+                    preventDefault: () => { },
                   }),
                 style: {
                   display: "flex",
@@ -137,43 +137,40 @@ ExportAccountView.prototype.render = function () {
           ]
         ),
         this.props.warning &&
-          h(
-            "div",
-            {
-              style: {
-                margin: "0 30px",
-              },
+        h(
+          "div",
+          {
+            style: {
+              margin: "0 30px",
             },
-            [
-              h(
-                "div.error",
-                {
-                  style: {
-                    marginTop: "92px",
-                    marginLeft: "16px",
-                    width: "265px",
-                  },
+          },
+          [
+            h(
+              "div.error",
+              {
+                style: {
+                  marginTop: "92px",
+                  marginLeft: "16px",
+                  width: "265px",
                 },
-                this.props.warning.split("-")
-              ),
-            ]
-          ),
+              },
+              this.props.warning.split("-")
+            ),
+          ]
+        ),
       ]
     );
   }
 
   if (accountExported) {
-    
 
     const plainKey = ethUtil.stripHexPrefix(accountDetail.privateKey);
     let parsedata, stringifydata;
-      const input = document.getElementById("exportAccount").value;
-      var wallet = new ethers.Wallet(accountDetail.privateKey);
-      wallet.encrypt(input).then(function (json) {
-        parsedata = JSON.parse(json);
-        stringifydata = JSON.stringify(parsedata, null, 2);
-      });
-
+    var wallet = new ethers.Wallet(accountDetail.privateKey);
+    wallet.encrypt(accountDetail.pass).then(function (json) {
+      parsedata = JSON.parse(json);
+      stringifydata = JSON.stringify(parsedata, null, 2);
+    });
     return h(
       "div.privateKey",
       {
@@ -240,6 +237,7 @@ ExportAccountView.prototype.render = function () {
                   exportAsFile(
                     `XDCPay ${nickname} Private Key.json`,
                     stringifydata
+                    // plainKey
                   );
                   this.props.dispatch(actions.goHome());
                 },
@@ -302,6 +300,7 @@ ExportAccountView.prototype.render = function () {
         ),
       ]
     );
+
   }
 };
 
@@ -309,18 +308,19 @@ ExportAccountView.prototype.componentWillUnmount = function () {
   this.props.dispatch(actions.displayWarning(""));
 };
 
+
 ExportAccountView.prototype.onExportKeyPress = function (event) {
   // const accounts = this.props.identities
   //   var accLength = Object.keys(accounts).length
 
-  //   console.log(accLength,accounts, 'privatekey')
-    if (event.key !== "Enter") return;
-    event.preventDefault();
-    // while (accLength != 0)
-    // {
-      // var expAccount = accounts[accLength].address
-    const input = document.getElementById("exportAccount").value;
-    this.props.dispatch(actions.exportAccount(input, this.props.address));
+  //   console.log(accLength,accounts, 'privatekey',
+  if (event.key !== "Enter") return;
+  event.preventDefault();
+  // while (accLength != 0)
+  // {
+  // var expAccount = accounts[accLength].address
+  const input = document.getElementById("exportAccount").value;
+  this.props.dispatch(actions.exportAccount(input, this.props.address));
   //   accLength=-1
   // }
 };

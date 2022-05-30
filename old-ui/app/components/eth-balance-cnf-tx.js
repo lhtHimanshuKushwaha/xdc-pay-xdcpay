@@ -1,7 +1,8 @@
 const Component = require('react').Component
 const h = require('react-hyperscript')
 import React from "react";
-import ReactTooltip from "react-tooltip";
+import { Tooltip as ReactTooltip } from "react-tippy";
+
 const inherits = require('util').inherits
 const formatBalance = require('../util').formatBalance
 const generateBalanceObject = require('../util').generateBalanceObject
@@ -25,7 +26,7 @@ EthBalanceComponent.prototype.render = function () {
 
   return (
 
-    h('.ether-balance.ether-balance-amount', {
+    h('.ether-balance.ether-balance-amount.sendFields', {
       style: {
         border: '2px solid #C7CDD8',
         borderRadius: '4px',
@@ -74,7 +75,6 @@ EthBalanceComponent.prototype.renderBalance = function (value) {
     fontSize: props.fontSize || '12px',
     marginLeft: '5px',
   }
-  const randomnumber = Math.floor(Math.random() * 1000000);
 
   return (
     h('div', { style: { display: 'flex', justifyContent: 'space-between' } }, [
@@ -86,17 +86,20 @@ EthBalanceComponent.prototype.renderBalance = function (value) {
           // right : '48px',
         },
       }, [
-        <div data-tip data-for={`${randomnumber}`} style={valueStyle} >{incoming ? `+${balance}` : balance}</div>,
-        <div style={dimStyle} >{label}</div>,
+        <ReactTooltip
+          arrow={true}
+          trigger={'mouseenter focus'}
+          position='bottom'
+          size='small'
+          theme='dark'
+          title={`${balance + " " + label}`}
+        >
+          <div style={{ display: "flex" }}>
+            <div style={valueStyle} >{incoming ? `+${balance}` : balance}</div>
+            <div style={dimStyle} >{label}</div>
+          </div>
+        </ReactTooltip>,
       ]),
-      <ReactTooltip
-        id={`${randomnumber}`}
-        place="top"
-        type="dark"
-        effect="solid"
-      >
-        {`${balance + " " + label}`}
-      </ReactTooltip>,
 
       showFiat ? h(FiatValue, { valueStyle, dimStyle, value: props.value, conversionRate, currentCurrency, network: props.network }) : null,
     ]))
