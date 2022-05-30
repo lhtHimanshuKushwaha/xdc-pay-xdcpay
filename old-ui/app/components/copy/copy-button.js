@@ -11,7 +11,7 @@ class CopyButton extends CopyComponent {
     const { value, display, title, style, isWhite, tooltipPosition } = this.props
     const { copied } = this.state
 
-    const message = copied ? 'Copied' : title || 'copy'
+    const message = copied ? 'Copied' : title || 'Copy'
     const defaultCopyStyles = ['clipboard', 'cursor-pointer']
     const originalStyle = {
       display: display || 'flex',

@@ -1385,7 +1385,9 @@ module.exports = class XdcController extends EventEmitter {
    */
   setupControllerConnection(outStream) {
     const api = this.getApi()
-    this.txController.addInboundTx()
+    // if (this.networkController.getNetworkState() == "50") {
+    //   this.txController.addInboundTx()
+    // }
     const dnode = Dnode(api)
     // report new active controller connection
     this.activeControllerConnections++

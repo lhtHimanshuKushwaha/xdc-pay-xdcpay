@@ -230,7 +230,7 @@ html {
   display: flex;
   background: #ffffff;
   width: 100%;
-  overflow-y: auto;
+  /* overflow-y: auto; */
   justify-content: center;
 }
 
@@ -256,6 +256,25 @@ textarea:focus {
   display: flex;
   flex: 1 1 auto;
   flex-direction: column;
+}
+
+
+.full-flex-height-token {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  max-height: 377px;
+  overflow-y: auto;
+}
+
+@media screen and (max-width:600px) {
+  .full-flex-height-token {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    max-height: 235px;
+    overflow-y: auto;
+  }
 }
 
 #app-content {
@@ -2257,7 +2276,7 @@ input[type="number"]::-webkit-outer-spin-button {
 .tx-list {
   overflow-y: auto;
   max-height: 377px;
-  padding: 0 13px 20px 13px;
+  padding: 0 2px 20px 13px;
   text-align: center;
 }
 
@@ -2265,7 +2284,7 @@ input[type="number"]::-webkit-outer-spin-button {
   .tx-list {
     overflow-y: auto;
     max-height: 234px;
-    padding: 0 13px 20px 13px;
+    padding: 0 2px 0px 13px;
     text-align: center;
   }
 }

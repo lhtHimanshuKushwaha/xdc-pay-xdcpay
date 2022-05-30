@@ -179,7 +179,7 @@ CreateVaultCompleteScreen.prototype.render = function () {
       h('button', {
         onClick: () => {
           this.confirmRecoveryPhrase()
-          exportAsFile(`XDCPay Seed Words`, seed)
+          exportAsFile(`XDCPay Seed Phrase`, seed)
         },
         // .then(seed => {
         //   exportAsFile(`XDCPay Seed Words`, seed)
@@ -250,7 +250,7 @@ CreateVaultCompleteScreen.prototype.confirmRecoveryPhrase = function () {
 }
 
 CreateVaultCompleteScreen.prototype.exportAsFile = function (seed) {
-  return this.props.dispatch(actions.exportAsFile(`XDCPay Seed Words`, seed))
+  return this.props.dispatch(actions.exportAsFile(`XDCPay Seed Pharse`, seed))
 }
 
 

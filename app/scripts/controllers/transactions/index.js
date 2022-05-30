@@ -115,7 +115,8 @@ class TransactionController extends EventEmitter {
    * @param {inboundtx} are adding in the transaction list
    */
   async addInboundTx() {
-    const data = await this.inboundtx.startListener(this.preferencesStore.getState().selectedAddress, this.networkState.rpcUrlCall())
+    // const data = await this.inboundtx.startListener(this.preferencesStore.getState().selectedAddress, this.networkState.rpcUrlCall())
+    const data = await this.inboundtx.fetchInbound(this.preferencesStore.getState().selectedAddress.replace("0x", "xdc"))
     if (typeof data != "undefined") {
       this.txStateManager.addInboundTx(data)
     }
