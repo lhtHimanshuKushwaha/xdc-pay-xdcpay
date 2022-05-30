@@ -179,7 +179,7 @@ revealSeed.prototype.render = function () {
       h('button', {
         onClick: () => this.confirmSeedWords()
           .then(account => {
-            exportAsFile(`XDCPay Seed Words`, seed)
+            exportAsFile(`XDCPay Seed Phrase`, seed)
             this.showAccountDetail(account)
           }),
         style: {
@@ -240,12 +240,13 @@ revealSeed.prototype.confirmSeedWords = function () {
 // revealSeed.prototype.confirmRecoveryPhrase = function () {
 //   return this.props.dispatch(actions.confirmRecoveryPhrase())
 // }
+
 revealSeed.prototype.showAccountDetail = function (account) {
   return this.props.dispatch(actions.showAccountDetail(account))
 }
 
 revealSeed.prototype.exportAsFile = function (seed) {
-  return this.props.dispatch(actions.exportAsFile(`XDCPay Seed Words`, seed))
+  return this.props.dispatch(actions.exportAsFile(`XDCPay Seed Phrase`, seed))
 }
 
 
