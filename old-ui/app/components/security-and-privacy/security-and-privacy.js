@@ -34,7 +34,7 @@ class SecurityAndPrivacySettings extends React.Component {
   autoLock = (time) => {
     var Data = time
     setTimeout(() => {
-      this.props.dispatch(actions.lockMetamask)
+      this.props.dispatch(actions.lockMetamask())
       console.log('Lock-Metamask',Data)
     },Data)
   }

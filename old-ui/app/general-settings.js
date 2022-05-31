@@ -3,13 +3,8 @@ const actions = require('../../ui/app/actions')
 const React = require('react')
 import SimpleDropdown from '../../ui/app/components/dropdowns/simple-dropdown'
 import CustomDropDown from '../app/components/common/custom-dropdown'
-<<<<<<< HEAD
-import locales from '../../app/_locales/index.json'
-import propTypes from 'prop-types'
-=======
 import locales from '../../app/_locales/index1.json'
-import PropTypes from 'prop-types'
->>>>>>> 6edd081b6d78501dd2d5b582cfd3b8a26cb205cb
+import propTypes from 'prop-types'
 
 const localeOptions = locales.map(locale => {
   return {
