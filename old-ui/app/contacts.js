@@ -46,21 +46,21 @@ class Contacts extends React.Component {
             borderBottom: "1px solid #E3E7EB",
             paddingBottom: "17px",
             display: "flex",
-            justifyContent: "center",
+            justifyContent: "space-between",
           }}
         >
           <img
             src="/images/Assets/BackArrow.svg"
             className="image-display"
-            style={{ marginLeft: "17px", cursor: "pointer",position:'absolute', left:'0px' }}
+            style={{ marginLeft: "17px", cursor: "pointer", }}
             onClick={() => state.dispatch(actions.goConfig())}
           />
-          <h2 style={{ fontFamily: "Inter-bold", color: "#2A2A2A" }}>
+          <h2 style={{ fontFamily: "Inter-bold", color: "#2A2A2A", margin:'0 0 0 146px'  }}>
             Contacts
           </h2>
           <img
             src="/images/Assets/Add.svg"
-            style={{ cursor: "pointer", marginRight: "11px",position:'absolute', right:'7px' }}
+            style={{ cursor: "pointer",marginLeft: '60px' }}
             onClick={this.onAddContact}
             // state.dispatch(actions.showAddContactsPage())}
           />

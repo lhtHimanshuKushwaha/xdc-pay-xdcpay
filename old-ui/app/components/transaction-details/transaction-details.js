@@ -97,7 +97,7 @@ class TransactionDetails extends React.Component {
           return moment(new Date(date)).format("DD/MM/YYYY")
     }
     function formatTime(date) {
-      return moment(new Date(date)).format("hh:mm")
+      return moment(new Date(date)).format("HH:mm")
     }
 
    
@@ -117,7 +117,7 @@ class TransactionDetails extends React.Component {
         <div
           className="flex-column flex-grow settingsCollapsed"
           style={{
-            maxHeight: "585px",
+            // maxHeight: "585px",
             overflowY: "auto",
           }}
         >

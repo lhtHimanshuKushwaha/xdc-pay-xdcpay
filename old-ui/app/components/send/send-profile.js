@@ -164,7 +164,7 @@ class SendProfile extends Component {
 								-
 							</div>
 							<div className="send-profile-address" style={{ fontSize: '14px', }}>
-								{address}
+								{address.replace('0x','xdc')}
 							</div>
 						</div>
 						{/* balance */}
