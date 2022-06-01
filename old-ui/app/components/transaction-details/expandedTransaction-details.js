@@ -86,7 +86,7 @@ export default class ExpandedTransactionDetails extends React.Component {
       return moment(new Date(date)).format("DD/MM/YYYY");
     }
     function formatTime(date) {
-      return moment(new Date(date)).format("hh:mm");
+      return moment(new Date(date)).format("HH:mm");
     }
 
     var symbol = "XDC";

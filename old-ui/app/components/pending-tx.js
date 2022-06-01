@@ -301,7 +301,7 @@ PendingTx.prototype.render = function() {
                       display: "flex",
                       justifyContent: "center",
                       flexDirection: "column",
-                      alignItems: 'center'
+                      alignItems: "center"
                       // textAlign: 'center',
                       // position: 'absolute',
                       // top: '25px',
@@ -317,7 +317,7 @@ PendingTx.prototype.render = function() {
                           ".error.errorWidth",
                           {
                             style: {
-                              fontSize: "12px",
+                              fontSize: "12px"
                               // width: "265px",
                               // marginLeft: "46px"
                             }
@@ -331,7 +331,7 @@ PendingTx.prototype.render = function() {
                           ".error1.errorWidth",
                           {
                             style: {
-                              fontSize: "12px",
+                              fontSize: "12px"
                               // width: "265px",
                               // marginLeft: "46px"
                             }
@@ -345,7 +345,7 @@ PendingTx.prototype.render = function() {
                           ".error.errorWidth",
                           {
                             style: {
-                              fontSize: "12px",
+                              fontSize: "12px"
                               // width: "265px",
                               // marginLeft: "46px"
                             }
@@ -359,7 +359,7 @@ PendingTx.prototype.render = function() {
                           ".error1.errorWidth",
                           {
                             style: {
-                              fontSize: "12px",
+                              fontSize: "12px"
                               // width: "265px",
                               // marginLeft: "46px"
                             }
@@ -455,41 +455,55 @@ PendingTx.prototype.render = function() {
               font-family: Inter-Regular;
             }
             `
-            // padding: 0px 46px;
+              // padding: 0px 46px;
             ),
 
             h(
               ".table-box.confTransaction",
               {
                 style: {
-                  overflowY: isNotification ? '' :"auto",
-                  height: !!("to" in this.props.txData.txParams)
-                    ? dangerousGasLimit && !txMeta.simulationFails
-                      ? dangerousGasLimit && insufficientBalance && !txMeta.simulationFails
-                        ? insufficientBalance
-                          ? "220px"
-                          : "288px"
-                        : "260px"
-                      : insufficientBalance && !txMeta.simulationFails
-                          ? "286px"
-                      : txMeta.simulationFails
-                          ? dangerousGasLimit
-                            ? dangerousGasLimit && insufficientBalance
-                              ? insufficientBalance
-                                ? "176px"
+                  overflowY: isNotification ? "" : "auto",
+                  height: showGasFields
+                    ? !!("to" in this.props.txData.txParams)
+                      ? dangerousGasLimit && !txMeta.simulationFails
+                        ? dangerousGasLimit &&
+                          insufficientBalance &&
+                          !txMeta.simulationFails
+                          ? insufficientBalance
+                            ? "220px"
+                            : "288px"
+                          : "260px"
+                        : insufficientBalance && !txMeta.simulationFails
+                        ? "286px"
+                        : txMeta.simulationFails
+                        ? dangerousGasLimit
+                          ? dangerousGasLimit && insufficientBalance
+                            ? insufficientBalance
+                              ? "176px"
                               : "288px"
                             : "216px"
-                          :"286px"
-                        :"329px"
-                    : !isNotification
+                          : "286px"
+                        : "329px"
+                      : !isNotification
                       ? insufficientBalance
                         ? "289px"
-                      : "320px"
-                    : "337px",
+                        : "320px"
+                      : "337px"
+                    : "185px",
                   width: "auto",
-                  margin: dangerousGasLimit ? (dangerousGasLimit && insufficientBalance||gasLimitSpecified )? gasLimitSpecified ? isNotification ?"20px auto" : "20px 0px 10px 20px" : "20px 0px 10px 20px" : "20px 0px 10px 20px" : "20px 0px 10px  0px"  ,
-                  display: isNotification ? "flex" : '',
-                  justifyContent: isNotification ? 'center' : '',
+                  margin: dangerousGasLimit
+                    ? (dangerousGasLimit && insufficientBalance) ||
+                      gasLimitSpecified
+                      ? gasLimitSpecified
+                        ? isNotification
+                          ? "20px auto"
+                          : "20px 0px 10px 20px"
+                        : "20px 0px 10px 20px"
+                      : "20px 0px 10px 20px"
+                    : "20px 0px 10px  0px",
+                  display: isNotification ? "flex" : "",
+                  justifyContent: isNotification ? "center" : "",
+                  minHeight: !showGasFields ? '0px' : ''
                   // flexDirection: "column",
                   // alignItems: "center",
                 }
@@ -563,7 +577,7 @@ PendingTx.prototype.render = function() {
                             h(BNInput, {
                               id: "gas_limit",
                               name: "Gas Limit",
-                              className: 'sendFields',
+                              className: "sendFields",
                               value: gasBn,
                               precision: 0,
                               scale: 0,
@@ -617,7 +631,7 @@ PendingTx.prototype.render = function() {
                               id: "gas_price",
                               name: "Gas Price",
                               value: gasPriceBn,
-                              className: 'sendFields',
+                              className: "sendFields",
                               precision: 9,
                               scale: 9,
                               // suffix: 'GWEI',
@@ -755,7 +769,7 @@ PendingTx.prototype.render = function() {
               style: {
                 display: "flex",
                 justifyContent: "center",
-                margin: showGasFields ? '0 0 0 0' : ''  ,
+                margin: showGasFields ? "0 0 0 0" : ""
               }
             },
             [
@@ -763,7 +777,7 @@ PendingTx.prototype.render = function() {
                 "button.cancel.btn-red.btn-Width-Conf",
                 {
                   style: {
-                  //   display: "flex",
+                    //   display: "flex",
                     // position: "absolute",
                     // left: "46px",
                     // height: "40px",
@@ -800,11 +814,11 @@ PendingTx.prototype.render = function() {
                 : h("input.confirm.btn-Width", {
                     // style: {
                     //   display: "flex",
-                      // position: "absolute",
-                      // right: "46px",
-                      // height: "40px",
-                      // width: "119px",
-                      // justifyContent: "center"
+                    // position: "absolute",
+                    // right: "46px",
+                    // height: "40px",
+                    // width: "119px",
+                    // justifyContent: "center"
                     // },
                     type: "submit",
                     value: "Submit",

@@ -156,6 +156,22 @@ html {
     position: absolute;
   }
 }
+@media only screen and (min-width:1220px) and (max-width: 1590px) {
+  .expandedUI {
+    width: 70%;
+    margin: auto;
+  box-shadow: rgb(0 0 0 / 15%) 0px 0px 11px;
+  position: relative;
+  }
+}
+@media only screen and (min-width:601px) and (max-width: 1220px) {
+  .expandedUI {
+    width: 100%;
+    margin: auto;
+  box-shadow: rgb(0 0 0 / 15%) 0px 0px 11px;
+  position: relative;
+  }
+}
 
 .sendExpandedUI {
   margin: 0 auto 0 auto;
@@ -182,7 +198,7 @@ html {
   display: flex;
     flex-direction: column;
     height: 386px;   
-     min-height: 369px;
+     min-height: 345px;
     align-items: center;
 }
 
@@ -244,9 +260,19 @@ html {
   display: flex;
   background: #ffffff;
   width: 100%;
-  /* overflow-y: auto; */
+  overflow-y: auto;
   justify-content: center;
 }
+@media only screen and (max-width:600){
+  .app-primary {
+    display: flex;
+    background: #ffffff;
+    width: 100%;
+    /* overflow-y: auto; */
+    justify-content: center;
+  }
+}
+
 
 input:focus,
 textarea:focus {
@@ -1021,11 +1047,11 @@ p.buy-option {
 }
 
 .btnConf{
-  margin: -164px 0 0 0;
+  margin: 35px 0 0 0;
 }
 @media only screen and (max-width: 600px) {
 .btnConf{
-  margin: -136px 0 0 0;
+  margin: 25px 0 0 0;
 }
 }
 
@@ -2317,9 +2343,9 @@ input:checked+.slider:before {
     justify-content: space-between;
     width: 100%;
     min-width: 331px;
-    margin: 18px 0 0 21px;
+    margin: 18px 0 0 0px;
     font-size: 14px;
-    padding: 0 25px 0 0;
+    padding: 0 25px 0 21px;
     font-family: inter-medium;
   }
 }

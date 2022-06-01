@@ -81,7 +81,7 @@ class ConfirmScreen extends Component {
               background: "#FF0035"
             }}
           >
-            No
+            Cancel
           </button>
 				<button
 					className="btn-Width"
