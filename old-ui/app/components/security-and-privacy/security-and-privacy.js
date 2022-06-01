@@ -23,22 +23,30 @@ const TimePeriod = timePeriodOption.map((timePeriod) => {
   };
 });
 
+
 class SecurityAndPrivacySettings extends React.Component {
   handleCheckBox = () => {
-    // const securityandprivacy = this.props.metamask.securityandprivacy
-    // // const [toggle, setToggle] = useState(false);
-    // // toggle ? setToggle(false) : setToggle(true);
-    // // this.setState({ securityandprivacy: !securityandprivacy })
-    // this.props.dispatch(actions.securityandprivacy(!securityandprivacy))
+    
+    const showIncomingTransaction = this.props.metamask.showIncomingTransaction
+    this.props.dispatch(actions.showIncomingTransaction(!showIncomingTransaction))
   };
+
+  autoLock = (time) => {
+    var Data = time
+    setTimeout(() => {
+      this.props.dispatch(actions.lockMetamask())
+      console.log('Lock-Metamask',Data)
+    },Data)
+  }
   static contextTypes = {
     t: PropTypes.func,
   };
   render() {
     const state = this.props;
     const metamaskState = state.metamask;
-    const { t } = this.context;
-    
+    const {t} = this.context;
+    const showIncomingTransaction = metamaskState.showIncomingTransaction
+    const currentTime = '2 min'
     return (
       <div
         className="flex-column flex-grow"
@@ -100,7 +108,7 @@ class SecurityAndPrivacySettings extends React.Component {
             Reveal Secret Seed Words
           </button>
         </div>
-         {/* <div
+         <div
           style={{
             padding: " 15px 17px 20px 15px ",
             borderBottom: "1px solid #E3E7EB",
@@ -123,13 +131,13 @@ class SecurityAndPrivacySettings extends React.Component {
           </p>
 
           <CustomDropdown
-            placeholder={TimePeriod}
+            placeholder={currentTime}
             options={TimePeriod}
-            selectedOption={TimePeriod}
-            // onSelect={}
+            selectedOption={TimePeriod.name}
+            onSelect={time => this.autoLock(time)}
           />
-        </div>  */}
-        {/* <div
+        </div> 
+        <div
           style={{
             padding: " 15px 17px 20px 15px ",
           }}
@@ -137,7 +145,7 @@ class SecurityAndPrivacySettings extends React.Component {
           <span
             style={{ fontWeight: "bold", fontSize: "14px", color: "#2149B9" }}
           >
-           {`${t(' showIncomingTransactions')}`}  
+           {`${t('showIncomingTransactions')}`}  
           </span>
           <br />
           <p
@@ -147,20 +155,20 @@ class SecurityAndPrivacySettings extends React.Component {
               fontFamily: "Inter-medium",
             }}
           >
-             {`${t(' showIncomingTransactionsDesc')}`}  
+             {`${t('showIncomingTransactionsDesc')}`}  
           </p>
           <label className="switch">
             <input
               type="checkbox"
-              onChange={this.handleCheckBox} */}
-              {/* // checked={securityandprivacy}
+              onChange={this.handleCheckBox}
+             checked={showIncomingTransaction}
             />
             <span className="slider round"></span>
           </label>
-          <span style={{ marginLeft: "8px" }}> */}
-            {/* {showIncomingTransaction ? "On" : "Off"} */}
-          {/* </span> */}
-        {/* </div> */}
+          <span style={{ marginLeft: "8px" }}> 
+            {showIncomingTransaction ? "On" : "Off"}
+          </span>
+        </div>
       </div>
     );
   }
