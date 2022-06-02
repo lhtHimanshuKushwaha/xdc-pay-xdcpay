@@ -150,7 +150,7 @@ TransactionListItem.prototype.render = function () {
         // global.platform.openWindow({ url })
       },
       style: {
-        padding: '10px 0',
+        padding: '10px 10px 0 0 ',
         alignItems: 'center',
       },
     },

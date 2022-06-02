@@ -17,7 +17,7 @@ const AddNetworkComponent = (props) => {
         <div className="word" style={{fontFamily: 'Inter-Medium',marginTop:"0px",marginBottom:"-5px"}}>{`${t('networkName')}`}</div>
         
         <div className='addNetworkFields' style={{marginBottom: '28px', border: '1px solid #C7CDD8', borderRadius: '4px'}}>
-          <input disabled={isPermanentNetwork} className="input large-input" type="text" name="networkName"
+          <input disabled={isPermanentNetwork} autoComplete='off' className="input large-input" type="text" name="networkName"
                  value={networkName}
                  onChange={onStateChange} maxLength={24} style={{border: 'none', color: '#2A2A2A', width: '100%'}}/>
         </div>
@@ -29,28 +29,28 @@ const AddNetworkComponent = (props) => {
           borderRadius: '4px',
           
         }}>
-          <input disabled={isPermanentNetwork} className="input large-input" id="new_rpc" type="text" name="rpcUrl"
+          <input disabled={isPermanentNetwork} autoComplete='off' className="input large-input" id="new_rpc" type="text" name="rpcUrl"
                  value={rpcUrl}
                  onChange={onStateChange} style={{border: 'none', color: '#2A2A2A', width: '100%'}}/>
         </div>
         <div className="word" style={{fontFamily: 'Inter-Medium',marginTop:"0px",marginBottom:"-5px"}}>{`${t('chainID')}`}</div>
         
         <div className='addNetworkFields' style={{marginBottom: '28px', border: '1px solid #C7CDD8', borderRadius: '4px'}}>
-          <input disabled={isPermanentNetwork} className="input large-input" type="number"
+          <input disabled={isPermanentNetwork} autoComplete='off' className="input large-input" type="number"
                  style={{border: 'none', color: '#2A2A2A', width: '100%'}}
                  name="chainId" onChange={onStateChange} value={chainId}/>
         </div>
         <div className="word" style={{fontFamily: 'Inter-Medium',marginTop:"0px",marginBottom:"-5px"}}>{`${t('currencySymbol')}`} </div>
         
         <div className='addNetworkFields' style={{marginBottom: '28px', border: '1px solid #C7CDD8', borderRadius: '4px'}}>
-          <input disabled={isPermanentNetwork} className="input large-input" type="text"
+          <input disabled={isPermanentNetwork} autoComplete='off' className="input large-input" type="text"
                  style={{border: 'none', color: '#2A2A2A', width: '100%'}}
                  name="currencySymbol" onChange={onStateChange} value={currencySymbol}/>
         </div>
         <div className="word" style={{fontFamily: 'Inter-Medium',marginTop:"0px",marginBottom:"-5px"}}>{`${t('blockExplorer')}`} </div>
         
         <div className='addNetworkFields' style={{marginBottom: '2px', border: '1px solid #C7CDD8', borderRadius: '4px'}}>
-          <input disabled={isPermanentNetwork} className="input large-input" type="text"
+          <input disabled={isPermanentNetwork} autoComplete='off' className="input large-input" type="text"
                  style={{border: 'none', color: '#2A2A2A', width: '100%'}}
                  name="explorerLink" onChange={onStateChange} value={explorerLink}/>
         </div>

@@ -58,6 +58,9 @@ revealSeed.prototype.render = function () {
           width: '265px',
           height: '61px',
           marginTop: '25px',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center'
         },
       }, [
         h('div.errorReveal', {

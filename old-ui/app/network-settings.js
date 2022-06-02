@@ -28,12 +28,12 @@ class NetworkSettings extends React.Component {
       >
         <div
           className="section-title flex-row"
-          style={{borderBottom: '1px solid #E3E7EB', paddingBottom: '17px',display:'flex',justifyContent:'center'}}
+          style={{borderBottom: '1px solid #E3E7EB', padding: '0 0 17px 14px',display:'flex',justifyContent:'space-between'}}
         >
           <img
             src="/images/Assets/BackArrow.svg"
             // className="image-display"
-            style={{marginLeft: '12px', cursor: 'pointer',position:'absolute', left:'0px'}}
+            style={{cursor: 'pointer',}}
             onClick={() => {
               state.backToSetting ? state.backToSetting() :
               state.dispatch(actions.goConfig())
@@ -44,7 +44,7 @@ class NetworkSettings extends React.Component {
           )}`}</h2>
           <img
             src="/images/Assets/Add.svg"
-            style={{cursor: 'pointer', position: 'absolute', right: '21px'}}
+            style={{cursor: 'pointer', marginRight:'16px'}}
             onClick={() => {
               state.onAddNetworkClicked ? state.onAddNetworkClicked() : state.dispatch(actions.showAddNetworkPage())
             }}

@@ -80,8 +80,15 @@ class RestoreVaultScreen extends React.Component {
         // }, 'Wallet Seed'),
         h('textarea.twelve-word-phrase1', {
           style: { marginTop: '24px' },
+          // id: 'seed-words',
+          // type: 'seedPhrase',
+          // value: 'SecuritySeedWords',
           placeholder: 'Enter Seed Phrase',
         }),
+        // h('input', {
+        //   type: 'checkbox',
+        //   onClick: this.myFunction.bind(this),
+        // },'Show Seed'),
 
         // password
         h('input.large-input', {
@@ -101,6 +108,7 @@ class RestoreVaultScreen extends React.Component {
             fontSize : 14,
           },
         }),
+        
 
         h(
           PasswordStrengthMeter, {
@@ -179,6 +187,14 @@ class RestoreVaultScreen extends React.Component {
   }
 }
 
+// RestoreVaultScreen.prototype.myFunction = function () {
+//   var x = document.getElementById("seed-words")
+//   if (x.type === "seedPhrase") {
+//     x.type = "text"
+//   } else {
+//     x.type = "seedPhrase"
+//   }
+// }
 
 RestoreVaultScreen.prototype.showInitializeMenu = function () {
   if (this.props.forgottenPassword) {

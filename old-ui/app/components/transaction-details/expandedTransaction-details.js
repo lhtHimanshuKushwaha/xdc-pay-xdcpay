@@ -260,8 +260,8 @@ export default class ExpandedTransactionDetails extends React.Component {
                       <div className="transaction-border"></div>
                     </div>
                     <div>
-                     
-                      Transaction created with a value of {value} {symbol} at {createdTime} on {createdDate}.
+                      Transaction created with a value of {value} {symbol} at{" "}
+                      {createdTime} on {createdDate}.
                     </div>
                   </div>
                   <div style={{ display: "flex" }}>
