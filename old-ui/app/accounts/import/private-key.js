@@ -61,7 +61,7 @@ PrivateKeyImportView.prototype.render = function () {
           },
         }, 'Import'),]),
 
-      error ? h('span.error',{style:{marginTop: '20px',padding:'30px 46px'}}, error) : null,
+      error ? h('span.error.importError',{style:{marginTop: '20px',padding:'30px 46px'}}, error) : null,
     ])
   )
 }

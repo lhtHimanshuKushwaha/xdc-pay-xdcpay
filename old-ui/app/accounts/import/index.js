@@ -88,7 +88,6 @@ class AccountImportSubview extends Component {
               marginTop: '13px',
               // border: "1px solid red",
               alignItems: "center",
-              width: "100%",
               maxWidth: '100%',
               // marginLeft: "20px",
               backgroundPosition: '15px 30px'

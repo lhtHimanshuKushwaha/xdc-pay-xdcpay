@@ -142,6 +142,7 @@ SendTransactionScreen.prototype.render = function () {
         name: "txData",
         placeholder: "",
         maxLength: 35,
+        autoComplete: 'off',
         style: {
           width: "265px",
           resize: "none",

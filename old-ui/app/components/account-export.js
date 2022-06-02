@@ -89,12 +89,15 @@ ExportAccountView.prototype.render = function () {
           {
             key: "buttons",
             style: {
-              marginTop: "30px",
+              // marginTop: "30px",
+              display: 'flex',
+              justifyContent: 'space-between',
+              padding: '30px 46px 0 46px'
             },
           },
           [
             h(
-              "button.btn-violet",
+              "button.btn-violet.btn-Width",
               {
                 onClick: () =>
                   this.props.dispatch(
@@ -102,19 +105,19 @@ ExportAccountView.prototype.render = function () {
                   ),
                 style: {
                   display: "flex",
-                  position: "absolute",
-                  left: "46px",
+                  // position: "absolute",
+                  // left: "46px",
                   height: "40px",
-                  width: "119px",
-                  paddingLeft: "37px",
-                  paddingTop: "12px",
+                  // width: "119px",
+                  // paddingLeft: "37px",
+                  // paddingTop: "12px",
                   background: "#FF0035",
                 },
               },
               "Cancel"
             ),
             h(
-              "button",
+              "button.btn-Width",
               {
                 onClick: () =>
                   this.onExportKeyPress({
@@ -123,12 +126,12 @@ ExportAccountView.prototype.render = function () {
                   }),
                 style: {
                   display: "flex",
-                  position: "absolute",
-                  right: "46px",
+                  // position: "absolute",
+                  // right: "46px",
                   height: "40px",
-                  width: "119px",
-                  paddingLeft: "39px",
-                  paddingTop: "12px",
+                  // width: "119px",
+                  // paddingLeft: "39px",
+                  // paddingTop: "12px",
                   // background: '#FF0035',
                 },
               },
@@ -141,17 +144,18 @@ ExportAccountView.prototype.render = function () {
           "div",
           {
             style: {
-              margin: "0 30px",
+              // margin: "0 30px",
+              padding:'24px 44px 0 46px ',
             },
           },
           [
             h(
-              "div.error",
+              "div.error.importError",
               {
                 style: {
-                  marginTop: "92px",
-                  marginLeft: "16px",
-                  width: "265px",
+                  // marginTop: "92px",
+                  // marginLeft: "16px",
+                  // width: "265px",
                 },
               },
               this.props.warning.split("-")

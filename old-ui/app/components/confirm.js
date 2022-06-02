@@ -43,7 +43,7 @@ class ConfirmScreen extends Component {
               margin: "30px 30px 0px "
             }}
           >
-            <div className="error">{this.props.description}</div>
+            <div className="error errorDeleteImport">{this.props.description}</div>
           </div>
         ) : null}
         {this.props.renderAdditionalData

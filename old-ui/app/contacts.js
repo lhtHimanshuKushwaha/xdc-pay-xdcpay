@@ -38,7 +38,10 @@ class Contacts extends React.Component {
     return (
       <div
         className="flex-column flex-grow"
-        style={{ maxHeight: "585px", overflowY: "auto" }}
+        style={{
+          maxHeight: "837px",
+          overflowY: "auto"
+        }}
       >
         <div
           className="section-title flex-row titleAdd"
@@ -55,12 +58,12 @@ class Contacts extends React.Component {
             style={{ marginLeft: "17px", cursor: "pointer", }}
             onClick={() => state.dispatch(actions.goConfig())}
           />
-          <h2 style={{ fontFamily: "Inter-bold", color: "#2A2A2A", margin:'0 0 0 146px'  }}>
+          <h2 style={{ fontFamily: "Inter-bold", color: "#2A2A2A",  }}>
             Contacts
           </h2>
           <img
             src="/images/Assets/Add.svg"
-            style={{ cursor: "pointer",marginLeft: '60px' }}
+            className="titleAddImage"
             onClick={this.onAddContact}
             // state.dispatch(actions.showAddContactsPage())}
           />

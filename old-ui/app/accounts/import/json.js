@@ -64,7 +64,7 @@ class JsonImportSubview extends Component {
           },
         }, 'Import'),
 
-        error ? h('span.error', { style: { marginTop: '20px', } }, error) : null,
+        error ? h('span.error.importError', { style: { marginTop: '20px', } }, error) : null,
       ])
     )
   }

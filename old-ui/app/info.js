@@ -36,7 +36,7 @@ InfoScreen.prototype.render = function () {
           src: "/images/Assets/BackArrow.svg",
           onClick: (event) => {
             state.backToSetting ? state.backToSetting() :
-            state.dispatch(actions.goConfig())
+            state.dispatch(actions.goHome())
           },
           style: {
             position: 'absolute',
@@ -54,7 +54,7 @@ InfoScreen.prototype.render = function () {
       h('.flex-column.flex-justify-center.flex-grow.select-none', [
         h('.flex-space-around', {
           style: {
-            padding: '25px 38px',
+            padding: '25px 28px',
           },
         }, [
           // current version number

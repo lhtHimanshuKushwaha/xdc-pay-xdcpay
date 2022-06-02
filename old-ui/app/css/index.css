@@ -158,7 +158,7 @@ html {
 }
 @media only screen and (min-width:1220px) and (max-width: 1590px) {
   .expandedUI {
-    width: 70%;
+    width: 82%;
     margin: auto;
   box-shadow: rgb(0 0 0 / 15%) 0px 0px 11px;
   position: relative;
@@ -182,6 +182,27 @@ html {
   .sendExpandedUI {
     margin: 0 0 0 46px;
     width: 265px;
+  }
+}
+
+.titleAdd{
+  padding: 0px 0 17px 400px;
+    justify-content: space-between;
+}
+@media only screen and (max-width: 600px) {
+  .titleAdd{
+    padding: 0px 0 17px 0px;
+      justify-content: space-between;
+  }
+}
+.titleAddImage{
+  margin-right: 40px;
+  cursor: pointer;
+}
+@media only screen and (max-width: 600px) {
+  .titleAddImage{
+    margin-right: 16px;
+    cursor: pointer;
   }
 }
 .sendFields {
@@ -709,6 +730,44 @@ app sections
     font-family: Inter-Regular;
   }
 }
+
+
+.errorDeleteImport{
+  margin: 0 0 0 260px;
+  /* border: 1px solid #ff1345 !important; */
+  color: #ff0035 !important;
+  font-size: 12px;
+  background: #fff2f5;
+  border-radius: 4px;
+  text-align: left;
+  background-image: url("../images/warning.svg");
+  background-position: 53px;
+  background-repeat: no-repeat;
+  width: 548px;
+  text-align: center;
+  padding: 26px 102px;
+  line-height: 14px;
+  font-family: Inter-Regular;
+}
+@media only screen and (max-width:600px){
+  .errorDeleteImport {
+    margin: 0 0 9px 0;
+    /* border: 1px solid #ff1345 !important; */
+    color: #ff0035 !important;
+    font-size: 12px;
+    background: #fff2f5;
+    border-radius: 4px;
+    text-align: left;
+    padding: 8px 9px 9px 42px;
+    background-image: url("../images/warning.svg");
+    background-position: 15px;
+    background-repeat: no-repeat;
+    width: 100%;
+    line-height: 14px;
+    font-family: Inter-Regular;
+  }
+}
+
 .error-login {
   color: #ff0035 !important;
   font-size: 12px;
@@ -726,11 +785,13 @@ app sections
 
 .importError {
   padding: 30px 0 30px 50px;
+  width: 100%
 }
 
 @media only screen and (max-width:600px) {
   .importError {
     padding: 8px 9px 9px 39px;
+    width: 100%
   }
 }
 
@@ -2177,10 +2238,17 @@ textarea[disabled] {
 }
 @media only screen and (max-width: 600px) {
   .remove-token{
-    margin: 30px 46px 33px ;
+    /* margin: 30px 46px 33px ;
     padding: 20px;
     width: none;
-    height: none;
+    height: none; */
+    margin: 30px 46px 33px;
+    background: rgb(255, 242, 245);
+    color: rgb(255, 0, 53);
+    border: 1px solid;
+    padding: 20px;
+    width: 300px;
+    height: 130px;
   }
 }
 

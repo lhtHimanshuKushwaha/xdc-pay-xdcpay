@@ -103,8 +103,8 @@ function mapStateToProps(state) {
     isRevealingSeedWords: state.metamask.isRevealingSeedWords,
     isOnboarding: Boolean(
       !noActiveNotices ||
-      (seedWords && !state.metamask.isRevealingSeedWords) ||
-      !isInitialized
+        (seedWords && !state.metamask.isRevealingSeedWords) ||
+        !isInitialized
     ),
     seedWords: state.metamask.seedWords,
     unapprovedTxs: state.metamask.unapprovedTxs,
@@ -128,7 +128,7 @@ function mapStateToProps(state) {
   };
 }
 
-App.prototype.render = function () {
+App.prototype.render = function() {
   var props = this.props;
   const {
     currentView,
@@ -166,49 +166,75 @@ App.prototype.render = function () {
         backgroundColor: "#E3E7EB"
       }
     }),
-    h('.flex-column.full-height.expandedUI', {
-      style: {
-        // Windows was showing a vertical scroll bar:
-        overflow: 'hidden',
-        // position: 'relative',
-        alignItems: 'center',
-        background: (props.isUnlocked || props.currentView.name === 'restoreVault' || props.currentView.name === 'config') ? 'white' : '#ffffff',
-      },
-    }, [
-      h(AppBar, {
-        ...this.props,
-      }),
-      this.renderLoadingIndicator({ isLoading, isLoadingNetwork, loadMessage }),
-
-      // panel content
-      h('.app-primary' + (transForward ? '.from-right' : '.from-left'), {
+    h(
+      ".flex-column.full-height.expandedUI",
+      {
         style: {
-          background: (props.isUnlocked || props.currentView.name === 'restoreVault' || props.currentView.name === 'config') ? confirmMsgTx ? '#2050fd' : 'white' : 'transparent',
-          height: (props.isUnlocked && confirmMsgTx) ? '100%' : 'auto',
-        },
-      }, [
-        this.renderPrimary(),
-      ]),
-    ]),
-  ])
-}
+          // Windows was showing a vertical scroll bar:
+          overflow: "hidden",
+          // position: 'relative',
+          alignItems: "center",
+          background:
+            props.isUnlocked ||
+            props.currentView.name === "restoreVault" ||
+            props.currentView.name === "config"
+              ? "white"
+              : "#ffffff"
+        }
+      },
+      [
+        h(AppBar, {
+          ...this.props
+        }),
+        this.renderLoadingIndicator({
+          isLoading,
+          isLoadingNetwork,
+          loadMessage
+        }),
 
-App.prototype.renderLoadingIndicator = function ({ isLoading, isLoadingNetwork, loadMessage }) {
-  const { isMascara } = this.props
+        // panel content
+        h(
+          ".app-primary" + (transForward ? ".from-right" : ".from-left"),
+          {
+            style: {
+              background:
+                props.isUnlocked ||
+                props.currentView.name === "restoreVault" ||
+                props.currentView.name === "config"
+                  ? confirmMsgTx
+                    ? "#2050fd"
+                    : "white"
+                  : "transparent",
+              height: props.isUnlocked && confirmMsgTx ? "100%" : "auto"
+            }
+          },
+          [this.renderPrimary()]
+        )
+      ]
+    )
+  ]);
+};
+
+App.prototype.renderLoadingIndicator = function({
+  isLoading,
+  isLoadingNetwork,
+  loadMessage
+}) {
+  const { isMascara } = this.props;
 
   return isMascara
     ? null
     : h(Loading, {
-      isLoading: isLoading || isLoadingNetwork,
-      loadingMessage: loadMessage
-    });
+        isLoading: isLoading || isLoadingNetwork,
+        loadingMessage: loadMessage
+      });
 };
 
-App.prototype.renderPrimary = function () {
-  log.debug('rendering primary')
-  var props = this.props
-  log.debug('rendering currentView', props.currentView)
-  const { isMascara, isOnboarding } = props
+App.prototype.renderPrimary = function() {
+  log.debug("rendering primary");
+  var props = this.props;
+  log.debug("rendering currentView", props.currentView);
+  const { isMascara, isOnboarding } = props;
 
   if (isMascara && isOnboarding) {
     return h(MascaraFirstTime);
@@ -216,17 +242,21 @@ App.prototype.renderPrimary = function () {
 
   // notices
   if (!props.noActiveNotices) {
-    log.debug('rendering notice screen for unread notices.')
-    return h('div', {
-      style: { width: '100%' },
-    }, [
-
-      h(NoticeScreen, {
-        notice: props.nextUnreadNotice,
-        key: 'NoticeScreen',
-        onConfirm: () => props.dispatch(actions.markNoticeRead(props.nextUnreadNotice)),
-      }),
-    ])
+    log.debug("rendering notice screen for unread notices.");
+    return h(
+      "div",
+      {
+        style: { width: "100%" }
+      },
+      [
+        h(NoticeScreen, {
+          notice: props.nextUnreadNotice,
+          key: "NoticeScreen",
+          onConfirm: () =>
+            props.dispatch(actions.markNoticeRead(props.nextUnreadNotice))
+        })
+      ]
+    );
   } else if (props.lostAccounts && props.lostAccounts.length > 0) {
     log.debug("rendering notice screen for lost accounts view.");
     return h(NoticeScreen, {
@@ -245,13 +275,17 @@ App.prototype.renderPrimary = function () {
         log.debug("rendering restore vault screen");
         return h(HDRestoreVaultScreen, { key: "HDRestoreVaultScreen" });
 
-      case 'restoreVault':
-        log.debug('rendering restore vault screen')
-        return h(HDRestoreVaultScreen, { key: 'HDRestoreVaultScreen' })
+      case "restoreVault":
+        log.debug("rendering restore vault screen");
+        return h(HDRestoreVaultScreen, { key: "HDRestoreVaultScreen" });
+      
+      case "menuScreenInit":
+        log.debug("rendering menu screen");
+        return h(InitializeMenuScreen, { key: "menuScreenInit" });
 
       default:
-        log.debug('rendering menu screen')
-        return h(InitializeMenuScreen, { key: 'menuScreenInit' })
+        log.debug("rendering menu screen");
+        return h(createWalletScreen, { key: "walletFirstScreen" });
     }
   }
 
@@ -262,24 +296,30 @@ App.prototype.renderPrimary = function () {
         log.debug("rendering restore vault screen");
         return h(HDRestoreVaultScreen, { key: "HDRestoreVaultScreen" });
 
-      case 'restoreVault':
-        log.debug('rendering restore vault screen')
-        return h(HDRestoreVaultScreen, { key: 'HDRestoreVaultScreen' })
+      case "restoreVault":
+        log.debug("rendering restore vault screen");
+        return h(HDRestoreVaultScreen, { key: "HDRestoreVaultScreen" });
 
-      case 'config':
-        log.debug('rendering config screen from unlock screen.')
-        return h(ConfigScreen, { key: 'config' })
+      case "config":
+        log.debug("rendering config screen from unlock screen.");
+        return h(ConfigScreen, { key: "config" });
 
       default:
-        log.debug('rendering locked screen')
-        return h(UnlockScreen, { key: 'locked' })
+        log.debug("rendering locked screen");
+        return h(UnlockScreen, { key: "locked" });
     }
   }
 
   // show seed words screen
-  if (props.seedWords && props.currentView.name !== 'reveal-seed' && !props.isRevealingSeedWords) {
-    log.debug('rendering seed words')
-    return props.currentView.name === 'confirmRecoveryPhrase' ? h(ConfirmRecoveryPhrase, { key: 'confirm-recovery-phrase' }) : h(HDCreateVaultComplete, { key: 'HDCreateVaultComplete' })
+  if (
+    props.seedWords &&
+    props.currentView.name !== "reveal-seed" &&
+    !props.isRevealingSeedWords
+  ) {
+    log.debug("rendering seed words");
+    return props.currentView.name === "confirmRecoveryPhrase"
+      ? h(ConfirmRecoveryPhrase, { key: "confirm-recovery-phrase" })
+      : h(HDCreateVaultComplete, { key: "HDCreateVaultComplete" });
   }
 
   // show current view
@@ -291,204 +331,224 @@ App.prototype.renderPrimary = function () {
       log.debug("rendering Confirm recovery screen");
       return h(ConfirmRecoveryPhrase, { key: "confirm-recovery-phrase" });
 
-    case 'accountDetail':
-      log.debug('rendering account detail screen')
-      return h(AccountDetailScreen, { key: 'account-detail' })
-    case 'confirmRecoveryPhrase':
-      log.debug('rendering Confirm recovery screen')
-      return h(ConfirmRecoveryPhrase, { key: 'confirm-recovery-phrase' })
+    case "accountDetail":
+      log.debug("rendering account detail screen");
+      return h(AccountDetailScreen, { key: "account-detail" });
+    case "confirmRecoveryPhrase":
+      log.debug("rendering Confirm recovery screen");
+      return h(ConfirmRecoveryPhrase, { key: "confirm-recovery-phrase" });
 
-    case 'sendTransaction':
-      log.debug('rendering send tx screen')
-      return h(SendTransactionScreen, { key: 'send-transaction' })
+    case "sendTransaction":
+      log.debug("rendering send tx screen");
+      return h(SendTransactionScreen, { key: "send-transaction" });
 
-    case 'sendToken':
-      log.debug('rendering send token tx screen')
-      return h(SendTokenScreen, { key: 'send-token' })
+    case "sendToken":
+      log.debug("rendering send token tx screen");
+      return h(SendTokenScreen, { key: "send-token" });
 
-    case 'sendContract':
-      log.debug('rendering send contract tx screen')
-      return h(SendContractScreen, { key: 'send-contract' })
+    case "sendContract":
+      log.debug("rendering send contract tx screen");
+      return h(SendContractScreen, { key: "send-contract" });
 
-    case 'show-choose-contract-executor-page':
-      log.debug('rendering choose contract executor screen')
-      return h(ChooseContractExecutorScreen, { key: 'show-choose-contract-executor-page' })
+    case "show-choose-contract-executor-page":
+      log.debug("rendering choose contract executor screen");
+      return h(ChooseContractExecutorScreen, {
+        key: "show-choose-contract-executor-page"
+      });
 
-    case 'newKeychain':
-      log.debug('rendering new keychain screen')
-      return h(NewKeyChainScreen, { key: 'new-keychain' })
+    case "newKeychain":
+      log.debug("rendering new keychain screen");
+      return h(NewKeyChainScreen, { key: "new-keychain" });
 
-    case 'confTx':
-      log.debug('rendering confirm tx screen')
-      return h(ConfirmTxScreen, { key: 'confirm-tx' })
+    case "confTx":
+      log.debug("rendering confirm tx screen");
+      return h(ConfirmTxScreen, { key: "confirm-tx" });
 
-    case 'add-token':
-      log.debug('rendering add-token screen from unlock screen.')
-      return h(AddTokenScreen, { key: 'add-token' })
+    case "add-token":
+      log.debug("rendering add-token screen from unlock screen.");
+      return h(AddTokenScreen, { key: "add-token" });
 
-    case 'general-settings':
-      log.debug('rendering general-settings screen ')
-      return h(GeneralSettings, { key: 'general-settings' })
+    case "general-settings":
+      log.debug("rendering general-settings screen ");
+      return h(GeneralSettings, { key: "general-settings" });
 
-    case 'config':
-      log.debug('rendering config screen ')
-      return h(ConfigScreen, { key: 'config' })
+    case "config":
+      log.debug("rendering config screen ");
+      return h(ConfigScreen, { key: "config" });
 
-    case 'CreateVaultCompleteScreen':
-      log.debug('rendering seed words screen')
-      return h(createVaultComplete, { key: 'CreateVaultCompleteScreen' })
+    case "CreateVaultCompleteScreen":
+      log.debug("rendering seed words screen");
+      return h(createVaultComplete, { key: "CreateVaultCompleteScreen" });
 
-    case 'reveal-seed':
-      log.debug('rendering the reveal seed words')
-      return h(revealSeed, { key: 'reveal-seed' })
+    case "reveal-seed":
+      log.debug("rendering the reveal seed words");
+      return h(revealSeed, { key: "reveal-seed" });
 
-    case 'advance-settings':
-      log.debug('rendering advance-settings screen ')
-      return h(AdvanceSettings, { key: 'advance-settings' })
+    case "advance-settings":
+      log.debug("rendering advance-settings screen ");
+      return h(AdvanceSettings, { key: "advance-settings" });
 
-    case 'securityandprivacy-settings':
-      log.debug('rendering security-privacy-screen')
-      return h(SecurityAndPrivacy, { key: 'securityandprivacy-settings' })
+    case "securityandprivacy-settings":
+      log.debug("rendering security-privacy-screen");
+      return h(SecurityAndPrivacy, { key: "securityandprivacy-settings" });
 
-    case 'contacts':
-      log.debug('rendering contacts-screen')
-      return h(Contacts, { key: 'contacts' })
+    case "contacts":
+      log.debug("rendering contacts-screen");
+      return h(Contacts, { key: "contacts" });
 
-    case 'contactDetails':
-      log.debug('rendering contactDetails-screen')
-      return h(ContactDetails, { key: 'contactDetails' })
+    case "contactDetails":
+      log.debug("rendering contactDetails-screen");
+      return h(ContactDetails, { key: "contactDetails" });
 
-    case 'add-contacts':
-      log.debug('rendering add Contacts screen ')
-      return h(AddContacts, { key: 'add-contacts' })
+    case "add-contacts":
+      log.debug("rendering add Contacts screen ");
+      return h(AddContacts, { key: "add-contacts" });
 
-    case 'network-settings':
-      log.debug('renderng network-settings screen ')
-      return h(NetworkSettings, { key: 'network-settings' })
+    case "network-settings":
+      log.debug("renderng network-settings screen ");
+      return h(NetworkSettings, { key: "network-settings" });
 
-    case 'add-network':
-      log.debug('rendering add-network screen ')
-      return h(AddNetwork, { key: 'add-network' })
+    case "add-network":
+      log.debug("rendering add-network screen ");
+      return h(AddNetwork, { key: "add-network" });
 
-    case 'view-network':
-      log.debug('rendering view-network screen ')
-      return h(ViewNetwork, { key: 'view-network' })
+    case "view-network":
+      log.debug("rendering view-network screen ");
+      return h(ViewNetwork, { key: "view-network" });
 
-    case 'alert-settings':
-      log.debug('rendering alert-settings screen')
-      return h(AlertSettings, { key: 'alert-settings' })
+    case "alert-settings":
+      log.debug("rendering alert-settings screen");
+      return h(AlertSettings, { key: "alert-settings" });
 
-    case 'confirm-add-token':
-      log.debug('rendering confirm-add-token screen from unlock screen.')
-      return h(ConfirmAddTokenScreen, { key: 'confirm-add-token' })
+    case "confirm-add-token":
+      log.debug("rendering confirm-add-token screen from unlock screen.");
+      return h(ConfirmAddTokenScreen, { key: "confirm-add-token" });
 
-    case 'remove-token':
-      log.debug('rendering remove-token screen from unlock screen.')
-      return h(RemoveTokenScreen, { key: 'remove-token', ...props.currentView.context })
+    case "remove-token":
+      log.debug("rendering remove-token screen from unlock screen.");
+      return h(RemoveTokenScreen, {
+        key: "remove-token",
+        ...props.currentView.context
+      });
 
-    case 'add-suggested-token':
-      log.debug('rendering add-suggested-token screen from unlock screen.')
-      return h(AddSuggestedTokenScreen, { key: 'add-suggested-token' })
+    case "add-suggested-token":
+      log.debug("rendering add-suggested-token screen from unlock screen.");
+      return h(AddSuggestedTokenScreen, { key: "add-suggested-token" });
 
-    case 'config':
-      log.debug('rendering config screen')
-      return h(ConfigScreen, { key: 'config' })
+    case "config":
+      log.debug("rendering config screen");
+      return h(ConfigScreen, { key: "config" });
 
-    case 'import-menu':
-      log.debug('rendering import screen')
-      return h(Import, { key: 'import-menu' })
+    case "import-menu":
+      log.debug("rendering import screen");
+      return h(Import, { key: "import-menu" });
 
-    case 'forget-device':
-      log.debug('rendering forget device screen')
-      return h(ForgetDeviceScreen, { key: 'forget-device' })
+    case "forget-device":
+      log.debug("rendering forget device screen");
+      return h(ForgetDeviceScreen, { key: "forget-device" });
 
-    case 'hardware-wallets-menu':
-      log.debug('rendering hardware wallet menu screen')
-      return h(ConnectHardwareForm, { key: 'hardware-wallets-menu' })
+    case "hardware-wallets-menu":
+      log.debug("rendering hardware wallet menu screen");
+      return h(ConnectHardwareForm, { key: "hardware-wallets-menu" });
 
-    case 'reveal-seed-conf':
-      log.debug('rendering reveal seed confirmation screen')
-      return h(RevealSeedConfirmation, { key: 'reveal-seed-conf' })
+    case "reveal-seed-conf":
+      log.debug("rendering reveal seed confirmation screen");
+      return h(RevealSeedConfirmation, { key: "reveal-seed-conf" });
 
-    case 'info':
-      log.debug('rendering info screen')
-      return h(InfoScreen, { key: 'info' })
+    case "info":
+      log.debug("rendering info screen");
+      return h(InfoScreen, { key: "info" });
 
-    case 'buyEth':
-      log.debug('rendering buy ether screen')
-      return h(BuyView, { key: 'buyEthView' })
+    case "buyEth":
+      log.debug("rendering buy ether screen");
+      return h(BuyView, { key: "buyEthView" });
 
-    case 'onboardingBuyEth':
-      log.debug('rendering onboarding buy ether screen')
-      return h(MascaraBuyEtherScreen, { key: 'buyEthView' })
+    case "onboardingBuyEth":
+      log.debug("rendering onboarding buy ether screen");
+      return h(MascaraBuyEtherScreen, { key: "buyEthView" });
 
-    case 'qr':
-      log.debug('rendering show qr screen')
-      return h('div', {
-        style: {
-          height: '100%',
-          top: '0px',
-          left: '0px',
-          width: '100%',
+    case "qr":
+      log.debug("rendering show qr screen");
+      return h(
+        "div",
+        {
+          style: {
+            height: "100%",
+            top: "0px",
+            left: "0px",
+            width: "100%"
+          }
         },
-      }, [
-        h('.section-title.flex-row.flex-center', { style: { marginTop: '38px' } }, [
-          h('img', {
-            src: '/images/Assets/BackArrow.svg',
-            onClick: () => props.dispatch(actions.backToAccountDetail(props.selectedAddress)),
-            style: {
-              marginLeft: '15px',
-              marginTop: '-17px',
-              position: 'absolute',
-              left: '0',
-              cursor: 'pointer',
-            },
-          }),
-          h('h2.page-subtitle', {
-            style: {
-              // fontFamily: 'Nunito SemiBold',
-              marginTop: '-14px',
-              marginBottom: '0px',
-              textAlign: 'center',
-              fontWeight: 'bold',
-            },
-          }, 'QR Code'),
-        ]),
-        h('div', [
-          h(AccountQrScreen, {
-            key: 'account-qr',
-          }),
-        ]),
-      ])
-    case 'delete-rpc':
-      log.debug('rendering delete rpc confirmation screen')
-      return h(DeleteRpc, { key: 'delete-rpc' })
-    case 'delete-imported-account':
-      log.debug('rendering delete imported account confirmation screen')
-      return h(DeleteImportedAccount, { key: 'delete-imported-account' })
-    case 'confirm-change-password':
-      log.debug('rendering confirm password changing screen')
-      return h(ConfirmChangePassword, { key: 'confirm-change-password' })
+        [
+          h(
+            ".section-title.flex-row.flex-center",
+            { style: { marginTop: "38px" } },
+            [
+              h("img", {
+                src: "/images/Assets/BackArrow.svg",
+                onClick: () =>
+                  props.dispatch(
+                    actions.backToAccountDetail(props.selectedAddress)
+                  ),
+                style: {
+                  marginLeft: "15px",
+                  marginTop: "-17px",
+                  position: "absolute",
+                  left: "0",
+                  cursor: "pointer"
+                }
+              }),
+              h(
+                "h2.page-subtitle",
+                {
+                  style: {
+                    // fontFamily: 'Nunito SemiBold',
+                    marginTop: "-14px",
+                    marginBottom: "0px",
+                    textAlign: "center",
+                    fontWeight: "bold"
+                  }
+                },
+                "QR Code"
+              )
+            ]
+          ),
+          h("div", [
+            h(AccountQrScreen, {
+              key: "account-qr"
+            })
+          ])
+        ]
+      );
+    case "delete-rpc":
+      log.debug("rendering delete rpc confirmation screen");
+      return h(DeleteRpc, { key: "delete-rpc" });
+    case "delete-imported-account":
+      log.debug("rendering delete imported account confirmation screen");
+      return h(DeleteImportedAccount, { key: "delete-imported-account" });
+    case "confirm-change-password":
+      log.debug("rendering confirm password changing screen");
+      return h(ConfirmChangePassword, { key: "confirm-change-password" });
 
-    case 'connected-sites':
-      log.debug('rendering confirm password changing screen')
-      return h(ConnectedSites, { key: 'connected-sites' })
+    case "connected-sites":
+      log.debug("rendering confirm password changing screen");
+      return h(ConnectedSites, { key: "connected-sites" });
 
-    case 'transaction-details':
-      log.debug('rendering the transaction details screen')
-      return h(TransactionDetails, { key: 'transaction-details' })
+    case "transaction-details":
+      log.debug("rendering the transaction details screen");
+      return h(TransactionDetails, { key: "transaction-details" });
 
     case "transaction-details":
       log.debug("rendering the transaction details screen");
       return h(TransactionDetails, { key: "transaction-details" });
 
     default:
-      log.debug('rendering default, account detail screen')
-      return h(AccountDetailScreen, { key: 'account-detail' })
+      log.debug("rendering default, account detail screen");
+      return h(AccountDetailScreen, { key: "account-detail" });
   }
 };
 
-App.prototype.getNetworkName = function () {
-  const { network } = this.props
-  return ethNetProps.props.getNetworkDisplayName(network)
-}
+App.prototype.getNetworkName = function() {
+  const { network } = this.props;
+  return ethNetProps.props.getNetworkDisplayName(network);
+};

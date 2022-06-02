@@ -77,6 +77,7 @@ const AddContactComponent = (props) => {
             type="text"
             name="contactAddress"
             value={contactAddress}
+            autoComplete='off'
             placeholder="Contact's Wallet Address"
             onChange={onStateChange}
             style={{ width: "100%", border: "none", color: "#2A2A2A" }}
@@ -102,6 +103,7 @@ const AddContactComponent = (props) => {
             placeholder="Contact's Name"
             type="text"
             name="contactName"
+            autoComplete='off'
             value={contactName}
             onChange={onStateChange}
             style={{ width: "100%", border: "none", color: "#2A2A2A" }}
