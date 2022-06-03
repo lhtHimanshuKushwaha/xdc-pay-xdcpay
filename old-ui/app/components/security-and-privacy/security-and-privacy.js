@@ -108,7 +108,7 @@ class SecurityAndPrivacySettings extends React.Component {
             Reveal Secret Seed Words
           </button>
         </div>
-         <div
+         {/* <div
           style={{
             padding: " 15px 17px 20px 15px ",
             borderBottom: "1px solid #E3E7EB",
@@ -168,7 +168,7 @@ class SecurityAndPrivacySettings extends React.Component {
           <span style={{ marginLeft: "8px" }}> 
             {showIncomingTransaction ? "On" : "Off"}
           </span>
-        </div>
+        </div> */}
       </div>
     );
   }
