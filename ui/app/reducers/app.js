@@ -6,7 +6,7 @@ const log = require('loglevel')
 module.exports = reduceApp
 
 
-function reduceApp (state, action) {
+function reduceApp(state, action) {
   log.debug('App Reducer got ' + action.type)
   log.debug('state.metamask.isRevealingSeedWords ' + state.metamask.isRevealingSeedWords)
   log.debug('state.currentView.appState ', state.appState.currentView)
@@ -98,6 +98,11 @@ function reduceApp (state, action) {
   let curPendingTxIndex = appState.currentView.pendingTxIndex || 0
 
   switch (action.type) {
+    //password storing
+    case action.SHOW_PASS_WORD:
+      return extend(appState, {
+
+      })
     // dropdown methods
     case actions.NETWORK_DROPDOWN_OPEN:
       return extend(appState, {
@@ -148,16 +153,16 @@ function reduceApp (state, action) {
 
     // modal methods:
     case actions.MODAL_OPEN:
-      const {name, ...modalProps} = action.payload
+      const { name, ...modalProps } = action.payload
 
       return extend(appState, {
         modal: {
           open: true,
           modalState: {
             name: name,
-            props: {...modalProps},
+            props: { ...modalProps },
           },
-          previousModalState: {...appState.modal.modalState},
+          previousModalState: { ...appState.modal.modalState },
         },
       })
 
@@ -165,9 +170,9 @@ function reduceApp (state, action) {
       return extend(appState, {
         modal: Object.assign(
           state.appState.modal,
-          {open: false},
-          {modalState: {name: null, props: {}}},
-          {previousModalState: appState.modal.modalState},
+          { open: false },
+          { modalState: { name: null, props: {} } },
+          { previousModalState: appState.modal.modalState },
         ),
       })
 
@@ -217,8 +222,18 @@ function reduceApp (state, action) {
 
     case actions.SHOW_INIT_MENU:
       return extend(appState, {
-        currentView: defaultView,
+        currentView: {
+          name: 'menuScreenInit'
+        },
         transForward: false,
+      })
+
+    case actions.SHOW_CREATE_WALLET:
+      return extend(appState, {
+        currentView: {
+          name: 'walletFirstScreen'
+        },
+        transForward: true,
       })
 
     case actions.SHOW_CONFIG_PAGE:
@@ -270,16 +285,16 @@ function reduceApp (state, action) {
         transForward: true,
         warning: null,
       })
-    
-      case actions.ExpandedSettings:
-        return extend(appState, {
-          currentView: {
-            name: 'expandedSettings',
-            context: appState.currentView.context,
-          },
-          transForward: true,
-          warning: null,
-        })
+
+    case actions.ExpandedSettings:
+      return extend(appState, {
+        currentView: {
+          name: 'expandedSettings',
+          context: appState.currentView.context,
+        },
+        transForward: true,
+        warning: null,
+      })
 
     case actions.SHOW_ADVSETTINGS_PAGE:
       return extend(appState, {
@@ -618,6 +633,7 @@ function reduceApp (state, action) {
           subview: 'transactions',
           accountExport: 'none',
           privateKey: '',
+          pass: ''
         },
         transForward: false,
         warning: null,
@@ -634,6 +650,7 @@ function reduceApp (state, action) {
           subview: 'transactions',
           accountExport: 'none',
           privateKey: '',
+          pass: ''
         },
         transForward: false,
       })
@@ -648,6 +665,7 @@ function reduceApp (state, action) {
           subview: 'transactions',
           accountExport: 'none',
           privateKey: '',
+          pass: '',
         },
         transForward: false,
       })
@@ -797,8 +815,8 @@ function reduceApp (state, action) {
       })
 
     case actions.SET_HARDWARE_WALLET_DEFAULT_HD_PATH:
-      const {device, path} = action.value
-      const newDefaults = {...appState.defaultHdPaths}
+      const { device, path } = action.value
+      const newDefaults = { ...appState.defaultHdPaths }
       newDefaults[device] = path
 
       return extend(appState, {
@@ -834,6 +852,7 @@ function reduceApp (state, action) {
           subview: 'transactions',
           accountExport: 'none',
           privateKey: '',
+          pass: ''
         },
       })
 
@@ -886,6 +905,7 @@ function reduceApp (state, action) {
           subview: 'export',
           accountExport: 'completed',
           privateKey: action.value,
+          pass: action.password
         },
       })
 
@@ -1083,13 +1103,13 @@ function reduceApp (state, action) {
   }
 }
 
-function checkUnconfActions (state) {
+function checkUnconfActions(state) {
   const unconfActionList = getUnconfActionList(state)
   const hasUnconfActions = unconfActionList.length > 0
   return hasUnconfActions
 }
 
-function getUnconfActionList (state) {
+function getUnconfActionList(state) {
   const {
     unapprovedTxs, unapprovedMsgs,
     unapprovedPersonalMsgs, unapprovedTypedMessages, network,
@@ -1099,7 +1119,7 @@ function getUnconfActionList (state) {
   return unconfActionList
 }
 
-function indexForPending (state, txId) {
+function indexForPending(state, txId) {
   const unconfTxList = getUnconfActionList(state)
   const match = unconfTxList.find((tx) => tx.id === txId)
   const index = unconfTxList.indexOf(match)

@@ -11,9 +11,14 @@ const AddContactComponent = (props) => {
     viewContactObj,
     onDeleteClicked,
     state,
+    detailObj,
   } = props;
-
+  console.log(detailObj, viewContactObj, "comong");
+  var viewContact = viewContactObj;
+  !viewContact ? (viewContact = detailObj) : viewContact;
+  console.log(viewContact, detailObj, "comon");
   const { contactAddress, contactName } = state;
+  console.log(contactAddress, contactName,state, "details");
 
   return (
     <div
@@ -29,7 +34,6 @@ const AddContactComponent = (props) => {
       >
         <img
           src="/images/Assets/BackArrow.svg"
-          className="image-display"
           style={{ marginLeft: "17px", cursor: "pointer" }}
           onClick={onBackClick}
         />
@@ -41,7 +45,7 @@ const AddContactComponent = (props) => {
             marginRight: "20px",
           }}
         >
-          {`${viewContactObj ? "Edit" : "Add"} Contact`}
+          {`${viewContact ? "Edit" : "Add"} Contact`}
         </h2>
         <h2
           style={{
@@ -51,9 +55,9 @@ const AddContactComponent = (props) => {
             marginRight: "15px",
             cursor: "pointer",
           }}
-          onClick={() => onDeleteClicked(viewContactObj)}
+          onClick={() => onDeleteClicked(viewContact)}
         >
-          {`${viewContactObj ? "Delete" : " "}`}
+          {`${viewContact ? "Delete" : " "}`}
         </h2>
       </div>
       <div style={{ margin: "25px 42px" }}>
@@ -73,9 +77,10 @@ const AddContactComponent = (props) => {
             type="text"
             name="contactAddress"
             value={contactAddress}
+            autoComplete='off'
             placeholder="Contact's Wallet Address"
             onChange={onStateChange}
-            style={{ width: "266px", border: "none", color: "#2A2A2A" }}
+            style={{ width: "100%", border: "none", color: "#2A2A2A" }}
           />
           {/* <img
             src="/images/Assets/Scan.svg"
@@ -88,7 +93,7 @@ const AddContactComponent = (props) => {
         <br />
         <div
           style={{
-            marginBottom: "45px",
+            // marginBottom: "45px",
             border: "1px solid #e2e2e2",
             borderRadius: "4px",
           }}
@@ -98,12 +103,19 @@ const AddContactComponent = (props) => {
             placeholder="Contact's Name"
             type="text"
             name="contactName"
+            autoComplete='off'
             value={contactName}
             onChange={onStateChange}
-            style={{ width: "265px", border: "none", color: "#2A2A2A" }}
+            style={{ width: "100%", border: "none", color: "#2A2A2A" }}
           />
         </div>
+        <div
+        style={{
+          height:45,
+          paddingTop:9,
+        }}>
         {warningMsg && <div className="error">{warningMsg}</div>}
+        </div>
         <div style={{ display: "flex", justifyContent: "space-between" }}>
           <div
             className="button"
@@ -142,10 +154,10 @@ const AddContactComponent = (props) => {
             }}
             onClick={(event) => {
               event.preventDefault();
-              onAddContactClicked(!!viewContactObj);
+              onAddContactClicked(!!viewContact);
             }}
           >
-            {`${!!viewContactObj ? "Update" : "Save"}`}
+            {`${!!viewContact ? "Update" : "Save"}`}
           </div>
         </div>
       </div>

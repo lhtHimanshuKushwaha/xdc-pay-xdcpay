@@ -6,10 +6,10 @@ const h = require('react-hyperscript')
 const connect = require('react-redux').connect
 const actions = require('../../ui/app/actions')
 const LoadingIndicator = require('./components/loading')
-const Web3 = require('web3')
 import ConfigScreenExpanded from './configExpanded'
-import React, { useState } from 'react';
-import PropTypes from 'prop-types'
+import React, {useState} from 'react'
+import propTypes from 'prop-types'
+
 const infuraCurrencies = require('./infura-conversion.json').objects.sort(
   (a, b) => {
     return a.quote.name
@@ -17,11 +17,7 @@ const infuraCurrencies = require('./infura-conversion.json').objects.sort(
       .localeCompare(b.quote.name.toLocaleLowerCase())
   },
 )
-const validUrl = require('valid-url')
-const exportAsFile = require('./util').exportAsFile
 const Modal = require('../../ui/app/components/modals/index').Modal
-const ethNetProps = require('xdc-net-props')
-const {networks} = require('../../app/scripts/controllers/network/util')
 
 module.exports = connect(mapStateToProps)(ConfigScreen)
 
@@ -58,11 +54,11 @@ ConfigScreen.prototype.render = function () {
           h(LoadingIndicator, {
             isLoading: this.state.loading,
           }),
-    
+
           h(Modal, {}, []),
           // subtitle and nav
-    
-          h('.section-title.flex-row', { style: { borderBottom: '1px solid #E3E7EB', paddingBottom: '17px' } }, [
+
+          h('.section-title.flex-row', {style: {borderBottom: '1px solid #E3E7EB', paddingBottom: '17px'}}, [
             h('img', {
               onClick: () => {
                 state.dispatch(actions.goHome())
@@ -87,63 +83,63 @@ ConfigScreen.prototype.render = function () {
               'Settings',
             ),
           ]),
-    
+
           [
-    
-            h('.settings', { onClick: () => state.dispatch(actions.generalSettings()) }, ['General Settings',
+
+            h('.settings', {onClick: () => state.dispatch(actions.generalSettings())}, ['General Settings',
               h('img', {
-                src: '/images/Assets/Arrow.svg',
-              }
+                  src: '/images/Assets/Arrow.svg',
+                },
               ),
             ]),
-    
-            h('.settings', { onClick: () => state.dispatch(actions.advanceSettings()) }, ['Advance Settings',
+
+            h('.settings', {onClick: () => state.dispatch(actions.advanceSettings())}, ['Advance Settings',
               h('img', {
                 src: '/images/Assets/Arrow.svg',
-    
+
               }),
             ]),
-    
-            h('.settings', { onClick: () => state.dispatch(actions.securityAndPrivacy()) }, ['Security and Privacy Settings',
-              h('img', {
-                src: '/images/Assets/Arrow.svg',
-              }),
-            ]),
-    
-            h('.settings', { onClick: () => state.dispatch(actions.Contacts()) }, ['Contacts',
+
+            h('.settings', {onClick: () => state.dispatch(actions.securityAndPrivacy())}, ['Security and Privacy Settings',
               h('img', {
                 src: '/images/Assets/Arrow.svg',
               }),
             ]),
-    
+
+            h('.settings', {onClick: () => state.dispatch(actions.Contacts())}, ['Contacts',
+              h('img', {
+                src: '/images/Assets/Arrow.svg',
+              }),
+            ]),
+
             //   h('.settings', {onClick: () => state.dispatch(actions.alertSettings())}, ['Alert Settings',
             //   h('img', {
             //     src: '/images/Assets/Arrow.svg',
             //   }),
             // ]),
-    
-            h('.settings', { onClick: () => state.dispatch(actions.networkSettings()) }, ['Network Settings',
+
+            h('.settings', {onClick: () => state.dispatch(actions.networkSettings())}, ['Network Settings',
               h('img', {
                 src: '/images/Assets/Arrow.svg',
               }),
             ]),
-    
-            h('.settings', { onClick: () => state.dispatch(actions.showInfoPage()) }, ['About',
+
+            h('.settings', {onClick: () => state.dispatch(actions.showInfoPage())}, ['About',
               h('img', {
                 src: '/images/Assets/Arrow.svg',
               }),
             ]),
-          ]
-    
+          ],
+
         ])
-            
-        
+
+
     )
   }
   return (
-    <div style={{width:'100%'}}>
-      <ConfigComponent />
-      <ConfigScreenExpanded />
+    <div style={{width: '100%'}}>
+      <ConfigComponent/>
+      <ConfigScreenExpanded/>
     </div>
   )
 }
