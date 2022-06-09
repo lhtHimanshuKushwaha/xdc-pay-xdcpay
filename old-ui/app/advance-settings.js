@@ -16,7 +16,7 @@ const infuraCurrencies = require("./infura-conversion.json").objects.sort(
   }
 );
 const validUrl = require("valid-url");
-const {exportAsFile ,conversation}= require("./util");
+const exportAsFile = require("./util").exportAsFile;
 const Modal = require("../../ui/app/components/modals/index").Modal;
 const ethNetProps = require("xdc-net-props");
 const { networks } = require("../../app/scripts/controllers/network/util");
@@ -53,17 +53,17 @@ class AdvanceSettings extends React.Component{
         <div className="flex-column flex-grow" style={{maxHeight: "585px",
         overflowY: "auto",}}>
             <div className="section-title flex-row"
-                 style={{ borderBottom: "1px solid #E3E7EB", paddingBottom: "17px",display:'flex', justifyContent:'center' } }>
-            <img src="/images/Assets/BackArrow.svg" className='image-display' style={{position:'absolute', left:'20px', cursor:'pointer' ,width:"19px",height:"17px"}} onClick={() => { state.dispatch(actions.goConfig()) }} />
-            <h2 style={{ fontFamily: navigator.userAgent.indexOf("Firefox") != -1 ?"Inter-semiBold":"Inter-Bold" }}>{`${t('advanceSettings')}`}</h2>
+                 style={{ borderBottom: "1px solid #E3E7EB", paddingBottom: "17px" } }>
+            <img src="/images/Assets/BackArrow.svg" style={{marginLeft:'12px', cursor:'pointer'}} onClick={() => { state.dispatch(actions.goConfig()) }} />
+            <h2 style={{ marginLeft:'88px',fontFamily:'Inter-bold'}}>Advance Settings</h2>
             </div>
             <div style={{
                 padding: ' 14px 17px 14px 17px ',
                 borderBottom: '1px solid #E3E7EB',
             }}>
-                <span style={{ fontFamily:"Inter-semiBold",fontSize: "14px", color: "#2149B9" }}>{`${t('stateLogs')}`}</span><br />
+                <span style={{ fontWeight: "bold", fontSize: "14px", color: "#2149B9" }}>{`${t('stateLogs')}`}</span><br />
                 <p style={{fontSize:'14px', marginBottom:'15px',fontFamily:'Inter-medium'}}>{`${t('stateLogsDescription')}`} </p>
-                <button style={{ width: "324px", height: "40px", color: "#03BE46", background: "#FFFFFF", border: "2px solid #03BE46", fontWeight: "600",fontFamily: navigator.userAgent.indexOf("Firefox") != -1 ?"Inter-semiBold":"Inter-Medium" }}
+                <button style={{ width: "324px", height: "40px", color: "#03BE46", background: "#FFFFFF", border: "2px solid #03BE46", fontWeight: "600", }}
                     onClick={(event) => {
                         window.logStateString((err, result) => {
                                         if (err) {
@@ -73,7 +73,7 @@ class AdvanceSettings extends React.Component{
                                                 )
                                             );
                                         } else {
-                                            exportAsFile("XDCPay State Logs.json", conversation(result));
+                                            exportAsFile("XDCPay State Logs.json", result);
                                         }
                                     }) }}>{`${t('downloadStateLogs')}`}</button>
                 
@@ -82,28 +82,28 @@ class AdvanceSettings extends React.Component{
                 padding: ' 14px 17px 14px 17px ',
                 borderBottom: '1px solid #E3E7EB',
             }}>
-                    <span style={{ fontFamily:"Inter-semiBold", fontSize: "14px", color: "#2149B9" }}>{`${t('resetAccount')}` }</span><br />
-                <p style={{fontSize:'14px',marginBottom:'15px',fontFamily:'Inter-medium'}}>{`${t('resetAccountDescription')}`}  </p>
-                    <button style={{ width: "324px", height: "40px", color: "#FF0035", background: "#FFFFFF", border: "2px solid #FF0035", fontWeight: "600",fontFamily: navigator.userAgent.indexOf("Firefox") != -1 ?"Inter-semiBold":"Inter-Medium" }}
+                    <span style={{ fontWeight: "bold", fontSize: "14px", color: "#2149B9" }}>{`${t('resetAccount')}` }</span><br />
+                <p style={{fontSize:'14px',marginBottom:'15px',fontFamily:'Inter-medium'}}>Resetting your account will clear your transaction history. This will not change the balances in your accounts or require you to re-enter your Secret Recovery Phrase.</p>
+                    <button style={{ width: "324px", height: "40px", color: "#FF0035", background: "#FFFFFF", border: "2px solid #FF0035", fontWeight: "600", }}
                         onClick={(event) => {
                             event.preventDefault();
                             state.dispatch(actions.resetAccount());
-                        }}>{`${t('resetAccount')}` }</button>
+                        }}>Reset Account</button>
                 </div>
                       
                <div style={{
                     padding: ' 14px 17px 14px 17px',
                     // borderBottom: '1px solid #E3E7EB',
                 }}>
-                    <span style={{ fontFamily:"Inter-semiBold", fontSize: "14px", color: "#2149B9" }}>{`${t('advancedGasControls')}` }</span><br />
-                <p style={{fontSize:'14px',marginBottom:'15px',fontFamily:'Inter-medium'}}>{`${t('advancedGasControlsDesc')}` }</p>
+                <span style={{ fontWeight: "bold", fontSize: "14px", color: "#2149B9" }}>Advanced gas controls</span><br />
+                <p style={{fontSize:'14px',marginBottom:'15px',fontFamily:'Inter-medium'}}>Select this to show gas price and limit controls directly on the send and confirm screens.</p>
                     <label className="switch">
                         <input type="checkbox" onChange={this.handleCheckBox} checked={showGasFields }/>
                 <span className="slider round" ></span>
                         
                     </label>
                     <span style={{marginLeft:'8px',}}>{showGasFields?"On":"Off"}</span>
-                        
+                        {/* {toggle? <span>ON</span> :<span> OFF</span>} */}
             </div>    
             
       </div>

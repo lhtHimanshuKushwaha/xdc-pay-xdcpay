@@ -9,11 +9,11 @@ module.exports = connect(mapStateToProps)(revealSeed)
 
 inherits(revealSeed, Component)
 
-function revealSeed() {
+function revealSeed () {
   Component.call(this)
 }
 
-function mapStateToProps(state) {
+function mapStateToProps (state) {
   return {
     seed: state.appState.currentView.seedWords,
     cachedSeed: state.metamask.seedWords,
@@ -46,34 +46,31 @@ revealSeed.prototype.render = function () {
           fontWeight: '600',
         },
       }, [
-        h('img', { style: { marginRight: '3px' }, src: '/images/Assets/Check-Green.svg' }),
+        h('img', {style: {marginRight: '3px'}, src: '/images/Assets/Check-Green.svg'}),
 
-        'Secret Seed Words',
+        'Reveal Seed Words',
       ]),
 
-      h('div.errorWidthSecretWords', {
+      h('div', {
         style: {
           fontSize: '12px',
           textAlign: 'center',
-          // width: '265px',
+          width: '265px',
           height: '61px',
-          // marginTop: '25px',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          alignItems: 'center'
+          marginTop: '25px',
         },
       }, [
-        h('div.errorReveal', {
-          style: { fontFamily: 'Inter-medium' },
+        h('div.error1', {
+          style: {fontFamily: 'Inter-medium'},
         }, 'These 12 words are the only way to restore your XDCPay accounts.\nSave them somewhere safe and secret.'),
       ]),
       h('div', {
 
-        style: {
-          display: 'flex',
-          flex: '1 3 auto ',
+          style: {
+            display: 'flex',
+            flex: '1 3 auto ',
+          },
         },
-      },
         [
           h('textarea.twelve-word-phrase', {
             readOnly: true,
@@ -81,14 +78,14 @@ revealSeed.prototype.render = function () {
           }),
 
           h('textarea.twelve-word-phrase', {
-            style: { marginLeft: '4px' },
+            style: {marginLeft: '4px'},
             readOnly: true,
             value: '2. ' + seedArr[1],
           }),
 
 
           h('textarea.twelve-word-phrase', {
-            style: { marginLeft: '4px' },
+            style: {marginLeft: '4px'},
             readOnly: true,
             value: '3. ' + seedArr[2],
           }),
@@ -96,12 +93,12 @@ revealSeed.prototype.render = function () {
         ]),
       h('div', {
 
-        style: {
-          display: 'flex',
-          flex: '1 3 auto ',
-          marginTop: '-10px',
+          style: {
+            display: 'flex',
+            flex: '1 3 auto ',
+            marginTop: '-10px',
+          },
         },
-      },
         [
           h('textarea.twelve-word-phrase', {
             readOnly: true,
@@ -109,14 +106,14 @@ revealSeed.prototype.render = function () {
           }),
 
           h('textarea.twelve-word-phrase', {
-            style: { marginLeft: '4px' },
+            style: {marginLeft: '4px'},
             readOnly: true,
             value: '5. ' + seedArr[4],
           }),
 
 
           h('textarea.twelve-word-phrase', {
-            style: { marginLeft: '4px' },
+            style: {marginLeft: '4px'},
             readOnly: true,
             value: '6. ' + seedArr[5],
           }),
@@ -125,12 +122,12 @@ revealSeed.prototype.render = function () {
 
       h('div', {
 
-        style: {
-          display: 'flex',
-          flex: '1 3 auto ',
-          marginTop: '-10px',
+          style: {
+            display: 'flex',
+            flex: '1 3 auto ',
+            marginTop: '-10px',
+          },
         },
-      },
         [
           h('textarea.twelve-word-phrase', {
             readOnly: true,
@@ -138,14 +135,14 @@ revealSeed.prototype.render = function () {
           }),
 
           h('textarea.twelve-word-phrase', {
-            style: { marginLeft: '4px' },
+            style: {marginLeft: '4px'},
             readOnly: true,
             value: '8. ' + seedArr[7],
           }),
 
 
           h('textarea.twelve-word-phrase', {
-            style: { marginLeft: '4px' },
+            style: {marginLeft: '4px'},
             readOnly: true,
             value: '9. ' + seedArr[8],
           }),
@@ -153,12 +150,12 @@ revealSeed.prototype.render = function () {
         ]),
       h('div', {
 
-        style: {
-          display: 'flex',
-          flex: '1 3 auto ',
-          marginTop: '-10px',
+          style: {
+            display: 'flex',
+            flex: '1 3 auto ',
+            marginTop: '-10px',
+          },
         },
-      },
         [
           h('textarea.twelve-word-phrase', {
             readOnly: true,
@@ -166,39 +163,39 @@ revealSeed.prototype.render = function () {
           }),
 
           h('textarea.twelve-word-phrase', {
-            style: { marginLeft: '4px' },
+            style: {marginLeft: '4px'},
             readOnly: true,
             value: '11. ' + seedArr[10],
           }),
 
 
           h('textarea.twelve-word-phrase', {
-            style: { marginLeft: '4px' },
+            style: {marginLeft: '4px'},
             readOnly: true,
             value: '12. ' + seedArr[11],
           }),
 
         ]),
       h('button', {
-        onClick: () => this.confirmSeedWords()
-          .then(account => {
-            exportAsFile(`XDCPay Seed Phrase`, seed)
-            this.showAccountDetail(account)
-          }),
-        style: {
-          marginTop: '56px',
-          fontSize: '0.9em',
-          background: '#ffffff',
-          color: '#0CBE46',
-          width: '265px',
-          height: '40px',
-          border: '1px solid #0CBE46',
-          display: 'flex',
-          fontFamily: 'Inter-Medium',
-          paddingLeft: '58px',
-          paddingTop: '7px',
+          onClick: () => this.confirmSeedWords()
+            .then(account => {
+              exportAsFile(`XDCPay Seed Words`, seed)
+              this.showAccountDetail(account)
+            }),
+          style: {
+            marginTop: '56px',
+            fontSize: '0.9em',
+            background: '#ffffff',
+            color: '#0CBE46',
+            width: '265px',
+            height: '40px',
+            border: '1px solid #0CBE46',
+            display: 'flex',
+            fontFamily: 'Inter-Medium',
+            paddingLeft: '58px',
+            paddingTop: '7px',
+          },
         },
-      },
         [
           h('img', {
             style: {
@@ -207,10 +204,10 @@ revealSeed.prototype.render = function () {
             src: '/images/Assets/Download.svg',
           }),
           h('div', {
-            style: {
-              marginTop: '3px',
+              style: {
+                marginTop: '3px',
+              },
             },
-          },
             'Save as CSV file')]),
 
       h('button', {
@@ -243,13 +240,12 @@ revealSeed.prototype.confirmSeedWords = function () {
 // revealSeed.prototype.confirmRecoveryPhrase = function () {
 //   return this.props.dispatch(actions.confirmRecoveryPhrase())
 // }
-
 revealSeed.prototype.showAccountDetail = function (account) {
   return this.props.dispatch(actions.showAccountDetail(account))
 }
 
 revealSeed.prototype.exportAsFile = function (seed) {
-  return this.props.dispatch(actions.exportAsFile(`XDCPay Seed Phrase`, seed))
+  return this.props.dispatch(actions.exportAsFile(`XDCPay Seed Words`, seed))
 }
 
 

@@ -5,7 +5,6 @@ const isNode = require('detect-node')
 const findDOMNode = require('react-dom').findDOMNode
 const jazzicon = require('rockicon')
 const iconFactoryGen = require('../../lib/icon-factory')
-const { none } = require('ramda')
 const iconFactory = iconFactoryGen(jazzicon)
 
 module.exports = IdenticonComponent
@@ -20,7 +19,6 @@ function IdenticonComponent () {
 IdenticonComponent.prototype.render = function () {
   var props = this.props
   var diameter = props.diameter || this.defaultDiameter
-  var borderStyle = props.borderStyle || 'none'
   return (
     h('div', {
       key: 'identicon-' + this.props.address,
@@ -33,7 +31,6 @@ IdenticonComponent.prototype.render = function () {
         // marginRight: '20px',
         pointerEvents: 'none',
         borderRadius: diameter / 2,
-        border: borderStyle,
         overflow: (props.overflow || 'hidden'),
       },
     })

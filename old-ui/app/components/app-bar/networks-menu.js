@@ -20,6 +20,7 @@ class NetworksMenu extends Component {
   render () {
     const props = this.props
     const {networkList, frequentRpcList} = props
+    const rpcList = props.frequentRpcList
     const isOpen = props.isNetworkMenuOpen
     const networksView = this._renderNetworksView([...networkList, ...frequentRpcList])
 
@@ -39,30 +40,25 @@ class NetworksMenu extends Component {
           }
         }}
         zIndex={11}
-        // style={{
-        //   position: 'absolute',
-        //   bottom: '18px',
-        //   width: '317px',
-        //   maxHeight: isOpen ? '524px' : '0px',
-        //   marginLeft: '19px',
-        // }}
-        className={"selectNetworkExpanded"}
-        innerStyle={{padding: 0,}}
+        style={{
+          position: 'absolute',
+          bottom: '18px',
+          width: '317px',
+          maxHeight: isOpen ? '524px' : '0px',
+        }}
+        innerStyle={{padding: 0}}
       >
         <div className="select-network-list">
           Select Network
-          <img className="select-network-close-icon dropdownCloseImage" src="/images/Assets/Close.svg"
+          <img className="select-network-close-icon" src="/images/Assets/Close.svg"
                onClick={() => this.props.updateNetworksMenuOpenState(!isOpen)}/>
         </div>
-        <div style={{maxHeight: isOpen ? '166px' : '0px',overflowY:'auto'}}>
         {networksView}
-
         <DropdownMenuItem
           closeMenu={() => this.props.updateNetworksMenuOpenState(!isOpen)}
           onClick={() => this.props.showAddNetworkPage()}
           className={'app-bar-networks-dropdown-custom-rpc'}
-          >Custom RPC</DropdownMenuItem>
-          </div>
+        >Custom RPC</DropdownMenuItem>
       </Dropdown>
     )
   }
@@ -91,10 +87,10 @@ class NetworksMenu extends Component {
     }
 
     return _networks
-      .map((networkObj,index) => {
+      .map((networkObj) => {
         return (
           <DropdownMenuItem
-            key={index}
+            key={networkObj.providerName}
             closeMenu={() => this.props.updateNetworksMenuOpenState(!isOpen)}
             onClick={() => onNetworkClicked(networkObj)}
             style={{

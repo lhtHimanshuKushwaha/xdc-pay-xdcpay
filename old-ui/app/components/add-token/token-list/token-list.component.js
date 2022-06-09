@@ -3,9 +3,7 @@ import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import { checkExistingAddresses } from '../util'
 import TokenListPlaceholder from './token-list-placeholder'
-// import Tooltip from '../../tooltip.js'
-import ReactTooltip from "react-tooltip";
-
+import Tooltip from '../../tooltip.js'
 
 export default class InfoBox extends Component {
   static contextTypes = {
@@ -20,7 +18,7 @@ export default class InfoBox extends Component {
     onToggleToken: PropTypes.func,
   }
 
-  render() {
+  render () {
     const { results = [], selectedTokens = {}, onToggleToken, tokens = [], network } = this.props
     const networkID = parseInt(network)
     const imagesFolder = networkID === 1 ? 'images/contract' : 'images/contractPOA'
@@ -45,30 +43,26 @@ export default class InfoBox extends Component {
                     })}
                     onClick={() => !tokenAlreadyAdded && onToggleToken(results[i])}
                     key={key || 'tokenRow'}>
-                    <div
-                      className="token-list__token-icon"
-                      style={{
-                        'backgroundImage': logo && `url(${imagesFolder}/${logo})`,
-                      }}
-                    >
-                    </div>
-                    <div className="token-list__token-data">
-                      <span className="token-list__token-name">{title}</span>
-                    </div>
-                  </div>)
+                      <div
+                        className="token-list__token-icon"
+                        style={{
+                          'backgroundImage': logo && `url(${imagesFolder}/${logo})`,
+                        }}
+                      >
+                      </div>
+                      <div className="token-list__token-data">
+                        <span className="token-list__token-name">{title}</span>
+                      </div>
+                    </div>)
 
                   return Boolean(logo || symbol || name) && (
-                    isLongTitle ? <div>
-                      <div data-tip data-for={`${i}`}>{tokenRow()}</div>,
-                      <ReactTooltip
-                        id={`${i}`}
-                        place="top"
-                        type="dark"
-                        effect="solid"
-                      >
-                        {`${title}`}
-                      </ReactTooltip>
-                    </div> : tokenRow(i)
+                    isLongTitle ? <Tooltip
+                      position="top"
+                      title={title}
+                      key={i}
+                    >
+                      {tokenRow()}
+                    </Tooltip> : tokenRow(i)
                   )
                 })
             }

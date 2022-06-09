@@ -20,11 +20,11 @@ class CustomDropDown extends React.Component {
     return (
       <div className="container">
         <div className="selected-value-container" onClick={this.toggleDropDown}>
-          <span>{selectedOptionData ? selectedOptionData.displayValue : '2 minutes'}</span>
+          <span>{selectedOptionData ? selectedOptionData.displayValue : '-'}</span>
           <img src="/images/Assets/DownArrow.svg"/>
         </div>
         {this.state.isOptionsVisible && options &&
-          <div className="custom-dropdown-options" style={{ overflowY: "auto"}}>
+        <div className="custom-dropdown-options">
           {options.map((data, index) => {
             return (
               <span className="custom-dropdown-option" key={data.key}

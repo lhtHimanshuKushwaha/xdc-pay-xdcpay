@@ -1,48 +1,47 @@
 const Component = require('react').Component
-import React from "react";
 const h = require('react-hyperscript')
 const inherits = require('util').inherits
 const formatBalance = require('../util').formatBalance
 const generateBalanceObject = require('../util').generateBalanceObject
+const Tooltip = require('./tooltip.js')
 const FiatValue = require('./fiat-value2.js')
 
 module.exports = EthBalanceComponent
 
 inherits(EthBalanceComponent, Component)
-function EthBalanceComponent() {
+function EthBalanceComponent () {
   Component.call(this)
 }
 
 EthBalanceComponent.prototype.render = function () {
   var props = this.props
   let { value } = props
-  const { style, width, network, isToken, tokenSymbol, networkList } = props
+  const { style, width, network, isToken, tokenSymbol } = props
   var needsParse = this.props.needsParse !== undefined ? this.props.needsParse : true
-  value = value ? formatBalance(value, 6, needsParse, network, isToken, tokenSymbol, networkList) : '...'
+  value = value ? formatBalance(value, 6, needsParse, network, isToken, tokenSymbol) : '...'
 
   return (
 
     h('.ether-balance.ether-balance-amount', {
       style: {
-        marginTop: '129px',
+        marginTop: '137px',
       }
 
     }, [
-      h('div', {
-        style: {
-          marginBottom: '15px',
-          fontSize: '12px',
-          color: '#848484',
-          marginRight: '4px',
-        }
-      }, 'Available:'),
+        h('div',{
+            style: {
+                marginBottom: '15px',
+                fontSize: '12px',
+                color: '#848484',
+                marginRight: '4px',
+            }
+        },'Available:'),
       h('div', {
         style: {
           display: 'inline',
           width,
         },
       }, this.renderBalance(value)),
-
     ])
 
   )
@@ -52,7 +51,7 @@ EthBalanceComponent.prototype.renderBalance = function (value) {
   const { conversionRate, shorten, incoming, currentCurrency } = props
   if (value === 'None') return value
   if (value === '...') return value
-  var balanceObj = generateBalanceObject(value, shorten ? 1 : 4)
+  var balanceObj = generateBalanceObject(value, shorten ? 1 : 3)
   var balance
   var splitBalance = value.split(' ')
   var ethNumber = splitBalance[0]
@@ -62,7 +61,7 @@ EthBalanceComponent.prototype.renderBalance = function (value) {
   if (shorten) {
     balance = balanceObj.shortBalance
   } else {
-    balance = balanceObj.shortBalance
+    balance = balanceObj.balance
   }
 
   var label = balanceObj.label
@@ -79,21 +78,26 @@ EthBalanceComponent.prototype.renderBalance = function (value) {
   }
 
   return (
-    <div>
-      <div className={'flex-column'}>
-        <div className={'flex-row'}
-          style={{
-            alignItems: 'flex-end',
-            lineHeight: '20px',
-            textRendering: 'geometricPrecision',
-          }}>
-          <div style={valueStyle} >{incoming ? `+${balance}` : balance}</div>
-          <div style={dimStyle} >{label}</div>
-        </div>
+    h(Tooltip, {
+      position: 'bottom',
+      title: `${ethNumber} ${ethSuffix}`,
+    }, h('div.flex-column', [
+      h('.flex-row', {
+        style: {
+          alignItems: 'flex-end',
+          lineHeight: '20px',
+          textRendering: 'geometricPrecision',
+        },
+      }, [
+        h('div', {
+          style: valueStyle,
+        }, incoming ? `+${balance}` : balance),
+        h('div', {
+          style: dimStyle,
+        }, label),
+      ]),
 
-
-        {showFiat ? h(FiatValue, { valueStyle, dimStyle, value: props.value, conversionRate, currentCurrency, network: props.network }) : null}
-      </div>
-    </div>
+      showFiat ? h(FiatValue, { valueStyle, dimStyle, value: props.value, conversionRate, currentCurrency, network: props.network }) : null,
+    ]))
   )
 }

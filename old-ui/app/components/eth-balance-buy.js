@@ -1,10 +1,9 @@
 const Component = require("react").Component;
 const h = require("react-hyperscript");
-import React from "react";
 const inherits = require("util").inherits;
 const formatBalance = require("../util").formatBalance;
 const generateBalanceObject = require("../util").generateBalanceObject;
-import { Tooltip as ReactTooltip } from "react-tippy";
+const Tooltip = require("./tooltip.js");
 const FiatValue = require("./fiat-value.js");
 
 module.exports = EthBalanceComponent;
@@ -34,9 +33,9 @@ EthBalanceComponent.prototype.render = function () {
         "div",
         {
           style: {
-            width: '100%',
-            display: 'flex',
-            justifyContent: 'center',
+          width: '100%',
+          display: 'flex',
+          justifyContent: 'center',
           },
         },
         this.renderBalance(value)
@@ -66,68 +65,75 @@ EthBalanceComponent.prototype.renderBalance = function (value) {
   const valueStyle = props.valueStyle
     ? props.valueStyle
     : {
-      color: "#1F1F1F",
-      width: "100%",
-      fontSize: "30px",
-      textAlign: "right",
-      fontFamily: "Inter",
-      fontWeight: "600",
-    };
+        color: "#1F1F1F",
+        width: "100%",
+        fontSize: "30px",
+        textAlign: "right",
+        fontFamily: "Inter",
+        fontWeight: "600",
+      };
   const dimStyle = props.dimStyle
     ? props.dimStyle
     : {
-      color: " #1F1F1F",
-      fontSize: "30px",
-      marginLeft: "5px",
-      fontFamily: "Inter",
-      fontWeight: "600",
-    };
-  const randomnumber = Math.floor(Math.random() * 100);
+        color: " #1F1F1F",
+        fontSize: "30px",
+        marginLeft: "5px",
+        fontFamily: "Inter",
+        fontWeight: "600",
+      };
 
-
-  return h("div.flex-column", {
-    style: {
-
-      alignItems: 'center',
-      width: '100%'
+  return h(
+    Tooltip,
+    {
+      position: "bottom",
+      title: `${ethNumber} ${ethSuffix}`,
     },
-  }, [
-    h(
-      ".flex-row",
-      {
-        style: {
-          alignItems: "flex-end",
-          lineHeight: "20px",
-          textRendering: "geometricPrecision",
+    h("div.flex-column", {
+     style:{
+       
+        alignItems: 'center',
+      width: '100%'},
+    }, [
+      h(
+        ".flex-row",
+        {
+          style: {
+            alignItems: "flex-end",
+            lineHeight: "20px",
+            textRendering: "geometricPrecision",
+            // marginRight: "auto",
+            // marginLeft: "auto",
+            // paddingLeft: "12px",
+          },
         },
-      },
-      [
-        <ReactTooltip
-          arrow={true}
-          trigger={'mouseenter focus'}
-          position='bottom'
-          size='small'
-          title={`${balance + " " + label}`}
-          theme='dark'
-        >
-          <div style={{ display: "flex" }}>
-            <div data-tip data-for={`${randomnumber}`} style={valueStyle} >{incoming ? `+${balance}` : balance}</div>,
-            <div style={dimStyle} >{label}</div>
-          </div>
-        </ReactTooltip>,
-      ]
-    ),
+        [
+          h(
+            "div",
+            {
+              style: valueStyle,
+            },
+            incoming ? `+${balance}` : balance
+          ),
+          h(
+            "div",
+            {
+              style: dimStyle,
+            },
+            label
+          ),
+        ]
+      ),
 
-
-    showFiat
-      ? h(FiatValue, {
-        valueStyle,
-        dimStyle,
-        value: props.value,
-        conversionRate,
-        currentCurrency,
-        network: props.network,
-      })
-      : null,
-  ]);
+      showFiat
+        ? h(FiatValue, {
+            valueStyle,
+            dimStyle,
+            value: props.value,
+            conversionRate,
+            currentCurrency,
+            network: props.network,
+          })
+        : null,
+    ])
+  );
 };

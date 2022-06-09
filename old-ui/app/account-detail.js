@@ -4,7 +4,7 @@ const Component = require('react').Component
 const h = require('react-hyperscript')
 const connect = require('react-redux').connect
 const actions = require('../../ui/app/actions')
-const { getCurrentKeyring, ifContractAcc, valuesFor, toChecksumAddress } = require('./util')
+const {getCurrentKeyring, ifContractAcc, valuesFor, toChecksumAddress} = require('./util')
 const EthBalance = require('./components/eth-balance')
 const TransactionList = require('./components/transaction-list')
 const ExportAccountView = require('./components/account-export')
@@ -19,7 +19,7 @@ import { getMetaMaskAccounts } from '../../ui/app/selectors'
 
 module.exports = connect(mapStateToProps)(AccountDetailScreen)
 
-function mapStateToProps(state) {
+function mapStateToProps (state) {
   const accounts = getMetaMaskAccounts(state)
   return {
     metamask: state.metamask,
@@ -45,14 +45,14 @@ function mapStateToProps(state) {
 
 inherits(AccountDetailScreen, Component)
 
-function AccountDetailScreen() {
+function AccountDetailScreen () {
   Component.call(this)
 
 }
 
 AccountDetailScreen.prototype.render = function () {
   var props = this.props
-  const { network, conversionRate, currentCurrency, networkList } = props
+  const {network, conversionRate, currentCurrency, networkList} = props
   var selected = props.address || Object.keys(props.accounts)[0]
   var checksumAddress = selected && toChecksumAddress(network, selected)
   var identity = props.identities[selected]
@@ -64,7 +64,7 @@ AccountDetailScreen.prototype.render = function () {
 
   const currentKeyring = getCurrentKeyring(props.address, network, props.keyrings, props.identities)
 
-  function shorten(b, amountL = 7, /*amountR = 4,*/ stars = 3) {
+  function shorten (b, amountL = 7, /*amountR = 4,*/ stars = 3) {
 
     return `${b.slice(0, amountL)}${'.'.repeat(stars)}${b.slice(
       b.length - 4,
@@ -175,11 +175,9 @@ AccountDetailScreen.prototype.render = function () {
               h('.flex-row', {
                 style: {
                   width: '100%',
-                  display: 'flex',
-                  justifyContent: 'center',
+                  justifyContent: 'space-between',
                   // alignItems: 'baseline',
                   marginTop: '3px',
-                  margin: '3px 0 0px 0px',
                 },
               }, [
 
@@ -189,8 +187,7 @@ AccountDetailScreen.prototype.render = function () {
                   style: {
                     width: '8em',
                     display: 'inline-flex',
-                    margin: ' 0px 0px 15px 0',
-                    justifyContent: "flex-end"
+                    margin: ' 0 0 15px 112px',
                   },
                 }, [
                   h('span', {
@@ -204,7 +201,7 @@ AccountDetailScreen.prototype.render = function () {
                       fontFamily: 'Inter-Regular',
                       textRendering: 'geometricPrecision',
                       color: '#848484',
-                      // marginLeft: '18px',
+                      marginLeft: '18px',
                     },
                   }, shorten(checksumAddress)),
                   h(CopyButton, {
@@ -214,7 +211,6 @@ AccountDetailScreen.prototype.render = function () {
                     value: checksumAddress,
                     isWhite: true,
                   }),
-
                 ]),
                 [
                   h(
@@ -260,7 +256,6 @@ AccountDetailScreen.prototype.render = function () {
             currentCurrency,
             network,
             networkList,
-            shorten: false,
             style: {
               lineHeight: '7px',
               // marginBottom: '42px',
@@ -268,92 +263,68 @@ AccountDetailScreen.prototype.render = function () {
           }),
         ]),
 
-        h('.flex-grow', {
-          style: {
-            display: 'flex',
-            flexFlow: 'row',
-            justifyContent: 'center',
-            marginBottom: '20px',
-          }
-        }, [
+        h('.flex-grow'),
 
 
-          !ifContractAcc(currentKeyring) ? h('div', {
+        !ifContractAcc(currentKeyring) ? h('button',
+
+
+          {
+            onClick: () => props.dispatch(actions.buyEthView(selected)),
+
             style: {
-              display: 'flex',
-              justifyContent: 'center',
-              margin: '0 10px 0 0'
-            }
-          }, [h('button',
-
-
+              margin: '0 10px 20px 100px',
+              width: '74px',
+              height: '29px',
+              background: '#2149B9',
+              borderRadius: '4px',
+              opacity: '1',
+              // image: 'url(/images/Assets/downarrow-2.svg)',
+              // img:'/images/Assets/downarrow-2.svg',
+            },
+          }, [h('img',
             {
-              onClick: () => props.dispatch(actions.buyEthView(selected)),
-
               style: {
-                // margin: '0 10px 20px 100px',
-                width: '74px',
-                height: '29px',
-                background: '#2149B9',
-                borderRadius: '4px',
-                opacity: '1',
-                // image: 'url(/images/Assets/downarrow-2.svg)',
-                // img:'/images/Assets/downarrow-2.svg',
-              },
-            }, [h('img',
-              {
-                style: {
-                  marginRight: '8px',
-                  marginTop: '0.5px',
+                marginRight: '8px',
+                marginTop: '0.5px',
 
-                }, src: '/images/Assets/downarrow-2.svg',
-              },
-            ), 'Buy']),]) : null,
+              }, src: '/images/Assets/downarrow-2.svg',
+            },
+          ), 'Buy']) : null,
 
 
-          // h('img',
-          //   {src: "/images/Assets/downarrow-2.svg" },
-          // ),
+        // h('img',
+        //   {src: "/images/Assets/downarrow-2.svg" },
+        // ),
 
-          h('div', {
-            style: {
-              display: 'flex',
-              justifyContent: 'center',
 
+        h('button', {
+          onClick: () => {
+            if (ifContractAcc(currentKeyring)) {
+              return props.dispatch(actions.showSendContractPage({}))
+            } else {
+              return props.dispatch(actions.showSendPage())
             }
-          }, [
+          },
+          style: {
+
+            width: '74px',
+            height: '29px',
+            background: '#2149B9',
+            borderRadius: '4px',
+            opacity: '1',
 
 
+          },
+        }, [h('img',
+          {
+            style: {
+              marginRight: '8px',
 
-            h('button', {
-              onClick: () => {
-                if (ifContractAcc(currentKeyring)) {
-                  return props.dispatch(actions.showSendContractPage({}))
-                } else {
-                  return props.dispatch(actions.showSendPage())
-                }
-              },
-              style: {
+            }, src: '/images/Assets/downarrow-2-1.svg',
+          },
+        ), ifContractAcc(currentKeyring) ? 'Execute methods' : 'Send']),
 
-                width: '74px',
-                height: '29px',
-                background: '#2149B9',
-                borderRadius: '4px',
-                opacity: '1',
-
-
-              },
-            }, [h('img',
-              {
-                style: {
-                  marginRight: '8px',
-
-                }, src: '/images/Assets/downarrow-2-1.svg',
-              },
-            ), ifContractAcc(currentKeyring) ? 'Execute methods' : 'Send']),
-          ])
-        ]
-        ),
         // ]),
       ]),
 
@@ -377,7 +348,7 @@ AccountDetailScreen.prototype.subview = function () {
     case 'transactions':
       return this.tabSections()
     case 'export':
-      var state = extend({ key: 'export' }, this.props)
+      var state = extend({key: 'export'}, this.props)
       return h(ExportAccountView, state)
     default:
       return this.tabSections()
@@ -385,14 +356,14 @@ AccountDetailScreen.prototype.subview = function () {
 }
 
 AccountDetailScreen.prototype.tabSections = function () {
-  const { currentAccountTab } = this.props
+  const {currentAccountTab} = this.props
 
-  return h('section.tabSection.full-flex-height.grow-tenx',{style:{width:'100%'}}, [
+  return h('section.tabSection.full-flex-height.grow-tenx', [
 
     h(TabBar, {
       tabs: [
-        { content: 'Transactions', key: 'history', id: 'wallet-view__tab-history' },
-        { content: 'Tokens', key: 'tokens', id: 'wallet-view__tab-tokens' },
+        {content: 'Transactions', key: 'history', id: 'wallet-view__tab-history'},
+        {content: 'Tokens', key: 'tokens', id: 'wallet-view__tab-tokens'},
       ],
       defaultTab: currentAccountTab || 'history',
       tabSelected: (key) => {
@@ -406,8 +377,8 @@ AccountDetailScreen.prototype.tabSections = function () {
 
 AccountDetailScreen.prototype.tabSwitchView = function () {
   const props = this.props
-  const { address, network } = props
-  const { currentAccountTab, tokens } = this.props
+  const {address, network} = props
+  const {currentAccountTab, tokens} = this.props
 
   switch (currentAccountTab) {
     case 'tokens':
@@ -426,7 +397,7 @@ AccountDetailScreen.prototype.tabSwitchView = function () {
 AccountDetailScreen.prototype.transactionList = function () {
   const {
     transactions, unapprovedMsgs, address,
-    network, shapeShiftTxList, conversionRate, networkList
+    network, shapeShiftTxList, conversionRate,
   } = this.props
 
   return h(TransactionList, {
@@ -436,12 +407,10 @@ AccountDetailScreen.prototype.transactionList = function () {
     conversionRate,
     address,
     shapeShiftTxList,
-    networkList,
     viewPendingTx: (txId) => {
       this.props.dispatch(actions.viewPendingTx(txId))
     },
     viewTxDetails: (txId) => {
-      console.log(txId, 'pop')
       this.props.dispatch(actions.transactionDetails(txId))
     },
   })

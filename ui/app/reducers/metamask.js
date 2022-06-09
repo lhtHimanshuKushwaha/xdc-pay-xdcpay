@@ -1,8 +1,8 @@
 const extend = require('xtend')
 const actions = require('../actions')
 const MetamascaraPlatform = require('../../../app/scripts/platforms/window')
-const { getEnvironmentType } = require('../../../app/scripts/lib/util')
-const { ENVIRONMENT_TYPE_POPUP } = require('../../../app/scripts/lib/enums')
+const {getEnvironmentType} = require('../../../app/scripts/lib/util')
+const {ENVIRONMENT_TYPE_POPUP} = require('../../../app/scripts/lib/enums')
 const {
   OLD_UI_NETWORK_TYPE,
   permanentNetworks,
@@ -10,11 +10,11 @@ const {
 const {
   contactDetails,
 } = require('../../../app/scripts/controllers/network/contactList')
-const { RECOVERY_IN_PROGRESS } = require('../actions')
+const {RECOVERY_IN_PROGRESS} = require('../actions')
 
 module.exports = reduceMetamask
 
-function reduceMetamask(state, action) {
+function reduceMetamask (state, action) {
   let newState
 
   // clone + defaults
@@ -26,7 +26,7 @@ function reduceMetamask(state, action) {
       isMascara: window.platform instanceof MetamascaraPlatform,
       isPopup:
         getEnvironmentType(window.location.href) === ENVIRONMENT_TYPE_POPUP,
-      // rpcTarget: 'https://rawtestrpc.metamask.io/',
+      rpcTarget: 'https://rawtestrpc.metamask.io/',
       identities: {},
       unapprovedTxs: {},
       noActiveNotices: true,
@@ -65,7 +65,6 @@ function reduceMetamask(state, action) {
       },
       showGasFields: true,
       showTokens: true,
-      showIncomingTransaction: false,
       isValidName: false,
       isValidAddress: false,
       networkList: permanentNetworks,
@@ -119,16 +118,6 @@ function reduceMetamask(state, action) {
       return extend(metamaskState, {
         showTokens: action.value,
       })
-    
-      case actions.UPDATE_TRANSACTIONLIST:
-        return extend(metamaskState, {
-          showIncomingTransaction: action.value,
-        })
-    
-      case actions.UPDATE_EXPANDEDUI:
-        return extend(metamaskState, {
-          expandUi: action.value,
-        })
     case actions.LOCK_METAMASK:
       return extend(metamaskState, {
         isUnlocked: false,
@@ -226,9 +215,9 @@ function reduceMetamask(state, action) {
       const account = action.value.account
       const name = action.value.label
       const id = {}
-      id[account] = extend(metamaskState.identities[account], { name })
+      id[account] = extend(metamaskState.identities[account], {name})
       const identities = extend(metamaskState.identities, id)
-      return extend(metamaskState, { identities })
+      return extend(metamaskState, {identities})
 
     case actions.SET_CURRENT_FIAT:
       return extend(metamaskState, {
@@ -355,8 +344,8 @@ function reduceMetamask(state, action) {
       })
 
     case actions.UPDATE_TRANSACTION_PARAMS:
-      const { id: txId, value } = action
-      let { selectedAddressTxList } = metamaskState
+      const {id: txId, value} = action
+      let {selectedAddressTxList} = metamaskState
       selectedAddressTxList = selectedAddressTxList.map((tx) => {
         if (tx.id === txId) {
           tx.txParams = value
@@ -370,7 +359,7 @@ function reduceMetamask(state, action) {
 
     case actions.PAIR_UPDATE:
       const {
-        value: { marketinfo: pairMarketInfo },
+        value: {marketinfo: pairMarketInfo},
       } = action
       return extend(metamaskState, {
         tokenExchangeRates: {
@@ -381,7 +370,7 @@ function reduceMetamask(state, action) {
 
     case actions.SHAPESHIFT_SUBVIEW:
       const {
-        value: { marketinfo: ssMarketInfo, coinOptions },
+        value: {marketinfo: ssMarketInfo, coinOptions},
       } = action
       return extend(metamaskState, {
         tokenExchangeRates: {
@@ -418,7 +407,7 @@ function reduceMetamask(state, action) {
 
     case actions.SET_PENDING_TOKENS:
       return extend(metamaskState, {
-        pendingTokens: { ...action.payload },
+        pendingTokens: {...action.payload},
       })
 
     case actions.CLEAR_PENDING_TOKENS: {
@@ -429,7 +418,7 @@ function reduceMetamask(state, action) {
 
     case actions.UPDATE_PREFERENCES: {
       return extend(metamaskState, {
-        preferences: { ...action.payload },
+        preferences: {...action.payload},
       })
     }
 

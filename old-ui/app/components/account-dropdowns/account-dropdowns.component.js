@@ -42,10 +42,6 @@ class AccountDropdowns extends Component {
     enableAccountsSelector: false,
     enableAccountOptions: false,
   }
-  static contextTypes = {
-    t: PropTypes.func,
-  }
-
 
   static propTypes = {
     identities: PropTypes.objectOf(PropTypes.object),
@@ -54,7 +50,6 @@ class AccountDropdowns extends Component {
     actions: PropTypes.objectOf(PropTypes.func),
     network: PropTypes.string,
     style: PropTypes.object,
-    className: PropTypes.string,
     enableAccountOptions: PropTypes.bool,
     enableAccountsSelector: PropTypes.bool,
   }
@@ -146,15 +141,14 @@ class AccountDropdowns extends Component {
     return (
       <Dropdown
         useCssTransition={true} // Hardcoded because account selector is temporarily in app-header
-        // style={{
-        //   position: 'absolute',
-        //   left: '0',
-        //   bottom: '-543px',
-        //   minWidth: '180px',
-        //   marginLeft: '19px',
-        //   width: '317px',
-        // }}
-        className={"myAccountExpanded"}
+        style={{
+          position: 'absolute',
+          left: '0',
+          bottom: '-543px',
+          minWidth: '180px',
+
+          width: '317px',
+        }}
         innerStyle={
           {
             // padding: '8px 25px',
@@ -174,12 +168,12 @@ class AccountDropdowns extends Component {
         <div className="my-accounts-list">
           My Accounts
           <img
-            className="my-accounts-close-icon dropdownCloseImage"
+            className="my-accounts-close-icon"
             src="/images/Assets/Close.svg"
           ></img>
         </div>
         <div style={{
-          maxHeight: accountSelectorActive ? '187px' : '0px',
+          maxHeight: accountSelectorActive ? '271px' : '0px',
           height: '100%',
           overflowY: 'auto',
 
@@ -189,26 +183,24 @@ class AccountDropdowns extends Component {
       </Dropdown>
     )
   }
-  
 
   renderAccountOptions () {
     const {actions, selected, network, keyrings, identities, networkList} = this.props
     const {optionsMenuActive, isProxy} = this.state
 
     const keyring = getCurrentKeyring(selected, network, keyrings, identities)
-    const { t } = this.context
+
     return (
       <div>
 
-        <Dropdown 
-          // style={{
-          //   minWidth: '180px',
-          //   width: '317px',
-          //   position: 'absolute',
-          //   left: '0',
-          //   bottom: '18px',
-          //    }}
-          className={"dropp"}
+        <Dropdown
+          style={{
+            position: 'absolute',
+            minWidth: '180px',
+            left: '0',
+            bottom: '18px',
+            width: '317px',
+          }}
           isOpen={optionsMenuActive}
           onClickOutside={(event) => {
             const {classList} = event.target
@@ -221,30 +213,24 @@ class AccountDropdowns extends Component {
           }}
         >
           <div className="account-options-list">
-            {`${t('accountOptions')}` }
+            Account Options
             <img
-              className="account-options-close-icon dropdownCloseImage"
+              className="account-options-close-icon"
               src="/images/Assets/Close.svg"
             />
           </div>
-          <DropdownMenuItem
-          className={"hideMenuOption"}
+          {/* <DropdownMenuItem
             closeMenu={() => {
             }}
-            onClick={() => {
-              global.platform.openExtensionInBrowser()
-              .then(() => this.handleCheckBox())
-            }
-            } 
-              
+            onClick={() => global.platform.openExtensionInBrowser()}
           >
             <img
               className="account-options-icon"
               src="/images/Assets/ExpandedView.svg"
             />
-            {`${t('expandedView')}` }
-          </DropdownMenuItem> 
-          {/* <DropdownMenuItem
+            Expanded View
+          </DropdownMenuItem>
+          <DropdownMenuItem
             closeMenu={() => {
             }}
             onClick={() => actions.connectedSites()}
@@ -253,8 +239,8 @@ class AccountDropdowns extends Component {
               className="account-options-icon"
               src="/images/Assets/ConnectedSites.svg"
             />
-           {`${t('connectedSites')}` } 
-          </DropdownMenuItem>  */}
+            Connected Sites
+          </DropdownMenuItem> */}
           <DropdownMenuItem
             closeMenu={() => {
             }}
@@ -264,7 +250,7 @@ class AccountDropdowns extends Component {
               className="account-options-icon"
               src="/images/Assets/ViewOnExplorer.svg"
             />
-            {network==50?'View on Observer':"View on block explorer"}
+            {network==50?'View on observer':"View on block explorer"}
           </DropdownMenuItem>
           <DropdownMenuItem
             closeMenu={() => {
@@ -275,7 +261,7 @@ class AccountDropdowns extends Component {
               className="account-options-icon"
               src="/images/Assets/QRCode.svg"
             />
-             {`${t('showQRCode')}`}
+            Show QR Code
           </DropdownMenuItem>
           <DropdownMenuItem
             closeMenu={() => {
@@ -286,7 +272,7 @@ class AccountDropdowns extends Component {
               className="account-options-icon"
               src="/images/Assets/CopyClipboard.svg"
             />
-            {`${t('copyAddress')}`}
+            Copy address to clipboard
           </DropdownMenuItem>
           {ifContractAcc(keyring) ? (
             <DropdownMenuItem closeMenu={() => {
@@ -313,7 +299,7 @@ class AccountDropdowns extends Component {
                 className="account-options-icon"
                 src="/images/Assets/ExportPvtKey.svg"
               />
-            {`${t('exportPrivateKey')}`}
+              Export Private Key
             </DropdownMenuItem>
           ) : null}
         </Dropdown>
@@ -334,11 +320,6 @@ class AccountDropdowns extends Component {
       network,
     )
     global.platform.openWindow({url})
-  }
-  
-  handleCheckBox = () => {
-    const expandUi = this.props.metamask.expandUi
-    this.props.dispatch(actions.expandedUi(!expandUi))
   }
 
   showQRCode = () => {
@@ -461,7 +442,6 @@ class AccountDropdowns extends Component {
         {this.renderAccountSelector()}
         <Identicon
           diameter={24}
-          borderStyle = {'1px solid #2049B9'}
           address={selected}
 
         />

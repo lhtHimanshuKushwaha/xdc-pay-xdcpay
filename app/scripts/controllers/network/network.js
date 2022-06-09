@@ -35,11 +35,7 @@ const {
   CLASSIC_CODE,
   XDC_RPC_ENDPOINT,
   XDC_TESTNET_RPC_ENDPOINT,
-  XDC_TESTNET_FALLBACK_ENDPOINT,
   XDC_DEVNET_RPC_ENDPOINT,
-  XDC_CODE,
-  XDC_TESTNET_CODE,
-  XDC_RPC_FALLBACK_ENDPOINT,
 } = require('./enums')
 const INFURA_PROVIDER_TYPES = [ROPSTEN, RINKEBY, KOVAN, MAINNET]
 
@@ -50,7 +46,6 @@ const testMode = (METAMASK_DEBUG || env === 'test')
 const defaultProviderConfig = {
   type: testMode ? XDC : XDC_TESTNET,
 }
-var url;
 
 module.exports = class NetworkController extends EventEmitter {
 
@@ -111,15 +106,7 @@ module.exports = class NetworkController extends EventEmitter {
     }
     const ethQuery = new EthQuery(this._provider)
     ethQuery.sendAsync({ method: 'net_version' }, (err, network) => {
-      if (err && type === XDC) {
-        network = XDC_CODE.toString()
-        this._configureStandardProvider({ rpcUrl: XDC_RPC_FALLBACK_ENDPOINT })
-      }
-      else if (err && type === XDC_TESTNET) {
-        network = XDC_TESTNET_CODE.toString()
-        this._configureStandardProvider({ rpcUrl: XDC_TESTNET_FALLBACK_ENDPOINT })
-      }
-      else if (err) return this.setNetworkState('loading')
+      if (err) return this.setNetworkState('loading')
       const targetHost = parse(rpcTarget, true).host
       const classicHost = parse(ethNetProps.RPCEndpoints(CLASSIC_CODE)[0], true).host
       if (type === CLASSIC || targetHost === classicHost) {
@@ -130,7 +117,7 @@ module.exports = class NetworkController extends EventEmitter {
     })
   }
 
-  setRpcTarget(rpcTarget) {
+  setRpcTarget (rpcTarget) {
     const providerConfig = {
       type: 'rpc',
       rpcTarget,
@@ -225,16 +212,10 @@ module.exports = class NetworkController extends EventEmitter {
 
   _configureStandardProvider({ rpcUrl }) {
     log.info('NetworkController - configureStandardProvider', rpcUrl)
-    this.rpcUrlCall(rpcUrl);
     const networkClient = createJsonRpcClient({ rpcUrl })
     this._setNetworkClient(networkClient)
   }
-  rpcUrlCall(rpcUrl) {
-    if (rpcUrl != null) {
-      url = rpcUrl
-    }
-    return url;
-  }
+
   _setNetworkClient({ networkMiddleware, blockTracker }) {
     const metamaskMiddleware = createMetamaskMiddleware(this._baseProviderParams)
     const engine = new JsonRpcEngine()

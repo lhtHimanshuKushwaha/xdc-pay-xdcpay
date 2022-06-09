@@ -35,19 +35,18 @@ class MainMenu extends Component {
             this.props.openMainMenu()
           }
         }}
-        // style={{
-        //   position: 'absolute',
-        //   bottom: '18px',
-        //   width: '317px',
-        //   maxHeight: isOpen ? '186px' : '0px',
-        //   overflow: 'hidden',
-        //   marginLeft: '19px',
-        // }}
-        className={"walletOptionsExpanded"}
+        style={{
+          position: 'absolute',
+          bottom: '18px',
+          width: '317px',
+          maxHeight: isOpen ? '186px' : '0px',
+          overflow: 'hidden',
+          marginLeft: '19px',
+        }}
       >
         <div className='wallet-options-list'>
           Wallet Options
-          <img className='wallet-options-close-icon dropdownCloseImage' onClick={() => this.props.changeState(isMainMenuOpen)} src='/images/Assets/Close.svg'></img>
+          <img className='wallet-options-close-icon' onClick={() => this.props.changeState(isMainMenuOpen)} src='/images/Assets/Close.svg'></img>
         </div>
         <DropdownMenuItem
           closeMenu={() => this.props.changeState(isMainMenuOpen)}

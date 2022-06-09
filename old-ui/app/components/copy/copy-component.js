@@ -4,7 +4,7 @@ import copyToClipboard from 'copy-to-clipboard'
 import Tooltip from '../tooltip'
 
 class CopyComponent extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.timerID = null
     this.state = {
@@ -17,38 +17,35 @@ class CopyComponent extends Component {
     tooltipPosition: PropTypes.oneOf(['left', 'right', 'top', 'bottom', 'topLeft', 'topRight', 'bottomLeft', 'bottomRight']),
   }
 
-  onClick(event, value) {
+  onClick (event, value) {
     event.preventDefault()
     event.stopPropagation()
     copyToClipboard(value)
     this.debounceRestore()
   }
 
-  componentWillUnmount() {
+  componentWillUnmount () {
     clearTimeout(this.timerID)
   }
 
-
-  renderTooltip(message, position, children) {
-
+  renderTooltip (message, position, children) {
     return (
       <Tooltip
+        title={message}
         position={position}
-        message={message}
       >
-        {children}
+      {children}
       </Tooltip>
     )
   }
 
-  debounceRestore() {
+  debounceRestore () {
     this.setState({ copied: true })
     clearTimeout(this.timerID)
     this.timerID = setTimeout(() => {
       this.setState({ copied: false })
-    }, 2000)
+    }, 850)
   }
-
 }
 
 module.exports = CopyComponent

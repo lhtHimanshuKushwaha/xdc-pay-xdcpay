@@ -9,19 +9,19 @@ module.exports = TransactionList
 
 
 inherits(TransactionList, Component)
-function TransactionList() {
+function TransactionList () {
   Component.call(this)
 }
 
 TransactionList.prototype.render = function () {
-  const { transactions, network, unapprovedMsgs, conversionRate, networkList } = this.props
+  const { transactions, network, unapprovedMsgs, conversionRate } = this.props
 
   var shapeShiftTxList
   if (Number(network) === MAINNET_CODE) {
     shapeShiftTxList = this.props.shapeShiftTxList
   }
   const txsToRender = !shapeShiftTxList ? transactions.concat(unapprovedMsgs) : transactions.concat(unapprovedMsgs, shapeShiftTxList)
-    .sort((a, b) => b.time - a.time)
+  .sort((a, b) => b.time - a.time)
 
   return (
 
@@ -41,7 +41,13 @@ TransactionList.prototype.render = function () {
         }
       `),
 
-      h('.tx-list',[
+      h('.tx-list', {
+        style: {
+          overflowY: 'auto',
+          padding: '0 13px 20px 13px',
+          textAlign: 'center',
+        },
+      }, [
 
         txsToRender.length
           ? txsToRender.map((transaction, i) => {
@@ -56,31 +62,31 @@ TransactionList.prototype.render = function () {
             }
             return h(TransactionListItem, {
               transaction, i, network, key,
-              conversionRate, transactions, networkList,
+              conversionRate, transactions,
               showTx: (txId) => {
                 this.props.viewPendingTx(txId)
               },
               showTransctionDetails: (txId) => {
                 this.props.viewTxDetails(txId)
               },
-
+             
             })
           })
-          : h('.flex-center.full-flex-height', {
+        : h('.flex-center.full-flex-height', {
+          style: {
+            flexDirection: 'column',
+            justifyContent: 'center',
+          },
+        }, [
+          h('p', {
             style: {
-              flexDirection: 'column',
-              justifyContent: 'center',
+              margin: '95px 0',
+              color: '#9FA9BA',
+              // fontFamily: 'Inter',
+              fontSize: '14px',
             },
-          }, [
-            h('p', {
-              style: {
-                margin: '95px 0',
-                color: '#9FA9BA',
-                // fontFamily: 'Inter',
-                fontSize: '14px',
-              },
-            }, 'No transaction history'),
-          ]),
+          }, 'No transaction history'),
+        ]),
       ]),
     ])
   )

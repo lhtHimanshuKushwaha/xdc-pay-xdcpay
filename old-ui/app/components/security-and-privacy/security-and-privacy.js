@@ -23,30 +23,22 @@ const TimePeriod = timePeriodOption.map((timePeriod) => {
   };
 });
 
-
 class SecurityAndPrivacySettings extends React.Component {
   handleCheckBox = () => {
-    
-    const showIncomingTransaction = this.props.metamask.showIncomingTransaction
-    this.props.dispatch(actions.showIncomingTransaction(!showIncomingTransaction))
+    // const securityandprivacy = this.props.metamask.securityandprivacy
+    // // const [toggle, setToggle] = useState(false);
+    // // toggle ? setToggle(false) : setToggle(true);
+    // // this.setState({ securityandprivacy: !securityandprivacy })
+    // this.props.dispatch(actions.securityandprivacy(!securityandprivacy))
   };
-
-  autoLock = (time) => {
-    var Data = time
-    setTimeout(() => {
-      this.props.dispatch(actions.lockMetamask())
-      console.log('Lock-Metamask',Data)
-    },Data)
-  }
   static contextTypes = {
     t: PropTypes.func,
   };
   render() {
     const state = this.props;
     const metamaskState = state.metamask;
-    const {t} = this.context;
-    const showIncomingTransaction = metamaskState.showIncomingTransaction
-    const currentTime = '2 min'
+    const { t } = this.context;
+
     return (
       <div
         className="flex-column flex-grow"
@@ -54,20 +46,17 @@ class SecurityAndPrivacySettings extends React.Component {
       >
         <div
           className="section-title flex-row"
-          style={{ borderBottom: "1px solid #E3E7EB", paddingBottom: "17px", display: 'flex',justifyContent: 'center',
-      }}
+          style={{ borderBottom: "1px solid #E3E7EB", paddingBottom: "17px" }}
         >
           <img
-            className="image-display"
             src="/images/Assets/BackArrow.svg"
-            style={{ position: 'absolute',
-              left: '16px', cursor: "pointer" ,width:"19px",height:"17px"}}
+            style={{ marginLeft: "12px", cursor: "pointer" }}
             onClick={() => {
               state.dispatch(actions.goConfig());
             }}
           />
-          <h2 style={{ fontFamily: navigator.userAgent.indexOf("Firefox") != -1 ?"Inter-semiBold":"Inter-Bold" ,fontSize:"15px"}}>
-          {`${t('securityandPrivacySettings')}`}
+          <h2 style={{ marginLeft: "39px", fontFamily: "Inter-bold" }}>
+            Security and Privacy Settings
           </h2>
         </div>
         <div
@@ -77,8 +66,8 @@ class SecurityAndPrivacySettings extends React.Component {
           }}
         >
           <span
-            style={{ fontSize: "14px", color: "#2149B9",fontFamily: navigator.userAgent.indexOf("Firefox") != -1 ?"Inter-semiBold":"Inter-Medium" }}
-          >{`${t('revealSeedWords')}`}</span>
+            style={{ fontWeight: "bold", fontSize: "14px", color: "#2149B9" }}
+          >{`${t("revealSeedWords")}`}</span>
           <br />
           <p
             style={{
@@ -87,7 +76,7 @@ class SecurityAndPrivacySettings extends React.Component {
               fontFamily: "Inter-medium",
             }}
           >
-             {`${t('getYourSeedWords')}`}
+            Get your secret seed words by entering your password.
           </p>
           <button
             style={{
@@ -97,18 +86,16 @@ class SecurityAndPrivacySettings extends React.Component {
               background: "#FFFFFF",
               border: "2px solid #03BE46",
               fontWeight: "600",
-              fontFamily:"Inter-semiBold",
             }}
             onClick={(event) => {
               event.preventDefault();
-              // state.onAddContactClicked()
               state.dispatch(actions.revealSeedConfirmation());
             }}
           >
-            Reveal Secret Seed Words
+            Reveal Seed Words
           </button>
         </div>
-         {/* <div
+        {/* <div
           style={{
             padding: " 15px 17px 20px 15px ",
             borderBottom: "1px solid #E3E7EB",
@@ -117,7 +104,7 @@ class SecurityAndPrivacySettings extends React.Component {
           <span
             style={{ fontWeight: "bold", fontSize: "14px", color: "#2149B9" }}
           >
-           {`${t('autoLockTimer')}`} 
+            Auto-Lock Timer
           </span>
           <br />
           <p
@@ -127,17 +114,17 @@ class SecurityAndPrivacySettings extends React.Component {
               fontFamily: "Inter-medium",
             }}
           >
-           {`${t('autoLockTimerDesc')}`} 
+            Set the idle time in minutes before the wallet will be locked.
           </p>
 
           <CustomDropdown
-            placeholder={currentTime}
+            placeholder={TimePeriod}
             options={TimePeriod}
-            selectedOption={TimePeriod.name}
-            onSelect={time => this.autoLock(time)}
+            selectedOption={TimePeriod}
+            // onSelect={}
           />
-        </div> 
-        <div
+        </div> */}
+        {/* <div
           style={{
             padding: " 15px 17px 20px 15px ",
           }}
@@ -145,7 +132,7 @@ class SecurityAndPrivacySettings extends React.Component {
           <span
             style={{ fontWeight: "bold", fontSize: "14px", color: "#2149B9" }}
           >
-           {`${t('showIncomingTransactions')}`}  
+            Show Incoming Transactions
           </span>
           <br />
           <p
@@ -155,20 +142,21 @@ class SecurityAndPrivacySettings extends React.Component {
               fontFamily: "Inter-medium",
             }}
           >
-             {`${t('showIncomingTransactionsDesc')}`}  
+            Select this to use Etherscan to show incoming transactions in the
+            transactions list
           </p>
           <label className="switch">
             <input
               type="checkbox"
-              onChange={this.handleCheckBox}
-             checked={showIncomingTransaction}
+              onChange={this.handleCheckBox} */}
+              {/* // checked={securityandprivacy}
             />
             <span className="slider round"></span>
           </label>
-          <span style={{ marginLeft: "8px" }}> 
-            {showIncomingTransaction ? "On" : "Off"}
-          </span>
-        </div> */}
+          <span style={{ marginLeft: "8px" }}> */}
+            {/* {showIncomingTransaction ? "On" : "Off"} */}
+          {/* </span> */}
+        {/* </div> */}
       </div>
     );
   }

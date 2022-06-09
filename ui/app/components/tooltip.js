@@ -1,7 +1,7 @@
 const Component = require('react').Component
 const h = require('react-hyperscript')
 const inherits = require('util').inherits
-const ReactTooltip = require('react-tooltip')
+const ReactTooltip = require('react-tooltip-component')
 
 module.exports = Tooltip
 
@@ -15,7 +15,7 @@ Tooltip.prototype.render = function () {
   const { position, title, children } = props
 
   return h(ReactTooltip, {
-    place: position || 'left',
+    position: position || 'left',
     title,
     fixed: true,
   }, children)
