@@ -13,7 +13,7 @@ const AddNetworkComponent = (props) => {
         <img src="/images/Assets/BackArrow.svg" style={{position:'absolute',left: 20 , cursor: 'pointer'}} onClick={onBackClick}/>
         <h2 style={{fontFamily: 'Inter-bold'}}>{`${networkObj ? 'View' : 'Add'} Network`}</h2>
       </div>
-      <div style={{margin: '20px 50px 20px 47px '}} className='addNetworkExpand' >
+      <div style={{margin: '20px 50px'}} className='addNetworkExpand' >
         <div className="word" style={{fontFamily: 'Inter-Medium',marginTop:"0px",marginBottom:"-5px"}}>{`${t('networkName')}`}</div>
         
         <div className='addNetworkFields' style={{marginBottom: '28px', border: '1px solid #C7CDD8', borderRadius: '4px'}}>

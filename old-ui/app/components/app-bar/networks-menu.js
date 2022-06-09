@@ -113,7 +113,7 @@ class NetworksMenu extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    showAddNetworkPage: () => dispatch(actions.goConfig()),
+    showAddNetworkPage: () => dispatch(actions.showAddNetworkPage()),
     setRpcTarget: (rpcTarget) => dispatch(actions.setRpcTarget(rpcTarget)),
     setProviderType: (providerType) => dispatch(actions.setProviderType(providerType)),
     showDeleteRPC: (label) => dispatch(actions.showDeleteRPC(label)),

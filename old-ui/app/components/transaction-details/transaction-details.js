@@ -110,15 +110,16 @@ class TransactionDetails extends React.Component {
         <div
           className="flex-column flex-grow settingsCollapsed"
           style={{
+            // maxHeight: "585px",
             overflowY: "auto"
           }}
         >
-          <div style={{ paddingBottom: "10px ",borderBottom:'2px solid #EDEDED', margin:'-10px 0 13px ' }}>
+          <div style={{ paddingBottom: "17px" }}>
             <div
               className="section-title flex-row"
               style={{ justifyContent: "space-between", width: "75%" }}
             >
-              <div style={{display: 'flex',justifyContent: 'center', alignItems: 'center' }}>
+              <div>
                 {" "}
                 <img
                   src="/images/Assets/BackArrow.svg"

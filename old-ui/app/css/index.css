@@ -2524,7 +2524,7 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .tx-list {
   overflow-y: auto;
-  max-height: 504px;
+  max-height: 377px;
   padding: 0 2px 20px 13px;
   text-align: center;
 }
@@ -2532,17 +2532,8 @@ input[type="number"]::-webkit-outer-spin-button {
 @media screen and (max-height: 600px) {
   .tx-list {
     overflow-y: auto;
-    max-height: 300px;
+    max-height: 234px;
     padding: 0 2px 0px 13px;
     text-align: center;
-  }
-}
-
-.noTransaction{
-  margin: 231px 0;
-}
-@media only screen and (max-width:600px){
-  .noTransaction{
-    margin: 100px 0 ;
   }
 }

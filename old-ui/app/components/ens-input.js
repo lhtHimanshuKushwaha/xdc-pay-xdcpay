@@ -60,7 +60,7 @@ EnsInput.prototype.render = function () {
     }, ['Recipient Address',
       h('input.large-input', {
         style: {
-          height: '32px',
+          height: '51px',
         },
         name: props.name,
         placeholder: props.placeholder,

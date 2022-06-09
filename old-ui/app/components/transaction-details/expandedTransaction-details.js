@@ -181,7 +181,7 @@ export default class ExpandedTransactionDetails extends React.Component {
           style={{
             display: "flex",
             width: "100%",
-            minHeight: "581px"
+            minHeight: "745px"
           }}
         >
           <div
