@@ -317,7 +317,7 @@
     "message": "Comisión de gas"
   },
   "gasLimit": {
-    "message": "Límite de gas"
+    "message": "Límite de gas (unidades) "
   },
   "gasLimitCalculation": {
     "message": "Calculamos el límite de gas sugerido en función de las tasas de éxito de la red"
@@ -763,7 +763,7 @@
     "message": "Enviado"
   },
   "supportCenter": {
-    "message": "Visita nuestro centro de atención"
+    "message": "Centro de Apoyo"
   },
   "symbolBetweenZeroTen": {
     "message": "Símbolo debe ser entre 0 y 10 caracteres"
@@ -812,7 +812,7 @@
     "message": "Número de transacción"
   },
   "transactions": {
-    "message": "Transacciones"
+    "message": "Actas"
   },
   "transfers": {
     "message": "Transferencias"
@@ -890,5 +890,125 @@
   },
   "yourSigRequested": {
     "message": "Tu firma ya fue solicitada"
+  },
+  "accountOptions": {
+    "message": "Opciones de cuenta"
+  },
+  "expandedView": {
+    "message": "Vista ampliada"
+  },
+  "yourPrivateSeedPhrase": {
+    "message": "Your private seed phrase"
+  },
+  "viewOnBlockExplorer":{
+    "message": "Ver en el Explorador de bloques"
+  },
+  "tokens":{
+    "message": "Tokens"
+  },
+  "generalSettings":{
+    "message": "Configuración general "
+  },
+  "hideTokensWithout":{
+    "message": "Ocultar fichas sin saldo"
+  },
+  "advanceSettings":{
+    "message": "Ajustes avanzados"
+  },
+  "securityandPrivacySettings":{
+    "message": "Configuración de seguridad y privacidad"
+  },
+  "autoLockTimer":{
+    "message": "Temporizador de bloqueo automático"
+  },
+  "autoLockTimerDesc":{
+    "message": "Establezca el tiempo de inactividad en minutos antes de que se bloquee la billetera."
+  },
+  "showIncomingTransactions":{
+    "message": "Mostrar transacciones entrantes"
+  },
+  "showIncomingTransactionsDesc":{
+    "message": "Seleccione esta opción para usar el Observatorio XDC para mostrar las transacciones entrantes en la lista de transacciones"
+  },
+  "alertMsg" : {
+   "message" : "Esta alerta se muestra en la ventana emergente cuando navega por un sitio web3 conectado, pero la cuenta actualmente seleccionada no está conectada."
+  },
+  "reveal":{
+    "message": "Revelar"
+  },
+  "contacts":{
+    "message": "Contactos"
+  },
+  "addContact":{
+    "message": "Agregar contacto"
+  },
+  "walletAddress":{
+    "message": "Dirección de billetera"
+  },
+  "contactDetails":{
+    "message": "Detalles de contacto"
+  },
+  "userName":{
+    "message": "Nombre de usuario"
+  },
+  "alertSettings":{
+    "message": "Configuración de alertas"
+  },
+  "unconnectedAccountWarning" :{
+   "message" : "Navegando por un sitio web con una cuenta no conectada seleccionada."
+  },
+  "networkSettings":{
+    "message": "Configuración de red"
+  },
+  "addNetwork":{
+    "message": "Agregar red"
+  },
+  "networkName":{
+    "message": "Nombre de red"
+  },
+  "chainID":{
+    "message": "ID de cadena"
+  },
+  "currencySymbol":{
+    "message": "Símbolo de moneda (opcional)"
+  },
+  "blockExplorer":{
+    "message": "Explorador de bloques (opcional)"
+  },
+  "Add":{
+    "message": "Agregar"
+  },
+  "Update":{
+    "message": "Actualizar"
+  },
+  "About":{
+    "message": "Acerca de"
+  },
+  "Link":{
+    "message": "Enlace"
+  },
+  "visitOurWebsite":{
+    "message": "Visite nuestro sitio web"
+  },
+  "contactUs":{
+    "message": "Contáctenos"
+  },
+  "maxTransactionFee":{
+    "message": "Tarifa máxima de transacción"
+  },
+  "Edit":{
+    "message": "Editar"
+  },
+  "connectedSites":{
+    "message":"Sitios conectados"
+  },
+  "advancedGasControls": {
+    "message": "Controles de gas avanzados"
+  },
+  "advancedGasControlsDesc" : {
+    "message":  "Seleccione esta opción para mostrar el precio del gas y los controles de límite directamente en las pantallas de envío y confirmación."
+  },
+  "infoDesc" : {
+    "message" : "¡XDCPay es una extensión para acceder a las aplicaciones distribuidas habilitadas para XDPoS de XDC o Dapps en su navegador!"
   }
 }

@@ -2,12 +2,13 @@ const Component = require('react').Component
 const h = require('react-hyperscript')
 const inherits = require('util').inherits
 const connect = require('react-redux').connect
-
+import React from "react";
+import ReactTooltip from "react-tooltip";
 const EthBalance = require('./eth-balance-txn-list')
 const addressSummary = require('../util').addressSummary
 const CopyButton = require('./copy/copy-button')
 const vreme = new (require('vreme'))()
-const Tooltip = require('./tooltip')
+// const Tooltip = require('./tooltip')
 const numberToBN = require('number-to-bn')
 const actions = require('../../../ui/app/actions')
 const ethNetProps = require('xdc-net-props')
@@ -16,7 +17,8 @@ const TransactionIcon = require('./transaction-list-item-icon')
 const ShiftListItem = require('./shift-list-item')
 const { ifXDC } = require('../util')
 
-const { POA_CODE,
+const {
+  POA_CODE,
   DAI_CODE,
   POA_SOKOL_CODE,
   MAINNET_CODE,
@@ -28,16 +30,18 @@ const { POA_CODE,
   XDC_CODE,
 } = require('../../../app/scripts/controllers/network/enums')
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    retryTransaction: transactionId => dispatch(actions.retryTransaction(transactionId)),
+    retryTransaction: (transactionId) =>
+      dispatch(actions.retryTransaction(transactionId)),
   }
 }
 
 module.exports = connect(null, mapDispatchToProps)(TransactionListItem)
 
 inherits(TransactionListItem, Component)
-function TransactionListItem () {
+
+function TransactionListItem() {
   Component.call(this)
 }
 
@@ -51,34 +55,47 @@ TransactionListItem.prototype.showRetryButton = function () {
 
   let currentTxSharesEarliestNonce = false
   const currentNonce = txParams.nonce
-  const currentNonceTxs = transactions.filter(tx => tx.txParams.nonce === currentNonce)
-  const currentNonceSubmittedTxs = currentNonceTxs.filter(tx => tx.status === 'submitted')
-  const currentSubmittedTxs = transactions.filter(tx => tx.status === 'submitted')
+  const currentNonceTxs = transactions.filter(
+    (tx) => tx.txParams.nonce === currentNonce,
+  )
+  const currentNonceSubmittedTxs = currentNonceTxs.filter(
+    (tx) => tx.status === 'submitted',
+  )
+  const currentSubmittedTxs = transactions.filter(
+    (tx) => tx.status === 'submitted',
+  )
   const lastSubmittedTxWithCurrentNonce = currentNonceSubmittedTxs[0]
-  const currentTxIsLatestWithNonce = lastSubmittedTxWithCurrentNonce &&
+  const currentTxIsLatestWithNonce =
+    lastSubmittedTxWithCurrentNonce &&
     lastSubmittedTxWithCurrentNonce.id === transaction.id
   if (currentSubmittedTxs.length > 0) {
     const earliestSubmitted = currentSubmittedTxs.reduce((tx1, tx2) => {
       if (tx1.submittedTime < tx2.submittedTime) return tx1
       return tx2
     })
-    currentTxSharesEarliestNonce = currentNonce === earliestSubmitted.txParams.nonce
+    currentTxSharesEarliestNonce =
+      currentNonce === earliestSubmitted.txParams.nonce
   }
 
-  return currentTxSharesEarliestNonce && currentTxIsLatestWithNonce && Date.now() - submittedTime > 30000
+  return (
+    currentTxSharesEarliestNonce &&
+    currentTxIsLatestWithNonce &&
+    Date.now() - submittedTime > 30000
+  )
 }
 
 TransactionListItem.prototype.render = function () {
-  const { transaction, network, conversionRate, currentCurrency } = this.props
-  const { status } = transaction
-  if (transaction.key === 'shapeshift') {
-    if (Number(network) === MAINNET_CODE) return h(ShiftListItem, transaction)
+  const { transaction, network, conversionRate, currentCurrency, networkList } = this.props;
+  const { status } = transaction;
+  if (transaction.key === "shapeshift") {
+    if (Number(network) === MAINNET_CODE) return h(ShiftListItem, transaction);
   }
-  var date = formatDate(transaction.time)
+  var date = formatDate(transaction.submittedTime || transaction.time);
 
   let isLinkable = false
   const numericNet = isNaN(network) ? network : parseInt(network)
-  isLinkable = numericNet === MAINNET_CODE ||
+  isLinkable =
+    numericNet === MAINNET_CODE ||
     numericNet === ROPSTEN_CODE ||
     numericNet === RINKEBY_CODE ||
     numericNet === KOVAN_CODE ||
@@ -89,8 +106,8 @@ TransactionListItem.prototype.render = function () {
     numericNet === CLASSIC_CODE ||
     numericNet === XDC_CODE
 
-  var isMsg = ('msgParams' in transaction)
-  var isTx = ('txParams' in transaction)
+  var isMsg = 'msgParams' in transaction
+  var isTx = 'txParams' in transaction
   var isPending = status === 'unapproved'
   let txParams
   if (isTx) {
@@ -118,118 +135,146 @@ TransactionListItem.prototype.render = function () {
     // marginLeft: '5px',
     fontSize: '14px',
   }
-  return (
-    h('.transaction-list-item.flex-column', {
+  return h(
+    '.transaction-list-item.flex-column',
+    {
       onClick: (event) => {
         if (isPending) {
           this.props.showTx(transaction.id)
+        } else {
+          this.props.showTransctionDetails(transaction.id)
         }
-        // else {
-        //   this.props.showTransctionDetails(transaction.id)
-        // }
         event.stopPropagation()
         // if (!transaction.hash || !isLinkable) return
         // const url = ethNetProps.explorerLinks.getExplorerTxLinkFor(transaction.hash, numericNet)
         // global.platform.openWindow({ url })
       },
       style: {
-        padding: '10px 0',
+        padding: '10px 10px 0 0 ',
         alignItems: 'center',
       },
-    }, [
-      h(`.flex-row.flex-space-between${isClickable ? '.pointer' : '.pointer'}`, {
-        style: {
-          width: '100%',
-        },
-      }, [
-        h('div.flex-row', {
-        }, [
-          h('.identicon-wrapper.flex-column.flex-center.select-none', [
-            h(TransactionIcon, { txParams, transaction, isTx, isMsg }),
-        ]),
-
-        // h(Tooltip, {
-        //   title: 'Transaction Number',
-        //   position: 'right',
-        // }, [
-        //   h('span', {
-        //     style: {
-        //       fontFamily: 'Inter',
-        //       display: 'flex',
-        //       cursor: 'normal',
-        //       flexDirection: 'column',
-        //       alignItems: 'center',
-        //       justifyContent: 'center',
-        //       padding: '10px',
-        //     },
-        //   }, nonce),
-        // ]),
-
-        h('.flex-column', {
+    },
+    [
+      h(
+        `.flex-row.flex-space-between${isClickable ? '.pointer' : '.pointer'}`,
+        {
           style: {
-            textAlign: 'left',
-            marginLeft: '14px',
+            width: '100%',
           },
-        }, [
-          domainField(txParams),
-          h('div.flex-row', [
-            recipientField(txParams, transaction, isTx, isMsg, network),
+        },
+        [
+          h('div.flex-row', {}, [
+            h('.identicon-wrapper.flex-column.flex-center.select-none', [
+              h(TransactionIcon, { txParams, transaction, isTx, isMsg }),
+            ]),
+
+            // h(Tooltip, {
+            //   title: 'Transaction Number',
+            //   position: 'right',
+            // }, [
+            //   h('span', {
+            //     style: {
+            //       fontFamily: 'Inter',
+            //       display: 'flex',
+            //       cursor: 'normal',
+            //       flexDirection: 'column',
+            //       alignItems: 'center',
+            //       justifyContent: 'center',
+            //       padding: '10px',
+            //     },
+            //   }, nonce),
+            // ]),
+
+            h(
+              '.flex-column',
+              {
+                style: {
+                  textAlign: 'left',
+                  marginLeft: '14px',
+                },
+              },
+              [
+                domainField(txParams),
+                h('div.flex-row', [
+                  recipientField(txParams, transaction, isTx, isMsg, network),
+                ]),
+                h(
+                  'div',
+                  {
+                    style: {
+                      fontSize: '12px',
+                      color: '#777777',
+                      // fontFamily: 'Inter',
+                    },
+                  },
+                  date,
+                ),
+              ],
+            ),
           ]),
-          h('div', {
-            style: {
-              fontSize: '12px',
-              color: '#777777',
-              // fontFamily: 'Inter',
+
+          isTx
+            ? h(EthBalance, {
+              valueStyle,
+              dimStyle,
+              value: txParams.value,
+              conversionRate,
+              currentCurrency,
+              // width: '55px',
+              shorten: true,
+              showFiat: false,
+              network,
+              networkList,
+              style: {
+                // margin: '0px auto 0px 65px',
+                // fontFamily: 'Inter',
+              },
+            })
+            : h(".flex-column"),
+        ]
+      ),
+
+      this.showRetryButton() &&
+      h(
+        '.transition-list-item__retry.grow-on-hover.error',
+        {
+          onClick: (event) => {
+            event.stopPropagation()
+            this.resubmit()
+          },
+          style: {
+            height: '22px',
+            display: 'flex',
+            alignItems: 'center',
+            fontSize: '8px',
+            cursor: 'pointer',
+            width: 'auto',
+            backgroundPosition: '10px center',
+          },
+        },
+        [
+          h(
+            'div',
+            {
+              style: {
+                paddingRight: '2px',
+                // fontFamily: 'Inter',
+              },
             },
-          }, date),
-        ]),
-      ]),
-
-        isTx ? h(EthBalance, {
-          valueStyle,
-          dimStyle,
-          value: txParams.value,
-          conversionRate,
-          currentCurrency,
-          // width: '55px',
-          shorten: true,
-          showFiat: false,
-          network,
-          style: {
-            // margin: '0px auto 0px 65px',
-            // fontFamily: 'Inter',
-          },
-        }) : h('.flex-column'),
-      ]),
-
-      this.showRetryButton() && h('.transition-list-item__retry.grow-on-hover.error', {
-        onClick: event => {
-          event.stopPropagation()
-          this.resubmit()
-        },
-        style: {
-          height: '22px',
-          display: 'flex',
-          alignItems: 'center',
-          fontSize: '8px',
-          cursor: 'pointer',
-          width: 'auto',
-          backgroundPosition: '10px center',
-        },
-      }, [
-        h('div', {
-          style: {
-            paddingRight: '2px',
-            // fontFamily: 'Inter',
-          },
-        }, 'Taking too long?'),
-        h('div', {
-          style: {
-            textDecoration: 'underline',
-          },
-        }, 'Retry with a higher gas price here'),
-      ]),
-    ])
+            'Taking too long?',
+          ),
+          h(
+            'div',
+            {
+              style: {
+                textDecoration: 'underline',
+              },
+            },
+            'Retry with a higher gas price here',
+          ),
+        ],
+      ),
+    ],
   )
 }
 
@@ -238,50 +283,67 @@ TransactionListItem.prototype.resubmit = function () {
   this.props.retryTransaction(transaction.id)
 }
 
-function domainField (txParams) {
-  return h('div', {
-    style: {
-      fontSize: 'x-small',
-      color: '#ABA9AA',
-      overflow: 'hidden',
-      textOverflow: 'ellipsis',
-      width: '100%',
+function domainField(txParams) {
+  return h(
+    'div',
+    {
+      style: {
+        fontSize: 'x-small',
+        color: '#ABA9AA',
+        overflow: 'hidden',
+        textOverflow: 'ellipsis',
+        width: '100%',
+      },
     },
-  }, [
-    txParams.origin,
-  ])
+    [txParams.origin],
+  )
 }
 
-function recipientField (txParams, transaction, isTx, isMsg, network) {
+function recipientField(txParams, transaction, isTx, isMsg, network) {
   let message
 
   if (isMsg) {
     message = 'Signature Requested'
   } else if (txParams.to) {
-    message = addressSummary(network, txParams.to)
+    message = addressSummary(network, transaction.hash)
   } else {
     message = 'Contract Deployment'
   }
 
-  return h('div', {
-    style: {
-      fontSize: '14px',
-      color: '#333333',
+  return h(
+    'div',
+    {
+      style: {
+        fontSize: '14px',
+        display: "flex",
+        color: '#333333',
+      },
     },
-  }, [
-    h('span', (!txParams.to ? {style: {whiteSpace: 'nowrap'}} : null), message),
-    // Places a copy button if tx is successful, else places a placeholder empty div.
-    transaction.hash ? h(CopyButton, { value: transaction.hash, display: 'inline' }) : h('div', {style: { display: 'flex', alignItems: 'center', width: '26px' }}),
-    renderErrorOrWarning(transaction, network),
-  ])
+    [
+      h(
+        'span',
+        !txParams.to ? { style: { whiteSpace: 'nowrap' } } : null,
+        message,
+      ),
+      // Places a copy button if tx is successful, else places a placeholder empty div.
+      transaction.hash
+        ? h(CopyButton, { value: transaction.hash, display: 'inline' })
+        :
+        h('div', {
+          style: { display: 'flex', alignItems: 'center', width: '26px' },
+        }),
+      renderErrorOrWarning(transaction, network),
+    ],
+  )
 }
 
-function formatDate (date) {
-  return vreme.format(new Date(date), 'Mar 16 2014, 14:30')
+function formatDate(date) {
+  return date ? vreme.format(new Date(date), 'Mar 16 2014, 02:30 PM') : ''
 }
 
-function renderErrorOrWarning (transaction, network) {
+function renderErrorOrWarning(transaction, network) {
   const { status, err, warning } = transaction
+  const randomnumber = Math.floor(Math.random() * 1000000);
 
   // show dropped
   if (status === 'dropped') {
@@ -296,25 +358,39 @@ function renderErrorOrWarning (transaction, network) {
   // show error
   if (err) {
     const message = err.message || ''
-    return (
-        h(Tooltip, {
-          title: message,
-          position: 'bottom',
-        }, [
-          h(`div`, ` (Failed)`),
-        ])
-    )
+
+    return <div>
+      < div data-tip data-for={`${randomnumber}`} ><div>{`(Failed)`}</div></div>
+      <ReactTooltip
+        id={`${randomnumber}`}
+        place="bottom"
+        type="dark"
+        effect="solid"
+      >
+        {`${err.rpc.message}`}
+      </ReactTooltip>
+    </div>
   }
 
   // show warning
   const isXDC = ifXDC(network)
-  if (warning && !isXDC || (isXDC && warning && !warning.error.includes('[ethjs-rpc] rpc error with payload'))) {
+  if (
+    (warning && !isXDC) ||
+    (isXDC &&
+      warning &&
+      !warning.error.includes('[ethjs-rpc] rpc error with payload'))
+  ) {
     const message = warning.message
-    return h(Tooltip, {
-      title: message,
-      position: 'bottom',
-    }, [
-      h(`div`, ` (Warning)`),
-    ])
+    return < div >
+      < div data-tip data-for={`${randomnumber}`} ><div>{`(Warning)`}</div></div>
+      <ReactTooltip
+        id={`${randomnumber}`}
+        place="bottom"
+        type="dark"
+        effect="solid"
+      >
+        {`${message}`}
+      </ReactTooltip>
+    </div >
   }
 }

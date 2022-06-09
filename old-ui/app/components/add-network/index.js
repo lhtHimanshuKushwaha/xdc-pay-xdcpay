@@ -11,7 +11,8 @@ export default class AddNetwork extends React.Component {
   constructor (props) {
     super(props)
     // eslint-disable-next-line react/prop-types
-    const viewNetworkObj = this.props.viewNetworkObj
+    var viewNetworkObj = this.props.viewNetworkObj
+    !viewNetworkObj ? viewNetworkObj = this.props.detailObj : viewNetworkObj
     this.state = {
       rpcNetworkId: viewNetworkObj ? viewNetworkObj.rpcNetworkId : '',
       networkName: viewNetworkObj ? viewNetworkObj.name : '',
@@ -21,10 +22,15 @@ export default class AddNetwork extends React.Component {
       explorerLink: viewNetworkObj ? viewNetworkObj.blockExplorer : '',
     }
   }
+  static contextTypes = {
+    t: PropTypes.func,
+  }
+
 
   onBackClick = () => {
     // eslint-disable-next-line react/prop-types
-    this.props.dispatch(actions.networkSettings())
+    this.props.dispatch(actions.displayWarning(''))
+    this.props.backToNetwork ? this.props.backToNetwork() : this.props.dispatch(actions.networkSettings())
   }
 
   onStateChange = (event) => {
@@ -34,6 +40,7 @@ export default class AddNetwork extends React.Component {
   validateRPC = async (isToUpdate) => {
     this.props.dispatch(actions.displayWarning(''))
     const {frequentRpcList} = this.props
+    const networkList=this.props.metamask.networkList;
     const {rpcNetworkId, networkName, rpcUrl, chainId, currencySymbol, explorerLink} = this.state
     const networkId = rpcNetworkId || 'rpc_network_' + new Date().getTime()
     const rpcNetworkObj = {
@@ -58,11 +65,15 @@ export default class AddNetwork extends React.Component {
           this.props.dispatch(actions.displayWarning('Invalid RPC endpoint'))
         }
         else if (chainId === '') {
-          return this.props.dispatch(actions.displayWarning('Invalid chainId'))
+          return this.props.dispatch(actions.displayWarning('Invalid chain ID'))
         } else {
-          if (frequentRpcList && frequentRpcList.length) {
-            const isRPCAlreadyExists = frequentRpcList.find(netObj => netObj.rpcURL === rpcUrl)
+          if ((frequentRpcList && frequentRpcList.length) || networkList.length) {
+             const isRPCAlreadyExists = frequentRpcList.find(netObj => netObj.rpcURL === rpcUrl)
+             const isXDCNetworkExists = networkList.find(netObj => netObj.rpcURL === rpcUrl)
             if (isRPCAlreadyExists && !isToUpdate) {
+              return this.props.dispatch(actions.displayWarning('RPC Network already exists'))
+            }
+            if (isXDCNetworkExists && !isToUpdate) {
               return this.props.dispatch(actions.displayWarning('RPC Network already exists'))
             }
           }
@@ -95,15 +106,16 @@ export default class AddNetwork extends React.Component {
   }
 
   render () {
-    const t = this.context
+    const { t } = this.context
     // eslint-disable-next-line react/prop-types
-    const {warning, viewNetworkObj} = this.props
+    const {warning, viewNetworkObj,detailObj} = this.props
     return (
       <AddNetworkComponent
         t={t}
         state={this.state}
         viewNetworkObj={viewNetworkObj}
         warningMsg={warning}
+        detailObj = {detailObj}
         onBackClick={this.onBackClick}
         onStateChange={this.onStateChange}
         onAddNetworkClicked={this.onAddNetworkClicked}/>

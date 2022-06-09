@@ -2,9 +2,15 @@ const Component = require('react').Component
 const h = require('react-hyperscript')
 const inherits = require('util').inherits
 const findDOMNode = require('react-dom').findDOMNode
+const connect = require('react-redux').connect
 
-module.exports = EditableLabel
+module.exports = connect(mapStateToProps)(EditableLabel)
 
+function mapStateToProps(state) {
+  return {
+    warning: state.appState.warning,
+  }
+}
 inherits(EditableLabel, Component)
 function EditableLabel () {
   Component.call(this)
@@ -15,11 +21,12 @@ EditableLabel.prototype.render = function () {
   const state = this.state
 
   if (state && state.isEditingLabel) {
-    return h('div.editable-label',{style:{margin:'9px 0 20px 78px '},
+    return h('div.editable-label',{style:{display:'flex', justifyContent:'center'},
   }, [
       h('input.sizing-input', {
         defaultValue: props.textValue,
         maxLength: '20',
+        id:'accountName',
         style: {
           width: '146px',
         },
@@ -44,14 +51,14 @@ EditableLabel.prototype.render = function () {
           this.setState({ isEditingLabel: true })
         }
       },
-    }, this.props.children)
+    }, this.props.children) 
   }
 }
 
 EditableLabel.prototype.saveIfEnter = function (event) {
   if (event.key === 'Enter') {
-    this.saveText()
-  }
+      this.saveText()
+     }
 }
 
 EditableLabel.prototype.saveText = function () {

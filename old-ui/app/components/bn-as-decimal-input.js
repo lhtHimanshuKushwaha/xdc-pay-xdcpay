@@ -29,7 +29,7 @@ BnAsDecimalInput.prototype.render = function () {
   const { value, scale, precision, onChange, min, max } = props
 
   const suffix = props.suffix
-  const style = props.style
+  const style = props.style || props.className
   const valueString = value.toString(10)
   const newMin = min && this.downsize(min.toString(10), scale)
   const newMax = max && this.downsize(max.toString(10), scale)
@@ -37,14 +37,14 @@ BnAsDecimalInput.prototype.render = function () {
 
   return (
     h('.flex-column', [
-      h('.flex-row', {
+      h('.flex-row .arrowrm', {
         style: {
           alignItems: 'flex-end',
           lineHeight: '13px',
           textRendering: 'geometricPrecision',
         },
       }, [
-        h('input.hex-input', {
+        h('input.hex-input.sendFields', {
           type: 'number',
           step: 'any',
           required: true,
@@ -60,6 +60,7 @@ BnAsDecimalInput.prototype.render = function () {
             fontFamily: 'Nunito Regular',
             fontSize: '14px',
             paddingLeft: '10px',
+            appearance:"textfield",
           }, style),
           value: newValue,
           onBlur: (event) => {

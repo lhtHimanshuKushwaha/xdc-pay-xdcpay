@@ -48,6 +48,8 @@ class FiatValue extends Component {
       conversionRate = this.state.conversionRate
     } else if (isDai) {
       conversionRate = 1
+    }else{
+      conversionRate = 1
     }
     const renderedCurrency = currentCurrency || ''
 
@@ -57,7 +59,7 @@ class FiatValue extends Component {
     const splitBalance = value.split(' ')
 
     const fiatTooltipNumber = Number(splitBalance[0]) * conversionRate
-    const fiatDisplayNumber = fiatTooltipNumber.toFixed(countSignificantDecimals(fiatTooltipNumber, 2))
+    const fiatDisplayNumber = (parseFloat(fiatTooltipNumber.toFixed(countSignificantDecimals(fiatTooltipNumber, 2)))).toLocaleString('en-US', {valute: 'USD',minimumFractionDigits: 2});
 
     const valueStyle = props.valueStyle ? props.valueStyle : {
       width: '100%',
@@ -80,17 +82,17 @@ class FiatValue extends Component {
     if (fiatDisplayNumber !== 'N/A') {
       return (
         <div
-          className="flex-row"
-          style={{
-            // alignItems: 'flex-end',
-            // lineHeight: '14px',
-            // textRendering: 'geometricPrecision',
-            position: 'absolute',
-            right: '58px',
-            fontSize: 12,
-            fontFamily: 'Nunito SemiBold',
-            color: '#848484'
-          }}
+          className="flex-row confTransactionFiat"
+          // style={{
+          //   // alignItems: 'flex-end',
+          //   // lineHeight: '14px',
+          //   // textRendering: 'geometricPrecision',
+          //   position: 'absolute',
+          //   right: '58px',
+          //   fontSize: 12,
+          //   fontFamily: 'Nunito SemiBold',
+          //   color: '#848484'
+          // }}
         >
           <div className="fiat-val" style={valueStyle}>{fiatDisplayNumber}</div>
           <div className="fiat-dim" style={dimStyle}>{fiatSuffix}</div>

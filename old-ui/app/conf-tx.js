@@ -63,6 +63,8 @@ ConfirmTxScreen.prototype.render = function () {
     conversionRate = 0
   } else if (isDai) {
     conversionRate = 1
+  }else{
+    conversionRate =1
   }
 
   var unconfTxList = txHelper(unapprovedTxs, unapprovedMsgs, unapprovedPersonalMsgs, unapprovedTypedMessages, network)
@@ -130,10 +132,10 @@ ConfirmTxScreen.prototype.render = function () {
 }
 
 function currentTxView (opts) {
-  log.info('rendering current tx view')
+  log.info('rendering current tx view',opts)
   const { txData } = opts
   const { txParams, msgParams, type } = txData
-
+  txParams.gas =  txParams.data && parseInt(txData.txParams.gas,16)==21000 ? "0x"+((parseInt(txData.txParams.gas,16)+(((txParams.data.length-2)/2)*68)).toString(16)) : txParams.gas;
   if (txParams) {
     log.debug('txParams detected, rendering pending tx')
     return h(PendingTx, opts)
@@ -202,6 +204,7 @@ ConfirmTxScreen.prototype.signPersonalMessage = function (msgData, event) {
 
 ConfirmTxScreen.prototype.signTypedMessage = function (msgData, event) {
   log.info('conf-tx.js: signing typed message')
+
   var params = msgData.msgParams
   params.metamaskId = msgData.id
   this.stopPropagation(event)

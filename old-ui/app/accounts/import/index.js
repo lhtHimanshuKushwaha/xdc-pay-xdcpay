@@ -77,16 +77,19 @@ class AccountImportSubview extends Component {
               Import Accounts
             </h2>
           </div>
+          <div style={{
+            margin: '0 20px ',
+          }}>
           <div
-            className="error"
+            className="error importError"
             style={{
               display: "inline-block",
               alignItems: "center",
               marginTop: '13px',
               // border: "1px solid red",
               alignItems: "center",
-              width: "257px",
-              marginLeft: "20px",
+              maxWidth: '100%',
+              // marginLeft: "20px",
               backgroundPosition: '15px 30px'
             }}
           >
@@ -94,7 +97,8 @@ class AccountImportSubview extends Component {
               Imported accounts will not be associated with your originally
               created XDCPay account seed phrase.
             </span>
-          </div>
+            </div>
+            </div>
           <div style={{ padding: "10px 20px" }}>
             <h3 style={{ fontSize: "12px", fontFamily: "Inter-SemiBold" }}>
               Select Type
@@ -137,9 +141,9 @@ class AccountImportSubview extends Component {
       case importTypes.PRIVATE_KEY:
         description = "";
         break;
-      // case importTypes.JSON_FILE:
-      //   description = "";
-      //   break;
+      case importTypes.JSON_FILE:
+        description = "";
+        break;
       // case importTypes.PRIVATE_KEY.DEFAULT:
       //   description = `Contract type will automatically retrieve its ABI, if it was verified in <a href='https://blockscout.com' target='_blank'>Blockscout</a>`;
       //   break;
@@ -165,8 +169,8 @@ class AccountImportSubview extends Component {
     switch (current) {
       case importTypes.PRIVATE_KEY:
         return <PrivateKeyImportView type={importTypes.PRIVATE_KEY}/>;
-      // case importTypes.JSON_FILE:
-      //   return <JsonImportView />;
+      case importTypes.JSON_FILE:
+        return <JsonImportView />;
       // case importTypes.CONTRACT.DEFAULT:
       //   return <ContractImportView type={importTypes.CONTRACT.DEFAULT} />;
       // case importTypes.CONTRACT.PROXY:
