@@ -51,6 +51,8 @@ class ContactDetails extends React.Component {
             paddingBottom: "17px",
             display: "flex",
             justifyContent: "space-between",
+            borderBottom: '1px solid #E3E7EB',
+            marginBottom: '18px',
           }}
         >
           <img
@@ -81,7 +83,8 @@ class ContactDetails extends React.Component {
             {`${t("Edit")}`}
           </div>
         </div>
-        <div style={{ padding: "0 0 29px 0" }}>
+        <div>
+          {/* style={{ padding: "0 0 29px 0" }}> */}
           <div style={{ borderBottom: "1px solid #E3E7EB" }}>
             <div style={{ display: "flex", justifyContent: "center" }}>
               <Identicon
