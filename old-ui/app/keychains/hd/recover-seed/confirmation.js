@@ -35,6 +35,7 @@ RevealSeedConfirmation.prototype.render = function () {
           fontSize: '16px',
           padding: 6,
           fontFamily: 'Nunito  bold',
+          borderBottom: '1px solid #E3E7EB',
         },
       }, [
         h('img.image-display2', {

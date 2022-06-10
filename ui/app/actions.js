@@ -292,6 +292,7 @@ var actions = {
   networkSettings,
   addNetwork,
   showAddNetworkPage,
+  showAddNetwork,
   showAddContactsPage,
   viewNetwork: viewNetwork,
   viewContact: viewContact,
@@ -307,6 +308,7 @@ var actions = {
   SHOW_ALERTSETTINGS_PAGE: 'SHOW_ALERTSETTINGS_PAGE',
   SHOW_NETWORKSETTINGS_PAGE: 'SHOW_NETWORKSETTINGS_PAGE',
   SHOW_ADDNETWORK_PAGE: 'SHOW_ADDNETWORK_PAGE',
+  SHOW_ADDNETWORK: 'SHOW_ADDNETWORK',
   SHOW_ADDCONTACTS_PAGE: 'SHOW_ADDCONTACTS_PAGE',
 
   SHOW_VIEW_NETWORK_PAGE: 'SHOW_VIEW_NETWORK_PAGE',
@@ -440,9 +442,10 @@ function _setBackgroundConnection(backgroundConnection) {
   background = backgroundConnection
 }
 
-function goHome() {
+function goHome(currentViewNetwork = false) {
   return {
     type: actions.GO_HOME,
+    value: currentViewNetwork
   }
 }
 
@@ -2148,6 +2151,12 @@ function showAddNetworkPage() {
   }
 }
 
+function showAddNetwork(currentViewNetwork = true) {
+  return {
+    type: actions.SHOW_ADDNETWORK,
+    value: currentViewNetwork,
+  }
+}
 function showAddContactsPage(contactObj) {
   return {
     type: actions.SHOW_ADDCONTACTS_PAGE,

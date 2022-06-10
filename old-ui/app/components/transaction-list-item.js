@@ -164,7 +164,7 @@ TransactionListItem.prototype.render = function () {
         },
         [
           h('div.flex-row', {}, [
-            h('.identicon-wrapper.flex-column.flex-center.select-none', [
+            h('.identicon-wrapper.flex-column.flex-center.select-none',{style:{width:40 , height: 40}}, [
               h(TransactionIcon, { txParams, transaction, isTx, isMsg }),
             ]),
 
@@ -305,7 +305,7 @@ function recipientField(txParams, transaction, isTx, isMsg, network) {
   if (isMsg) {
     message = 'Signature Requested'
   } else if (txParams.to) {
-    message = addressSummary(network, transaction.hash)
+    message = addressSummary(network, transaction.hash) || addressSummary(network, txParams.to)
   } else {
     message = 'Contract Deployment'
   }

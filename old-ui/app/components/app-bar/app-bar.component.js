@@ -228,8 +228,8 @@ module.exports = class AppBar extends Component {
     )
   }
 
-  updateNetworksMenuOpenState (isNetworkMenuOpen) {
-    this.setState({ isNetworkMenuOpen })
+  updateNetworksMenuOpenState () {
+    this.setState({ isNetworkMenuOpen: false })
   }
 
   openMainMenu () {

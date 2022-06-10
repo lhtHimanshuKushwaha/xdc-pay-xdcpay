@@ -91,7 +91,7 @@ function reduceApp(state, action) {
       contactAddress: null,
       contactName: null,
     },
-    screenKey: 'generalSettings',
+    currentViewList: false,
 
   }, state.appState)
 
@@ -244,6 +244,7 @@ function reduceApp(state, action) {
         },
         transForward: action.value,
         warning: null,
+        currentViewList: false
       })
 
     case actions.SHOW_ADD_TOKEN_PAGE:
@@ -284,6 +285,7 @@ function reduceApp(state, action) {
         },
         transForward: true,
         warning: null,
+        currentViewList: false,
       })
 
     case actions.ExpandedSettings:
@@ -358,6 +360,17 @@ function reduceApp(state, action) {
         currentViewNetworkObj: null,
       })
 
+      case actions.SHOW_ADDNETWORK:
+        return extend(appState, {
+          currentView: {
+            name: 'config',
+            context: appState.currentView.context,
+          },
+          transForward: true,
+          warning: null,
+          currentViewList: action.value,
+        })
+    
     case actions.SHOW_ADDCONTACTS_PAGE:
       return extend(appState, {
         currentView: {
@@ -637,6 +650,7 @@ function reduceApp(state, action) {
         },
         transForward: false,
         warning: null,
+        currentViewList: action.value
       })
 
     case actions.SHOW_ACCOUNT_DETAIL:

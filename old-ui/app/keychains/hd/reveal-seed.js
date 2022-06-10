@@ -29,7 +29,7 @@ revealSeed.prototype.render = function () {
   var seedArr = seed.split(' ')
 
 
-  console.log('---Correct Screen---')
+  
 
 
   return (

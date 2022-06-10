@@ -19,11 +19,59 @@ class NetworksMenu extends Component {
 
   render () {
     const props = this.props
-    const {networkList, frequentRpcList} = props
+    const {networkList, frequentRpcList,currentViewList} = props
     const isOpen = props.isNetworkMenuOpen
     const networksView = this._renderNetworksView([...networkList, ...frequentRpcList])
+    const CollapsedUI = () => {      
+      return (
+        <div className='settingsCollapsed'>
+        <Dropdown
+          useCssTransition={true}
+          isOpen={isOpen}
+          onClickOutside={(event) => {
+            const { classList } = event.target
+            const isNotToggleElement = [
+              classList.contains('menu-icon'),
+              classList.contains('network-name'),
+              classList.contains('network-indicator'),
+            ].filter(bool => bool).length === 0
+            if (isNotToggleElement) {
+              this.props.updateNetworksMenuOpenState(false)
+            }
+          }}
+          zIndex={11}
+          // style={{
+          //   position: 'absolute',
+          //   bottom: '18px',
+          //   width: '317px',
+          //   maxHeight: isOpen ? '524px' : '0px',
+          //   marginLeft: '19px',
+          // }}
+          className={"selectNetworkExpanded"}
+          innerStyle={{ padding: 0, }}
+        >
+          <div className="select-network-list">
+            Select Network
+            <img className="select-network-close-icon dropdownCloseImage" src="/images/Assets/Close.svg"
+              onClick={() => this.props.updateNetworksMenuOpenState(!isOpen)} />
+          </div>
+          <div style={{ maxHeight: isOpen ? '166px' : '0px', overflowY: 'auto' }}>
+            {networksView}
 
-    return (
+            <DropdownMenuItem
+              closeMenu={() => this.props.updateNetworksMenuOpenState(!isOpen)}
+              onClick={() => this.props.showAddNetworkPage()}
+              className={'app-bar-networks-dropdown-custom-rpc'}
+            >Custom RPC</DropdownMenuItem>
+          </div>
+          </Dropdown>
+          </div>
+      )
+    
+    }
+    const ExpandUI = () => {
+      return (
+        <div className='settingsExpanded'>
       <Dropdown
         useCssTransition={true}
         isOpen={isOpen}
@@ -59,12 +107,21 @@ class NetworksMenu extends Component {
 
         <DropdownMenuItem
           closeMenu={() => this.props.updateNetworksMenuOpenState(!isOpen)}
-          onClick={() => this.props.showAddNetworkPage()}
+          onClick={() => this.props.showAddNetwork()}
           className={'app-bar-networks-dropdown-custom-rpc'}
           >Custom RPC</DropdownMenuItem>
           </div>
-      </Dropdown>
-    )
+          </Dropdown>
+          </div>
+      )
+    }
+    return (
+      <div>
+      <CollapsedUI />
+      <ExpandUI/>
+      </div>
+      )
+    
   }
 
   _renderNetworksView (_networks) {
@@ -111,20 +168,26 @@ class NetworksMenu extends Component {
 
 }
 
+
 const mapDispatchToProps = dispatch => {
   return {
-    showAddNetworkPage: () => dispatch(actions.goConfig()),
+    showAddNetworkPage: () => dispatch(actions.showAddNetworkPage()) ,
+    showAddNetwork: () =>  dispatch(actions.showAddNetwork()) ,
     setRpcTarget: (rpcTarget) => dispatch(actions.setRpcTarget(rpcTarget)),
     setProviderType: (providerType) => dispatch(actions.setProviderType(providerType)),
     showDeleteRPC: (label) => dispatch(actions.showDeleteRPC(label)),
   }
 }
 
-const mapStateToProps = ({metamask}) => {
+const mapStateToProps = ({ metamask, appState }) => {
   const {networkList, frequentRpcList} = metamask
+  const {currentViewList} = appState
+
   return {
-    networkList, frequentRpcList,
+    networkList, frequentRpcList, currentViewList
+     
   }
 }
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(NetworksMenu)

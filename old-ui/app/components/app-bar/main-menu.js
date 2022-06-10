@@ -17,7 +17,6 @@ class MainMenu extends Component {
   render () {
     const isOpen = this.props.isMainMenuOpen
     const isMainMenuOpen = !isOpen
-
     return (
       <Dropdown
         useCssTransition={true}
@@ -31,7 +30,7 @@ class MainMenu extends Component {
           const isToggleElement = classList.contains('sandwich-expando') ||
             parentClassList.contains('sandwich-expando')
 
-          if (isOpen && !isToggleElement) {
+          if (!isToggleElement) {
             this.props.openMainMenu()
           }
         }}

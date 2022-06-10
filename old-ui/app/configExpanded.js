@@ -15,8 +15,9 @@ import ContactDetails from "./components/add-contacts/contactDetails";
 export default class ConfigScreenExpanded extends React.Component {
   constructor(props) {
     super(props);
+    const currentViewList = this.props.currentViewList
     this.state = {
-      selectedComponent: "generalSettings",
+      selectedComponent: currentViewList === true ? "AddNetwork"  : "generalSettings"  ,
       detailObj: "",
     };
   }
@@ -199,5 +200,6 @@ function mapStateToProps(state) {
     metamask: state.metamask,
     warning: state.appState.warning,
     screenKey: state.metamask.screenKey,
+    currentViewList: state.appState.currentViewList,
   };
 }
