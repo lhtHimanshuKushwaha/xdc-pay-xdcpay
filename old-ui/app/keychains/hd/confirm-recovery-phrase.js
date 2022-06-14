@@ -165,7 +165,7 @@ ConfirmRecoveryPhrase.prototype.confirmSeedWords = function () {
     return this.props.dispatch(actions.confirmSeedWords())
     //  (account) => this.showAccountDetail(account)
   } else {
-    this.warning = 'Incorrect Seed Words'
+    this.warning = 'Incorrect Seed Phrase'
     this.props.dispatch(actions.displayWarning(this.warning))
     return
   }

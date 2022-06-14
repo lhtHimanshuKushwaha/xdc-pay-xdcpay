@@ -324,7 +324,7 @@ textarea:focus {
   display: flex;
   flex: 1 1 auto;
   flex-direction: column;
-  max-height: 377px;
+  max-height: 506px;
   overflow-y: auto;
 }
 
@@ -2268,6 +2268,29 @@ textarea[disabled] {
     background: rgb(255, 242, 245);
     color: rgb(255, 0, 53);
     border: 1px solid;
+    padding: 37px;
+    width: 300px;
+    height: 130px;
+  }
+}
+
+.remove-imported{
+  margin: 110px 0 73px 0 ;
+  padding: 16px;
+  height: 80px;
+  width: 548px;
+
+}
+@media only screen and (max-width: 600px) {
+  .remove-imported{
+    /* margin: 30px 46px 33px ;
+    padding: 20px;
+    width: none;
+    height: none; */
+    margin: 30px 46px 33px;
+    background: rgb(255, 242, 245);
+    color: rgb(255, 0, 53);
+    border: 1px solid;
     padding: 20px;
     width: 300px;
     height: 130px;
@@ -2427,15 +2450,15 @@ input:checked+.slider:before {
 
 @media only screen and (max-width:600px) {
   .trasaction-details-amount {
-    padding: 0 17px 17px 0;
+    padding: 0 0px 17px 0;
     border-bottom: 1px solid #e3e7eb;
     display: flex;
     justify-content: space-between;
     width: 100%;
-    min-width: 331px;
+    min-width: 0px;
     margin: 18px 0 0 0px;
     font-size: 14px;
-    padding: 0 25px 0 21px;
+    /* padding: 0 25px 0 21px; */
     font-family: inter-medium;
   }
 }
@@ -2524,7 +2547,7 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .tx-list {
   overflow-y: auto;
-  max-height: 504px;
+  max-height: 506px;
   padding: 0 2px 20px 13px;
   text-align: center;
 }

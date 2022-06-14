@@ -243,7 +243,7 @@ RestoreVaultScreen.prototype.createNewVaultAndRestore = function () {
     return
   }
   if (seed.length === 0) {
-    this.warning = 'Please enter seed words'
+    this.warning = 'Please enter seed phrase'
     this.props.dispatch(actions.displayWarning(this.warning))
     return
   }

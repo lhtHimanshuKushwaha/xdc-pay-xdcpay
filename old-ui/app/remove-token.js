@@ -8,6 +8,7 @@ class RemoveTokenScreen extends ConfirmScreen {
     return (
       <ConfirmScreen
         subtitle="Remove Token"
+        className= "confirm-label remove-token"
         question={`Are you sure you want to remove token '${this.props.symbol}'?`}
         onCancelClick={() => this.props.dispatch(actions.goHome())}
         onNoClick={() => this.props.dispatch(actions.goHome())}

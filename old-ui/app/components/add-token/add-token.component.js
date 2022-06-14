@@ -201,6 +201,7 @@ class AddTokenScreen extends Component {
             name: 'address',
             placeholder: 'Token Contract Address',
             value: customAddress,
+            autoComplete: 'off',
             style: {
               width: '100%',
               marginTop: '-4px',

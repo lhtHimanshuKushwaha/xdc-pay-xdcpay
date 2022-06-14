@@ -16,8 +16,8 @@ TransactionIcon.prototype.render = function () {
   const { transaction, txParams, isMsg } = this.props
   const randomnumber = Math.floor(Math.random() * 100);
   switch (transaction.status) {
-    case 'unapproved':
-      return h(!isMsg ? '.unapproved-tx-icon' : 'i.fa.fa-certificate.fa-lg')
+    // case 'unapproved':
+    //   return h(!isMsg ? '.unapproved-tx-icon' : 'i.fa.fa-certificate.fa-lg')
 
     case 'rejected':
     case 'failed':

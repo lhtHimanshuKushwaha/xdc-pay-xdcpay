@@ -432,7 +432,7 @@
     "message": "Loose"
   },
   "loweCaseWords": {
-    "message": "seed words imajo lahko le male črke"
+    "message": "seed phrase imajo lahko le male črke"
   },
   "mainnet": {
     "message": "Glavno omrežje"
@@ -590,10 +590,10 @@
     "message": "Poskusi z višjim gas price"
   },
   "revealSeedWords": {
-    "message": "Prikaži seed words"
+    "message": "Prikaži seed phrase"
   },
   "revealSeedWordsWarning": {
-    "message": "Ne obnovite seed words na javnem mestu! Te besede se lahko uporabijo za krajo vseh vaših računov."
+    "message": "Ne obnovite seed phrase na javnem mestu! Te besede se lahko uporabijo za krajo vseh vaših računov."
   },
   "revert": {
     "message": "Povrni"
@@ -619,13 +619,13 @@
     "description": "Account export process"
   },
   "saveSeedAsFile": {
-    "message": "Shrani seed words kot datoteko"
+    "message": "Shrani seed phrase kot datoteko"
   },
   "search": {
     "message": "Iskanje"
   },
   "secretPhrase": {
-    "message": "Tukaj vnesite svoje seed words, da obnovite svoje račune."
+    "message": "Tukaj vnesite svoje seed phrase, da obnovite svoje račune."
   },
   "seedPhraseReq": {
     "message": "seed phrases so dolgi 12 besed"

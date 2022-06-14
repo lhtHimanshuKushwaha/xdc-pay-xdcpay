@@ -43,7 +43,7 @@ class JsonImportSubview extends Component {
 
         h('input.large-input', {
           type: 'password',
-          placeholder: 'Enter current password',
+          placeholder: 'Enter Password of Importing Account',
           id: 'json-password-box',
           onKeyPress: this.createKeyringOnEnter.bind(this),
           style: {

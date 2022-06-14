@@ -133,7 +133,7 @@ export default class ExpandedTransactionDetails extends React.Component {
               alignItems: "center"
             }}
           >
-            <div style={{ maxWidth: "100%", width: "36%" }}>
+            <div style={{ maxWidth: "100%", width: "36%",display: 'flex' }}>
               {" "}
               <img
                 src="/images/Assets/BackArrow.svg"

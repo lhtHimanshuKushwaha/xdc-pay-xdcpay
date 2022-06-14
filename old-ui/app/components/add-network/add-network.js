@@ -58,7 +58,7 @@ const AddNetworkComponent = (props) => {
           {warningMsg && <div className="error" style={{width:'265px' ,marginBottom:'0px'}}>{warningMsg}</div>}
         </div>
         {isPermanentNetwork ? '' :
-          <div style={{display: 'flex', justifyContent: 'space-between'}}>
+          <div className='addNetworkFields' style={{display: 'flex', justifyContent: 'space-between'}}>
             <div className="button" onClick={onBackClick}
                  style={{
                    fontFamily: 'Inter-Medium',

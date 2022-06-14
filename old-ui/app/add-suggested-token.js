@@ -64,7 +64,7 @@ AddSuggestedTokenScreen.prototype.render = function () {
       h('.flex-column.flex-justify-center.flex-grow.select-none', [
         h('.flex-space-around', {
           style: {
-            padding: '20px 48px 0 50px',
+            padding: '20px 28px',
           },
         }, [
 

@@ -57,7 +57,8 @@ class NetworkSettings extends React.Component {
           />
         </div>
         <div  style={{
-          maxHeight: "100%",
+          maxHeight: "782px",
+          height: '100%',
           overflowY: "auto"
         }}>
         {netList.map(networkObj => (

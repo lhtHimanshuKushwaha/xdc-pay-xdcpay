@@ -9,6 +9,7 @@ class DeleteImportedAccount extends ConfirmScreen {
       <ConfirmScreen
         subtitle="Remove Imported Account"
         withDescription={true}
+        className="confirm-label remove-imported"
         description="Be sure, that you saved a private key or JSON keystore file of this account in a safe place. Otherwise, you will not be able to restore this account."
         question={`Are you sure to remove imported ${this.props.identity.name} (${this.props.identity.address})?`}
         onCancelClick={() => this.props.dispatch(actions.goHome())}

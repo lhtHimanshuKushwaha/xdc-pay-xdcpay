@@ -68,7 +68,8 @@ class Contacts extends React.Component {
           />
         </div>
         <div className="list"  style={{
-          maxHeight: "697px",
+          maxHeight: "782px",
+          height: '100%',
           overflowY: "auto"
         }}>
           {contactList.length ? (

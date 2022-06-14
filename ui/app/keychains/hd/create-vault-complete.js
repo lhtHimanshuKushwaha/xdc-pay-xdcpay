@@ -72,12 +72,12 @@ CreateVaultCompleteScreen.prototype.render = function () {
       }, 'I\'ve copied it somewhere safe'),
 
       h('button.primary', {
-        onClick: () => exportAsFile(`XDCPay Seed Words`, seed),
+        onClick: () => exportAsFile(`XDCPay Seed Phrase`, seed),
         style: {
           margin: '10px',
           fontSize: '0.9em',
         },
-      }, 'Save Seed Words As file'),
+      }, 'Save Seed Phrase As file'),
     ])
   )
 }

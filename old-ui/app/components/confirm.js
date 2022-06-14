@@ -11,7 +11,8 @@ class ConfirmScreen extends Component {
     description: PropTypes.string,
     onCancelClick: PropTypes.func.isRequired,
     onNoClick: PropTypes.func.isRequired,
-    onYesClick: PropTypes.func.isRequired
+    onYesClick: PropTypes.func.isRequired,
+    className: PropTypes.string.isRequired
   };
 
   render() {
@@ -47,7 +48,7 @@ class ConfirmScreen extends Component {
           : null}
         <div style={{ display: "flex", justifyContent: "center", }}>
           <p
-            className="confirm-label remove-token"
+            className={this.props.className}
             style={{
               textAlign: "center",
               background: "#FFF2F5",

@@ -113,12 +113,24 @@ class TransactionDetails extends React.Component {
             overflowY: "auto"
           }}
         >
-          <div style={{ paddingBottom: "10px ",borderBottom:'2px solid #EDEDED', margin:'-10px 0 13px ' }}>
+          <div
+            style={{
+              paddingBottom: "10px ",
+              borderBottom: "2px solid #EDEDED",
+              margin: "-10px 0 13px "
+            }}
+          >
             <div
               className="section-title flex-row"
               style={{ justifyContent: "space-between", width: "75%" }}
             >
-              <div style={{display: 'flex',justifyContent: 'center', alignItems: 'center' }}>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center"
+                }}
+              >
                 {" "}
                 <img
                   src="/images/Assets/BackArrow.svg"
@@ -173,34 +185,37 @@ class TransactionDetails extends React.Component {
           </div>
 
           {/* all trasaction details  */}
-          <div className="trasaction-details-amount">
-            <div>Amount</div>
-            <div style={{ marginRight: "6px", marginLeft: "auto" }}>
-              {value}
+          <div style={{margin:'0 13px 0 17px'}}>
+            <div className="trasaction-details-amount">
+              <div>Amount</div>
+              <div style={{ marginRight: "6px", marginLeft: "auto" }}>
+                {value}
+              </div>
+              <h1 style={{ color: "#848484" }}>{symbol}</h1>
             </div>
-            <h1 style={{ color: "#848484" }}>{symbol}</h1>
-          </div>
 
-          <div className="trasaction-details-amount">
-            <div>Gas Limit</div>
-            <div style={{ marginRight: "0px", marginLeft: "auto" }}>{gas}</div>
-          </div>
+            <div className="trasaction-details-amount">
+              <div>Gas Limit</div>
+              <div style={{ marginRight: "0px", marginLeft: "auto" }}>
+                {gas}
+              </div>
+            </div>
 
-          <div className="trasaction-details-amount">
-            <div>Gas Price (GWEI)</div>
-            <div style={{ marginRight: "6px", marginLeft: "auto" }}>
-              {gasPrice}
+            <div className="trasaction-details-amount">
+              <div>Gas Price (GWEI)</div>
+              <div style={{ marginRight: "6px", marginLeft: "auto" }}>
+                {gasPrice}
+              </div>
+            </div>
+
+            <div className="trasaction-details-amount">
+              <div>Total</div>
+              <div style={{ marginRight: "6px", marginLeft: "auto" }}>
+                {value}
+              </div>
+              <h1 style={{ color: "#848484" }}>{symbol}</h1>
             </div>
           </div>
-
-          <div className="trasaction-details-amount">
-            <div>Total</div>
-            <div style={{ marginRight: "6px", marginLeft: "auto" }}>
-              {value}
-            </div>
-            <h1 style={{ color: "#848484" }}>{symbol}</h1>
-          </div>
-
           {/* Transaction-log */}
 
           <h2 className="transaction-log-heading">Transaction Log</h2>
