@@ -243,7 +243,7 @@ ConfirmRecoveryPhrase.prototype.exportAsFile = function (seed) {
 //             height: '40px',
 //             border: 'none',
 //           },
-//         }, 'Confirm Recovery Phrase'),
+//         }, 'Confirm Seed Phrase'),
 //       ],
 //     ])
 

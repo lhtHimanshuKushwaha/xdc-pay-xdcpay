@@ -300,7 +300,7 @@ class AdvanceSettings extends React.Component{
 //                                     marginBottom: "-11px",
 //                                 },
 //                             },
-//                             `Resetting your account will clear your transaction history. This will not change the balances in your accounts or require you to re-enter your Secret Recovery Phrase.`
+//                             `Resetting your account will clear your transaction history. This will not change the balances in your accounts or require you to re-enter your Secret Seed Phrase.`
 //                         ),
 //                         h("br"),
 //                     h(
